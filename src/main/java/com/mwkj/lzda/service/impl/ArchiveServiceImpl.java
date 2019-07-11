@@ -60,6 +60,9 @@ public class ArchiveServiceImpl implements ArchiveService {
     @Resource
     ArcLeaveofficeHandoverService arcLeaveofficeHandoverService;
 
+    @Resource
+    ArcFamilyAbroadService arcFamilyAbroadService;
+
 
     @Override
     public List<ArchiveDTO> findAllArchivesByConditions(ArchiveDTO archive) {
@@ -104,6 +107,11 @@ public class ArchiveServiceImpl implements ArchiveService {
                 break;
             case 9:
                 page = "/views/archive/arc_leaveoffice_handover";
+                break;
+            // todo
+
+            case 11:
+                page = "/views/archive/arc_family_abroad";
                 break;
 
             //todo
@@ -167,6 +175,14 @@ public class ArchiveServiceImpl implements ArchiveService {
                 ArcLeaveofficeHandover arcLeaveofficeHandover = arcLeaveofficeHandoverService.findById(archive.getArchiveId());
                 map.put("archive", arcLeaveofficeHandover); // 统一命名为archive
                 page = "/views/archive/arc_leaveoffice_handover_table";
+                break;
+
+            // todo
+
+            case 11:
+                ArcFamilyAbroad arcFamilyAbroad = arcFamilyAbroadService.findById(archive.getArchiveId());
+                map.put("archive", arcFamilyAbroad); // 统一命名为archive
+                page = "/views/archive/arc_family_abroad_table";
                 break;
 
             //todo
@@ -275,6 +291,14 @@ public class ArchiveServiceImpl implements ArchiveService {
                 arcLeaveofficeHandover.setId(id);
                 arcLeaveofficeHandover.setApproveStatus(status);
                 arcLeaveofficeHandoverService.update(arcLeaveofficeHandover);
+                break;
+
+            // todo
+            case 10:
+                ArcFamilyAbroad arcFamilyAbroad = new ArcFamilyAbroad();
+                arcFamilyAbroad.setId(id);
+                arcFamilyAbroad.setApproveStatus(status);
+                arcFamilyAbroadService.update(arcFamilyAbroad);
                 break;
 
             // todo

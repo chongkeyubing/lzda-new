@@ -50,6 +50,7 @@
                     <td>其他公物按规定<br/>移交情况</td>
                     <td colspan="3">${archive.otherHandover}</td>
                 </tr>
+
                 <%--<tr>--%>
                     <%--<td>调离单位主管领导</td>--%>
                     <%--<td colspan="3"></td>--%>
