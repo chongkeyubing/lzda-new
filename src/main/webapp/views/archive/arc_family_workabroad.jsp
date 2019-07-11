@@ -5,17 +5,18 @@
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 
 <div style="display: flex; justify-content: center;">
-    <form class='layui-form form1' action='arcfamilyabroad/add' id="archiveForm" method="post">
+    <form class='layui-form form1' action='arcfamilyworkabroad/add' id="archiveForm" method="post">
         <div class="layui-form-item">
             <%--<div class="layui-inline">--%>
-                <%--<label class="layui-form-label">有无变化</label>--%>
-                <%--<div class="layui-input-inline">--%>
-                    <%--<select name="change">--%>
-                        <%--<option value="">请选择</option>--%>
-                        <%--<option value="有变化">有变化</option>--%>
-                        <%--<option value="无变化">无变化</option>--%>
-                    <%--</select>--%>
-                <%--</div>--%>
+            <%--<label class="layui-form-label">有无变化</label>--%>
+            <%--<div class="layui-input-inline">--%>
+            <%--<select name="quiz">--%>
+            <%--<option value="">请选择</option>--%>
+            <%--<option value="">有变化</option>--%>
+            <%--<option value="">无变化</option>--%>
+
+            <%--</select>--%>
+            <%--</div>--%>
             <%--</div>--%>
 
             <div class="layui-inline">
@@ -24,52 +25,32 @@
                     <input type="text" name="familyName" autocomplete="off" class="layui-input" lay-verify="required">
                 </div>
             </div>
+
             <div class="layui-inline">
                 <label class="layui-form-label">称谓</label>
                 <div class="layui-input-inline">
                     <input type="text" name="familyAppellation" autocomplete="off" class="layui-input" lay-verify="required">
                 </div>
             </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label">所在国家（地区）</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="country" autocomplete="off" class="layui-input" lay-verify="required">
+                </div>
+            </div>
+
         </div>
 
         <div class="layui-form-item">
             <div class="layui-inline">
-                <label class="layui-form-label">移居国家（地区）</label>
+                <label class="layui-form-label">工作、生活城市</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="toCountry" autocomplete="off" class="layui-input" lay-verify="required">
+                    <input type="text" name="city" autocomplete="off" class="layui-input" lay-verify="required">
                 </div>
             </div>
             <div class="layui-inline">
-                <label class="layui-form-label">现居住城市</label>
-                <div class="layui-input-inline">
-                    <input type="text" name="toCity" autocomplete="off" class="layui-input" lay-verify="required">
-                </div>
-            </div>
-            <div class="layui-inline">
-                <label class="layui-form-label">移居证件号码</label>
-                <div class="layui-input-inline">
-                    <input type="text" name="identificationNumber" autocomplete="off" class="layui-input" lay-verify="required">
-                </div>
-            </div>
-        </div>
-
-        <div class="layui-form-item">
-            <div class="layui-inline">
-                <label class="layui-form-label">移居类别</label>
-                <div class="layui-input-inline">
-                    <select name="type" lay-verify="required">
-                        <option value="">请选择</option>
-                        <option value="外国国籍">外国国籍</option>
-                        <option value="永久居留资格">永久居留资格</option>
-                        <option value="长期居留许可">长期居留许可</option>
-
-                    </select>
-                </div>
-            </div>
-
-
-            <div class="layui-inline">
-                <label class="layui-form-label">移居时间</label>
+                <label class="layui-form-label">起始时间</label>
                 <div class="layui-input-inline">
                     <input type="text" name="time" id="time" autocomplete="off" class="layui-input" lay-verify="required">
                 </div>
@@ -91,20 +72,20 @@
 
         <%-- 提交 --%>
         <%@ include file = "./common/archive_submit.jsp" %>
-
     </form>
 </div>
 <script>
-    layui.use(['form', 'layedit', 'laydate'], function () {
+    layui.use(['form', 'laydate'], function () {
         var form = layui.form,
             layer = layui.layer,
-            layedit = layui.layedit,
             laydate = layui.laydate;
 
         //日期
         laydate.render({
             elem: '#time'
         });
-        form.render();
+
     });
 </script>
+
+

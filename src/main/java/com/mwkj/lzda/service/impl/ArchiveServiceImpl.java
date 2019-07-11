@@ -63,6 +63,9 @@ public class ArchiveServiceImpl implements ArchiveService {
     @Resource
     ArcFamilyAbroadService arcFamilyAbroadService;
 
+    @Resource
+    ArcFamilyWorkabroadService arcFamilyWorkabroadService;
+
 
     @Override
     public List<ArchiveDTO> findAllArchivesByConditions(ArchiveDTO archive) {
@@ -112,6 +115,9 @@ public class ArchiveServiceImpl implements ArchiveService {
 
             case 11:
                 page = "/views/archive/arc_family_abroad";
+                break;
+            case 12:
+                page = "/views/archive/arc_family_workabroad";
                 break;
 
             //todo
@@ -183,6 +189,11 @@ public class ArchiveServiceImpl implements ArchiveService {
                 ArcFamilyAbroad arcFamilyAbroad = arcFamilyAbroadService.findById(archive.getArchiveId());
                 map.put("archive", arcFamilyAbroad); // 统一命名为archive
                 page = "/views/archive/arc_family_abroad_table";
+                break;
+            case 12:
+                ArcFamilyWorkabroad arcFamilyWorkabroad = arcFamilyWorkabroadService.findById(archive.getArchiveId());
+                map.put("archive", arcFamilyWorkabroad); // 统一命名为archive
+                page = "/views/archive/arc_family_workabroad_table";
                 break;
 
             //todo
@@ -294,11 +305,18 @@ public class ArchiveServiceImpl implements ArchiveService {
                 break;
 
             // todo
-            case 10:
+            case 11:
                 ArcFamilyAbroad arcFamilyAbroad = new ArcFamilyAbroad();
                 arcFamilyAbroad.setId(id);
                 arcFamilyAbroad.setApproveStatus(status);
                 arcFamilyAbroadService.update(arcFamilyAbroad);
+                break;
+
+            case 12:
+                ArcFamilyWorkabroad arcFamilyWorkabroad = new ArcFamilyWorkabroad();
+                arcFamilyWorkabroad.setId(id);
+                arcFamilyWorkabroad.setApproveStatus(status);
+                arcFamilyWorkabroadService.update(arcFamilyWorkabroad);
                 break;
 
             // todo

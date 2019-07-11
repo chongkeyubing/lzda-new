@@ -9,29 +9,24 @@
         <div class="tableHonor">
             <table>
                 <tr>
-                    <th colspan="8">配偶、子女移居国（境）外的情况</th>
+                    <th colspan="6">配偶、子女虽未移居国（境）外，但连续在国（境）外工作、生活一年以上的情况</th>
                 </tr>
                 <tr>
-                    <td>姓名</td>
+                    <td>姓 名</td>
                     <td>称谓</td>
-                    <td>移居国家（地区）</td>
-                    <td>现居住城市</td>
-                    <td>移居证件号码</td>
-                    <td>移居类别</td>
-                    <td>移居时间</td>
+                    <td>所在国家（地区）</td>
+                    <td>工作、生活城市</td>
+                    <td>起始时间</td>
                     <td>备注</td>
                 </tr>
                 <tr>
                     <td>${archive.familyName}</td>
                     <td>${archive.familyAppellation}</td>
-                    <td>${archive.toCountry}</td>
-                    <td>${archive.toCity}</td>
-                    <td>${archive.identificationNumber}</td>
-                    <td>${archive.type}</td>
+                    <td>${archive.country}</td>
+                    <td>${archive.city}</td>
                     <td>${archive.time}</td>
                     <td>${archive.remark}</td>
                 </tr>
-
             </table>
 
             <c:if test="${approveOperate}">

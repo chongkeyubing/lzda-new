@@ -44,7 +44,8 @@ public class ArcFamilyAbroad {
     /**
      * 有无变化
      */
-    private String change;
+    @Column(name = "change_status")
+    private String changeStatus;
 
     /**
      * 家人姓名
@@ -222,23 +223,6 @@ public class ArcFamilyAbroad {
         this.organization = organization;
     }
 
-    /**
-     * 获取有无变化
-     *
-     * @return change - 有无变化
-     */
-    public String getChange() {
-        return change;
-    }
-
-    /**
-     * 设置有无变化
-     *
-     * @param change 有无变化
-     */
-    public void setChange(String change) {
-        this.change = change;
-    }
 
     /**
      * 获取家人姓名
@@ -456,5 +440,13 @@ public class ArcFamilyAbroad {
      */
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public String getChangeStatus() {
+        return changeStatus;
+    }
+
+    public void setChangeStatus(String changeStatus) {
+        this.changeStatus = changeStatus;
     }
 }
