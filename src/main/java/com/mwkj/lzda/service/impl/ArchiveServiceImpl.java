@@ -72,6 +72,9 @@ public class ArchiveServiceImpl implements ArchiveService {
     @Resource
     ArcFamilyStockService arcFamilyStockService;
 
+    @Resource
+    ArcFamilyFundService arcFamilyFundService;
+
 
     @Override
     public List<ArchiveDTO> findAllArchivesByConditions(ArchiveDTO archive) {
@@ -130,6 +133,9 @@ public class ArchiveServiceImpl implements ArchiveService {
                 break;
             case 14:
                 page = "/views/archive/arc_family_stock";
+                break;
+            case 15:
+                page = "/views/archive/arc_family_fund";
                 break;
 
 
@@ -217,6 +223,11 @@ public class ArchiveServiceImpl implements ArchiveService {
                 ArcFamilyStock arcFamilyStock = arcFamilyStockService.findById(archive.getArchiveId());
                 map.put("archive", arcFamilyStock); // 统一命名为archive
                 page = "/views/archive/arc_family_stock_table";
+                break;
+            case 15:
+                ArcFamilyFund arcFamilyFund = arcFamilyFundService.findById(archive.getArchiveId());
+                map.put("archive", arcFamilyFund); // 统一命名为archive
+                page = "/views/archive/arc_family_fund_table";
                 break;
 
             //todo
@@ -351,6 +362,12 @@ public class ArchiveServiceImpl implements ArchiveService {
                 arcFamilyStock.setId(id);
                 arcFamilyStock.setApproveStatus(status);
                 arcFamilyStockService.update(arcFamilyStock);
+                break;
+            case 15:
+                ArcFamilyFund arcFamilyFund = new ArcFamilyFund();
+                arcFamilyFund.setId(id);
+                arcFamilyFund.setApproveStatus(status);
+                arcFamilyFundService.update(arcFamilyFund);
                 break;
 
             // todo
