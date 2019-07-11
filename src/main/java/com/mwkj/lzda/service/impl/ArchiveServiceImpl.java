@@ -69,6 +69,9 @@ public class ArchiveServiceImpl implements ArchiveService {
     @Resource
     ArcFamilyCriminalService arcFamilyCriminalService;
 
+    @Resource
+    ArcFamilyStockService arcFamilyStockService;
+
 
     @Override
     public List<ArchiveDTO> findAllArchivesByConditions(ArchiveDTO archive) {
@@ -124,6 +127,9 @@ public class ArchiveServiceImpl implements ArchiveService {
                 break;
             case 13:
                 page = "/views/archive/arc_family_criminal";
+                break;
+            case 14:
+                page = "/views/archive/arc_family_stock";
                 break;
 
 
@@ -206,6 +212,11 @@ public class ArchiveServiceImpl implements ArchiveService {
                 ArcFamilyCriminal arcFamilyCriminal = arcFamilyCriminalService.findById(archive.getArchiveId());
                 map.put("archive", arcFamilyCriminal); // 统一命名为archive
                 page = "/views/archive/arc_family_criminal_table";
+                break;
+            case 14:
+                ArcFamilyStock arcFamilyStock = arcFamilyStockService.findById(archive.getArchiveId());
+                map.put("archive", arcFamilyStock); // 统一命名为archive
+                page = "/views/archive/arc_family_stock_table";
                 break;
 
             //todo
@@ -323,19 +334,23 @@ public class ArchiveServiceImpl implements ArchiveService {
                 arcFamilyAbroad.setApproveStatus(status);
                 arcFamilyAbroadService.update(arcFamilyAbroad);
                 break;
-
             case 12:
                 ArcFamilyWorkabroad arcFamilyWorkabroad = new ArcFamilyWorkabroad();
                 arcFamilyWorkabroad.setId(id);
                 arcFamilyWorkabroad.setApproveStatus(status);
                 arcFamilyWorkabroadService.update(arcFamilyWorkabroad);
                 break;
-
             case 13:
                 ArcFamilyCriminal arcFamilyCriminal = new ArcFamilyCriminal();
                 arcFamilyCriminal.setId(id);
                 arcFamilyCriminal.setApproveStatus(status);
                 arcFamilyCriminalService.update(arcFamilyCriminal);
+                break;
+            case 14:
+                ArcFamilyStock arcFamilyStock = new ArcFamilyStock();
+                arcFamilyStock.setId(id);
+                arcFamilyStock.setApproveStatus(status);
+                arcFamilyStockService.update(arcFamilyStock);
                 break;
 
             // todo

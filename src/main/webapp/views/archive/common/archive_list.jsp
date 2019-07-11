@@ -51,14 +51,14 @@
                     <option value="8">可能影响公正执行职务报备表</option>
                     <option value="9">离职交接情况登记表</option>
                     <option value="10">配偶、子女及其配偶从业情况登记表</option>
-                    <option value="11">家人移居国（境）外的情况</option>
-                    <option value="12">家人连续在国（境）外工作、生活一年以上的情况</option>
-                    <option value="13">家人被司法机关追究刑事责任的情况</option>
-                    <option value="14">持有股票的情况</option>
-                    <option value="15">持有基金的情况</option>
-                    <option value="16">持有投资型保险的情况</option>
-                    <option value="17">在国（境）外的存款情况</option>
-                    <option value="18">在国（境）外的投资情况</option>
+                    <option value="11">配偶、子女移居国（境）外的情况</option>
+                    <option value="12">配偶、子女连续在国（境）外工作、生活一年以上的情况</option>
+                    <option value="13">配偶、子女及其配偶被司法机关追究刑事责任的情况</option>
+                    <option value="14">本人、配偶、共同生活的子女持有股票的情况</option>
+                    <option value="15">本人、配偶、共同生活的子女持有基金的情况</option>
+                    <option value="16">本人、配偶、共同生活的子女持有投资型保险的情况</option>
+                    <option value="17">本人、配偶、共同生活的子女在国（境）外的存款情况</option>
+                    <option value="18">本人、配偶、共同生活的子女在国（境）外的投资情况</option>
                     <option value="19">个人认为需要报告的其他事项</option>
                     <option value="20">子女与港澳以及台湾居民通婚的情况</option>
                     <option value="21">涉警报备表</option>
@@ -82,7 +82,7 @@
 
 <form class="layui-form">
     <div class="layui-form-item" style="padding-top: 15px; border-top: 1px solid #f6f6f6;">
-        <div class="layui-input-block" style="float: right;margin-right: 76px;">
+        <div class="layui-input-block" style="float: right;margin-right: 110px;">
             <div class="layui-input-inline">
                 <select name="archiveType">
                     <option value="">请选择档案类型</option>
@@ -96,14 +96,14 @@
                     <option value="8">可能影响公正执行职务报备表</option>
                     <option value="9">离职交接情况登记表</option>
                     <option value="10">配偶、子女及其配偶从业情况登记表</option>
-                    <option value="11">家人移居国（境）外的情况</option>
-                    <option value="12">家人连续在国（境）外工作、生活一年以上的情况</option>
-                    <option value="13">家人被司法机关追究刑事责任的情况</option>
-                    <option value="14">持有股票的情况</option>
-                    <option value="15">持有基金的情况</option>
-                    <option value="16">持有投资型保险的情况</option>
-                    <option value="17">在国（境）外的存款情况</option>
-                    <option value="18">在国（境）外的投资情况</option>
+                    <option value="11">配偶、子女移居国（境）外的情况</option>
+                    <option value="12">配偶、子女连续在国（境）外工作、生活一年以上的情况</option>
+                    <option value="13">配偶、子女及其配偶被司法机关追究刑事责任的情况</option>
+                    <option value="14">本人、配偶、共同生活的子女持有股票的情况</option>
+                    <option value="15">本人、配偶、共同生活的子女持有基金的情况</option>
+                    <option value="16">本人、配偶、共同生活的子女持有投资型保险的情况</option>
+                    <option value="17">本人、配偶、共同生活的子女在国（境）外的存款情况</option>
+                    <option value="18">本人、配偶、共同生活的子女在国（境）外的投资情况</option>
                     <option value="19">个人认为需要报告的其他事项</option>
                     <option value="20">子女与港澳以及台湾居民通婚的情况</option>
                     <option value="21">涉警报备表</option>
@@ -137,14 +137,14 @@
         8: "可能影响公正执行职务报备表",
         9: "离职交接情况登记表",
         10: "配偶、子女及其配偶从业情况登记表",
-        11: "家人移居国（境）外的情况",
-        12: "家人连续在国（境）外工作、生活一年以上的情况",
-        13: "家人被司法机关追究刑事责任的情况",
-        14: "持有股票的情况",
-        15: "持有基金的情况",
-        16: "持有投资型保险的情况",
-        17: "在国（境）外的存款情况",
-        18: "在国（境）外的投资情况",
+        11: "配偶、子女移居国（境）外的情况",
+        12: "配偶、子女连续在国（境）外工作、生活一年以上的情况",
+        13: "配偶、子女及其配偶被司法机关追究刑事责任的情况",
+        14: "本人、配偶、共同生活的子女持有股票的情况",
+        15: "本人、配偶、共同生活的子女持有基金的情况",
+        16: "本人、配偶、共同生活的子女持有投资型保险的情况",
+        17: "本人、配偶、共同生活的子女在国（境）外的存款情况",
+        18: "本人、配偶、共同生活的子女在国（境）外的投资情况",
         19: "个人认为需要报告的其他事项",
         20: "子女与港澳以及台湾居民通婚的情况",
         21: "涉警报备表",
@@ -179,14 +179,14 @@
             cols: [[ //表头
                 {field: 'policeCode', title: '警号'},
                 {field: 'userName', title: '姓名'},
-                {field: 'organizationName', title: '单位', width: 360},
+                {field: 'organizationName', title: '单位', width: 340},
                 {
-                    field: 'archiveType', title: '档案类型', templet: function (data) {
+                    field: 'archiveType', title: '档案类型', width: 380, templet: function (data) {
                         return archiveType[data.archiveType]
                     }
                 },
                 {
-                    field: 'approveStatus', title: '审核状态', templet: function (data) {
+                    field: 'approveStatus', title: '审核状态', width: 220,templet: function (data) {
                         return approveStatus[data.approveStatus]
                     }
                 },
