@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mwkj.lzda.dao.ArcFamilySocietyRelaMapper">
+  <resultMap id="BaseResultMap" type="com.mwkj.lzda.model.ArcFamilySocietyRela">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="basic_info_id" jdbcType="INTEGER" property="basicInfoId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="appellation" jdbcType="VARCHAR" property="appellation" />
+    <result column="politic_face" jdbcType="VARCHAR" property="politicFace" />
+    <result column="birthday" jdbcType="TIMESTAMP" property="birthday" />
+    <result column="organization" jdbcType="VARCHAR" property="organization" />
+    <result column="job_position" jdbcType="VARCHAR" property="jobPosition" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+</mapper>

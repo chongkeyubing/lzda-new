@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mwkj.lzda.dao.ArcBanquetApplyMapper">
+  <resultMap id="BaseResultMap" type="com.mwkj.lzda.model.ArcBanquetApply">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="organization_id" jdbcType="INTEGER" property="organizationId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="job_position" jdbcType="VARCHAR" property="jobPosition" />
+    <result column="organization" jdbcType="VARCHAR" property="organization" />
+    <result column="reason" jdbcType="VARCHAR" property="reason" />
+    <result column="relatives_number" jdbcType="INTEGER" property="relativesNumber" />
+    <result column="friend_number" jdbcType="INTEGER" property="friendNumber" />
+    <result column="other_number" jdbcType="INTEGER" property="otherNumber" />
+    <result column="total_level" jdbcType="INTEGER" property="totalLevel" />
+    <result column="wine_level" jdbcType="INTEGER" property="wineLevel" />
+    <result column="cigarette_gift_level" jdbcType="INTEGER" property="cigaretteGiftLevel" />
+    <result column="vehicle_source" jdbcType="VARCHAR" property="vehicleSource" />
+    <result column="vehicle_number" jdbcType="VARCHAR" property="vehicleNumber" />
+    <result column="activity_time" jdbcType="VARCHAR" property="activityTime" />
+    <result column="activity_position" jdbcType="VARCHAR" property="activityPosition" />
+    <result column="approve_status" jdbcType="INTEGER" property="approveStatus" />
+    <result column="archive_type" jdbcType="INTEGER" property="archiveType" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="other_info" jdbcType="LONGVARCHAR" property="otherInfo" />
+    <result column="personal_apply" jdbcType="LONGVARCHAR" property="personalApply" />
+  </resultMap>
+</mapper>

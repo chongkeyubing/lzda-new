@@ -1,0 +1,977 @@
+﻿@charset "utf-8";
+/***公共样式****/
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+}
+
+html, body {
+    overflow-x: hidden;
+}
+
+html, body, form, fieldset, p, div, h1, h2, h3, h4, h5, h6 {
+    -webkit-text-size-adjust: none
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+    clear: both;
+}
+
+body {
+    font-family: "Microsoft YaHei", "微软雅黑", Helvetica, Tahoma;
+    color: #333;
+    font-size: 14px;
+    -webkit-text-size-adjust: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: normal
+}
+
+i, span, em, cite, p, dl, dt, dd, span, b {
+    font-style: normal;
+}
+
+form {
+    display: inline
+}
+
+textarea {
+    resize: none
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+ul, ol, li {
+    list-style: none
+}
+
+input, select, button {
+    font-size: 100%;
+    vertical-align: middle;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+button, input[type="button"], input[type="reset"], input[type="submit"] {
+    cursor: pointer;
+    -webkit-appearance: button;
+    -moz-appearance: button
+}
+
+input:focus:-moz-placeholder, input:focus::-webkit-input-placeholder {
+    color: transparent
+}
+
+button::-moz-focus-inner, input::-moz-focus-inner {
+    padding: 0;
+    border: 0
+}
+
+a {
+    text-decoration: none;
+    color: #111
+}
+
+a:hover {
+    color: #111;
+    text-decoration: none;
+}
+
+img {
+    vertical-align: middle;
+    font-size: 0;
+    border: 0;
+    -ms-interpolation-mode: bicubic;
+}
+
+/*a 链接*/
+a {
+    text-decoration: none;
+    outline: none;
+    color: #555;
+}
+
+/* HTML5 重置为较旧版本的浏览器 */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+/* 按钮样式 */
+input, button, textarea, select {
+    font-size: 100%;
+    outline: none;
+    resize: none
+}
+
+input[type="button"] {
+    cursor: pointer;
+    border: 0
+}
+
+input[type="submit"] {
+    cursor: pointer;
+    border: 0
+}
+
+input[type="reset"] {
+    cursor: pointer;
+    border: 0
+}
+
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+select,
+textarea,
+button {
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+/*删除火狐下按钮默认样式*/
+input[type="reset"]::-moz-focus-inner,
+input[type="button"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner,
+input[type="file"] > input[type="button"]::-moz-focus-inner {
+    border: none;
+    padding: 0;
+}
+
+/***公共样式END****/
+/*首页样式*/
+.wrapper {
+    width: 100%;
+    overflow: hidden;
+}
+
+.wrapper .header {
+    width: 100%;
+    height: 60px;
+    background: url(../images/bg.png) no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.header .logo {
+    width: 30%;
+    height: 100%;
+    float: left;
+    margin-left: 65px;
+    line-height: 60px;
+}
+
+.header .sign {
+    float: right;
+    padding-right: 50px;
+    overflow: hidden;
+}
+
+.sign li {
+    display: inline-block;
+    padding: 0 20px;
+    overflow: hidden;
+}
+
+.sign li img {
+    width: 40px;
+    height: 40px;
+    display: block;
+    border-radius: 50%;
+    float: left;
+    margin-top: 10px;
+}
+
+.sign li i {
+    font-size: 18px;
+    line-height: 60px;
+    margin-left: 10px;
+    color: #fff;
+    display: block;
+    float: left;
+}
+
+.sign li span {
+    font-size: 18px;
+    color: #fff;
+    line-height: 60px;
+    padding-right: 25px;
+    background: url(../images/icon02.png) right center no-repeat;
+}
+
+.header .logo span {
+    color: #fff;
+    font-size: 22px;
+    margin-left: 2%;
+    line-height: 60px;
+    display: inline-block;
+}
+
+.header .logo img {
+    width: 40px;
+    margin-bottom: 10px;
+    height: 40px;
+}
+
+/*内容*/
+.Box {
+    width: 100%;
+    overflow: hidden;
+}
+
+/*内容左边*/
+.left {
+    width: 240px;
+    overflow: hidden;
+    float: left;
+    background-color: #fff;
+}
+
+.leftNav {
+    width: 100%;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.leftNav dl {
+    display: block;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.leftNav dl dd {
+    display: block;
+    width: 90%;
+    cursor: pointer;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+.leftNav dl dd .menu {
+    display: block;
+    width: 100%;
+    height: 42px;
+    line-height: 42px;
+    padding-left: 10%;
+    position: relative;
+    font-size: 16px;
+    border-radius: 21px;
+    background-color: #eaf0fc;
+}
+
+.leftNav dl dd .menu:after {
+    content: "";
+    display: inline-block;
+    width: 15px;
+    height: 8px;
+    background: url(../images/icon01.png) no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    transform: translateY(-50%);
+}
+
+.leftNav dl dd ul {
+    width: 90%;
+    overflow: hidden;
+    margin: 0 auto;
+    text-align: center;
+    display: none;
+}
+
+.leftNav dl dd ul li {
+    display: block;
+    height: 56px;
+    line-height: 56px;
+    color: #95a0aa;
+    font-size: 14px;
+    background: url(../images/btn05.png) no-repeat 15% center;
+    background-size: 4%;
+}
+
+.leftNav dl dd ul li a {
+    display: block;
+    color: #6c6c6c;
+}
+
+.leftNav dl dd .menu.cur:after {
+    background-image: url(../images/icon01_h.png);
+}
+
+.leftNav dl dd .menu.cur {
+    color: #fff;
+    background-color: #4877e8;
+}
+
+.leftNav dl dd ul li.cur a {
+    color: #93b2fd;
+    text-decoration: none;
+}
+
+.leftNav dl dd .menu {
+    padding-left: 10%;
+}
+
+.leftNav dl dd ul li {
+    padding-left: 10%;
+    text-align: left;
+    background: none;
+}
+
+.leftNav dl dd .menu:after {
+    transform: translateY(-50%) rotate(-180deg);
+    transition: transform .2s;
+}
+
+.leftNav dl dd .menu.cur:after {
+    transform: translateY(-50%) rotate(0deg);
+    transition: transform .2s;
+}
+
+/*内容右边*/
+.right {
+    position: absolute;
+    top: 60px;
+    left: 230px;
+    padding: 40px 20px;
+}
+
+
+.contentBox {
+    margin-top: 30px;
+    width: 100%;
+    overflow: hidden;
+    background-color: #fff;
+    margin-bottom: 30px;
+}
+
+.content {
+    width: 95%;
+    margin: 0 auto;
+    overflow: hidden;
+    display: none;
+}
+
+.contentList {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+}
+
+.contentList dl {
+    width: 100%;
+    overflow: hidden;
+}
+
+.contentList dl dt {
+    float: left;
+    width: 25%;
+    overflow: hidden;
+}
+
+.contentList dl dt input {
+    display: inline-block;
+    width: 50%;
+    border: 1px solid #e7e7e7;
+    height: 38px;
+    line-height: 38px;
+}
+
+.contentList ul {
+    width: 100%;
+    overflow: hidden;
+    border: none;
+}
+
+.contentList ul li {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    text-align: left;
+    margin-top: 15px;
+    border: none;
+}
+
+.contentList ul li button {
+    float: left;
+    padding: 10px 2.5%;
+    font-size: 18px;
+    color: #fff;
+    background-color: #5b8cff;
+    border-radius: 10px;
+    margin-right: 2.5%;
+}
+
+.contentList ul li button:hover {
+    background-color: #03d803;
+}
+
+
+/*个人违惩详情信息*/
+.tableHonor {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.tableHonor table {
+    width: 100%;
+    border: 1px solid #6c6c6c;
+    table-layout: fixed;
+}
+
+.tableHonor table tr {
+    border: 1px solid #6c6c6c;
+    color: #808183;
+    font-weight: normal;
+    text-align: center;
+    font-size: 16px;
+}
+
+.tableHonor table tr td {
+    border: 1px solid #6c6c6c;
+    padding: 15px 0;
+}
+
+.tableHonor table tr th {
+    background-color: #edf1fa;
+    padding: 15px 0;
+}
+
+
+/*个人信息添加*/
+.addPer {
+    width: 100%;
+    overflow: hidden;
+}
+
+.addPer .addInfo {
+    width: 80%;
+    float: left;
+    overflow: hidden;
+}
+
+.addPer .infoImg {
+    width: 15%;
+    float: right;
+    overflow: hidden;
+    background-color: #eee;
+    text-align: center;
+    height: 200px;
+    text-align: center;
+    -ms-box-sizing: border-box;
+    cursor: pointer;
+}
+
+.addPer .addInfo dl {
+    width: 100%;
+    overflow: hidden;
+}
+
+.addPer .addInfo dl dd {
+    width: 33.3%;
+    float: left;
+    overflow: hidden;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.addPer .addInfo dl dd label {
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+    float: left;
+    overflow: hidden;
+    padding-top: 5px;
+}
+
+.addPer .addInfo dl dd input {
+    display: inline-block;
+    width: 60%;
+    border: 1px solid #e7e7e7;
+    height: 36px;
+    line-height: 36px;
+    overflow: hidden;
+    float: left;
+}
+
+.addPer .infoImg p {
+    margin-top: 20px;
+    color: #6b7281;
+    font-size: 16px;
+}
+
+.addInfo02 {
+    width: 100%;
+    overflow: hidden;
+}
+
+.addInfo02 dl {
+    width: 100%;
+    overflow: hidden;
+}
+
+.addInfo02 dl dd {
+    width: 50%;
+    float: left;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.addInfo02 dl dd.work {
+    width: 50%;
+    float: right;
+    overflow: hidden;
+}
+
+.addInfo02 dl dd label {
+    display: inline-block;
+    width: 100px;
+    float: left;
+    overflow: hidden;
+    padding-top: 5px;
+    text-align: center;
+}
+
+.addInfo02 dl dd input {
+    display: inline-block;
+    width: 80%;
+    border: 1px solid #e7e7e7;
+    height: 36px;
+    line-height: 36px;
+    overflow: hidden;
+    float: left;
+}
+
+.addInfo02 dl dt {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.addInfo02 dl dt label {
+    display: inline-block;
+    width: 100px;
+    float: left;
+    overflow: hidden;
+    padding-top: 5px;
+    text-align: center;
+}
+
+.addInfo02 dl dt textarea {
+    display: inline-block;
+    width: 90%;
+    border: 1px solid #e7e7e7;
+    overflow: hidden;
+    float: left;
+    height: 100px;
+}
+
+
+.contentList dl.content02 dt {
+    margin-bottom: 10px;
+}
+
+.contentList dl.content02 dt label {
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+    float: left;
+    padding-top: 5px;
+}
+
+.contentList dl dt select {
+    display: inline-block;
+    width: 50%;
+    border: 1px solid #e7e7e7;
+    height: 38px;
+    line-height: 38px;
+    padding-left: 2%;
+    box-sizing: border-box;
+    background: url(../images/icon4.png) no-repeat 95% center;
+    background-size: 10%;
+}
+
+.contentList dl.content02 dd {
+    width: 100%;
+    overflow: hidden;
+    display: -moz-box;
+    display: -webkit-box;
+    /*display: box;*/
+    margin-bottom: 10px;
+}
+
+.contentList dl.content02 dd label {
+    display: inline-block;
+    width: 100px;
+    float: left;
+    overflow: hidden;
+    padding-top: 5px;
+    text-align: right;
+}
+
+.contentList dl.content02 dd textarea {
+    display: inline-block;
+    width: 90%;
+    border: 1px solid #e7e7e7;
+    overflow: hidden;
+    float: left;
+    height: 100px;
+}
+
+.contentList dl.content02 dt {
+    float: left;
+    width: 25%;
+    height: auto;
+    line-height: 24px;
+}
+
+.indexImg img {
+    width: 100%;
+    margin-top: 30px;
+}
+
+
+.tableHonor table tr td p {
+    text-align: left;
+    text-indent: 2em;
+}
+
+.tableHonor .remark {
+    text-indent: 2em;
+    font-size: 12px;
+    line-height: 24px;
+}
+
+.tableHonor .remark i {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.message {
+    width: 100%;
+    overflow: hidden;
+    height: 200px;
+}
+
+.message span {
+    display: inline;
+}
+
+.message i {
+    display: inline;
+}
+
+.contentList dl dt input {
+    float: left;
+}
+
+.contentList dl.content02 dt button {
+    float: left;
+    width: 12%;
+    height: 38px;
+    line-height: 38px;
+    font-size: 14px;
+    margin-left: 2.5%;
+}
+
+
+/*登录页面*/
+.wrap {
+    width: 100%;
+    overflow: hidden;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url(../images/loginBg.png) no-repeat;
+    background-size: 100% 100%;
+    overflow: hidden;
+}
+
+.loginBox {
+    width: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 60px 0;
+}
+
+.loginBox h3 {
+    text-align: center;
+    font-size: 28px;
+    color: #fff;
+    margin-bottom: 50px;
+    font-weight: bold;
+}
+
+.loginInfo {
+    position: absolute;
+    right: 0;
+    width: 25%;
+    height: 100%;
+    background: url(../images/login.png);
+}
+
+.loginBox dl {
+    width: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.loginBox dl dt {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.loginBox dl dt .info {
+    width: 100%;
+    height: 48px;
+    border-radius: 5px;
+    line-height: 48px;
+    overflow: hidden;
+    background-color: #fff;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.loginBox dl dt .info img {
+    width: 25px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.loginBox dl dt .info input {
+    float: left;
+    width: 88%;
+    height: 48px;
+    line-height: 48px;
+    border: none;
+    border-left: 1px solid #ccc;
+    display: inline-block;
+    -moz-box-flex: 1;
+    box-flex: 1;
+    font-size: 18px;
+    padding-left: 2.5%;
+}
+
+.loginBox dl dt .info .infoImg {
+    width: 12%;
+    overflow: hidden;
+    float: left;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.loginBox dl dd {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+
+.loginBox dl dd input {
+    width: 100%;
+    height: 100%;
+    background-color: #126ed5;
+    border-radius: 5px;
+    font-size: 20px;
+    color: #fff;
+}
+
+/* 档案表单 */
+.layui-textarea.txtArea {
+    width: 818px;
+    height: 120px;
+}
+.layui-input-block.reset{margin-left: 0;text-align: center;}
+form.form1{margin-top: 30px;}
+
+
+/*统计图*/
+.echartsBox {
+    width: 100%;
+    overflow: hidden;
+}
+
+.echartsBox h3 {
+    width: 100%;
+    overflow: hidden;
+    font-size: 18px;
+    padding-left: 30px;
+    position: relative;
+    margin-left: 1%;
+}
+
+.echartsBox h3:before {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #019cff;
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+}
+
+.echartsInfo {
+    width: 100%;
+    overflow: hidden;
+    margin-top: 40px;
+}
+
+.echartsInfo .einfo01 {
+    width: 45%;
+    overflow: hidden;
+    float: left;
+    height: 320px;
+    background: url(../images/echarts1.png) no-repeat;
+    background-size: 100% 100%;
+    padding: 0 1.6%;
+    z-index: 999;
+}
+
+.echartsInfo .einfo02 {
+    width: 45%;
+    overflow: hidden;
+    float: right;
+    height: 320px;
+    background: url(../images/echarts1.png) no-repeat;
+    background-size: 100% 100%;
+    padding: 0 1.6%;
+    z-index: 999;
+}
+
+.echartsInfo h2 {
+    width: 100%;
+    overflow: hidden;
+    height: 48px;
+    line-height: 52px;
+    box-sizing: border-box;
+    padding: 0 2.5%;
+}
+
+.echartsInfo h2 p {
+    float: left;
+    font-size: 16px;
+}
+
+.echartsInfo h2 a {
+    float: right;
+    display: block;
+}
+
+.echartsInfo .einfo01 #echarts01 {
+    border-top: 1px solid #f3f6fa;
+    width: 100%;
+    height: 250px;
+}
+
+.echartsInfo .einfo02 #echarts02 {
+    border-top: 1px solid #f3f6fa;
+    width: 100%;
+    height: 250px;
+}
+
+.echartsInfo .einfo01.einfo03 {
+    background-image: url(../images/echarts3.png);
+}
+
+.echartsInfo .einfo02.einfo04 {
+    background-image: url(../images/echarts4.png);
+}
+
+.echartsInfo .einfo01 #echarts03 {
+    border-top: 1px solid #f3f6fa;
+    width: 100%;
+    height: 250px;
+}
+
+.echartsInfo .einfo02 #echarts04 {
+    border-top: 1px solid #f3f6fa;
+    width: 100%;
+    height: 250px;
+}
+
+.echartsBox .echartsTitle {
+    width: 100%;
+    overflow: hidden;
+}
+
+.echartsBox .echartsTitle h3 {
+    width: 49%;
+    float: left;
+    overflow: hidden;
+    margin-left: 1%;
+}
+
+.echartsInfo .einfo01.einfo05 {
+    width: 100%;
+    overflow: hidden;
+    height: auto;
+    background: none;
+    padding: 0;
+}
+
+.echartsInfo .einfo01.einfo05 #echarts05 {
+    width: 100%;
+    overflow: hidden;
+    height: 400px;
+}
+
+.echartsBox .echartsTitle a {
+    width: 49%;
+    float: right;
+    text-align: right;
+    padding-right: 10%;
+}

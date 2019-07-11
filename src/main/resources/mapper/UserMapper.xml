@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mwkj.lzda.dao.UserMapper">
+    <resultMap id="BaseResultMap" type="com.mwkj.lzda.model.User">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="roleid" jdbcType="INTEGER" property="roleid"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="realname" jdbcType="VARCHAR" property="realname"/>
+        <result column="gender" jdbcType="VARCHAR" property="gender"/>
+        <result column="birthday" jdbcType="TIMESTAMP" property="birthday"/>
+        <result column="identity_number" jdbcType="VARCHAR" property="identityNumber"/>
+        <result column="organization_id" jdbcType="INTEGER" property="organizationId"/>
+        <result column="police_code" jdbcType="VARCHAR" property="policeCode"/>
+        <result column="job_position" jdbcType="VARCHAR" property="jobPosition"/>
+        <result column="active" jdbcType="INTEGER" property="active"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+
+    <!-- 目前表结构设计 用户和角色是多对一 -->
+    <select id="getRoles" resultType="java.lang.String">
+        select r.rolename
+        from user u
+                 inner join role r on u.roleid = r.id
+        where u.police_code = #{policeCode}
+    </select>
+
+    <select id="getPermissions" resultType="java.lang.String">
+        select a.authflag
+        from user u
+                 inner join role r on u.roleid = r.id
+                 inner join role_auth ra on ra.rid = r.id
+                 inner join authority a on ra.aid = a.id
+        where u.police_code = #{policeCode}
+    </select>
+
+</mapper>

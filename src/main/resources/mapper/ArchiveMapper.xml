@@ -1,0 +1,1510 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mwkj.lzda.dao.ArchiveMapper">
+
+    <select id="findAllArchivesByConditions" parameterType="com.mwkj.lzda.dto.ArchiveDTO"
+            resultType="com.mwkj.lzda.dto.ArchiveDTO">
+        select *
+        from (
+
+        select a.user_id,
+        u.police_code,
+        u.organization_id,
+        o.name as organization_name,
+        a.user_name,
+        a.approve_status,
+        a.archive_type,
+        a.id as archive_id,
+        a.create_time
+        from (SELECT *
+        from arc_basic_info a #个人情况报备
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+        </where>
+        ) a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+
+        union all
+
+        select a.user_id,
+        u.police_code,
+        u.organization_id,
+        o.name as organization_name,
+        a.user_name,
+        a.approve_status,
+        a.archive_type,
+        a.id as archive_id,
+        a.create_time
+        from (SELECT *
+        from arc_hk_mo_info a #本人持有港澳情况
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+        </where>
+        ) a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+
+        union all
+
+        select a.user_id,
+        u.police_code,
+        u.organization_id,
+        o.name as organization_name,
+        a.user_name,
+        a.approve_status,
+        a.archive_type,
+        a.id as archive_id,
+        a.create_time
+        from (SELECT *
+        from arc_passport_info a #本人持有护照情况
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+        </where>
+        ) a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+
+        union all
+
+        select a.user_id,
+        u.police_code,
+        u.organization_id,
+        o.name as organization_name,
+        a.user_name,
+        a.approve_status,
+        a.archive_type,
+        a.id as archive_id,
+        a.create_time
+        from (SELECT *
+        from arc_marriage_info a
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+        </where>
+        ) a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+
+        union all
+
+        select a.user_id,
+        u.police_code,
+        u.organization_id,
+        o.name as organization_name,
+        a.user_name,
+        a.approve_status,
+        a.archive_type,
+        a.id as archive_id,
+        a.create_time
+        from (SELECT *
+        from arc_organization_meeting a
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+        </where>
+        ) a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+
+        union all
+
+        select a.user_id,
+        u.police_code,
+        u.organization_id,
+        o.name as organization_name,
+        a.user_name,
+        a.approve_status,
+        a.archive_type,
+        a.id as archive_id,
+        a.create_time
+        from (SELECT *
+        from arc_banquet_apply a
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+        </where>
+        ) a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+
+        union all
+
+        select a.user_id,
+        u.police_code,
+        u.organization_id,
+        o.name as organization_name,
+        a.user_name,
+        a.approve_status,
+        a.archive_type,
+        a.id as archive_id,
+        a.create_time
+        from (SELECT *
+        from arc_abroad_info a
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+        </where>
+        ) a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+
+        union all
+
+        select a.user_id,
+        u.police_code,
+        u.organization_id,
+        o.name as organization_name,
+        a.user_name,
+        a.approve_status,
+        a.archive_type,
+        a.id as archive_id,
+        a.create_time
+        from (SELECT *
+        from arc_affect_business a
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+        </where>
+        ) a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+
+        union all
+
+        select a.user_id,
+        u.police_code,
+        u.organization_id,
+        o.name as organization_name,
+        a.user_name,
+        a.approve_status,
+        a.archive_type,
+        a.id as archive_id,
+        a.create_time
+        from (SELECT *
+        from arc_leaveoffice_handover a
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+        </where>
+        ) a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+
+        union all
+
+        select a.user_id,
+        u.police_code,
+        u.organization_id,
+        o.name as organization_name,
+        a.user_name,
+        a.approve_status,
+        a.archive_type,
+        a.id as archive_id,
+        a.create_time
+        from (SELECT *
+        from arc_family_abroad a
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+        </where>
+        ) a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+
+        union all
+
+        select a.user_id,
+        u.police_code,
+        u.organization_id,
+        o.name as organization_name,
+        a.user_name,
+        a.approve_status,
+        a.archive_type,
+        a.id as archive_id,
+        a.create_time
+        from (SELECT *
+        from arc_family_workabroad a
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+        </where>
+        ) a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+
+        union all
+
+        select a.user_id,
+        u.police_code,
+        u.organization_id,
+        o.name as organization_name,
+        a.user_name,
+        a.approve_status,
+        a.archive_type,
+        a.id as archive_id,
+        a.create_time
+        from (SELECT *
+        from arc_family_criminal a
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+        </where>
+        ) a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+
+          ###################################################
+        union all
+
+        select a.user_id,
+        u.police_code,
+        u.organization_id,
+        o.name as organization_name,
+        a.user_name,
+        a.approve_status,
+        a.archive_type,
+        a.id as archive_id,
+        a.create_time
+        from (SELECT *
+        from arc_family_stock a
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+        </where>
+        ) a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+
+        union all
+
+        select a.user_id,
+        u.police_code,
+        u.organization_id,
+        o.name as organization_name,
+        a.user_name,
+        a.approve_status,
+        a.archive_type,
+        a.id as archive_id,
+        a.create_time
+        from (SELECT *
+        from arc_family_fund a
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+        </where>
+        ) a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+
+        union all
+
+        select a.user_id,
+        u.police_code,
+        u.organization_id,
+        o.name as organization_name,
+        a.user_name,
+        a.approve_status,
+        a.archive_type,
+        a.id as archive_id,
+        a.create_time
+        from (SELECT *
+        from arc_family_insurance a
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+        </where>
+        ) a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+
+        union all
+
+        select a.user_id,
+        u.police_code,
+        u.organization_id,
+        o.name as organization_name,
+        a.user_name,
+        a.approve_status,
+        a.archive_type,
+        a.id as archive_id,
+        a.create_time
+        from (SELECT *
+        from arc_family_abroad_savings a
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+        </where>
+        ) a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+
+        union all
+
+        select a.user_id,
+        u.police_code,
+        u.organization_id,
+        o.name as organization_name,
+        a.user_name,
+        a.approve_status,
+        a.archive_type,
+        a.id as archive_id,
+        a.create_time
+        from (SELECT *
+        from arc_family_abroad_investment a
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+        </where>
+        ) a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+
+        union all
+
+        select a.user_id,
+        u.police_code,
+        u.organization_id,
+        o.name as organization_name,
+        a.user_name,
+        a.approve_status,
+        a.archive_type,
+        a.id as archive_id,
+        a.create_time
+        from (SELECT *
+        from arc_personal_other a
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+        </where>
+        ) a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+
+        union all
+
+        select a.user_id,
+        u.police_code,
+        u.organization_id,
+        o.name as organization_name,
+        a.user_name,
+        a.approve_status,
+        a.archive_type,
+        a.id as archive_id,
+        a.create_time
+        from (SELECT *
+        from arc_family_marriage a
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+        </where>
+        ) a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+
+        union all
+
+        select a.user_id,
+        u.police_code,
+        u.organization_id,
+        o.name as organization_name,
+        a.user_name,
+        a.approve_status,
+        a.archive_type,
+        a.id as archive_id,
+        a.create_time
+        from (SELECT *
+        from arc_police_involve a
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+        </where>
+        ) a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+
+        union all
+
+        select a.user_id,
+        u.police_code,
+        u.organization_id,
+        o.name as organization_name,
+        a.user_name,
+        a.approve_status,
+        a.archive_type,
+        a.id as archive_id,
+        a.create_time
+        from (SELECT *
+        from arc_income_info a
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+        </where>
+        ) a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+
+        union all
+
+        select a.user_id,
+        u.police_code,
+        u.organization_id,
+        o.name as organization_name,
+        a.user_name,
+        a.approve_status,
+        a.archive_type,
+        a.id as archive_id,
+        a.create_time
+        from (SELECT *
+        from arc_gift_info a
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+        </where>
+        ) a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+
+        union all
+
+        select a.user_id,
+        u.police_code,
+        u.organization_id,
+        o.name as organization_name,
+        a.user_name,
+        a.approve_status,
+        a.archive_type,
+        a.id as archive_id,
+        a.create_time
+        from (SELECT *
+        from arc_part_time_job a
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+        </where>
+        ) a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+
+        union all
+
+        select a.user_id,
+        u.police_code,
+        u.organization_id,
+        o.name as organization_name,
+        a.user_name,
+        a.approve_status,
+        a.archive_type,
+        a.id as archive_id,
+        a.create_time
+        from (SELECT *
+        from arc_house_info a
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+        </where>
+        ) a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+
+        union all
+
+        select a.user_id,
+        u.police_code,
+        u.organization_id,
+        o.name as organization_name,
+        a.user_name,
+        a.approve_status,
+        a.archive_type,
+        a.id as archive_id,
+        a.create_time
+        from (SELECT *
+        from arc_family_abroad_marriage a
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+        </where>
+        ) a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+
+        # todo
+
+        ) as archives
+        <where>
+            <if test="policeCode!=null and policeCode!=''">
+                and archives.police_code = #{policeCode}
+            </if>
+            <if test="organizationId!=null and organizationId!=''">
+                and archives.organization_id = #{organizationId}
+            </if>
+        </where>
+        order by create_time desc
+    </select>
+
+    <select id="findAllArchivesCounts" parameterType="com.mwkj.lzda.dto.ArchiveDTO" resultType="java.lang.Long">
+        select (
+        (
+        select count(*)
+        from arc_basic_info a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+            <if test="policeCode!=null and policeCode!=''">
+                and u.police_code = #{policeCode}
+            </if>
+            <if test="organizationId!=null and organizationId!=''">
+                and u.organization_id = #{organizationId}
+            </if>
+        </where>
+        )
+
+        +
+
+        (
+        select count(*)
+        from arc_hk_mo_info a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+            <if test="policeCode!=null and policeCode!=''">
+                and u.police_code = #{policeCode}
+            </if>
+            <if test="organizationId!=null and organizationId!=''">
+                and u.organization_id = #{organizationId}
+            </if>
+        </where>
+        )
+
+        +
+
+        (
+        select count(*)
+        from arc_passport_info a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+            <if test="policeCode!=null and policeCode!=''">
+                and u.police_code = #{policeCode}
+            </if>
+            <if test="organizationId!=null and organizationId!=''">
+                and u.organization_id = #{organizationId}
+            </if>
+        </where>
+        )
+
+        +
+
+        (
+        select count(*)
+        from arc_marriage_info a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+            <if test="policeCode!=null and policeCode!=''">
+                and u.police_code = #{policeCode}
+            </if>
+            <if test="organizationId!=null and organizationId!=''">
+                and u.organization_id = #{organizationId}
+            </if>
+        </where>
+        )
+
+        +
+
+        (
+        select count(*)
+        from arc_organization_meeting a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+            <if test="policeCode!=null and policeCode!=''">
+                and u.police_code = #{policeCode}
+            </if>
+            <if test="organizationId!=null and organizationId!=''">
+                and u.organization_id = #{organizationId}
+            </if>
+        </where>
+        )
+        +
+
+        (
+        select count(*)
+        from arc_banquet_apply a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+            <if test="policeCode!=null and policeCode!=''">
+                and u.police_code = #{policeCode}
+            </if>
+            <if test="organizationId!=null and organizationId!=''">
+                and u.organization_id = #{organizationId}
+            </if>
+        </where>
+        )
+
+        +
+
+        (
+        select count(*)
+        from arc_abroad_info a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+            <if test="policeCode!=null and policeCode!=''">
+                and u.police_code = #{policeCode}
+            </if>
+            <if test="organizationId!=null and organizationId!=''">
+                and u.organization_id = #{organizationId}
+            </if>
+        </where>
+        )
+
+          #######################################
+        +
+
+        (
+        select count(*)
+        from arc_affect_business a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+            <if test="policeCode!=null and policeCode!=''">
+                and u.police_code = #{policeCode}
+            </if>
+            <if test="organizationId!=null and organizationId!=''">
+                and u.organization_id = #{organizationId}
+            </if>
+        </where>
+        )
+        +
+
+        (
+        select count(*)
+        from arc_leaveoffice_handover a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+            <if test="policeCode!=null and policeCode!=''">
+                and u.police_code = #{policeCode}
+            </if>
+            <if test="organizationId!=null and organizationId!=''">
+                and u.organization_id = #{organizationId}
+            </if>
+        </where>
+        )
+        +
+
+        (
+        select count(*)
+        from arc_family_abroad a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+            <if test="policeCode!=null and policeCode!=''">
+                and u.police_code = #{policeCode}
+            </if>
+            <if test="organizationId!=null and organizationId!=''">
+                and u.organization_id = #{organizationId}
+            </if>
+        </where>
+        )
+        +
+
+        (
+        select count(*)
+        from arc_family_workabroad a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+            <if test="policeCode!=null and policeCode!=''">
+                and u.police_code = #{policeCode}
+            </if>
+            <if test="organizationId!=null and organizationId!=''">
+                and u.organization_id = #{organizationId}
+            </if>
+        </where>
+        )
+        +
+
+        (
+        select count(*)
+        from arc_family_criminal a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+            <if test="policeCode!=null and policeCode!=''">
+                and u.police_code = #{policeCode}
+            </if>
+            <if test="organizationId!=null and organizationId!=''">
+                and u.organization_id = #{organizationId}
+            </if>
+        </where>
+        )
+        +
+
+        (
+        select count(*)
+        from arc_family_stock a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+            <if test="policeCode!=null and policeCode!=''">
+                and u.police_code = #{policeCode}
+            </if>
+            <if test="organizationId!=null and organizationId!=''">
+                and u.organization_id = #{organizationId}
+            </if>
+        </where>
+        )
+        +
+
+        (
+        select count(*)
+        from arc_family_fund a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+            <if test="policeCode!=null and policeCode!=''">
+                and u.police_code = #{policeCode}
+            </if>
+            <if test="organizationId!=null and organizationId!=''">
+                and u.organization_id = #{organizationId}
+            </if>
+        </where>
+        )
+        +
+
+        (
+        select count(*)
+        from arc_family_insurance a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+            <if test="policeCode!=null and policeCode!=''">
+                and u.police_code = #{policeCode}
+            </if>
+            <if test="organizationId!=null and organizationId!=''">
+                and u.organization_id = #{organizationId}
+            </if>
+        </where>
+        )
+        +
+
+        (
+        select count(*)
+        from arc_family_abroad_savings a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+            <if test="policeCode!=null and policeCode!=''">
+                and u.police_code = #{policeCode}
+            </if>
+            <if test="organizationId!=null and organizationId!=''">
+                and u.organization_id = #{organizationId}
+            </if>
+        </where>
+        )
+        +
+
+        (
+        select count(*)
+        from arc_family_abroad_investment a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+            <if test="policeCode!=null and policeCode!=''">
+                and u.police_code = #{policeCode}
+            </if>
+            <if test="organizationId!=null and organizationId!=''">
+                and u.organization_id = #{organizationId}
+            </if>
+        </where>
+        )
+        +
+
+        (
+        select count(*)
+        from arc_personal_other a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+            <if test="policeCode!=null and policeCode!=''">
+                and u.police_code = #{policeCode}
+            </if>
+            <if test="organizationId!=null and organizationId!=''">
+                and u.organization_id = #{organizationId}
+            </if>
+        </where>
+        )
+        +
+
+        (
+        select count(*)
+        from arc_family_marriage a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+            <if test="policeCode!=null and policeCode!=''">
+                and u.police_code = #{policeCode}
+            </if>
+            <if test="organizationId!=null and organizationId!=''">
+                and u.organization_id = #{organizationId}
+            </if>
+        </where>
+        )
+        +
+
+        (
+        select count(*)
+        from arc_police_involve a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+            <if test="policeCode!=null and policeCode!=''">
+                and u.police_code = #{policeCode}
+            </if>
+            <if test="organizationId!=null and organizationId!=''">
+                and u.organization_id = #{organizationId}
+            </if>
+        </where>
+        )
+        +
+
+        (
+        select count(*)
+        from arc_income_info a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+            <if test="policeCode!=null and policeCode!=''">
+                and u.police_code = #{policeCode}
+            </if>
+            <if test="organizationId!=null and organizationId!=''">
+                and u.organization_id = #{organizationId}
+            </if>
+        </where>
+        )
+        +
+
+        (
+        select count(*)
+        from arc_gift_info a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+            <if test="policeCode!=null and policeCode!=''">
+                and u.police_code = #{policeCode}
+            </if>
+            <if test="organizationId!=null and organizationId!=''">
+                and u.organization_id = #{organizationId}
+            </if>
+        </where>
+        )
+        +
+
+        (
+        select count(*)
+        from arc_part_time_job a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+            <if test="policeCode!=null and policeCode!=''">
+                and u.police_code = #{policeCode}
+            </if>
+            <if test="organizationId!=null and organizationId!=''">
+                and u.organization_id = #{organizationId}
+            </if>
+        </where>
+        )
+        +
+
+        (
+        select count(*)
+        from arc_house_info a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+            <if test="policeCode!=null and policeCode!=''">
+                and u.police_code = #{policeCode}
+            </if>
+            <if test="organizationId!=null and organizationId!=''">
+                and u.organization_id = #{organizationId}
+            </if>
+        </where>
+        )
+        +
+
+        (
+        select count(*)
+        from arc_family_abroad_marriage a
+        left join user u on a.user_id = u.id
+        left join organization o on o.id = u.organization_id
+        <where>
+            <if test="userName!=null and userName!=''">
+                and a.user_name like '%${userName}%'
+            </if>
+            <if test="approveStatus!=null and approveStatus!=''">
+                and a.approve_status = #{approveStatus}
+            </if>
+            <if test="archiveType!=null and archiveType!=''">
+                and a.archive_type = #{archiveType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and a.user_id = #{userId}
+            </if>
+            <if test="policeCode!=null and policeCode!=''">
+                and u.police_code = #{policeCode}
+            </if>
+            <if test="organizationId!=null and organizationId!=''">
+                and u.organization_id = #{organizationId}
+            </if>
+        </where>
+        )
+
+        # todo
+        )
+    </select>
+
+</mapper>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mwkj.lzda.dao.ArcBasicInfoMapper">
+  <resultMap id="BaseResultMap" type="com.mwkj.lzda.model.ArcBasicInfo">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="avatar_url" jdbcType="VARCHAR" property="avatarUrl" />
+    <result column="nation" jdbcType="VARCHAR" property="nation" />
+    <result column="marital_status" jdbcType="VARCHAR" property="maritalStatus" />
+    <result column="politic_face" jdbcType="VARCHAR" property="politicFace" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="office_phone" jdbcType="VARCHAR" property="officePhone" />
+    <result column="education" jdbcType="VARCHAR" property="education" />
+    <result column="gender" jdbcType="VARCHAR" property="gender" />
+    <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="job_position" jdbcType="VARCHAR" property="jobPosition" />
+    <result column="job_position_level" jdbcType="VARCHAR" property="jobPositionLevel" />
+    <result column="job_position_time" jdbcType="DATE" property="jobPositionTime" />
+    <result column="native_place" jdbcType="VARCHAR" property="nativePlace" />
+    <result column="identity_number" jdbcType="VARCHAR" property="identityNumber" />
+    <result column="party_join_time" jdbcType="DATE" property="partyJoinTime" />
+    <result column="home_address" jdbcType="VARCHAR" property="homeAddress" />
+    <result column="responsibility" jdbcType="VARCHAR" property="responsibility" />
+    <result column="organization" jdbcType="VARCHAR" property="organization" />
+    <result column="organization_id" jdbcType="INTEGER" property="organizationId" />
+    <result column="archive_type" jdbcType="INTEGER" property="archiveType" />
+    <result column="approve_status" jdbcType="INTEGER" property="approveStatus" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="work_experience" jdbcType="LONGVARCHAR" property="workExperience" />
+    <result column="other_info" jdbcType="LONGVARCHAR" property="otherInfo" />
+  </resultMap>
+</mapper>

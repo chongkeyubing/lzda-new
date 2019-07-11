@@ -1,0 +1,80 @@
+@charset "utf-8";
+/***公共样式****/
+*{margin:0;padding:0;border:0;outline:0;-moz-box-sizing:border-box; -webkit-box-sizing:border-box;  -o-box-sizing:border-box; -ms-box-sizing:border-box;}
+@font-face { font-family: 'fzhei-b01sregular'; src: url('../_-webfont.eot'); src: url('../_-webfont.eot?#iefix') format('embedded-opentype'), url('../_-webfont.woff2') format('woff2'), url('../_-webfont.woff') format('woff'), url('../_-webfont.ttf') format('truetype'), url('../_-webfont.svg#fzhei-b01sregular') format('svg'); font-weight: normal; font-style: normal;
+}
+html,body{ overflow-x:hidden;}
+html,body,form,fieldset,p,div,h1,h2,h3,h4,h5,h6{-webkit-text-size-adjust:none}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;clear:both;}
+body{ font-family: "Microsoft YaHei", "微软雅黑", Helvetica, Tahoma; color:#333; font-size:14px; -webkit-text-size-adjust:none; -webkit-tap-highlight-color:rgba(0,0,0,0); -webkit-tap-highlight-color:transparent; }
+h1,h2,h3,h4,h5,h6{font-size:100%; font-weight:normal}
+i,span,em,cite,p,dl,dt,dd,span,b{ font-style:normal;}
+form{display:inline}
+textarea{resize:none}
+table { border-collapse:collapse; border-spacing:0}
+ul,ol,li{list-style:none}
+input,select,button{font-size:100%; vertical-align:middle;outline:none; -webkit-tap-highlight-color: transparent;}
+button,input[type="button"],input[type="reset"],input[type="submit"] {cursor:pointer;-webkit-appearance:button;-moz-appearance:button}
+input:focus:-moz-placeholder,input:focus::-webkit-input-placeholder {color:transparent}
+button::-moz-focus-inner,input::-moz-focus-inner { padding:0; border:0}
+a{text-decoration:none;color:#111}
+a:hover{color:#111;text-decoration: none;}
+img{vertical-align:middle; font-size:0;border:0;-ms-interpolation-mode:bicubic;}
+/*a 链接*/
+a { text-decoration:none; outline:none; color:#555;}
+/* HTML5 重置为较旧版本的浏览器 */
+article, 
+aside, 
+details, 
+figcaption, 
+figure, 
+footer, 
+header, 
+hgroup, 
+menu, 
+nav, 
+section { display:block;}
+blockquote:before, 
+blockquote:after, 
+q:before, 
+q:after { content:''; content:none; }
+table { border-collapse: collapse; border-spacing: 0; }
+.fl{float: left;}
+.fr{float: right;}
+/* 按钮样式 */
+input, button, textarea, select { font-size:100%; outline:none; resize:none}
+input[type="button"]{cursor:pointer; border:0}
+input[type="submit"]{cursor:pointer; border:0}
+input[type="reset"]{cursor:pointer; border:0}
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+select, 
+textarea,
+button {
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);  
+}
+/*删除火狐下按钮默认样式*/
+input[type="reset"]::-moz-focus-inner,
+input[type="button"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner,
+input[type="file"] > input[type="button"]::-moz-focus-inner{ border:none; padding:0; }
+/***公共样式END****/
+.wrapper{width: 100%;overflow: hidden;}
+.contentBox{margin-top:30px ;width: 100%;overflow: hidden;background-color: #fff;}
+.tableHonor{width: 90%;margin: 0 auto;}
+.tableHonor table{width: 100%;border: 1px solid #6c6c6c;table-layout: fixed;}
+.tableHonor table tr{border: 1px solid #6c6c6c;color: #808183;font-weight: normal;text-align: center;font-size: 16px;}
+.tableHonor table tr td{border: 1px solid #6c6c6c;padding: 15px 0;}
+.tableHonor table tr th{background-color: #edf1fa;padding: 15px 0;}
+.tableHonor table tr td p{text-align: left;text-indent: 2em;}
+.tableHonor .remark{text-indent:2em;font-size: 12px;line-height: 24px;}
+.tableHonor .remark i{font-size: 12px;font-weight: bold;}
+.message{width: 100%;overflow: hidden;height: 200px;}
+.message span{display: inline;}
+.message i{display: inline;}
+
+.imgDisplay{width: 100%;overflow: hidden;text-align: left;}
+.imgDisplay td{text-align: left;width: 100%;overflow: hidden;}
+.imgDisplay td img{margin-left: 2.5%;}
