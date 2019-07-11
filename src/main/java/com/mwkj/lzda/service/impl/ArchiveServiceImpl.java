@@ -57,6 +57,9 @@ public class ArchiveServiceImpl implements ArchiveService {
     @Resource
     ArcAffectBusinessService arcAffectBusinessService;
 
+    @Resource
+    ArcLeaveofficeHandoverService arcLeaveofficeHandoverService;
+
 
     @Override
     public List<ArchiveDTO> findAllArchivesByConditions(ArchiveDTO archive) {
@@ -98,6 +101,9 @@ public class ArchiveServiceImpl implements ArchiveService {
                 break;
             case 8:
                 page = "/views/archive/arc_affect_business";
+                break;
+            case 9:
+                page = "/views/archive/arc_leaveoffice_handover";
                 break;
 
             //todo
@@ -156,6 +162,11 @@ public class ArchiveServiceImpl implements ArchiveService {
                 ArcAffectBusiness arcAffectBusiness = arcAffectBusinessService.findById(archive.getArchiveId());
                 map.put("archive", arcAffectBusiness); // 统一命名为archive
                 page = "/views/archive/arc_affect_business_table";
+                break;
+            case 9:
+                ArcLeaveofficeHandover arcLeaveofficeHandover = arcLeaveofficeHandoverService.findById(archive.getArchiveId());
+                map.put("archive", arcLeaveofficeHandover); // 统一命名为archive
+                page = "/views/archive/arc_leaveoffice_handover_table";
                 break;
 
             //todo
@@ -258,6 +269,12 @@ public class ArchiveServiceImpl implements ArchiveService {
                 arcAffectBusiness.setId(id);
                 arcAffectBusiness.setApproveStatus(status);
                 arcAffectBusinessService.update(arcAffectBusiness);
+                break;
+            case 9:
+                ArcLeaveofficeHandover arcLeaveofficeHandover = new ArcLeaveofficeHandover();
+                arcLeaveofficeHandover.setId(id);
+                arcLeaveofficeHandover.setApproveStatus(status);
+                arcLeaveofficeHandoverService.update(arcLeaveofficeHandover);
                 break;
 
             // todo

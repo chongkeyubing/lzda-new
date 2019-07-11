@@ -4,22 +4,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 
-<style type="text/css">
-    .layui-textarea.txtArea {
-        width: 818px;
-        height: 120px;
-    }
-
-    .layui-input-block.reset {
-        margin-left: 0;
-        text-align: center;
-    }
-
-    form.form1 {
-        margin-top: 15px;
-    }
-</style>
-
 <div style="display: flex; justify-content: center;">
     <form class='layui-form form1' action='archkmoinfo/add' id="archiveForm" method="post">
         <div class="layui-form-item">
