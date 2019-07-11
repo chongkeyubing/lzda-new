@@ -66,6 +66,9 @@ public class ArchiveServiceImpl implements ArchiveService {
     @Resource
     ArcFamilyWorkabroadService arcFamilyWorkabroadService;
 
+    @Resource
+    ArcFamilyCriminalService arcFamilyCriminalService;
+
 
     @Override
     public List<ArchiveDTO> findAllArchivesByConditions(ArchiveDTO archive) {
@@ -119,6 +122,10 @@ public class ArchiveServiceImpl implements ArchiveService {
             case 12:
                 page = "/views/archive/arc_family_workabroad";
                 break;
+            case 13:
+                page = "/views/archive/arc_family_criminal";
+                break;
+
 
             //todo
         }
@@ -194,6 +201,11 @@ public class ArchiveServiceImpl implements ArchiveService {
                 ArcFamilyWorkabroad arcFamilyWorkabroad = arcFamilyWorkabroadService.findById(archive.getArchiveId());
                 map.put("archive", arcFamilyWorkabroad); // 统一命名为archive
                 page = "/views/archive/arc_family_workabroad_table";
+                break;
+            case 13:
+                ArcFamilyCriminal arcFamilyCriminal = arcFamilyCriminalService.findById(archive.getArchiveId());
+                map.put("archive", arcFamilyCriminal); // 统一命名为archive
+                page = "/views/archive/arc_family_criminal_table";
                 break;
 
             //todo
@@ -317,6 +329,13 @@ public class ArchiveServiceImpl implements ArchiveService {
                 arcFamilyWorkabroad.setId(id);
                 arcFamilyWorkabroad.setApproveStatus(status);
                 arcFamilyWorkabroadService.update(arcFamilyWorkabroad);
+                break;
+
+            case 13:
+                ArcFamilyCriminal arcFamilyCriminal = new ArcFamilyCriminal();
+                arcFamilyCriminal.setId(id);
+                arcFamilyCriminal.setApproveStatus(status);
+                arcFamilyCriminalService.update(arcFamilyCriminal);
                 break;
 
             // todo
