@@ -78,7 +78,7 @@
         <div class="layui-form-item" style="margin-left:100px">注：此表应在一般干部出国（境）归来后一周内填写上报。</div>
 
         <%-- 审核人选择 --%>
-        <%@ include file = "./common/select_approver.jsp" %>
+        <%@ include file = "../approve/approver_select.jsp" %>
 
         <%-- 隐藏表单 --%>
         <%@ include file = "./common/hidden_form.jsp" %>

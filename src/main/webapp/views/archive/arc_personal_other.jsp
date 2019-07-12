@@ -18,7 +18,7 @@
         </div>
 
         <%-- 审核人选择 --%>
-        <%@ include file = "./common/select_approver.jsp" %>
+        <%@ include file = "../approve/approver_select.jsp" %>
 
         <%-- 隐藏表单 --%>
         <%@ include file = "./common/hidden_form.jsp" %>

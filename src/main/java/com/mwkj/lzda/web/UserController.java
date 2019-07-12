@@ -125,7 +125,7 @@ public class UserController {
      */
     @RequestMapping("/toApproverSelect")
     public String toApproverSelect() {
-        return "/views/approve/approver_select";
+        return "/views/approve/approver_selector";
     }
 
 
