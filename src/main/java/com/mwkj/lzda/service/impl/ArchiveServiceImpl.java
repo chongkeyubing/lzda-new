@@ -81,6 +81,14 @@ public class ArchiveServiceImpl implements ArchiveService {
     @Resource
     ArcFamilyAbroadSavingsService arcFamilyAbroadSavingsService;
 
+    @Resource
+    ArcFamilyAbroadInvestmentService arcFamilyAbroadInvestmentService;
+
+    @Resource
+    ArcPersonalOtherService arcPersonalOtherService;
+
+    @Resource
+    ArcFamilyMarriageService arcFamilyMarriageService;
 
     @Override
     public List<ArchiveDTO> findAllArchivesByConditions(ArchiveDTO archive) {
@@ -148,6 +156,15 @@ public class ArchiveServiceImpl implements ArchiveService {
                 break;
             case 17:
                 page = "/views/archive/arc_family_abroad_savings";
+                break;
+            case 18:
+                page = "/views/archive/arc_family_abroad_investment";
+                break;
+            case 19:
+                page = "/views/archive/arc_personal_other";
+                break;
+            case 20:
+                page = "/views/archive/arc_family_marriage";
                 break;
 
 
@@ -252,6 +269,23 @@ public class ArchiveServiceImpl implements ArchiveService {
                 ArcFamilyAbroadSavings arcFamilyAbroadSavings = arcFamilyAbroadSavingsService.findById(archive.getArchiveId());
                 map.put("archive", arcFamilyAbroadSavings); // 统一命名为archive
                 page = "/views/archive/arc_family_abroad_savings_table";
+                break;
+            case 18:
+                ArcFamilyAbroadInvestment arcFamilyAbroadInvestment = arcFamilyAbroadInvestmentService.findById(archive.getArchiveId());
+                map.put("archive", arcFamilyAbroadInvestment); // 统一命名为archive
+                page = "/views/archive/arc_family_abroad_investment_table";
+                break;
+
+            case 19:
+                ArcPersonalOther arcPersonalOther = arcPersonalOtherService.findById(archive.getArchiveId());
+                map.put("archive", arcPersonalOther); // 统一命名为archive
+                page = "/views/archive/arc_personal_other_table";
+                break;
+
+            case 20:
+                ArcFamilyMarriage arcFamilyMarriage = arcFamilyMarriageService.findById(archive.getArchiveId());
+                map.put("archive", arcFamilyMarriage); // 统一命名为archive
+                page = "/views/archive/arc_family_marriage_table";
                 break;
 
             //todo
@@ -406,6 +440,27 @@ public class ArchiveServiceImpl implements ArchiveService {
                 arcFamilyAbroadSavings.setId(id);
                 arcFamilyAbroadSavings.setApproveStatus(status);
                 arcFamilyAbroadSavingsService.update(arcFamilyAbroadSavings);
+                break;
+
+            case 18:
+                ArcFamilyAbroadInvestment arcFamilyAbroadInvestment = new ArcFamilyAbroadInvestment();
+                arcFamilyAbroadInvestment.setId(id);
+                arcFamilyAbroadInvestment.setApproveStatus(status);
+                arcFamilyAbroadInvestmentService.update(arcFamilyAbroadInvestment);
+                break;
+
+            case 19:
+                ArcPersonalOther arcPersonalOther = new ArcPersonalOther();
+                arcPersonalOther.setId(id);
+                arcPersonalOther.setApproveStatus(status);
+                arcPersonalOtherService.update(arcPersonalOther);
+                break;
+
+            case 20:
+                ArcFamilyMarriage arcFamilyMarriage = new ArcFamilyMarriage();
+                arcFamilyMarriage.setId(id);
+                arcFamilyMarriage.setApproveStatus(status);
+                arcFamilyMarriageService.update(arcFamilyMarriage);
                 break;
 
             // todo

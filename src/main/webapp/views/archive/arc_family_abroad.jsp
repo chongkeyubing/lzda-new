@@ -67,7 +67,6 @@
                 </div>
             </div>
 
-
             <div class="layui-inline">
                 <label class="layui-form-label">移居时间</label>
                 <div class="layui-input-inline">
