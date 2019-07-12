@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * @Author: libaogang
  * @Date: 2019-07-02 11:17
- * @Description 档案管理
+ * @Description 26类档案的新增跳转、详情跳转、审核状态修改
  */
 @Service
 @Transactional
@@ -104,6 +104,9 @@ public class ArchiveServiceImpl implements ArchiveService {
 
     @Resource
     ArcHouseInfoService arcHouseInfoService;
+
+    @Resource
+    ArcFamilyAbroadMarriageService arcFamilyAbroadMarriageService;
 
     @Override
     public List<ArchiveDTO> findAllArchivesByConditions(ArchiveDTO archive) {
@@ -196,7 +199,9 @@ public class ArchiveServiceImpl implements ArchiveService {
             case 25:
                 page = "/views/archive/arc_house_info";
                 break;
-
+            case 26:
+                page = "/views/archive/arc_family_abroad_marriage";
+                break;
 
 
             //todo
@@ -294,7 +299,6 @@ public class ArchiveServiceImpl implements ArchiveService {
                 map.put("archive", arcFamilyInsurance); // 统一命名为archive
                 page = "/views/archive/arc_family_insurance_table";
                 break;
-
             case 17:
                 ArcFamilyAbroadSavings arcFamilyAbroadSavings = arcFamilyAbroadSavingsService.findById(archive.getArchiveId());
                 map.put("archive", arcFamilyAbroadSavings); // 统一命名为archive
@@ -344,8 +348,11 @@ public class ArchiveServiceImpl implements ArchiveService {
                 map.put("archive", arcHouseInfo); // 统一命名为archive
                 page = "/views/archive/arc_house_info_table";
                 break;
-
-            //todo
+            case 26:
+                ArcFamilyAbroadMarriage arcFamilyAbroadMarriage = arcFamilyAbroadMarriageService.findById(archive.getArchiveId());
+                map.put("archive", arcFamilyAbroadMarriage); // 统一命名为archive
+                page = "/views/archive/arc_family_abroad_marriage_table";
+                break;
         }
 
         //附带审核记录
@@ -544,8 +551,12 @@ public class ArchiveServiceImpl implements ArchiveService {
                 arcHouseInfo.setApproveStatus(status);
                 arcHouseInfoService.update(arcHouseInfo);
                 break;
-
-            // todo
+            case 26:
+                ArcFamilyAbroadMarriage arcFamilyAbroadMarriage = new ArcFamilyAbroadMarriage();
+                arcFamilyAbroadMarriage.setId(id);
+                arcFamilyAbroadMarriage.setApproveStatus(status);
+                arcFamilyAbroadMarriageService.update(arcFamilyAbroadMarriage);
+                break;
         }
     }
 

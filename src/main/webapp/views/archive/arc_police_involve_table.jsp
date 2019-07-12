@@ -8,7 +8,7 @@
         <div class="tableHonor">
             <table>
                 <tr>
-                    <th colspan="4">淮安市公安局淮安分局民警涉警情况登记表</th>
+                    <th colspan="4">民警涉警情况登记表</th>
                 </tr>
                 <tr>
                     <td>时间</td>
