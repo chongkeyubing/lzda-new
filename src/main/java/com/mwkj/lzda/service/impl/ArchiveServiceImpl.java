@@ -96,6 +96,9 @@ public class ArchiveServiceImpl implements ArchiveService {
     @Resource
     ArcIncomeInfoService arcIncomeInfoService;
 
+    @Resource
+    ArcGiftInfoService arcGiftInfoService;
+
     @Override
     public List<ArchiveDTO> findAllArchivesByConditions(ArchiveDTO archive) {
         return archiveMapper.findAllArchivesByConditions(archive);
@@ -178,6 +181,10 @@ public class ArchiveServiceImpl implements ArchiveService {
             case 22:
                 page = "/views/archive/arc_income_info";
                 break;
+            case 23:
+                page = "/views/archive/arc_gift_info";
+                break;
+
 
 
             //todo
@@ -308,6 +315,12 @@ public class ArchiveServiceImpl implements ArchiveService {
                 ArcIncomeInfo ArcIncomeInfo = arcIncomeInfoService.findById(archive.getArchiveId());
                 map.put("archive", ArcIncomeInfo); // 统一命名为archive
                 page = "/views/archive/arc_income_info_table";
+                break;
+
+            case 23:
+                ArcGiftInfo arcGiftInfo = arcGiftInfoService.findById(archive.getArchiveId());
+                map.put("archive", arcGiftInfo); // 统一命名为archive
+                page = "/views/archive/arc_gift_info_table";
                 break;
 
             //todo
@@ -490,6 +503,12 @@ public class ArchiveServiceImpl implements ArchiveService {
                 arcIncomeInfo.setId(id);
                 arcIncomeInfo.setApproveStatus(status);
                 arcIncomeInfoService.update(arcIncomeInfo);
+                break;
+            case 23:
+                ArcGiftInfo arcGiftInfo = new ArcGiftInfo();
+                arcGiftInfo.setId(id);
+                arcGiftInfo.setApproveStatus(status);
+                arcGiftInfoService.update(arcGiftInfo);
                 break;
 
             // todo

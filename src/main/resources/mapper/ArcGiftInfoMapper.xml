@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mwkj.lzda.dao.ArcGiftInfoMapper">
+  <resultMap id="BaseResultMap" type="com.mwkj.lzda.model.ArcGiftInfo">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="organization_id" jdbcType="INTEGER" property="organizationId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="job_position" jdbcType="VARCHAR" property="jobPosition" />
+    <result column="organization" jdbcType="VARCHAR" property="organization" />
+    <result column="gifr_person_name" jdbcType="VARCHAR" property="gifrPersonName" />
+    <result column="gift_org" jdbcType="VARCHAR" property="giftOrg" />
+    <result column="gift_job" jdbcType="VARCHAR" property="giftJob" />
+    <result column="gift_time" jdbcType="VARCHAR" property="giftTime" />
+    <result column="gift_address" jdbcType="VARCHAR" property="giftAddress" />
+    <result column="gift_way" jdbcType="VARCHAR" property="giftWay" />
+    <result column="gift_name" jdbcType="VARCHAR" property="giftName" />
+    <result column="gift_number" jdbcType="INTEGER" property="giftNumber" />
+    <result column="gift_price" jdbcType="INTEGER" property="giftPrice" />
+    <result column="gift_money" jdbcType="INTEGER" property="giftMoney" />
+    <result column="gift_total" jdbcType="INTEGER" property="giftTotal" />
+    <result column="gift_handle" jdbcType="VARCHAR" property="giftHandle" />
+    <result column="approve_status" jdbcType="INTEGER" property="approveStatus" />
+    <result column="archive_type" jdbcType="INTEGER" property="archiveType" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="gift_reason" jdbcType="LONGVARCHAR" property="giftReason" />
+  </resultMap>
+</mapper>
