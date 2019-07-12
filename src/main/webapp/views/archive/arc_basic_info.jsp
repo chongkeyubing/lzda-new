@@ -84,13 +84,13 @@
                 <label class="layui-form-label">姓名</label>
                 <div class="layui-input-inline">
                     <input type="text" name="arcBasicInfo.userName" readonly autocomplete="off" class="layui-input"
-                           lay-verify="required" value="${currentUser.realname}">
+                            value="${currentUser.realname}">
                 </div>
             </div>
             <div class="layui-inline">
                 <label class="layui-form-label">性别</label>
                 <div class="layui-input-inline">
-                    <select name="arcBasicInfo.gender" lay-verify="required">
+                    <select name="arcBasicInfo.gender">
                         <option
                                 <c:if test="${currentUser.gender == '男'}">selected</c:if> value="女">男
                         </option>

@@ -90,6 +90,9 @@ public class ArchiveServiceImpl implements ArchiveService {
     @Resource
     ArcFamilyMarriageService arcFamilyMarriageService;
 
+    @Resource
+    ArcPoliceInvolveService arcPoliceInvolveService;
+
     @Override
     public List<ArchiveDTO> findAllArchivesByConditions(ArchiveDTO archive) {
         return archiveMapper.findAllArchivesByConditions(archive);
@@ -165,6 +168,9 @@ public class ArchiveServiceImpl implements ArchiveService {
                 break;
             case 20:
                 page = "/views/archive/arc_family_marriage";
+                break;
+            case 21:
+                page = "/views/archive/arc_police_involve";
                 break;
 
 
@@ -286,6 +292,11 @@ public class ArchiveServiceImpl implements ArchiveService {
                 ArcFamilyMarriage arcFamilyMarriage = arcFamilyMarriageService.findById(archive.getArchiveId());
                 map.put("archive", arcFamilyMarriage); // 统一命名为archive
                 page = "/views/archive/arc_family_marriage_table";
+                break;
+            case 21:
+                ArcPoliceInvolve arcPoliceInvolve = arcPoliceInvolveService.findById(archive.getArchiveId());
+                map.put("archive", arcPoliceInvolve); // 统一命名为archive
+                page = "/views/archive/arc_police_involve_table";
                 break;
 
             //todo
@@ -461,6 +472,12 @@ public class ArchiveServiceImpl implements ArchiveService {
                 arcFamilyMarriage.setId(id);
                 arcFamilyMarriage.setApproveStatus(status);
                 arcFamilyMarriageService.update(arcFamilyMarriage);
+                break;
+            case 21:
+                ArcPoliceInvolve arcPoliceInvolve = new ArcPoliceInvolve();
+                arcPoliceInvolve.setId(id);
+                arcPoliceInvolve.setApproveStatus(status);
+                arcPoliceInvolveService.update(arcPoliceInvolve);
                 break;
 
             // todo
