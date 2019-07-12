@@ -130,7 +130,7 @@
                 {field: 'committerName', title: '上报人姓名'},
                 {field: 'applicantName', title: '填表人姓名'},
                 {
-                    field: 'archiveType', title: '档案类型', width: 380, templet: function (data) {
+                    field: 'archiveType', title: '档案类型', width: 340, templet: function (data) {
                         for(var i = 0;i< ARCHIVE_TYPE.length;i++){
                             if(data.archiveType == ARCHIVE_TYPE[i].type){
                                 return ARCHIVE_TYPE[i].name;
@@ -139,7 +139,7 @@
                     }
                 },
                 {
-                    field: 'status', title: '审核状态', width: 220, templet: function (data) {
+                    field: 'status', title: '审核状态', width: 200, templet: function (data) {
                         return APPROVE_STATUS[data.status]
                     }
                 },
@@ -156,12 +156,19 @@
         table.on('tool(approveTable)', function (obj) {
             debugger;
             var data = obj.data;
+            var archiveType;
+            for(var i = 0;i< ARCHIVE_TYPE.length;i++){
+                if(data.archiveType == ARCHIVE_TYPE[i].type){
+                    archiveType = ARCHIVE_TYPE[i].name;
+                    break;
+                }
+            }
             if (obj.event === 'detail') {
                 var url = '/archive/toArchive?archiveId=' + data.archiveId + '&archiveType=' + data.archiveType + '&approveOperate=true';
                 $.get(url, function (html) {
                     layer.open({
                         type: 1,
-                        title: ARCHIVE_TYPE[data.archiveType] + "-" + data.applicantName,
+                        title: archiveType + "-" + data.applicantName,
                         area: ['1400px', '800px'],
                         content: html
                     });

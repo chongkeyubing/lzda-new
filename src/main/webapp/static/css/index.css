@@ -378,7 +378,7 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
     position: absolute;
     top: 60px;
     left: 230px;
-    padding: 40px 20px;
+    padding: 25px 20px;
 }
 
 

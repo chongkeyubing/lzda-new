@@ -114,7 +114,7 @@
         1: "<span class='layui-badge layui-bg-orange'>待单位负责人审核</span>",
         2: "<span class='layui-badge layui-bg-green'>单位负责人通过</span>",
         3: "<span class='layui-badge'>单位负责人驳回</span>",
-        4: "<span class='layui-badge layui-bg-orange'>单位负责人通过，待纪委审核</span>",
+        4: "<span class='layui-badge layui-bg-green'>单位负责人通过</span><span class='layui-badge layui-bg-orange'>待纪委审核</span>",
         5: "<span class='layui-badge layui-bg-green'>纪委通过</span>",
         6: "<span class='layui-badge'>纪委驳回</span>"
     };
@@ -138,7 +138,7 @@
                 {field: 'policeCode', title: '警号'},
                 {field: 'organizationName', title: '单位', width: 340},
                 {
-                    field: 'archiveType', title: '档案类型', width: 380, templet: function (data) {
+                    field: 'archiveType', title: '档案类型', width: 340, templet: function (data) {
                         for(var i = 0;i< ARCHIVE_TYPE.length;i++){
                             if(data.archiveType == ARCHIVE_TYPE[i].type){
                                 return ARCHIVE_TYPE[i].name;
@@ -147,7 +147,7 @@
                     }
                 },
                 {
-                    field: 'approveStatus', title: '审核状态', width: 220,templet: function (data) {
+                    field: 'approveStatus', title: '审核状态', width: 200,templet: function (data) {
                         return APPROVE_STATUS[data.approveStatus]
                     }
                 },
@@ -164,12 +164,19 @@
         table.on('tool(archives)', function (obj) {
             debugger;
             var data = obj.data;
+            var archiveType;
+            for(var i = 0;i< ARCHIVE_TYPE.length;i++){
+                if(data.archiveType == ARCHIVE_TYPE[i].type){
+                    archiveType = ARCHIVE_TYPE[i].name;
+                    break;
+                }
+            }
             if (obj.event === 'detail') {
                 var url = 'archive/toArchive?archiveId=' + data.archiveId + '&archiveType=' + data.archiveType + '&approveRecord=true';
                 $.get(url, function (html) {
                     layer.open({
                         type: 1,
-                        title: ARCHIVE_TYPE[data.archiveType] + "-" + data.userName,
+                        title: archiveType + "-" + data.userName,
                         area: ['1400px', '800px'],
                         content: html
                     });
