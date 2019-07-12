@@ -44,22 +44,22 @@
                     <td colspan="3">${archive.handle}</td>
                 </tr>
                 <%--<tr>--%>
-                    <%--<td>党组织审核<br/>意 见</td>--%>
-                    <%--<td colspan="3">${archive.advice}</td>--%>
+                <%--<td>党组织审核<br/>意 见</td>--%>
+                <%--<td colspan="3">${archive.advice}</td>--%>
                 <%--</tr>--%>
                 <tr>
                     <td>备注</td>
                     <td colspan="3">${archive.remark}</td>
                 </tr>
-                <c:if test="${approveOperate}">
-                    <%@ include file = "../approve/approve_operate.jsp" %>
-                </c:if>
-
-                <c:if test="${approveRecord}">
-                    <%@ include file = "../approve/approve_record.jsp" %>
-                </c:if>
-
             </table>
+
+            <c:if test="${approveOperate}">
+                <%@ include file="../approve/approve_operate.jsp" %>
+            </c:if>
+
+            <c:if test="${approveRecord}">
+                <%@ include file="../approve/approve_record.jsp" %>
+            </c:if>
         </div>
     </div>
 </div>
