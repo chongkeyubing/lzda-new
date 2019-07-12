@@ -24,8 +24,8 @@
         <div class="layui-inline">
             <label class="layui-form-label">档案类型</label>
             <div class="layui-input-inline" >
-                <select name="archiveType" class="archiveTypeView">
-                    <option value="">请选择档案类型</option>
+                <select name="archiveType" class="archiveTypeView" lay-search>
+                    <option value="">请选择或搜索档案类型</option>
                 </select>
             </div>
 
@@ -103,12 +103,12 @@
     ];
 
     var APPROVE_STATUS = {
-        1: "待审核",
-        2: "审核通过",
-        3: "驳回",
-        4: "待审核",
-        5: "审核通过",
-        6: "驳回"
+        1: "<span class='layui-badge layui-bg-orange'>待审核</span>",
+        2: "<span class='layui-badge layui-bg-green'>审核通过</span>",
+        3: "<span class='layui-badge'>驳回</span>",
+        4: "<span class='layui-badge layui-bg-orange'>待审核</span>",
+        5: "<span class='layui-badge layui-bg-green'>审核通过</span>",
+        6: "<span class='layui-badge'>驳回</span>",
     };
 </script>
 

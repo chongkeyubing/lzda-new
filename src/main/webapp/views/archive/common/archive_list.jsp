@@ -22,8 +22,8 @@
         <div class="layui-inline">
             <label class="layui-form-label">档案类型</label>
             <div class="layui-input-inline">
-                <select name="archiveType" class="archiveTypeView">
-                    <option value="">请选择档案类型</option>
+                <select name="archiveType" class="archiveTypeView" lay-search>
+                    <option value="">请选择或搜索档案类型</option>
                 </select>
             </div>
         </div>
@@ -58,8 +58,8 @@
     <div class="layui-form-item" style="padding-top: 15px; border-top: 1px solid #f6f6f6;">
         <div class="layui-input-block" style="float: right;margin-right: 110px;">
             <div class="layui-input-inline">
-                <select name="archiveType" class="archiveTypeView">
-                    <option value="">请选择档案类型</option>
+                <select name="archiveType" class="archiveTypeView" lay-search>
+                    <option value="">请选择或搜索档案类型</option>
                 </select>
             </div>
             <button class="layui-btn layui-btn-normal" lay-submit lay-filter="addArchive">新增</button>
@@ -111,12 +111,12 @@
     ];
 
     var APPROVE_STATUS = {
-        1: "待单位负责人审核",
-        2: "单位负责人通过",
-        3: "单位负责人驳回",
-        4: "单位负责人通过，待纪委审核",
-        5: "纪委通过",
-        6: "纪委驳回"
+        1: "<span class='layui-badge layui-bg-orange'>待单位负责人审核</span>",
+        2: "<span class='layui-badge layui-bg-green'>单位负责人通过</span>",
+        3: "<span class='layui-badge'>单位负责人驳回</span>",
+        4: "<span class='layui-badge layui-bg-orange'>单位负责人通过，待纪委审核</span>",
+        5: "<span class='layui-badge layui-bg-green'>纪委通过</span>",
+        6: "<span class='layui-badge'>纪委驳回</span>"
     };
 </script>
 
