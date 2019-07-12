@@ -33,14 +33,16 @@
                     <%--<td colspan="3">填报前一交易日所有基金的总市值</td>--%>
                     <%--<td><i></i>万元</td>--%>
                 <%--</tr>--%>
-                <c:if test="${approveOperate}">
-                    <%@ include file="../approve/approve_operate.jsp" %>
-                </c:if>
 
-                <c:if test="${approveRecord}">
-                    <%@ include file="../approve/approve_record.jsp" %>
-                </c:if>
             </table>
+
+            <c:if test="${approveOperate}">
+                <%@ include file="../approve/approve_operate.jsp" %>
+            </c:if>
+
+            <c:if test="${approveRecord}">
+                <%@ include file="../approve/approve_record.jsp" %>
+            </c:if>
         </div>
     </div>
 </div>

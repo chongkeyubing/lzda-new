@@ -37,7 +37,7 @@ public class CodeGenerator {
     private static final String DATE = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(new Date());//@date
 
     public static void main(String[] args) {
-        genCode("arc_family_insurance");
+        genCode("arc_family_abroad_savings");
         //genCodeByCustomModelName("user","User");
     }
 

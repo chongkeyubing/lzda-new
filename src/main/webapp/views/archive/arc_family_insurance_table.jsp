@@ -32,14 +32,15 @@
 							<%--<td colspan="4">累计缴纳保费、投资金总额</td>--%>
 							<%--<td><i></i>万元</td>--%>
 						<%--</tr>--%>
-						<c:if test="${approveOperate}">
-							<%@ include file="../approve/approve_operate.jsp" %>
-						</c:if>
 
-						<c:if test="${approveRecord}">
-							<%@ include file="../approve/approve_record.jsp" %>
-						</c:if>
 					</table>
+                    <c:if test="${approveOperate}">
+                        <%@ include file="../approve/approve_operate.jsp" %>
+                    </c:if>
+
+                    <c:if test="${approveRecord}">
+                        <%@ include file="../approve/approve_record.jsp" %>
+                    </c:if>
 				</div>
 			</div>
 		</div>
