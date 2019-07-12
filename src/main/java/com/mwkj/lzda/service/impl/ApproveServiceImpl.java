@@ -57,7 +57,7 @@ public class ApproveServiceImpl extends AbstractService<Approve> implements Appr
 
 
         Subject subject = SecurityUtils.getSubject();
-        //如果是纪委审核人填自己，默认审核通过
+        //如果是纪委或者督察审核人填自己，默认审核通过
         if (!(subject.hasRole("纪委") || subject.hasRole("督察大队"))) {
             //审核人
             approve1.setApproverId(approve.getApproverId());
@@ -70,6 +70,7 @@ public class ApproveServiceImpl extends AbstractService<Approve> implements Appr
                 //对应档案表的档案状态修改为同样的状态
                 archiveService.updateSpecifiedArchiveStatus(approve.getArchiveType(),approve.getArchiveId(),4);
             } else {
+                //普通民警
                 approve1.setStatus(1); //待单位负责人审核，对应档案表的档案状态默认为1
             }
 
@@ -79,6 +80,7 @@ public class ApproveServiceImpl extends AbstractService<Approve> implements Appr
             approve1.setApproverName(currentUser.getRealname());
 
             approve1.setStatus(5); //纪委审核通过
+            approve1.setComments("通过");
 
             //对应档案表的档案状态修改为同样的状态
             archiveService.updateSpecifiedArchiveStatus(approve.getArchiveType(),approve.getArchiveId(),5);
