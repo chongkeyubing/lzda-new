@@ -107,7 +107,7 @@
 
     <!-- Shiro过滤器 -->
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
-        <!-- Shiro的核心安全接口,这个属性是必须的 -->
+        <!-- Shiro的核心安全接口-->
         <property name="securityManager" ref="securityManager"/>
         <!-- 默认的登陆访问url -->
         <property name="loginUrl" value="/index.jsp"/>
@@ -122,7 +122,7 @@
                 /static/** = anon
                 /login = anon
                 /logout = anon
-                <!--/** = authc-->
+                /** = authc
             </value>
         </property>
     </bean>
