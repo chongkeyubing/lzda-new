@@ -93,6 +93,9 @@ public class ArchiveServiceImpl implements ArchiveService {
     @Resource
     ArcPoliceInvolveService arcPoliceInvolveService;
 
+    @Resource
+    ArcIncomeInfoService arcIncomeInfoService;
+
     @Override
     public List<ArchiveDTO> findAllArchivesByConditions(ArchiveDTO archive) {
         return archiveMapper.findAllArchivesByConditions(archive);
@@ -172,7 +175,9 @@ public class ArchiveServiceImpl implements ArchiveService {
             case 21:
                 page = "/views/archive/arc_police_involve";
                 break;
-
+            case 22:
+                page = "/views/archive/arc_income_info";
+                break;
 
 
             //todo
@@ -297,6 +302,12 @@ public class ArchiveServiceImpl implements ArchiveService {
                 ArcPoliceInvolve arcPoliceInvolve = arcPoliceInvolveService.findById(archive.getArchiveId());
                 map.put("archive", arcPoliceInvolve); // 统一命名为archive
                 page = "/views/archive/arc_police_involve_table";
+                break;
+
+            case 22:
+                ArcIncomeInfo ArcIncomeInfo = arcIncomeInfoService.findById(archive.getArchiveId());
+                map.put("archive", ArcIncomeInfo); // 统一命名为archive
+                page = "/views/archive/arc_income_info_table";
                 break;
 
             //todo
@@ -438,35 +449,30 @@ public class ArchiveServiceImpl implements ArchiveService {
                 arcFamilyFund.setApproveStatus(status);
                 arcFamilyFundService.update(arcFamilyFund);
                 break;
-
             case 16:
                 ArcFamilyInsurance arcFamilyInsurance = new ArcFamilyInsurance();
                 arcFamilyInsurance.setId(id);
                 arcFamilyInsurance.setApproveStatus(status);
                 arcFamilyInsuranceService.update(arcFamilyInsurance);
                 break;
-
             case 17:
                 ArcFamilyAbroadSavings arcFamilyAbroadSavings = new ArcFamilyAbroadSavings();
                 arcFamilyAbroadSavings.setId(id);
                 arcFamilyAbroadSavings.setApproveStatus(status);
                 arcFamilyAbroadSavingsService.update(arcFamilyAbroadSavings);
                 break;
-
             case 18:
                 ArcFamilyAbroadInvestment arcFamilyAbroadInvestment = new ArcFamilyAbroadInvestment();
                 arcFamilyAbroadInvestment.setId(id);
                 arcFamilyAbroadInvestment.setApproveStatus(status);
                 arcFamilyAbroadInvestmentService.update(arcFamilyAbroadInvestment);
                 break;
-
             case 19:
                 ArcPersonalOther arcPersonalOther = new ArcPersonalOther();
                 arcPersonalOther.setId(id);
                 arcPersonalOther.setApproveStatus(status);
                 arcPersonalOtherService.update(arcPersonalOther);
                 break;
-
             case 20:
                 ArcFamilyMarriage arcFamilyMarriage = new ArcFamilyMarriage();
                 arcFamilyMarriage.setId(id);
@@ -478,6 +484,12 @@ public class ArchiveServiceImpl implements ArchiveService {
                 arcPoliceInvolve.setId(id);
                 arcPoliceInvolve.setApproveStatus(status);
                 arcPoliceInvolveService.update(arcPoliceInvolve);
+                break;
+            case 22:
+                ArcIncomeInfo arcIncomeInfo = new ArcIncomeInfo();
+                arcIncomeInfo.setId(id);
+                arcIncomeInfo.setApproveStatus(status);
+                arcIncomeInfoService.update(arcIncomeInfo);
                 break;
 
             // todo
