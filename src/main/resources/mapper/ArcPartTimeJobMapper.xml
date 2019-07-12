@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mwkj.lzda.dao.ArcPartTimeJobMapper">
+  <resultMap id="BaseResultMap" type="com.mwkj.lzda.model.ArcPartTimeJob">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="organization_id" jdbcType="INTEGER" property="organizationId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="job_position" jdbcType="VARCHAR" property="jobPosition" />
+    <result column="organization" jdbcType="VARCHAR" property="organization" />
+    <result column="parttime_org" jdbcType="VARCHAR" property="parttimeOrg" />
+    <result column="parttime_org_type" jdbcType="VARCHAR" property="parttimeOrgType" />
+    <result column="parttime_job" jdbcType="VARCHAR" property="parttimeJob" />
+    <result column="parttime_during" jdbcType="VARCHAR" property="parttimeDuring" />
+    <result column="parttime_salary" jdbcType="INTEGER" property="parttimeSalary" />
+    <result column="approve_org" jdbcType="VARCHAR" property="approveOrg" />
+    <result column="approve_status" jdbcType="INTEGER" property="approveStatus" />
+    <result column="archive_type" jdbcType="INTEGER" property="archiveType" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="advice" jdbcType="LONGVARCHAR" property="advice" />
+    <result column="handle" jdbcType="LONGVARCHAR" property="handle" />
+    <result column="remark" jdbcType="LONGVARCHAR" property="remark" />
+  </resultMap>
+</mapper>
