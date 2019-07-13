@@ -1,15 +1,23 @@
 package com.mwkj.lzda.service.impl;
 
+import com.alibaba.druid.util.DruidWebUtils;
 import com.mwkj.lzda.dao.ArchiveMapper;
 import com.mwkj.lzda.dto.ArchiveDTO;
+import com.mwkj.lzda.enu.ArchiveTypeEnum;
+import com.mwkj.lzda.enu.LogOperateTypeEnum;
+import com.mwkj.lzda.enu.RoleEnum;
 import com.mwkj.lzda.model.*;
 import com.mwkj.lzda.service.*;
+import com.mwkj.lzda.util.WebContextHolder;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.context.request.RequestContextHolder;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -22,92 +30,99 @@ import java.util.List;
 public class ArchiveServiceImpl implements ArchiveService {
 
     @Resource
-    ArchiveMapper archiveMapper;
+    private ArchiveMapper archiveMapper;
 
     @Resource
-    ArcBasicInfoService arcBasicInfoService;
+    private ArcBasicInfoService arcBasicInfoService;
 
     @Resource
-    OperateLogService operateLogService;
+    private OperateLogService operateLogService;
 
     @Resource
-    ApproveService approveService;
+    private ApproveService approveService;
 
     @Resource
-    ArcFamilySocietyRelaService arcFamilySocietyRelaService;
+    private ArcFamilySocietyRelaService arcFamilySocietyRelaService;
 
     @Resource
-    ArcHkMoInfoService arcHkMoInfoService;
+    private ArcHkMoInfoService arcHkMoInfoService;
 
     @Resource
-    ArcPassportInfoService arcPassportInfoService;
+    private ArcPassportInfoService arcPassportInfoService;
 
     @Resource
-    ArcMarriageInfoService arcMarriageInfoService;
+    private ArcMarriageInfoService arcMarriageInfoService;
 
     @Resource
-    ArcOrganizationMeetingService arcOrganizationMeetingService;
+    private ArcOrganizationMeetingService arcOrganizationMeetingService;
 
     @Resource
-    ArcBanquetApplyService arcBanquetApplyService;
+    private ArcBanquetApplyService arcBanquetApplyService;
 
     @Resource
-    ArcAbroadInfoService arcAbroadInfoService;
+    private ArcAbroadInfoService arcAbroadInfoService;
 
     @Resource
-    ArcAffectBusinessService arcAffectBusinessService;
+    private ArcAffectBusinessService arcAffectBusinessService;
 
     @Resource
-    ArcLeaveofficeHandoverService arcLeaveofficeHandoverService;
+    private ArcLeaveofficeHandoverService arcLeaveofficeHandoverService;
 
     @Resource
-    ArcFamilyAbroadService arcFamilyAbroadService;
+    private ArcFamilyAbroadService arcFamilyAbroadService;
 
     @Resource
-    ArcFamilyWorkabroadService arcFamilyWorkabroadService;
+    private ArcFamilyWorkabroadService arcFamilyWorkabroadService;
 
     @Resource
-    ArcFamilyCriminalService arcFamilyCriminalService;
+    private ArcFamilyCriminalService arcFamilyCriminalService;
 
     @Resource
-    ArcFamilyStockService arcFamilyStockService;
+    private ArcFamilyStockService arcFamilyStockService;
 
     @Resource
-    ArcFamilyFundService arcFamilyFundService;
+    private ArcFamilyFundService arcFamilyFundService;
 
     @Resource
-    ArcFamilyInsuranceService arcFamilyInsuranceService;
+    private ArcFamilyInsuranceService arcFamilyInsuranceService;
 
     @Resource
-    ArcFamilyAbroadSavingsService arcFamilyAbroadSavingsService;
+    private ArcFamilyAbroadSavingsService arcFamilyAbroadSavingsService;
 
     @Resource
-    ArcFamilyAbroadInvestmentService arcFamilyAbroadInvestmentService;
+    private ArcFamilyAbroadInvestmentService arcFamilyAbroadInvestmentService;
 
     @Resource
-    ArcPersonalOtherService arcPersonalOtherService;
+    private ArcPersonalOtherService arcPersonalOtherService;
 
     @Resource
-    ArcFamilyMarriageService arcFamilyMarriageService;
+    private ArcFamilyMarriageService arcFamilyMarriageService;
 
     @Resource
-    ArcPoliceInvolveService arcPoliceInvolveService;
+    private ArcPoliceInvolveService arcPoliceInvolveService;
 
     @Resource
-    ArcIncomeInfoService arcIncomeInfoService;
+    private ArcIncomeInfoService arcIncomeInfoService;
 
     @Resource
-    ArcGiftInfoService arcGiftInfoService;
+    private ArcGiftInfoService arcGiftInfoService;
 
     @Resource
-    ArcPartTimeJobService arcPartTimeJobService;
+    private ArcPartTimeJobService arcPartTimeJobService;
 
     @Resource
-    ArcHouseInfoService arcHouseInfoService;
+    private ArcHouseInfoService arcHouseInfoService;
 
     @Resource
-    ArcFamilyAbroadMarriageService arcFamilyAbroadMarriageService;
+    private ArcFamilyAbroadMarriageService arcFamilyAbroadMarriageService;
 
+    /**
+     * @return java.util.List<com.mwkj.lzda.dto.ArchiveDTO>
+     * @Author libaogang
+     * @Date 2019-07-12 20:25
+     * @Param [archive]
+     * @Description 条件分页查询26类档案
+     */
     @Override
     public List<ArchiveDTO> findAllArchivesByConditions(ArchiveDTO archive) {
         return archiveMapper.findAllArchivesByConditions(archive);
@@ -118,7 +133,13 @@ public class ArchiveServiceImpl implements ArchiveService {
         return archiveMapper.findAllArchivesCounts(archive);
     }
 
-
+    /**
+     * @return java.lang.String
+     * @Author libaogang
+     * @Date 2019-07-12 20:25
+     * @Param [archive]
+     * @Description 档案新增跳转
+     */
     @Override
     public String toAddArchive(ArchiveDTO archive) {
         String page = null;
@@ -203,12 +224,17 @@ public class ArchiveServiceImpl implements ArchiveService {
                 page = "/views/archive/arc_family_abroad_marriage";
                 break;
 
-
-            //todo
         }
         return page;
     }
 
+    /**
+     * @return java.lang.String
+     * @Author libaogang
+     * @Date 2019-07-12 20:26
+     * @Param [archive, map, approveRecord, approveOperate]
+     * @Description 档案详情跳转
+     */
     @Override
     public String toArchiveDetail(ArchiveDTO archive, ModelMap map, boolean approveRecord, boolean approveOperate) {
         String page = null;
@@ -376,21 +402,32 @@ public class ArchiveServiceImpl implements ArchiveService {
             int status = approve1.getStatus();
 
             //只有待审核状态才展示审核操作按钮
-            if (status == 1 || (status == 4 && !SecurityUtils.getSubject().hasRole("单位负责人"))) {
+            if (status == 1 || (status == 4 && !SecurityUtils.getSubject().hasRole(RoleEnum.单位负责人.toString()))) {
                 map.put("approveOperate", approveOperate);
             }
         }
 
         //插入日志信息
-//        User currentUser = (User)session.getAttribute("currentUser");
-//        OperateLog operateLog = new OperateLog();
-//        operateLog.setOperatorId(currentUser.getId());
-//        operateLog.setOperateName(currentUser.getRealname());
-//        operateLog.setArchiveOwnerId(archive.getUserId());
-//        operateLog.setArchiveOwnerName(archive.getUserName());
-//        operateLog.setOperateObject();
-//        operateLog.setOperateName("查看");
-//        operateLogService.save();
+        Subject subject = SecurityUtils.getSubject();
+        if (subject.hasRole(RoleEnum.单位负责人.toString()) || subject.hasRole(RoleEnum.纪委.toString()) || subject.hasRole(RoleEnum.督察大队.toString())) {
+            HttpServletRequest request = WebContextHolder.getRequest();
+            User currentUser = (User) request.getSession().getAttribute("currentUser");
+            OperateLog operateLog = new OperateLog();
+            operateLog.setOperatorId(currentUser.getId());
+            operateLog.setOperatorName(currentUser.getRealname());
+            operateLog.setOperatorIp(DruidWebUtils.getRemoteAddr(request));
+            operateLog.setArchiveOwnerId(archive.getUserId());
+            operateLog.setArchiveOwnerName(archive.getUserName());
+            //遍历档案类型枚举
+            for (ArchiveTypeEnum typeEnum : ArchiveTypeEnum.values()) {
+                if (archive.getArchiveType() == typeEnum.archiveType()) {
+                    operateLog.setOperateObject(typeEnum.archiveName());
+                    break;
+                }
+            }
+            operateLog.setOperateType(LogOperateTypeEnum.查看.toString());
+            operateLogService.save(operateLog);
+        }
 
         return page;
     }

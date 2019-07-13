@@ -1,4 +1,4 @@
-package com.mwkj.lzda.vo;
+package com.mwkj.lzda.dto;
 
 import com.mwkj.lzda.model.ArcBasicInfo;
 import com.mwkj.lzda.model.ArcFamilySocietyRela;
@@ -11,23 +11,13 @@ import java.util.List;
  * @Date: 2019-07-03 10:47
  * @Description 接收前台提交个人基本情况报备表的参数
  */
-public class BasicInfoVo {
+public class BasicInfoDTO {
     //基本情况
     private ArcBasicInfo arcBasicInfo;
 
     //家庭或重要社会关系
     private List<ArcFamilySocietyRela> arcs;
 
-//    //审核人信息
-//    private User approver;
-//
-//    public User getApprover() {
-//        return approver;
-//    }
-//
-//    public void setApprover(User approver) {
-//        this.approver = approver;
-//    }
 
     public ArcBasicInfo getArcBasicInfo() {
         return arcBasicInfo;

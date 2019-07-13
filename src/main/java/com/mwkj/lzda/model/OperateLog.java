@@ -24,6 +24,9 @@ public class OperateLog {
     @Column(name = "operator_name")
     private String operatorName;
 
+    @Column(name = "operator_code")
+    private String operatorCode;
+
     /**
      * 操作人真实ip
      */
@@ -217,5 +220,13 @@ public class OperateLog {
 
     public void setOperateType(String operateType) {
         this.operateType = operateType;
+    }
+
+    public String getOperatorCode() {
+        return operatorCode;
+    }
+
+    public void setOperatorCode(String operatorCode) {
+        this.operatorCode = operatorCode;
     }
 }

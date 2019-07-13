@@ -156,19 +156,35 @@
         table.on('tool(approveTable)', function (obj) {
             debugger;
             var data = obj.data;
-            var archiveType;
+            var archiveName;
             for(var i = 0;i< ARCHIVE_TYPE.length;i++){
                 if(data.archiveType == ARCHIVE_TYPE[i].type){
-                    archiveType = ARCHIVE_TYPE[i].name;
+                    archiveName = ARCHIVE_TYPE[i].name;
                     break;
                 }
             }
             if (obj.event === 'detail') {
-                var url = '/archive/toArchive?archiveId=' + data.archiveId + '&archiveType=' + data.archiveType + '&approveOperate=true';
-                $.get(url, function (html) {
+                // var url = '/archive/toArchive?archiveId=' + data.archiveId + '&archiveType=' + data.archiveType + '&approveOperate=true';
+                // $.get(url, function (html) {
+                //     layer.open({
+                //         type: 1,
+                //         title: archiveName + "-" + data.applicantName,
+                //         area: ['1400px', '800px'],
+                //         content: html
+                //     });
+                // });
+
+                $.post('archive/toArchive', {
+                    archiveId: data.archiveId,
+                    archiveType: data.archiveType,
+                    approveOperate: true,
+                    userId: data.applicantId,
+                    userName: data.applicantName
+
+                }, function (html) {
                     layer.open({
                         type: 1,
-                        title: archiveType + "-" + data.applicantName,
+                        title: archiveName + "-" + data.applicantName,
                         area: ['1400px', '800px'],
                         content: html
                     });

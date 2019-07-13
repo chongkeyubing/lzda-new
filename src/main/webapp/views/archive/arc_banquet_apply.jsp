@@ -144,6 +144,5 @@
             elem: '#activityTime'
         });
 
-        form.render();
     });
 </script>

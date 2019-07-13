@@ -1,8 +1,7 @@
 package com.mwkj.lzda.service.impl;
 
-import com.mwkj.lzda.constant.FileUploadPath;
 import com.mwkj.lzda.core.AppException;
-import com.mwkj.lzda.core.util.SpringFileUploader;
+import com.mwkj.lzda.util.SpringFileUploader;
 import com.mwkj.lzda.dao.ArcBasicInfoMapper;
 import com.mwkj.lzda.model.Approve;
 import com.mwkj.lzda.model.ArcBasicInfo;
@@ -11,7 +10,7 @@ import com.mwkj.lzda.service.ApproveService;
 import com.mwkj.lzda.service.ArcBasicInfoService;
 import com.mwkj.lzda.core.AbstractService;
 import com.mwkj.lzda.service.ArcFamilySocietyRelaService;
-import com.mwkj.lzda.vo.BasicInfoVo;
+import com.mwkj.lzda.dto.BasicInfoDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -38,7 +37,7 @@ public class ArcBasicInfoServiceImpl extends AbstractService<ArcBasicInfo> imple
     private ApproveService approveService;
 
     @Override
-    public void add(BasicInfoVo basicInfoVo, Approve approve, HttpServletRequest request) throws AppException {
+    public void add(BasicInfoDTO basicInfoDTO, Approve approve, HttpServletRequest request) throws AppException {
         //上传图片
         String url = null;
         try {
@@ -48,14 +47,14 @@ public class ArcBasicInfoServiceImpl extends AbstractService<ArcBasicInfo> imple
         }
 
         //保存个人基本情况报备
-        ArcBasicInfo arcBasicInfo = basicInfoVo.getArcBasicInfo();
+        ArcBasicInfo arcBasicInfo = basicInfoDTO.getArcBasicInfo();
         arcBasicInfo.setAvatarUrl(url);
         this.save(arcBasicInfo);
 
         int arcBasicInfoId = arcBasicInfo.getId();
 
         //保存重要关系
-        List<ArcFamilySocietyRela> arcs = basicInfoVo.getArcs();
+        List<ArcFamilySocietyRela> arcs = basicInfoDTO.getArcs();
         for (ArcFamilySocietyRela arc : arcs) {
             arc.setBasicInfoId(arcBasicInfoId);
         }

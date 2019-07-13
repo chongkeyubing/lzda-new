@@ -33,7 +33,7 @@
                         <h2 class="menu menu01">档案管理</h2>
                         <ul class="menuSideBar">
                             <li>
-                                <a href="views/archive/common/archive_list.jsp">档案信息</a>
+                                <a id="archiveInfo" href="views/archive/common/archive_list.jsp">档案信息</a>
                             </li>
                             <li>
                                 <a href="views/approve/approve_list.jsp">档案审核</a>
@@ -101,7 +101,7 @@
                         <h2 class="menu menu06">日志</h2>
                         <ul class="menuSideBar">
                             <li>
-                                <a href="">日志信息</a>
+                                <a href="views/operate_log_list.jsp">日志信息</a>
                             </li>
 
                         </ul>
@@ -128,9 +128,9 @@
         <!-- 主体内容部分 -->
         <div class="right">
             <%--<span class="layui-breadcrumb">--%>
-				<%--<a >首页</a>--%>
-				<%--<a >演示</a>--%>
-				<%--<a><cite>导航元素</cite></a>--%>
+            <%--<a >首页</a>--%>
+            <%--<a >演示</a>--%>
+            <%--<a><cite>导航元素</cite></a>--%>
             <%--</span>--%>
             <div class="mainContent"></div>
 
@@ -144,10 +144,10 @@
 <script src="static/js/jquery-2.1.4.js"></script>
 <script src="static/js/jquery-form.js"></script>
 <script>
-    layui.use('element', function(){
-        var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
-
-    });
+    // layui.use('element', function () {
+    //     var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+    //
+    // });
 
     $(document).ready(function () {
         $('.menu').click(function () {
@@ -183,6 +183,11 @@
                 $(".Box .right .mainContent").load(url);
             }
         });
+
+        //直接展示档案信息页面
+        $(".menu01").click();
+        $("#archiveInfo").click();
+
     });
 </script>
 </body>

@@ -3,6 +3,7 @@ package com.mwkj.lzda.web;
 import com.mwkj.lzda.core.Result;
 import com.mwkj.lzda.core.ResultUtil;
 import com.mwkj.lzda.core.layui.LayuiTableResultUtil;
+import com.mwkj.lzda.enu.RoleEnum;
 import com.mwkj.lzda.model.User;
 import com.mwkj.lzda.service.UserService;
 import com.github.pagehelper.PageHelper;
@@ -80,7 +81,7 @@ public class UserController {
         List<User> users = null;
 
         // 如果是普通民警，查找单位负责人
-        if (SecurityUtils.getSubject().hasRole("普通民警")) {
+        if (SecurityUtils.getSubject().hasRole(RoleEnum.普通民警.toString())) {
             User user = new User();
             user.setRoleid(2);  //单位负责人角色id
             user.setOrganizationId(currentUser.getOrganizationId());
@@ -88,7 +89,7 @@ public class UserController {
         }
 
         // 如果是单位负责人查找纪委和督察大队
-        if (SecurityUtils.getSubject().hasRole("单位负责人")) {
+        if (SecurityUtils.getSubject().hasRole(RoleEnum.单位负责人.toString())) {
             users = new ArrayList<>();
 
             User user = new User();

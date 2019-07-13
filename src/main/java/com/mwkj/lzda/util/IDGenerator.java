@@ -1,6 +1,5 @@
-package com.mwkj.lzda.core.util;
+package com.mwkj.lzda.util;
 
-import java.io.File;
 import java.util.UUID;
 
 /**

@@ -1,13 +1,12 @@
 package com.mwkj.lzda.web;
 import com.mwkj.lzda.core.Result;
 import com.mwkj.lzda.core.ResultUtil;
-import com.mwkj.lzda.dto.ArchiveDTO;
 import com.mwkj.lzda.model.Approve;
 import com.mwkj.lzda.model.ArcBasicInfo;
 import com.mwkj.lzda.service.ArcBasicInfoService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.mwkj.lzda.vo.BasicInfoVo;
+import com.mwkj.lzda.dto.BasicInfoDTO;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.stereotype.Controller;
@@ -30,8 +29,8 @@ public class ArcBasicInfoController {
 
     @RequestMapping("/add")
     @ResponseBody
-    public Result add(BasicInfoVo basicInfoVo, Approve approve, HttpServletRequest request) {
-        arcBasicInfoService.add(basicInfoVo,approve,request);
+    public Result add(BasicInfoDTO basicInfoDTO, Approve approve, HttpServletRequest request) {
+        arcBasicInfoService.add(basicInfoDTO,approve,request);
         return ResultUtil.success();
     }
 

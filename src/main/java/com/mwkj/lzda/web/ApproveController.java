@@ -3,6 +3,7 @@ package com.mwkj.lzda.web;
 import com.mwkj.lzda.core.Result;
 import com.mwkj.lzda.core.ResultUtil;
 import com.mwkj.lzda.core.layui.LayuiTableResultUtil;
+import com.mwkj.lzda.enu.RoleEnum;
 import com.mwkj.lzda.model.Approve;
 import com.mwkj.lzda.model.User;
 import com.mwkj.lzda.service.ApproveService;
@@ -61,7 +62,7 @@ public class ApproveController {
         criteria.andEqualTo("archiveType",approve.getArchiveType());
 
         if(null == approve.getStatus() ){
-            if(SecurityUtils.getSubject().hasRole("单位负责人")){
+            if(SecurityUtils.getSubject().hasRole(RoleEnum.单位负责人.toString())){
                 approve.setStatus(1); //待单位负责人审核
             }else{
                 approve.setStatus(4); //待纪委审核

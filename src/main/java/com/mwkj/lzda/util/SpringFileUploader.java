@@ -1,4 +1,4 @@
-package com.mwkj.lzda.core.util;
+package com.mwkj.lzda.util;
 
 import com.mwkj.lzda.constant.FileUploadPath;
 import org.springframework.web.multipart.MultipartFile;

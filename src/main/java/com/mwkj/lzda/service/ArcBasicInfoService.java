@@ -2,7 +2,7 @@ package com.mwkj.lzda.service;
 import com.mwkj.lzda.model.Approve;
 import com.mwkj.lzda.model.ArcBasicInfo;
 import com.mwkj.lzda.core.Service;
-import com.mwkj.lzda.vo.BasicInfoVo;
+import com.mwkj.lzda.dto.BasicInfoDTO;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,5 +13,5 @@ import javax.servlet.http.HttpServletRequest;
 * @Description TODO
 */
 public interface ArcBasicInfoService extends Service<ArcBasicInfo> {
-    void add(BasicInfoVo basicInfoVo, Approve approve, HttpServletRequest request);
+    void add(BasicInfoDTO basicInfoDTO, Approve approve, HttpServletRequest request);
 }
