@@ -51,8 +51,13 @@
         //点击提交
         form.on('submit(passwordSubmit)', function () {
             debugger;
-            if($("#newPassword").val().trim() != $("#confirm").val().trim()){
+            var newPassword = $("#newPassword").val().trim();
+            if(newPassword != $("#confirm").val().trim()){
                 layer.msg("两次输入密码不一致");
+                return false;
+            }
+            if(newPassword.length < 6 || newPassword.length >18){
+                layer.msg("密码长度请保持在6-18位");
                 return false;
             }
             $("#passwordForm").ajaxSubmit({
