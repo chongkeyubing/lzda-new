@@ -24,6 +24,7 @@ public class OperateLog {
     @Column(name = "operator_name")
     private String operatorName;
 
+
     @Column(name = "operator_code")
     private String operatorCode;
 

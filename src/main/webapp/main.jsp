@@ -45,7 +45,7 @@
                         <h2 class="menu menu02">奖惩管理</h2>
                         <ul class="menuSideBar">
                             <li>
-                                <a href="">奖励信息</a>
+                                <a href="views/reward_list.jsp">奖励信息</a>
                             </li>
                             <li>
                                 <a href="">违惩信息</a>
@@ -117,7 +117,10 @@
                                 <a href="">权限管理</a>
                             </li>
                             <li>
-                                <a href="">密码修改</a>
+                                <a href="">个人信息修改</a>
+                            </li>
+                            <li>
+                                <a href="views/user/update_password.jsp">密码修改</a>
                             </li>
                         </ul>
                     </dd>

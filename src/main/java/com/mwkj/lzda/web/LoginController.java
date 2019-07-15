@@ -34,6 +34,7 @@ public class LoginController {
         } catch (AuthenticationException e) {
             modelMap.put("msg", "账号或密码错误");
             modelMap.put("policeCode", policeCode);
+            e.printStackTrace();
             return "/index";
         }
         return "/main";

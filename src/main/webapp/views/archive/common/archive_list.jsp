@@ -186,7 +186,7 @@
                     layer.open({
                         type: 1,
                         title: archiveName + "-" + data.userName,
-                        area: ['1400px', '800px'],
+                        area: ['1200px', '700px'],
                         content: html
                     });
                 });
@@ -209,15 +209,26 @@
 
         //新增档案弹窗
         form.on('submit(addArchive)', function (data) {
+            debugger;
             if (data.field.archiveType == '') {
                 layer.msg("请选择档案类型")
                 return false;
             }
+
+            //获取档案名称
+            var archiveName;
+            for (var i = 0; i < ARCHIVE_TYPE.length; i++) {
+                if (data.field.archiveType == ARCHIVE_TYPE[i].type) {
+                    archiveName = ARCHIVE_TYPE[i].name;
+                    break;
+                }
+            }
+
             $.get('archive/toAddArchive?archiveType=' + data.field.archiveType, function (html) {
                 layer.open({
                     type: 1,
-                    title: ARCHIVE_TYPE[data.field.archiveType],
-                    area: ['1200px', '800px'],
+                    title: archiveName,
+                    area: ['1200px', '700px'],
                     content: html
                 });
             });

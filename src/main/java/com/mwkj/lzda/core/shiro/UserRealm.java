@@ -10,6 +10,7 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ObjectUtils;
 
@@ -42,8 +43,12 @@ public class UserRealm extends AuthorizingRealm{
 		if (ObjectUtils.isEmpty(user)) {
 			throw new AuthenticationException();
 		}
+
+		//根据id获取盐值
+		ByteSource salt = ByteSource.Util.bytes(String.valueOf(user.getId()));
+
 		AuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
-				user.getPoliceCode(), user.getPassword(), getName());
+				user.getPoliceCode(), user.getPassword(), salt,getName());
 		return authenticationInfo;
 	}
 

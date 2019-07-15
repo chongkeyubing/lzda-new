@@ -129,5 +129,21 @@ public class UserController {
         return "/views/approve/approver_selector";
     }
 
+    /**
+     * @Author libaogang
+     * @Date 2019-07-15 16:19
+     * @Param [user]
+     * @return com.mwkj.lzda.core.Result
+     * @Description 更新密码
+     */
+    @RequestMapping("/updatePassword")
+    @ResponseBody
+    public Result updatePassword(User user,String newPassword){
+        userService.updatePassword(user,newPassword);
+        return ResultUtil.success();
+    }
+
+
+
 
 }

@@ -14,4 +14,5 @@ import java.util.List;
 public interface OperateLogService extends Service<OperateLog> {
     List<OperateLogDTO> findAllLogsByConditions(OperateLogDTO operateLogDTO);
     long findAllLogsCountByConditions(OperateLogDTO operateLogDTO);
+    void save(String operateObject,String operateType,int archiveOwnerId);
 }

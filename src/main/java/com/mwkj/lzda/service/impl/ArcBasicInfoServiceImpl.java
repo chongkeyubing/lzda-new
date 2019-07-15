@@ -55,10 +55,12 @@ public class ArcBasicInfoServiceImpl extends AbstractService<ArcBasicInfo> imple
 
         //保存重要关系
         List<ArcFamilySocietyRela> arcs = basicInfoDTO.getArcs();
-        for (ArcFamilySocietyRela arc : arcs) {
-            arc.setBasicInfoId(arcBasicInfoId);
+        if(null != arcs){
+            for (ArcFamilySocietyRela arc : arcs) {
+                arc.setBasicInfoId(arcBasicInfoId);
+            }
+            arcFamilySocietyRelaService.saveAll(arcs);
         }
-        arcFamilySocietyRelaService.saveAll(arcs);
 
 
         //构造 插入审核申请 参数

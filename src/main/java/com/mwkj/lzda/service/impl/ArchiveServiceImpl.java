@@ -14,7 +14,6 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.context.request.RequestContextHolder;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -407,28 +406,38 @@ public class ArchiveServiceImpl implements ArchiveService {
             }
         }
 
-        //插入日志信息
-        Subject subject = SecurityUtils.getSubject();
-        if (subject.hasRole(RoleEnum.单位负责人.toString()) || subject.hasRole(RoleEnum.纪委.toString()) || subject.hasRole(RoleEnum.督察大队.toString())) {
-            HttpServletRequest request = WebContextHolder.getRequest();
-            User currentUser = (User) request.getSession().getAttribute("currentUser");
-            OperateLog operateLog = new OperateLog();
-            operateLog.setOperatorId(currentUser.getId());
-            operateLog.setOperatorName(currentUser.getRealname());
-            operateLog.setOperatorIp(DruidWebUtils.getRemoteAddr(request));
-            operateLog.setArchiveOwnerId(archive.getUserId());
-            operateLog.setArchiveOwnerName(archive.getUserName());
-            //遍历档案类型枚举
-            for (ArchiveTypeEnum typeEnum : ArchiveTypeEnum.values()) {
-                if (archive.getArchiveType() == typeEnum.archiveType()) {
-                    operateLog.setOperateObject(typeEnum.archiveName());
-                    break;
-                }
-            }
-            operateLog.setOperateType(LogOperateTypeEnum.查看.toString());
-            operateLogService.save(operateLog);
-        }
+//        //插入日志信息
+//        Subject subject = SecurityUtils.getSubject();
+//        if (subject.hasRole(RoleEnum.单位负责人.toString()) || subject.hasRole(RoleEnum.纪委.toString()) || subject.hasRole(RoleEnum.督察大队.toString())) {
+//            HttpServletRequest request = WebContextHolder.getRequest();
+//            User currentUser = (User) request.getSession().getAttribute("currentUser");
+//            OperateLog operateLog = new OperateLog();
+//            operateLog.setOperatorId(currentUser.getId());
+//            operateLog.setOperatorName(currentUser.getRealname());
+//            operateLog.setOperatorIp(DruidWebUtils.getRemoteAddr(request));
+//            operateLog.setArchiveOwnerId(archive.getUserId());
+//            operateLog.setArchiveOwnerName(archive.getUserName());
+//            //遍历档案类型枚举
+//            for (ArchiveTypeEnum typeEnum : ArchiveTypeEnum.values()) {
+//                if (archive.getArchiveType() == typeEnum.archiveType()) {
+//                    operateLog.setOperateObject(typeEnum.archiveName());
+//                    break;
+//                }
+//            }
+//            operateLog.setOperateType(LogOperateTypeEnum.查看.toString());
+//            operateLogService.save(operateLog);
+//        }
 
+
+        //遍历档案类型枚举
+        String operateObject = null;
+        for (ArchiveTypeEnum typeEnum : ArchiveTypeEnum.values()) {
+            if (archive.getArchiveType() == typeEnum.archiveType()) {
+                operateObject = typeEnum.archiveName();
+                break;
+            }
+        }
+        operateLogService.save(operateObject,LogOperateTypeEnum.查看.toString(),archive.getUserId());
         return page;
     }
 
