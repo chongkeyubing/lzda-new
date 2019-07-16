@@ -64,25 +64,25 @@
                     <%--</dd>--%>
                     <%--</shiro:hasAnyRoles>--%>
 
-                    <shiro:hasPermission name="上报管理">
-                    <dd>
-                        <h2 class="menu menu03">上报管理</h2>
-                        <ul class="menuSideBar">
-                            <li>
-                                <a href="">主体责任上报</a>
-                            </li>
-                            <li>
-                                <a href="">队伍思想状况上报</a>
-                            </li>
-                            <li>
-                                <a href="">廉政信息上报</a>
-                            </li>
-                            <li>
-                                <a href="">履责纪实上报</a>
-                            </li>
-                        </ul>
-                    </dd>
-                    </shiro:hasPermission>
+                    <%--<shiro:hasPermission name="上报管理">--%>
+                    <%--<dd>--%>
+                        <%--<h2 class="menu menu03">上报管理</h2>--%>
+                        <%--<ul class="menuSideBar">--%>
+                            <%--<li>--%>
+                                <%--<a href="">主体责任上报</a>--%>
+                            <%--</li>--%>
+                            <%--<li>--%>
+                                <%--<a href="">队伍思想状况上报</a>--%>
+                            <%--</li>--%>
+                            <%--<li>--%>
+                                <%--<a href="">廉政信息上报</a>--%>
+                            <%--</li>--%>
+                            <%--<li>--%>
+                                <%--<a href="">履责纪实上报</a>--%>
+                            <%--</li>--%>
+                        <%--</ul>--%>
+                    <%--</dd>--%>
+                    <%--</shiro:hasPermission>--%>
                     <%--<shiro:hasPermission name="廉政报告">--%>
                     <%--<dd>--%>
                         <%--<h2 class="menu menu04">廉政报告</h2>--%>

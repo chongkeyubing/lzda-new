@@ -38,7 +38,6 @@
 
     .addInfo03 {
         width: 1008px;
-        overflow: hidden;
         margin-top: 15px;
         margin-bottom: 20px;
     }
@@ -60,9 +59,8 @@
 
     .addInfo03 .rela {
         width: 95%;
-        overflow: hidden;
         border: 1px solid #dcdcdc;
-        padding-top: 10px;
+        padding-top: 20px;
         box-sizing: border-box;
         margin-bottom: 15px;
     }
@@ -84,7 +82,7 @@
                 <label class="layui-form-label">姓名</label>
                 <div class="layui-input-inline">
                     <input type="text" name="arcBasicInfo.userName" readonly autocomplete="off" class="layui-input"
-                            value="${currentUser.realname}">
+                           value="${currentUser.realname}">
                 </div>
             </div>
             <div class="layui-inline">
@@ -158,7 +156,8 @@
             <div class="layui-inline">
                 <label class="layui-form-label">办公电话</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="arcBasicInfo.officePhone"  lay-verify="number" autocomplete="off" class="layui-input">
+                    <input type="text" name="arcBasicInfo.officePhone" lay-verify="number" autocomplete="off"
+                           class="layui-input">
                 </div>
             </div>
         </div>
@@ -235,7 +234,8 @@
             <div class="layui-inline">
                 <label class="layui-form-label">工作单位</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="arcBasicInfo.organization" class="layui-input" lay-verify="required" readonly
+                    <input type="text" name="arcBasicInfo.organization" class="layui-input" lay-verify="required"
+                           readonly
                            value='${currentUser.organizationName}'>
                 </div>
             </div>
@@ -269,87 +269,35 @@
             </div>
         </div>
         <div class="addInfo03" id="sctp">
-            <p>家庭主要成员及重要社会关系：</p>
-            <%--<label class="layui-form-label">家庭主要成员及重要社会关系</label>--%>
-            <div style="float: right;margin-bottom: 15px;    margin-right: 96px;">
-                <button id="addRela" type="button" class="layui-btn layui-btn-normal">添加</button>
-                <button id="delRela" type="button" class="layui-btn layui-btn-normal">删除</button>
+            <div style="height: 50px">
+                <p>家庭主要成员及重要社会关系：</p>
+                <%--<label class="layui-form-label">家庭主要成员及重要社会关系</label>--%>
+                <div style="float: right;margin-bottom: 15px;    margin-right: 96px;">
+                    <button id="addRela" type="button" class="layui-btn layui-btn-normal">添加</button>
+                    <button id="delRela" type="button" class="layui-btn layui-btn-normal">删除</button>
+                </div>
             </div>
-
-            <!--
-            <div style='display:block;' class='rela'>
-                <div class='layui-form-item' style="margin-top: 15px">
-                    <div class='layui-inline'>
-                        <label class='layui-form-label'>姓名</label>
-                        <div class='layui-input-inline'>
-                            <input type='text' name='' lay-verify='required' autocomplete='off' class='layui-input'>
-                        </div>
-                    </div>
-
-                    <div class='layui-inline'>
-                        <label class='layui-form-label'>称谓</label>
-                        <div class='layui-input-inline'>
-                            <input type='text' name='' lay-verify='required' autocomplete='off' class='layui-input'>
-                        </div>
-                    </div>
-
-                    <div class='layui-inline'>
-                        <label class='layui-form-label'>政治面貌</label>
-                        <div class='layui-input-inline'>
-                            <select name="politicFace">
-                                <option value="">请选政治面貌</option>
-                                <option value="0">党员</option>
-                                <option value="1">群众</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <div class='layui-form-item'>
-                    <div class='layui-inline'>
-                        <label class='layui-form-label'>出生年月</label>
-                        <div class='layui-input-inline'>
-                            <input type='text' name='' autocomplete='off' class='layui-input relaBirthday'>
-                        </div>
-                    </div>
-
-                    <div class='layui-inline'>
-                        <label class='layui-form-label'>工作单位</label>
-                        <div class='layui-input-inline'>
-                            <input type='text' name='' autocomplete='off' class='layui-input'>
-                        </div>
-                    </div>
-
-                    <div class='layui-inline'>
-                        <label class='layui-form-label'>职务</label>
-                        <div class='layui-input-inline'>
-                            <input type='text' name='' autocomplete='off' class='layui-input'>
-                        </div>
-                    </div>
-
-                </div>
-            </div>-->
 
         </div>
 
         <%-- 审核人选择 --%>
-        <%@ include file = "../approve/approver_select.jsp" %>
+        <%@ include file="../approve/approver_select.jsp" %>
 
         <%-- 隐藏表单 --%>
-        <%@ include file = "./common/hidden_form.jsp" %>
+        <%@ include file="./common/hidden_form.jsp" %>
 
         <%-- 提交 --%>
-        <%@ include file = "./common/archive_submit.jsp" %>
+        <%@ include file="./common/archive_submit.jsp" %>
     </form>
 </div>
 
 <script src="static/js/imgUp.js"></script>
 <script>
-    layui.use(['form', 'layedit', 'laydate','table'], function () {
+    layui.use(['form', 'layedit', 'laydate', 'table'], function () {
         var form = layui.form,
             layer = layui.layer,
             laydate = layui.laydate;
-            table = layui.table;
+        table = layui.table;
 
         //渲染日期表单
         laydate.render({
