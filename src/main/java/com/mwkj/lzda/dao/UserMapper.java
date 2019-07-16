@@ -10,4 +10,6 @@ public interface UserMapper extends Mapper<User> {
     List<String> getRoles(String policeCode);
 
     List<String> getPermissions(String policeCode);
+
+    List<User> findUsersByCondition(User user);
 }

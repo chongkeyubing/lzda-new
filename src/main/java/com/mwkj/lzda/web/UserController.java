@@ -4,12 +4,16 @@ import com.mwkj.lzda.core.Result;
 import com.mwkj.lzda.core.ResultUtil;
 import com.mwkj.lzda.core.layui.LayuiTableResultUtil;
 import com.mwkj.lzda.enu.RoleEnum;
+import com.mwkj.lzda.model.Organization;
+import com.mwkj.lzda.model.Role;
 import com.mwkj.lzda.model.User;
+import com.mwkj.lzda.service.OrganizationService;
+import com.mwkj.lzda.service.RoleService;
 import com.mwkj.lzda.service.UserService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.stereotype.Controller;
@@ -33,6 +37,12 @@ public class UserController {
     @Resource
     private UserService userService;
 
+    @Resource
+    private OrganizationService organizationService;
+
+    @Resource
+    private RoleService roleService;
+
     @RequestMapping("/add")
     @ResponseBody
     public Result add(User user) {
@@ -43,13 +53,15 @@ public class UserController {
     @RequestMapping("/delete")
     @ResponseBody
     public Result delete(@RequestParam Integer id) {
-        userService.deleteById(id);
+        userService.logicDelUser(id);
         return ResultUtil.success();
     }
 
     @RequestMapping("/update")
     @ResponseBody
     public Result update(User user) {
+        Organization organization = organizationService.findById(user.getOrganizationId());
+        user.setOrganizationName(organization.getName());
         userService.update(user);
         return ResultUtil.success();
     }
@@ -102,7 +114,7 @@ public class UserController {
 
         //生成分页信息，包含总数
         PageInfo<User> pageInfo = new PageInfo<>(users);
-        return LayuiTableResultUtil.success(users, pageInfo.getSize());
+        return LayuiTableResultUtil.success(users, pageInfo.getTotal());
     }
 
     /**
@@ -130,19 +142,76 @@ public class UserController {
     }
 
     /**
+     * @return com.mwkj.lzda.core.Result
      * @Author libaogang
      * @Date 2019-07-15 16:19
      * @Param [user]
-     * @return com.mwkj.lzda.core.Result
      * @Description 更新密码
      */
     @RequestMapping("/updatePassword")
     @ResponseBody
-    public Result updatePassword(User user,String newPassword){
-        userService.updatePassword(user,newPassword);
+    public Result updatePassword(User user, String newPassword) {
+        userService.updatePassword(user, newPassword);
         return ResultUtil.success();
     }
 
+    /**
+     * @return java.lang.String
+     * @Author libaogang
+     * @Date 2019-07-16 14:36
+     * @Param [map]
+     * @Description 跳转到用户列表
+     */
+    @RequestMapping("/toUserList")
+    public String toUserList(ModelMap map) {
+        List<Organization> organizations = organizationService.findAll();
+        List<Role> roles = roleService.findAll();
+
+        map.put("organizations", organizations);
+        map.put("roles", roles);
+        return "/views/user/user_list";
+    }
+
+    /**
+     * @return java.lang.String
+     * @Author libaogang
+     * @Date 2019-07-16 14:37
+     * @Param [map]
+     * @Description 条件分页查询
+     */
+    @RequestMapping("/list")
+    @ResponseBody
+    public Result list(@RequestParam(defaultValue = "0") Integer page,
+                       @RequestParam(defaultValue = "0") Integer limit,
+                       User user) {
+        PageHelper.startPage(page, limit);
+        List<User> users = userService.findUsersByCondition(user);
+        PageInfo<User> pageInfo = new PageInfo<>(users);
+        return LayuiTableResultUtil.success(users, pageInfo.getTotal());
+    }
+
+    @RequestMapping("/toAddUser")
+    public String toAddUser(ModelMap map){
+        List<Organization> organizations = organizationService.findAll();
+        List<Role> roles = roleService.findAll();
+
+        map.put("organizations", organizations);
+        map.put("roles", roles);
+        return "/views/user/user_add";
+    }
+
+    @RequestMapping("/toUpdateUser")
+    public String toUpdateUser(Integer id, ModelMap map){
+        User user = userService.findById(id);
+        List<Organization> organizations = organizationService.findAll();
+        List<Role> roles = roleService.findAll();
+
+        map.put("organizations", organizations);
+        map.put("roles", roles);
+        map.put("user",user);
+
+        return "/views/user/user_update";
+    }
 
 
 

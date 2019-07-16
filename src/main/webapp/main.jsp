@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
+
 <html>
 <head>
     <meta charset="utf-8">
@@ -35,24 +37,34 @@
                             <li>
                                 <a id="archiveInfo" href="views/archive/common/archive_list.jsp">档案信息</a>
                             </li>
-                            <li>
-                                <a href="views/approve/approve_list.jsp">档案审核</a>
-                            </li>
+                            <shiro:hasPermission name="档案审核">
+                                <li>
+                                    <a href="views/approve/approve_list.jsp">档案审核</a>
+                                </li>
+                            </shiro:hasPermission>
                         </ul>
                     </dd>
 
-                    <dd>
-                        <h2 class="menu menu02">奖惩管理</h2>
-                        <ul class="menuSideBar">
-                            <li>
-                                <a href="views/reward_list.jsp">奖励信息</a>
-                            </li>
-                            <li>
-                                <a href="">违惩信息</a>
-                            </li>
-                        </ul>
+                    <%--<shiro:hasAnyRoles name="政治处领导,督察大队,纪委">--%>
+                    <%--<dd>--%>
+                        <%--<h2 class="menu menu02">奖惩管理</h2>--%>
+                        <%--<ul class="menuSideBar">--%>
+                            <%--<shiro:hasPermission name="奖励信息">--%>
+                            <%--<li>--%>
+                                <%--<a href="views/reward_list.jsp">奖励信息</a>--%>
+                            <%--</li>--%>
+                            <%--</shiro:hasPermission>--%>
+                            <%--<shiro:hasPermission name="违惩信息">--%>
+                            <%--<li>--%>
+                                <%--<a href="">违惩信息</a>--%>
+                            <%--</li>--%>
+                            <%--</shiro:hasPermission>--%>
+                        <%--</ul>--%>
 
-                    </dd>
+                    <%--</dd>--%>
+                    <%--</shiro:hasAnyRoles>--%>
+
+                    <shiro:hasPermission name="上报管理">
                     <dd>
                         <h2 class="menu menu03">上报管理</h2>
                         <ul class="menuSideBar">
@@ -70,33 +82,38 @@
                             </li>
                         </ul>
                     </dd>
-                    <dd>
-                        <h2 class="menu menu04">廉政报告</h2>
-                        <ul class="menuSideBar">
-                            <li>
-                                <a href="">廉政报告管理</a>
-                            </li>
+                    </shiro:hasPermission>
+                    <%--<shiro:hasPermission name="廉政报告">--%>
+                    <%--<dd>--%>
+                        <%--<h2 class="menu menu04">廉政报告</h2>--%>
+                        <%--<ul class="menuSideBar">--%>
+                            <%--<li>--%>
+                                <%--<a href="">廉政报告管理</a>--%>
+                            <%--</li>--%>
 
-                        </ul>
-                    </dd>
+                        <%--</ul>--%>
+                    <%--</dd>--%>
+                    <%--</shiro:hasPermission>--%>
 
-                    <dd>
-                        <h2 class="menu menu05">统计</h2>
-                        <ul class="menuSideBar">
-                            <li>
-                                <a href="">违规统计</a>
-                            </li>
-                            <li>
-                                <a href="">出国(境)统计</a>
-                            </li>
-                            <li>
-                                <a href="">影响公正执行职务报备统计</a>
-                            </li>
+                    <%--<shiro:hasPermission name="统计">--%>
+                    <%--<dd>--%>
+                        <%--<h2 class="menu menu05">统计</h2>--%>
+                        <%--<ul class="menuSideBar">--%>
+                            <%--<li>--%>
+                                <%--<a href="">违规统计</a>--%>
+                            <%--</li>--%>
+                            <%--<li>--%>
+                                <%--<a href="">出国(境)统计</a>--%>
+                            <%--</li>--%>
+                            <%--<li>--%>
+                                <%--<a href="">影响公正执行职务报备统计</a>--%>
+                            <%--</li>--%>
 
-                        </ul>
+                        <%--</ul>--%>
 
-                    </dd>
-
+                    <%--</dd>--%>
+                    <%--</shiro:hasPermission>--%>
+                    <shiro:hasPermission name="日志">
                     <dd>
                         <h2 class="menu menu06">日志</h2>
                         <ul class="menuSideBar">
@@ -107,23 +124,25 @@
                         </ul>
 
                     </dd>
+                    </shiro:hasPermission>
+
                     <dd>
                         <h2 class="menu menu07">用户权限</h2>
                         <ul class="menuSideBar">
+                            <shiro:hasPermission name="用户权限">
                             <li>
-                                <a href="">用户管理</a>
+                                <a href="user/toUserList">用户管理</a>
                             </li>
+                            <%--<li>--%>
+                                <%--<a href="">权限管理</a>--%>
+                            <%--</li>--%>
+                            </shiro:hasPermission>
                             <li>
-                                <a href="">权限管理</a>
-                            </li>
-                            <li>
-                                <a href="">个人信息修改</a>
-                            </li>
-                            <li>
-                                <a href="views/user/update_password.jsp">密码修改</a>
+                                <a href="views/user/password_update.jsp">密码修改</a>
                             </li>
                         </ul>
                     </dd>
+
                 </dl>
 
             </div>

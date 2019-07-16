@@ -13,4 +13,6 @@ public interface UserService extends Service<User> {
     List<String> getRoles(String policeCode);
     List<String> getPermissions(String policeCode);
     void updatePassword(User user,String newPassword);
+    List<User> findUsersByCondition(User user);
+    void logicDelUser(int id);
 }

@@ -1,5 +1,6 @@
 package com.mwkj.lzda.service.impl;
 
+import com.mwkj.lzda.constant.SysConstant;
 import com.mwkj.lzda.core.AppException;
 import com.mwkj.lzda.dao.UserMapper;
 import com.mwkj.lzda.model.User;
@@ -48,20 +49,35 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
         }
 
         //加密盐值和加密次数与shiro配置保持一直
-        String salt = String.valueOf(user.getId());
+//        String salt = String.valueOf(user.getId());
         final int hashIterations = 1024;
 
-        user.setPassword(EncryptUtil.md5(user.getPassword(), salt, hashIterations));
+        user.setPassword(EncryptUtil.md5(user.getPassword(), SysConstant.SALT, hashIterations));
         User user1 = this.findOne(user);
 
         if (null == user1) {
             throw new AppException("修改失败，原密码错误");
         }
 
-        user.setPassword(EncryptUtil.md5(newPassword, salt, hashIterations));
+        user.setPassword(EncryptUtil.md5(newPassword, SysConstant.SALT, hashIterations));
         userMapper.updateByPrimaryKeySelective(user);
 
         //登出系统
         SecurityUtils.getSubject().logout();
     }
+
+    @Override
+    public List<User> findUsersByCondition(User user) {
+        return userMapper.findUsersByCondition(user);
+    }
+
+    @Override
+    public void logicDelUser(int id) {
+        User user = new User();
+        user.setId(id);
+        user.setActive(0);
+        this.update(user);
+    }
+
+
 }

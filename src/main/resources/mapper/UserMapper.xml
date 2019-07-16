@@ -37,4 +37,24 @@
         where u.police_code = #{policeCode}
     </select>
 
+    <select id="findUsersByCondition" parameterType="com.mwkj.lzda.model.User" resultType="com.mwkj.lzda.model.User">
+        select u.*, r.rolename as role
+        from user u
+        inner join role r on r.id = u.roleid
+        <where>
+            <if test="realname!=null and realname!=''">
+                and u.realname like '%${realname}%'
+            </if>
+            <if test="policeCode!=null and policeCode!=''">
+                and u.police_code = #{policeCode}
+            </if>
+            <if test="organizationId!=null and organizationId!=''">
+                and u.organization_id = #{organizationId}
+            </if>
+            <if test="roleid!=null and roleid!=''">
+                and u.roleid = #{roleid}
+            </if>
+            and u.active = '1'
+        </where>
+    </select>
 </mapper>

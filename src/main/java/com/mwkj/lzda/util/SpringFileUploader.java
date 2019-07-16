@@ -1,6 +1,6 @@
 package com.mwkj.lzda.util;
 
-import com.mwkj.lzda.constant.FileUploadPath;
+import com.mwkj.lzda.constant.SysConstant;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
@@ -48,9 +48,9 @@ public class SpringFileUploader {
                     for (int i = 0; i < typeArr.length; i++) {
                         if (fileType.equalsIgnoreCase(typeArr[i])) {
                             String uuid = IDGenerator.getUUID();
-                            String rootRealPath = request.getSession().getServletContext().getRealPath(FileUploadPath.IMG_UPLOAD_ROOT_PATH);
+                            String rootRealPath = request.getSession().getServletContext().getRealPath(SysConstant.IMG_UPLOAD_ROOT_PATH);
                             String fileName = uuid + fileType;
-                            String savePath = FileUploadPath.IMG_UPLOAD_ROOT_PATH + "/" + fileName;
+                            String savePath = SysConstant.IMG_UPLOAD_ROOT_PATH + "/" + fileName;
                             String realSavePath = rootRealPath + "/" + fileName;
                             file.transferTo(new File(realSavePath));
 
@@ -92,9 +92,9 @@ public class SpringFileUploader {
                     for (int i = 0; i < typeArr.length; i++) {
                         if (fileType.equalsIgnoreCase(typeArr[i])) {
                             String uuid = IDGenerator.getUUID();
-                            String rootRealPath = request.getSession().getServletContext().getRealPath(FileUploadPath.IMG_UPLOAD_ROOT_PATH);
+                            String rootRealPath = request.getSession().getServletContext().getRealPath(SysConstant.IMG_UPLOAD_ROOT_PATH);
                             String fileName = uuid + fileType;
-                            savePath = FileUploadPath.IMG_UPLOAD_ROOT_PATH + "/" + fileName;
+                            savePath = SysConstant.IMG_UPLOAD_ROOT_PATH + "/" + fileName;
                             String realSavePath = rootRealPath + "/" + fileName;
                             file.transferTo(new File(realSavePath));
                             break;

@@ -1,5 +1,7 @@
 package com.mwkj.lzda.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 import javax.persistence.*;
 
@@ -31,9 +33,21 @@ public class User {
      */
     private String gender;
 
+    @Transient
+    private String role;
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     /**
      * 出生日期
      */
+    @DateTimeFormat(pattern = "yyy-MM-dd")
     private Date birthday;
 
     /**

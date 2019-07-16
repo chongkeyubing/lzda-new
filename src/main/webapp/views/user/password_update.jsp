@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 
-
 <div style="width:100%; display: flex; justify-content: center;">
 <form class="layui-form form1" id="passwordForm" action="user/updatePassword">
     <input type="hidden" name="id" lay-verify="required" autocomplete="off" class="layui-input" value="${currentUser.id}">

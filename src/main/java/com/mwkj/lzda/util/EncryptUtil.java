@@ -1,5 +1,6 @@
 package com.mwkj.lzda.util;
 
+import com.mwkj.lzda.constant.SysConstant;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.util.ByteSource;
 
@@ -22,13 +23,12 @@ public class EncryptUtil {
         String hashAlgorithmName = "MD5";
         //盐：为了即使相同的密码不同的盐加密后的结果也不同
         ByteSource byteSalt = ByteSource.Util.bytes(salt);
-        Object source = password;
-        SimpleHash result = new SimpleHash(hashAlgorithmName, source, byteSalt, hashIterations);
+        SimpleHash result = new SimpleHash(hashAlgorithmName, password, byteSalt, hashIterations);
         return result.toString();
     }
 
     public static void main(String[] args) {
-        String password = md5("123456", "1",1024);
+        String password = md5("123456", SysConstant.SALT,1024);
         System.out.println(password);
     }
 }
