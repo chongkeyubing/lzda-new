@@ -33,11 +33,6 @@ public class Organization {
     @Column(name = "create_time")
     private Date createTime;
 
-    /**
-     * 修改时间，自动更新
-     */
-    @Column(name = "update_time")
-    private Date updateTime;
 
     /**
      * 获取主键
@@ -129,21 +124,4 @@ public class Organization {
         this.createTime = createTime;
     }
 
-    /**
-     * 获取修改时间，自动更新
-     *
-     * @return update_time - 修改时间，自动更新
-     */
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    /**
-     * 设置修改时间，自动更新
-     *
-     * @param updateTime 修改时间，自动更新
-     */
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
 }

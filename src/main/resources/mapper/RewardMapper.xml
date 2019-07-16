@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mwkj.lzda.dao.RewardMapper">
+  <resultMap id="BaseResultMap" type="com.mwkj.lzda.model.Reward">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="organization_id" jdbcType="INTEGER" property="organizationId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="job_position" jdbcType="VARCHAR" property="jobPosition" />
+    <result column="organization" jdbcType="VARCHAR" property="organization" />
+    <result column="reward_type" jdbcType="VARCHAR" property="rewardType" />
+    <result column="reward_time" jdbcType="VARCHAR" property="rewardTime" />
+    <result column="reward_organization" jdbcType="VARCHAR" property="rewardOrganization" />
+    <result column="attachmentId" jdbcType="VARCHAR" property="attachmentid" />
+    <result column="operatorName" jdbcType="VARCHAR" property="operatorname" />
+    <result column="operatorId" jdbcType="INTEGER" property="operatorid" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+    <result column="remark" jdbcType="LONGVARCHAR" property="remark" />
+  </resultMap>
+</mapper>
