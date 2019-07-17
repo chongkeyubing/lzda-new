@@ -8,7 +8,7 @@
 <div style="display: flex;justify-content: center;">
     <form class="layui-form form1" action="user/update" method="post" id="userUpdateForm">
 
-        <input type="hidden" name="id" value="${user.id}">
+            <input type="hidden" name="id" value="${user.id}">
         <div class="layui-form-item">
             <div class="layui-inline">
                 <label class="layui-form-label">姓名</label>

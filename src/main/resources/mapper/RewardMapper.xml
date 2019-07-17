@@ -21,4 +21,18 @@
     <result column="content" jdbcType="LONGVARCHAR" property="content" />
     <result column="remark" jdbcType="LONGVARCHAR" property="remark" />
   </resultMap>
+
+  <select id="findRewardsByCondition" parameterType="com.mwkj.lzda.model.Reward" resultType="com.mwkj.lzda.model.Reward">
+    select r.* ,u.police_code
+    from reward r
+    inner join user u on r.user_id = u.id
+    <where>
+      <if test="userName!=null and userName!=''">
+        and r.user_name like '%${userName}%'
+      </if>
+      <if test="policeCode!=null and policeCode!=''">
+        and u.police_code = #{policeCode}
+      </if>
+    </where>
+  </select>
 </mapper>

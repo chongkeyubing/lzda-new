@@ -45,24 +45,24 @@
                         </ul>
                     </dd>
 
-                    <%--<shiro:hasAnyRoles name="政治处领导,督察大队,纪委">--%>
-                    <%--<dd>--%>
-                        <%--<h2 class="menu menu02">奖惩管理</h2>--%>
-                        <%--<ul class="menuSideBar">--%>
+                    <shiro:hasAnyRoles name="政治处领导,督察大队,纪委">
+                    <dd>
+                        <h2 class="menu menu02">奖惩管理</h2>
+                        <ul class="menuSideBar">
                             <%--<shiro:hasPermission name="奖励信息">--%>
-                            <%--<li>--%>
-                                <%--<a href="views/reward_list.jsp">奖励信息</a>--%>
-                            <%--</li>--%>
+                            <li>
+                                <a href="views/reward/reward_list.jsp">奖励信息</a>
+                            </li>
                             <%--</shiro:hasPermission>--%>
                             <%--<shiro:hasPermission name="违惩信息">--%>
-                            <%--<li>--%>
-                                <%--<a href="">违惩信息</a>--%>
-                            <%--</li>--%>
+                            <li>
+                                <a href="">违惩信息</a>
+                            </li>
                             <%--</shiro:hasPermission>--%>
-                        <%--</ul>--%>
+                        </ul>
 
-                    <%--</dd>--%>
-                    <%--</shiro:hasAnyRoles>--%>
+                    </dd>
+                    </shiro:hasAnyRoles>
 
                     <%--<shiro:hasPermission name="上报管理">--%>
                     <%--<dd>--%>
@@ -138,8 +138,12 @@
                             <%--</li>--%>
                             </shiro:hasPermission>
                             <li>
+                                <a href="user/toPersonalInfo">个人信息</a>
+                            </li>
+                            <li>
                                 <a href="views/user/password_update.jsp">密码修改</a>
                             </li>
+
                         </ul>
                     </dd>
 

@@ -56,7 +56,6 @@ public class SpringFileUploader {
 
                             //返回上传图片的访问路径
                             fileUrls.add(savePath);
-                            break;
                         }
                     }
                 }

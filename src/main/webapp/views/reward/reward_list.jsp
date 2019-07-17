@@ -24,7 +24,7 @@
         </div>
 
         <div class="layui-inline" style="float:right">
-            <button class="layui-btn layui-btn-normal" type="button" id="addReward">新增</button>
+            <button class="layui-btn layui-btn-normal" type="button" id="addReward">新增表彰</button>
         </div>
 
     </div>
@@ -34,6 +34,8 @@
 
 <script type="text/html" id="rewardTableBar">
     <a class="layui-btn layui-btn-sm layui-btn-normal" lay-event="detail">明细</a>
+    <a class="layui-btn layui-btn-sm layui-btn-warm" lay-event="update">修改</a>
+    <a class="layui-btn layui-btn-sm layui-btn-danger" lay-event="del">删除</a>
 </script>
 
 <script>
@@ -60,8 +62,46 @@
             ]]
         });
 
+        //明细按钮监听
+        table.on('tool(rewardTable)', function (obj) {
+            debugger;
+            var data = obj.data;
+            if (obj.event === 'detail') {
+                $.get('reward/toRewardDetail?id=' + data.id, function (html) {
+                    layer.open({
+                        type: 1,
+                        title: data.rewardType + "-" + data.userName,
+                        area: ['1200px', '700px'],
+                        content: html
+                    });
+                });
+            }else if(obj.event === 'update'){
+                $.get('reward/toRewardUpdate?id=' + data.id, function (html) {
+                    layer.open({
+                        type: 1,
+                        title: '修改' + data.rewardType + "-" + data.userName,
+                        area: ['1200px', '700px'],
+                        content: html
+                    });
+                });
+            }else if(obj.event === 'del'){
+                debugger;
+                layer.confirm('确定删除？', function (index) {
+                    $.get('reward/delete?id=' + data.id, function (data) {
+                        layer.close(index);
+                        if (data.success) {
+                            layer.msg("删除成功");
+                            $("#queryReward").click();
+                        } else {
+                            layer.msg("删除失败");
+                        }
+                    });
+                });
+            }
+        });
+
         //查询按钮监听
-        form.on('submit(queryOperateLog)', function (data) {
+        form.on('submit(queryReward)', function (data) {
             debugger;
             reloadTable(data.field);//当前容器的全部表单字段，名值对形式：{name: value}
             return false; //阻止表单跳转
@@ -75,7 +115,7 @@
         }
         
         $("#addReward").click(function () {
-            $.post('reward/toAddReward', function (html) {
+            $.get('reward/toAddReward', function (html) {
                 layer.open({
                     type: 1,
                     title: '新增表彰',

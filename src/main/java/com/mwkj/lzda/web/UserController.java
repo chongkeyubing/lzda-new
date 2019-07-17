@@ -126,7 +126,7 @@ public class UserController {
      */
     @RequestMapping("/toUserSelect")
     public String toUserSelect() {
-        return "/views/userSelect";
+        return "/views/user/user_select";
     }
 
     /**
@@ -212,6 +212,26 @@ public class UserController {
 
         return "/views/user/user_update";
     }
+
+    /**
+     * @Author libaogang
+     * @Date 2019-07-17 16:07
+     * @Param []
+     * @return java.lang.String
+     * @Description 跳转到个人信息页面
+     */
+    @RequestMapping("/toPersonalInfo")
+    public String toPersonalInfo(ModelMap map,HttpSession session){
+        User currentUser = (User)session.getAttribute("currentUser");
+        User user = userService.findById(currentUser.getId());
+
+        Role role = roleService.findById(user.getRoleid());
+        user.setRole(role.getRolename());
+
+        map.put("user",user);
+        return "/views/user/personal_info";
+    }
+
 
 
 

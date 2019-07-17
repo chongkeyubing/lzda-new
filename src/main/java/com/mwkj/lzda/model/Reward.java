@@ -29,6 +29,17 @@ public class Reward {
     @Column(name = "user_name")
     private String userName;
 
+    @Transient
+    private String policeCode;
+
+    public String getPoliceCode() {
+        return policeCode;
+    }
+
+    public void setPoliceCode(String policeCode) {
+        this.policeCode = policeCode;
+    }
+
     /**
      * 职务
      */
@@ -61,20 +72,20 @@ public class Reward {
     /**
      * 附件uuid，关联附件表sourceId
      */
-    @Column(name = "attachmentId")
-    private String attachmentid;
+    @Column(name = "attachment_id")
+    private String attachmentId;
 
     /**
      * 操作者姓名
      */
-    @Column(name = "operatorName")
-    private String operatorname;
+    @Column(name = "operator_name")
+    private String operatorName;
 
     /**
      * 操作者id
      */
-    @Column(name = "operatorId")
-    private Integer operatorid;
+    @Column(name = "operator_id")
+    private Integer operatorId;
 
     /**
      * 创建时间
@@ -254,58 +265,28 @@ public class Reward {
         this.rewardOrganization = rewardOrganization;
     }
 
-    /**
-     * 获取附件uuid，关联附件表sourceId
-     *
-     * @return attachmentId - 附件uuid，关联附件表sourceId
-     */
-    public String getAttachmentid() {
-        return attachmentid;
+    public String getAttachmentId() {
+        return attachmentId;
     }
 
-    /**
-     * 设置附件uuid，关联附件表sourceId
-     *
-     * @param attachmentid 附件uuid，关联附件表sourceId
-     */
-    public void setAttachmentid(String attachmentid) {
-        this.attachmentid = attachmentid;
+    public void setAttachmentId(String attachmentId) {
+        this.attachmentId = attachmentId;
     }
 
-    /**
-     * 获取操作者姓名
-     *
-     * @return operatorName - 操作者姓名
-     */
-    public String getOperatorname() {
-        return operatorname;
+    public String getOperatorName() {
+        return operatorName;
     }
 
-    /**
-     * 设置操作者姓名
-     *
-     * @param operatorname 操作者姓名
-     */
-    public void setOperatorname(String operatorname) {
-        this.operatorname = operatorname;
+    public void setOperatorName(String operatorName) {
+        this.operatorName = operatorName;
     }
 
-    /**
-     * 获取操作者id
-     *
-     * @return operatorId - 操作者id
-     */
-    public Integer getOperatorid() {
-        return operatorid;
+    public Integer getOperatorId() {
+        return operatorId;
     }
 
-    /**
-     * 设置操作者id
-     *
-     * @param operatorid 操作者id
-     */
-    public void setOperatorid(Integer operatorid) {
-        this.operatorid = operatorid;
+    public void setOperatorId(Integer operatorId) {
+        this.operatorId = operatorId;
     }
 
     /**

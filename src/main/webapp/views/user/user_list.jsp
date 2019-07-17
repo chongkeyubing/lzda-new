@@ -86,19 +86,20 @@
             page: true, //开启分页
             method: 'post',
             cols: [[ //表头
-                {field: 'realname', title: '姓名'},
-                {field: 'policeCode', title: '警号'},
-                {field: 'gender', title: '性别'},
-                {field: 'role', title: '角色'},
+                {field: 'realname', title: '姓名',width:100},
+                {field: 'policeCode', title: '警号',width:100},
+                {field: 'gender', title: '性别',width:60},
+                {field: 'role', title: '角色',width:120},
                 {
                     field: 'birthday',
                     title: '出生日期',
-                    templet: "<div>{{layui.util.toDateString(d.createTime, 'yyyy-MM-dd HH:mm:ss')}}</div>"
+                    templet: "<div>{{layui.util.toDateString(d.createTime, 'yyyy-MM-dd HH:mm:ss')}}</div>",
+                    width:200
                 },
                 {field: 'organizationName', title: '单位'},
                 {field: 'jobPosition', title: '职务'},
                 {field: 'identityNumber', title: '身份证'},
-                {field: 'operate', align: 'center', title: '操作', toolbar: '#userTableBar'}
+                {field: 'operate', align: 'center', title: '操作', toolbar: '#userTableBar',width:180}
             ]]
         });
 
@@ -120,13 +121,12 @@
                 debugger;
                 layer.confirm('确定删除？', function (index) {
                     $.get('user/delete?id=' + data.id, function (data) {
+                        layer.close(index);
                         if (data.success) {
-                            layer.close(index);
                             layer.msg("删除成功");
                             $("#queryUser").click();
                         } else {
                             layer.msg("删除失败");
-                            layer.close(index);
                         }
                     });
                 });
