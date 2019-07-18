@@ -123,7 +123,7 @@
                 <label class="layui-form-label">出生日期</label>
                 <div class="layui-input-inline">
                     <input type="text" name="arcBasicInfo.birthday" readonly autocomplete="off" class="layui-input"
-                           value='<fmt:formatDate value="${currentUser.birthday}"  pattern="yyyy-MM-dd"/>'
+                           value='${currentUser.birthday}'
                            lay-verify="required">
                 </div>
             </div>
