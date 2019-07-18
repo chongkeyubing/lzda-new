@@ -78,3 +78,7 @@ input[type="file"] > input[type="button"]::-moz-focus-inner{ border:none; paddin
 .imgDisplay{width: 100%;overflow: hidden;text-align: left;}
 .imgDisplay td{text-align: left;width: 100%;overflow: hidden;}
 .imgDisplay td img{margin-left: 2.5%;}
+/*.imgDisplay td img{margin-left: 2.5%;height: 100px;width: 100px;margin-bottom: 10px;}*/
+.imgDisplay td ul{width: 100%;overflow: hidden;}
+.imgDisplay td ul li{width: 100px;overflow: hidden;float: left;padding: 5px;}
+.imgDisplay td ul li img{width: 100%;height:100px;text-align: center;}

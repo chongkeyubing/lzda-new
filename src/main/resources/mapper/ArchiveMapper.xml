@@ -377,7 +377,6 @@
         left join user u on a.user_id = u.id
         left join organization o on o.id = u.organization_id
 
-          ###################################################
         union all
 
         select a.user_id,
@@ -997,7 +996,6 @@
         </where>
         )
 
-          #######################################
         +
 
         (

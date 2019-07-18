@@ -44,12 +44,18 @@
 
                     <tr class="imgDisplay">
                         <td colspan="6">
-                            <c:forEach items="${attachments}" var="attachment" varStatus="statu">
-                                <a href="${attachment.url}" target="_blank">
-                                    <%--<img src="${attachment.url}" onclick="list(${statu.index})"/>--%>
-                                    <img src="${attachment.url}"/>
-                                </a>
-                            </c:forEach>
+                            <ul>
+                                <c:forEach items="${attachments}" var="attachment" varStatus="statu">
+                                    <li>
+
+                                        <a href="${attachment.url}" target="_blank">
+                                                <%--<img src="${attachment.url}" onclick="list(${statu.index})"/>--%>
+                                            <img src="${attachment.url}"/>
+                                        </a>
+
+                                    </li>
+                                </c:forEach>
+                            </ul>
                         </td>
                     </tr>
                 </c:if>
