@@ -4,7 +4,7 @@
 	 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<settings>
-		<!-- 开启自动映射（驼峰命名  user_id => userId） -->
+		<!-- 开启sql返回的字段以驼峰方式映射到实体类属性（ user_id => userId ） -->
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
 		<!-- 打印查询语句 -->
         <setting name="logImpl" value="STDOUT_LOGGING" />

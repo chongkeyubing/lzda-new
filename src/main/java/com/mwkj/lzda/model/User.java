@@ -47,8 +47,8 @@ public class User {
     /**
      * 出生日期
      */
-    @DateTimeFormat(pattern = "yyy-MM-dd")
-    private Date birthday;
+    private String birthday;
+
 
     /**
      * 身份证
@@ -165,22 +165,11 @@ public class User {
     }
 
 
-
-    /**
-     * 获取出生日期
-     *
-     * @return birthday - 出生日期
-     */
-    public Date getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    /**
-     * 设置出生日期
-     *
-     * @param birthday 出生日期
-     */
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 

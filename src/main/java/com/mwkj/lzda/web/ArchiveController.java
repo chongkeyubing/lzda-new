@@ -94,7 +94,6 @@ public class ArchiveController {
      */
     @RequestMapping("/toAddArchive")
     public String toAddArchive(ArchiveDTO archive, ModelMap map) {
-        map.put("archiveType", archive.getArchiveType());
         String page = archiveService.toAddArchive(archive);
         if (page == null) {
             throw new AppException("档案类型不存在");

@@ -181,7 +181,6 @@
                     approveRecord: true,
                     userId: data.userId,
                     userName: data.userName
-
                 }, function (html) {
                     layer.open({
                         type: 1,

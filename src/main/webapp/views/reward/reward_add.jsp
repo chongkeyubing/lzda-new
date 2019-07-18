@@ -6,7 +6,6 @@
 
         <input type="hidden" name="userId" id="selectUserId">
         <input type="hidden" name="organizationId" id="selectOrganizationId">
-
         <input type="hidden" name="operatorName" value="${currentUser.realname}">
         <input type="hidden" name="operatorId" value="${currentUser.id}">
 
@@ -14,8 +13,9 @@
             <div class="layui-inline">
                 <label class="layui-form-label">被表彰人</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="userName" readonly autocomplete="off" class="layui-input"
-                           placeholder="点击选择被表彰人" lay-verify="required" id="selectUserName">
+                    <input type="text" name="userName" readonly lay-verify="required" autocomplete="off"
+                           class="layui-input" placeholder="点击选择"  style="width: 74%;display: inline-block;" id="selectUserName">
+                    <button class="layui-btn  layui-btn-sm layui-btn-normal" type="button" id="selectUser">选择</button>
                 </div>
             </div>
             <div class="layui-inline">
@@ -164,7 +164,7 @@
         });
 
         //选择用户
-        $("#selectUserName").click(function (e) {
+        $("#selectUser").click(function (e) {
             $.get('user/toUserSelect', function (html) {
                 layer.open({
                     type: 1,

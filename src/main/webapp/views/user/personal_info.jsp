@@ -53,7 +53,7 @@
                 <div class="layui-input-inline">
                     <input type="text" name="birthday" id="birthday" lay-verify="required" autocomplete="off"
                            class="layui-input" readonly
-                           value='<fmt:formatDate value="${user.birthday}" pattern="yyyy-MM-dd"></fmt:formatDate>'>
+                           value="${user.birthday}" />
 
                 </div>
             </div>

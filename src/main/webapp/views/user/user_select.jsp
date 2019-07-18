@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<div style="padding: 20px;width: 1000px;height: 650px;">
+<div style="padding: 20px;width: 1000px;height: 450px;">
 
     <form class="layui-form form1">
         <div class="layui-form-item">
@@ -40,13 +40,15 @@
         var tableIns = table.render({
             elem: '#userSelectTable',
             url: '/user/list',
-            method:'post',
+            method: 'post',
             //height: 312,
             page: true, //开启分页
+            limit: 5,
+            limits: [5],
             cols: [[ //表头
                 {field: 'policeCode', title: '警号'},
                 {field: 'realname', title: '姓名'},
-                {field: 'organizationName', title: '单位' ,width:320 },
+                {field: 'organizationName', title: '单位', width: 320},
                 {field: 'jobPosition', title: '职务'},
                 {field: 'operate', align: 'center', title: '操作', toolbar: '#userSelectTableBar'}
             ]]
@@ -57,18 +59,14 @@
             debugger;
             var data = obj.data;
             if (obj.event === 'choose') {
-                $("#selectUserId").val(data.id);
-                $("#selectUserName").val(data.realname);
-                $("#selectOrganizationId").val(data.organizationId);
-                $("#selectOrganization").val(data.organizationName);
-                $("#selectJobPosition").val(data.jobPosition);
+                writeBack(data)
             }
             //关闭当前弹窗
             layer.close(layer.index);
         });
 
         //监听查询
-        form.on('submit(queryUser)',function (data) {
+        form.on('submit(queryUser)', function (data) {
             debugger;
             reloadTable(data.field);//当前容器的全部表单字段，名值对形式：{name: value}
             return false; //阻止表单跳转
@@ -80,6 +78,19 @@
                 where: param //设定异步数据接口的额外参数，任意设
             });
         }
+
+        //选择用户后向页面回填用户信息
+        function writeBack(data) {
+            debugger;
+            $("#selectUserId") ? $("#selectUserId").val(data.id) : null;
+            $("#selectUserName") ? $("#selectUserName").val(data.realname) : null;
+            $("#selectOrganizationId") ? $("#selectOrganizationId").val(data.organizationId) : null;
+            $("#selectOrganization") ? $("#selectOrganization").val(data.organizationName) : null;
+            $("#selectJobPosition") ? $("#selectJobPosition").val(data.jobPosition) : null;
+            $("#selectGender") ? $("#selectGender").val(data.gender) : null;
+            $("#selectBirthday") ? $("#selectBirthday").val(data.birthday) : null;
+        }
+
     });
 </script>
 

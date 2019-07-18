@@ -77,8 +77,9 @@ public class Attachment {
      *
      * @param sourceId 关联id
      */
-    public void setSourceId(String sourceId) {
+    public Attachment setSourceId(String sourceId) {
         this.sourceId = sourceId;
+        return this;
     }
 
     /**

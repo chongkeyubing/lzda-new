@@ -38,6 +38,7 @@ public class RewardServiceImpl extends AbstractService<Reward> implements Reward
         return rewardMapper.findRewardsByCondition(reward);
     }
 
+
     @Override
     public void add(Reward reward, HttpServletRequest request) {
         //上传图片

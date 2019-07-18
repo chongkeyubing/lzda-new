@@ -77,7 +77,7 @@
                 <label class="layui-form-label">出生日期</label>
                 <div class="layui-input-inline">
                     <input type="text" name="birthday" id="birthday" lay-verify="required" autocomplete="off"
-                           class="layui-input" value="<fmt:formatDate value="${user.birthday}" pattern="yyyy-MM-dd"/>">
+                           class="layui-input" value="${user.birthday}" />
                 </div>
             </div>
         </div>
