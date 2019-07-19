@@ -1,6 +1,6 @@
 package com.mwkj.lzda.util;
 
-import com.mwkj.lzda.constant.SysConstant;
+import com.mwkj.lzda.constant.SystemConstant;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.util.ByteSource;
 
@@ -28,7 +28,7 @@ public class EncryptUtil {
     }
 
     public static void main(String[] args) {
-        String password = md5("123456", SysConstant.SALT,1024);
+        String password = md5("123456", SystemConstant.SALT,1024);
         System.out.println(password);
     }
 }

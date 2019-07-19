@@ -3,7 +3,7 @@ package com.mwkj.lzda.core.shiro;
 import java.util.HashSet;
 import java.util.List;
 
-import com.mwkj.lzda.constant.SysConstant;
+import com.mwkj.lzda.constant.SystemConstant;
 import com.mwkj.lzda.model.User;
 import com.mwkj.lzda.service.UserService;
 import org.apache.shiro.authc.*;
@@ -46,7 +46,7 @@ public class UserRealm extends AuthorizingRealm{
 		}
 
 		//根据id获取盐值
-		ByteSource salt = ByteSource.Util.bytes(SysConstant.SALT);
+		ByteSource salt = ByteSource.Util.bytes(SystemConstant.SALT);
 
 		AuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
 				user.getPoliceCode(), user.getPassword(), salt,getName());

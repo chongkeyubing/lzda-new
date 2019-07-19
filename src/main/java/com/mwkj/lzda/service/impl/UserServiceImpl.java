@@ -1,13 +1,12 @@
 package com.mwkj.lzda.service.impl;
 
-import com.mwkj.lzda.constant.SysConstant;
+import com.mwkj.lzda.constant.SystemConstant;
 import com.mwkj.lzda.core.AppException;
 import com.mwkj.lzda.dao.UserMapper;
 import com.mwkj.lzda.model.User;
 import com.mwkj.lzda.service.UserService;
 import com.mwkj.lzda.core.AbstractService;
 import com.mwkj.lzda.util.EncryptUtil;
-import javafx.scene.Parent;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -52,14 +51,14 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
 //        String salt = String.valueOf(user.getId());
         final int hashIterations = 1024;
 
-        user.setPassword(EncryptUtil.md5(user.getPassword(), SysConstant.SALT, hashIterations));
+        user.setPassword(EncryptUtil.md5(user.getPassword(), SystemConstant.SALT, hashIterations));
         User user1 = this.findOne(user);
 
         if (null == user1) {
             throw new AppException("修改失败，原密码错误");
         }
 
-        user.setPassword(EncryptUtil.md5(newPassword, SysConstant.SALT, hashIterations));
+        user.setPassword(EncryptUtil.md5(newPassword, SystemConstant.SALT, hashIterations));
         userMapper.updateByPrimaryKeySelective(user);
 
         //登出系统
