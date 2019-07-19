@@ -7,9 +7,9 @@ package com.mwkj.lzda.core;
  */
 public class ResultUtil {
 
-    private static final int SUCCESS_CODE = 0;
-    private static final int FAIL_CODE = -1;
-    private static final String DEFAULT_SUCCESS_MESSAGE = "success";
+    public static final int SUCCESS_CODE = 0;
+    public static final int FAIL_CODE = -1;
+    public static final String DEFAULT_SUCCESS_MESSAGE = "success";
 
     public static Result success() {
         Result result = new Result();

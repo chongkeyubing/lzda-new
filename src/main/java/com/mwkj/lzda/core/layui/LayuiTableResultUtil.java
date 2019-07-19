@@ -8,10 +8,7 @@ import com.mwkj.lzda.core.ResultUtil;
  * @Date: 2019-07-02 11:28
  * @Description layui表格结果生成工具
  */
-public class LayuiTableResultUtil {
-
-    private static final int SUCCESS_CODE = 0;
-    private static final String DEFAULT_SUCCESS_MESSAGE = "success";
+public class LayuiTableResultUtil extends ResultUtil {
 
     public static <T> Result<T> success(T data, long count) {
         LayuiTableResult<T> result = new LayuiTableResult<>();

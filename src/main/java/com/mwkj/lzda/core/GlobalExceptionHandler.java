@@ -18,19 +18,23 @@ public class GlobalExceptionHandler implements HandlerExceptionResolver {
     @Override
     public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response,
                                          Object handler, Exception e) {
-        System.out.println("===================" + e + "===================");
         e.printStackTrace();
         ModelAndView mv = new ModelAndView();
-        if (isAjax(request)) {  //如果是ajax请求
+        //如果是ajax请求
+        if (isAjax(request)) {
             Result result;
-            if (e instanceof AppException) {//业务失败的异常
+            //业务异常
+            if (e instanceof AppException) {
                 result = ResultUtil.fail(e.getMessage());
             } else {
+                //其余异常
                 result = ResultUtil.fail("接口 [" + request.getRequestURI() + "] 内部错误:" + e.getMessage());
             }
-            responseResult(response, result); //输出json,不会再跳转到视图
-        } else {  //如果是页面请求
-            mv.setViewName("error");      //跳转到错误页面
+            //输出json,不会再跳转到视图
+            responseResult(response, result);
+        } else {
+            //如果是页面请求跳转到错误页面
+            mv.setViewName("error");
             if (e instanceof AppException) {
                 mv.addObject("msg", e.getMessage());
             } else {

@@ -19,6 +19,7 @@
         //点击提交
         form.on('submit(submitArchive)', function () {
             debugger;
+            layer.load(2)
             $("#archiveForm").ajaxSubmit({
                 success: function (data) {
 

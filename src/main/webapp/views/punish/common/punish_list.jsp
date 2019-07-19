@@ -128,7 +128,7 @@
                 $.get('punish/toPunishUpdate' + param, function (html) {
                     layer.open({
                         type: 1,
-                        title: '修改' + data.punishType + "-" + data.userName,
+                        title: '修改' + PUNISH_TYPE[data.punishType] + "-" + data.userName,
                         area: ['1200px', '700px'],
                         content: html
                     });

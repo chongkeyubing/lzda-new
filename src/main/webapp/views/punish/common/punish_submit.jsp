@@ -19,6 +19,7 @@
         //点击提交
         form.on('submit(submitPunish)', function () {
             debugger;
+            layer.load(2);
             $("#punishForm").ajaxSubmit({
                 success: function (data) {
                     if (data.success) {

@@ -129,7 +129,7 @@
             var tmpInput = $("<input type='hidden' name='organizationName'/>");
             tmpInput.attr("value", $('#organizationName option:selected').text());   //将会得到选中的text值
             myform.append(tmpInput);
-
+            layer.load(2)
             $("#userUpdateForm").ajaxSubmit({
                 success: function (data) {
                     if (data.success) {

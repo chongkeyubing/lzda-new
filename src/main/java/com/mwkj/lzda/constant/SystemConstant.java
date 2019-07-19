@@ -12,4 +12,6 @@ public class SystemConstant {
 
     //密码加密盐值
     public static final String SALT = "lzda";
+
+
 }

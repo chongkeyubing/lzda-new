@@ -110,6 +110,7 @@
         });
 
         function ajaxSubmit() {
+            layer.load(2)
             $("#approveForm").ajaxSubmit({
                 success: function (data) {
                     if (data.success) {

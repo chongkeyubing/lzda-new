@@ -141,6 +141,7 @@
         //点击提交
         form.on('submit(submitReward)', function () {
             debugger;
+            layer.load(2);
             $("#rewardForm").ajaxSubmit({
                 success: function (data) {
                     if (data.success) {

@@ -59,8 +59,10 @@
                 layer.msg("密码长度请保持在6-18位");
                 return false;
             }
+            layer.load(2);
             $("#passwordForm").ajaxSubmit({
                 success: function (data) {
+                    layer.closeAll();
                     if (data.success) {
                         layer.confirm('密码修改成功，请重新登陆',{btn:['重新登陆'],closeBtn:0},function(){
                              window.location.href = "index.jsp";
