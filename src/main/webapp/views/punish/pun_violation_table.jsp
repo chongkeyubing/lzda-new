@@ -66,7 +66,8 @@
                 </tr>
                 <c:if test="${not empty attachments}">
                     <tr class="imgDisplay">
-                        <td colspan="6">
+                        <td>附件</td>
+                        <td colspan="5">
                             <ul>
                                 <c:forEach items="${attachments}" var="attachment" varStatus="statu">
                                     <li>
