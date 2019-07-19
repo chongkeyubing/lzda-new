@@ -1,8 +1,6 @@
 @charset "utf-8";
 /***公共样式****/
 *{margin:0;padding:0;border:0;outline:0;-moz-box-sizing:border-box; -webkit-box-sizing:border-box;  -o-box-sizing:border-box; -ms-box-sizing:border-box;}
-@font-face { font-family: 'fzhei-b01sregular'; src: url('../_-webfont.eot'); src: url('../_-webfont.eot?#iefix') format('embedded-opentype'), url('../_-webfont.woff2') format('woff2'), url('../_-webfont.woff') format('woff'), url('../_-webfont.ttf') format('truetype'), url('../_-webfont.svg#fzhei-b01sregular') format('svg'); font-weight: normal; font-style: normal;
-}
 html,body{ overflow-x:hidden;}
 html,body,form,fieldset,p,div,h1,h2,h3,h4,h5,h6{-webkit-text-size-adjust:none}
 article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;clear:both;}

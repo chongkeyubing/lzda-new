@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mwkj.lzda.dao.PunTalkMapper">
+  <resultMap id="BaseResultMap" type="com.mwkj.lzda.model.PunTalk">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="organization_id" jdbcType="INTEGER" property="organizationId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="job_position" jdbcType="VARCHAR" property="jobPosition" />
+    <result column="organization" jdbcType="VARCHAR" property="organization" />
+    <result column="time" jdbcType="VARCHAR" property="time" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="talk_person_id" jdbcType="INTEGER" property="talkPersonId" />
+    <result column="talk_person_name" jdbcType="VARCHAR" property="talkPersonName" />
+    <result column="talk_person_org" jdbcType="VARCHAR" property="talkPersonOrg" />
+    <result column="talk_person_job" jdbcType="VARCHAR" property="talkPersonJob" />
+    <result column="operator_id" jdbcType="INTEGER" property="operatorId" />
+    <result column="operator" jdbcType="VARCHAR" property="operator" />
+    <result column="attachment_id" jdbcType="VARCHAR" property="attachmentId" />
+    <result column="punish_type" jdbcType="INTEGER" property="punishType" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+    <result column="talked_person_advice" jdbcType="LONGVARCHAR" property="talkedPersonAdvice" />
+    <result column="remark" jdbcType="LONGVARCHAR" property="remark" />
+  </resultMap>
+</mapper>

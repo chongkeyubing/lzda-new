@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!-- shiro配置 -->
+    <!-- 自定义Realm -->
+    <bean id="myRealm" class="com.mwkj.lzda.core.shiro.UserRealm">
+        <!-- 打开缓存 -->
+        <property name="cachingEnabled" value="true"/>
+        <!-- 打开身份认证缓存 -->
+        <property name="authenticationCachingEnabled" value="true"/>
+        <!-- 打开授权缓存 -->
+        <property name="authorizationCachingEnabled" value="true"/>
+        <!-- 密码加密处理 -->
+        <property name="credentialsMatcher">
+            <bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+                <!-- 加密算法 -->
+                <property name="hashAlgorithmName" value="MD5"></property>
+                <!-- 加密次数 -->
+                <property name="hashIterations" value="1024"></property>
+            </bean>
+        </property>
+    </bean>
+
+    <!-- 安全管理器 -->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="myRealm"/>
+        <property name="cacheManager" ref="shiroSpringCacheManager"/>
+    </bean>
+
+    <!-- shiro自带的内存缓存管理器 -->
+    <bean id="shiroSpringCacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager"/>
+
+    <!-- 管理shiro bean生命周期 -->
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+
+    <!-- Shiro过滤器 -->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <!-- Shiro的核心安全接口-->
+        <property name="securityManager" ref="securityManager"/>
+        <!-- 默认的登陆访问url -->
+        <property name="loginUrl" value="/index.jsp"/>
+        <!-- 登陆成功后跳转的url -->
+        <property name="successUrl" value="/main.jsp"/>
+        <!-- 权限认证失败，则跳转到指定页面 -->
+        <property name="unauthorizedUrl" value="/403.jsp"/>
+        <!-- Shiro连接约束配置,即过滤链的定义 -->
+        <property name="filterChainDefinitions">
+            <value>
+                <!-- 静态文件 -->
+                /static/** = anon
+                /login = anon
+                /logout = anon
+                /** = authc
+            </value>
+        </property>
+    </bean>
+
+</beans>
