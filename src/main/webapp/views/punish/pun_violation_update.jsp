@@ -91,7 +91,7 @@
                 <label class="layui-form-label">违纪类型</label>
                 <div class="layui-input-inline">
                     <select name="violationType" id="violationType">
-                        <option value="${punish.violationType}">${punish.violationType}</option>
+
                     </select>
 
                 </div>
@@ -208,8 +208,10 @@
 
     </div>
 </div>
+
 <script src="static/js/initDom.js"></script>
 <script src="static/js/imgUp1.js"></script>
+
 <script>
     layui.use(['form', 'layedit', 'laydate'], function () {
         var form = layui.form,
@@ -287,16 +289,17 @@
         //图片删除
         $(".deleteImg").click(function () {
             debugger;
-            console.log($(this).data("id"));
             var _this = this;
-            $.get("attachment/delete?id= " + $(this).data("id"), function (data) {
-                if (data.success) {
-                    layer.msg("删除原图成功");
-                    deleteImg(_this);
-                } else {
-                    layer.msg("删除失败");
-                }
-
+            layer.confirm('确定删除？', function (index) {
+                $.get("attachment/delete?id= " + $(_this).data("id"), function (data) {
+                    layer.close(index); //关闭确定删除弹窗
+                    if (data.success) {
+                        layer.msg("删除成功");
+                        deleteImg(_this);
+                    } else {
+                        layer.msg("删除失败");
+                    }
+                });
             });
         });
 

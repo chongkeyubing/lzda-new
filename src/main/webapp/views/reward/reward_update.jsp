@@ -186,16 +186,17 @@
         //图片删除
         $(".deleteImg").click(function () {
             debugger;
-            console.log($(this).data("id"));
             var _this = this;
-            $.get("attachment/delete?id= " + $(this).data("id"), function (data) {
-                if (data.success) {
-                    layer.msg("删除原图成功");
-                    deleteImg(_this);
-                } else {
-                    layer.msg("删除失败");
-                }
-
+            layer.confirm('确定删除？', function (index) {
+                $.get("attachment/delete?id= " + $(_this).data("id"), function (data) {
+                    layer.close(index); //关闭确定删除弹窗
+                    if (data.success) {
+                        layer.msg("删除成功");
+                        deleteImg(_this);
+                    } else {
+                        layer.msg("删除失败");
+                    }
+                });
             });
         });
 

@@ -5,97 +5,108 @@
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 
 <div style="display: flex;justify-content: center;">
-    <form class="layui-form form1" action='punaccountability/update' id="punishForm" method="post">
-        <input type="hidden" name="id" value="${punish.id}">
+    <form class="layui-form form1" action='punnotice/add' id="punishForm" method="post">
         <%--隐藏表单--%>
-        <input type="hidden" name="organizationId" id="selectOrganizationId" value="${punish.organizationId}">
+        <input type="hidden" name="organizationId" id="selectOrganizationId">
         <!-- 填表人 -->
-        <input type="hidden" name="operatorId" value="${punish.operatorId}">
-
-        <input type="hidden" name="userId" id="selectUserId" value="${punish.userId}">
-        <%--附件id--%>
-        <input type="hidden" name="attachmentId" value="${punish.attachmentId}">
+        <input type="hidden" name="operatorId" value="${currentUser.id}">
+        <input type="hidden" name="operator" value="${currentUser.realname}">
+        <input type="hidden" name="userId" id="selectUserId">
 
         <div class="layui-form-item">
             <div class="layui-inline">
-                <label class="layui-form-label">姓 名</label>
+                <label class="layui-form-label">被通报人姓名</label>
                 <div class="layui-input-inline">
                     <input type="text" name="userName" readonly lay-verify="required" autocomplete="off"
                            class="layui-input" placeholder="点击选择" style="width: 74%;display: inline-block;"
-                           id="selectUserName" value="${punish.userName}">
+                           id="selectUserName">
                     <button class="layui-btn  layui-btn-sm layui-btn-normal" type="button" id="selectUser">选择</button>
                 </div>
             </div>
             <div class="layui-inline">
-                <label class="layui-form-label">单位</label>
+                <label class="layui-form-label">被通报人单位</label>
                 <div class="layui-input-inline">
                     <input type="text" name="organization" readonly lay-verify="required" autocomplete="off"
-                           class="layui-input" id="selectOrganization" value="${punish.organization}">
+                           class="layui-input" id="selectOrganization">
                 </div>
             </div>
             <div class="layui-inline">
-                <label class="layui-form-label">职 务</label>
+                <label class="layui-form-label">被通报人职务</label>
                 <div class="layui-input-inline">
                     <input type="text" name="jobPosition" readonly lay-verify="required" autocomplete="off"
-                           class="layui-input" id="selectJobPosition" value="${punish.jobPosition}">
+                           class="layui-input" id="selectJobPosition">
                 </div>
             </div>
-
         </div>
 
         <div class="layui-form-item">
             <div class="layui-inline">
-                <label class="layui-form-label">问责类型</label>
+                <label class="layui-form-label">通报类型</label>
                 <div class="layui-input-inline">
                     <select name="type" lay-verify="required">
-                        <c:forTokens items="诫勉谈话,书面检查,责令公开道歉,停职检查,引咎辞职,责令辞职,免职,辞退或解聘" delims="," var="type">
-                            <option value="${type}"
-                                    <c:if test="${punish.type == type}">selected</c:if>
-                            >${type}</option>
-                        </c:forTokens>
+                        <option value="">请选择</option>
+                        <option value="分局通报">分局通报</option>
+                        <option value="市局通报">市局通报</option>
+                        <option value="省厅通报">省厅通报</option>
+                        <option value="其他部门通报">其他部门通报</option>
                     </select>
                 </div>
             </div>
             <div class="layui-inline">
-                <label class="layui-form-label">问责时间</label>
+                <label class="layui-form-label">通报时间</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="time" id="time" lay-verify="required|date" autocomplete="off"
-                           class="layui-input" value="${punish.time}">
+                    <input type="text" name="time" id="time" autocomplete="off" class="layui-input" lay-verify="required|date">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">处理情况</label>
+                <div class="layui-input-inline">
+                    <select name="handleInfo" lay-verify="required">
+                        <option value="">请选择</option>
+                        <option value="通报批评">通报批评</option>
+                        <option value="提醒谈话">提醒谈话</option>
+                    </select>
                 </div>
             </div>
         </div>
-        <div class="layui-form-item layui-form-text">
-            <label class="layui-form-label">问责内容</label>
-            <div class="layui-input-inline">
-                <textarea placeholder="请输入内容" class="layui-textarea txtArea" name="content"
-                          lay-verify="required">${punish.content}</textarea>
+
+        <div class="layui-form-item">
+
+            <div class="layui-inline">
+                <label class="layui-form-label">记分情况</label>
+                <div class="layui-input-inline">
+                    <select name="score" lay-verify="required">
+                        <option value="">请选择</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </div>
             </div>
         </div>
 
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">通报内容</label>
+            <div class="layui-input-inline">
+                <textarea placeholder="请输入内容" class="layui-textarea txtArea" name="content" lay-verify="required"></textarea>
+            </div>
+        </div>
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">备 注</label>
             <div class="layui-input-inline">
-                <textarea placeholder="请输入内容" class="layui-textarea txtArea" name="remark">${punish.remark}</textarea>
+                <textarea placeholder="请输入内容" class="layui-textarea txtArea" name="remark"></textarea>
             </div>
         </div>
-
         <div class="imgBox">
             <p>照片</p>
             <div class="article">
-                <c:forEach items="${attachments}" var="attachment">
-                    <div class="items">
-                        <img class="addImg" onclick="clickImg(this);" src="static/images/addImg.png"
-                             style="display: none;"/>
-                        <input name="url" type="file" class="upload_input" onchange="change(this)" accept="image/*"
-                               capture="camera"/>
-                        <div class="preBlock">
-                            <img class="preview" alt="" name="pic" src="${attachment.url}"/>
-                        </div>
-                        <img class="delete deleteImg" src="static/images/delete.png"
-                             style="display: block;" data-id="${attachment.id}"/>
-                    </div>
-                </c:forEach>
-
                 <div class="items">
                     <img class="addImg" onclick="clickImg(this);" src="static/images/addImg.png"/>
                     <input name="url" type="file" class="upload_input" onchange="change(this)" accept="image/*"
@@ -110,7 +121,6 @@
 
         <%-- 提交 --%>
         <%@ include file="./common/punish_submit.jsp" %>
-
     </form>
     <div id="template" style="display: none;">
 
@@ -128,8 +138,8 @@
             <img class="delete" onclick="deleteImg(this)" src="static/images/delete.png"/>
         </div>
     </div>
-</div>
 
+</div>
 <script src="static/js/initDom.js"></script>
 <script src="static/js/imgUp1.js"></script>
 <script>
@@ -139,16 +149,16 @@
             layedit = layui.layedit,
             laydate = layui.laydate;
 
-        form.render();
-
         //日期
         laydate.render({
             elem: '#time'
         });
 
+        form.render();
+
         //选择用户
         $("#selectUser").click(function (e) {
-            $.get('user/toUserSelect', function (html) {
+            $.get('views/user/user_select.jsp', function (html) {
                 layer.open({
                     type: 1,
                     title: '选择用户',
@@ -157,23 +167,6 @@
                 });
             });
         });
-
-        //图片删除
-        $(".deleteImg").click(function () {
-            debugger;
-            var _this = this;
-            layer.confirm('确定删除？', function (index) {
-                $.get("attachment/delete?id= " + $(_this).data("id"), function (data) {
-                    layer.close(index); //关闭确定删除弹窗
-                    if (data.success) {
-                        layer.msg("删除成功");
-                        deleteImg(_this);
-                    } else {
-                        layer.msg("删除失败");
-                    }
-                });
-            });
-        });
-
     });
 </script>
+

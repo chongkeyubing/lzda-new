@@ -5,23 +5,21 @@
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 
 <div style="display: flex;justify-content: center;">
-    <form class="layui-form form1" action='puntalk/update' id="punishForm" method="post">
+    <form class="layui-form form1" action='punnotice/update' id="punishForm" method="post">
         <input type="hidden" name="id" value="${punish.id}">
         <%--隐藏表单--%>
-        <input type="hidden" name="organizationId" id="selectOrganizationId">
+        <input type="hidden" name="organizationId" id="selectOrganizationId" value="${punish.organizationId}">
         <!-- 填表人 -->
-        <input type="hidden" name="operatorId" value="${currentUser.id}">
-        <input type="hidden" name="operator" value="${currentUser.realname}">
-        <%--被谈话人id--%>
-        <input type="hidden" name="userId" id="selectUserId">
-        <%--谈话人id--%>
-        <input type="hidden" name="talkPersonId" autocomplete="off" class="layui-input" id="selectSecondUserId">
+        <input type="hidden" name="operatorId" value="${punish.operatorId}">
+        <input type="hidden" name="operator" value="${punish.operator}">
+
+        <input type="hidden" name="userId" id="selectUserId" value="${punish.userId}">
         <%--附件id--%>
         <input type="hidden" name="attachmentId" value="${punish.attachmentId}">
 
         <div class="layui-form-item">
             <div class="layui-inline">
-                <label class="layui-form-label">被谈话人姓名</label>
+                <label class="layui-form-label">被通报人姓名</label>
                 <div class="layui-input-inline">
                     <input type="text" name="userName" readonly lay-verify="required" autocomplete="off"
                            class="layui-input" placeholder="点击选择" style="width: 74%;display: inline-block;"
@@ -30,14 +28,14 @@
                 </div>
             </div>
             <div class="layui-inline">
-                <label class="layui-form-label">被谈话人单位</label>
+                <label class="layui-form-label">被通报人单位</label>
                 <div class="layui-input-inline">
                     <input type="text" name="organization" readonly lay-verify="required" autocomplete="off"
                            class="layui-input" id="selectOrganization" value="${punish.organization}">
                 </div>
             </div>
             <div class="layui-inline">
-                <label class="layui-form-label">被谈话人职务</label>
+                <label class="layui-form-label">被通报人职务</label>
                 <div class="layui-input-inline">
                     <input type="text" name="jobPosition" readonly lay-verify="required" autocomplete="off"
                            class="layui-input" id="selectJobPosition" value="${punish.jobPosition}">
@@ -47,76 +45,66 @@
 
         <div class="layui-form-item">
             <div class="layui-inline">
-                <label class="layui-form-label">谈话人姓名</label>
+                <label class="layui-form-label">通报类型</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="talkPersonName" readonly lay-verify="required" autocomplete="off"
-                           class="layui-input" placeholder="点击选择" style="width: 74%;display: inline-block;"
-                           id="selectSecondUserName" value="${punish.talkPersonName}">
-                    <button class="layui-btn  layui-btn-sm layui-btn-normal" type="button" id="selectSecondUser">选择
-                    </button>
+                    <select name="type" lay-verify="required">
+                        <c:forTokens items="分局通报,市局通报,省厅通报,其他部门通报" delims="," var="type">
+                            <option value="${type}"
+                                    <c:if test="${punish.type == type}">selected</c:if>
+                            >${type}</option>
+                        </c:forTokens>
+                    </select>
                 </div>
             </div>
             <div class="layui-inline">
-                <label class="layui-form-label">谈话人单位</label>
+                <label class="layui-form-label">通报时间</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="talkPersonOrg" readonly lay-verify="required" autocomplete="off"
-                           class="layui-input" id="selectSecondOrganization" value="${punish.talkPersonOrg}">
+                    <input type="text" name="time" id="time" autocomplete="off" class="layui-input" value="${punish.time}" lay-verify="required|date">
                 </div>
             </div>
             <div class="layui-inline">
-                <label class="layui-form-label">谈话人职务</label>
+                <label class="layui-form-label">处理情况</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="talkPersonJob" readonly lay-verify="required" autocomplete="off"
-                           class="layui-input" id="selectSecondJobPosition" value="${punish.talkPersonJob}">
+                    <select name="handleInfo" lay-verify="required">
+                        <c:forTokens items="通报批评,提醒谈话" delims="," var="handleInfo">
+                            <option value="${handleInfo}"
+                                    <c:if test="${punish.handleInfo == handleInfo}">selected</c:if>
+                            >${handleInfo}</option>
+                        </c:forTokens>
+                    </select>
                 </div>
             </div>
         </div>
 
         <div class="layui-form-item">
+
             <div class="layui-inline">
-                <label class="layui-form-label">谈话类型</label>
+                <label class="layui-form-label">记分情况</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="type" lay-verify="required" autocomplete="off"
-                           class="layui-input" value="${punish.type}">
-                </div>
-            </div>
-            <div class="layui-inline">
-                <label class="layui-form-label">谈话地点</label>
-                <div class="layui-input-inline">
-                    <input type="text" name="address" lay-verify="required" autocomplete="off"
-                           class="layui-input" value="${punish.address}">
-                </div>
-            </div>
-            <div class="layui-inline">
-                <label class="layui-form-label">谈话时间</label>
-                <div class="layui-input-inline">
-                    <input type="text" name="time" id="time" readonly lay-verify="required|date" autocomplete="off"
-                           class="layui-input" value="${punish.time}">
+                    <select name="score" lay-verify="required">
+                        <c:forTokens items="1,2,3,4,5,6,7,8,9,10" delims="," var="score">
+                            <option value="${score}"
+                                    <c:if test="${punish.score == score}">selected</c:if>
+                            >${score}</option>
+                        </c:forTokens>
+                    </select>
                 </div>
             </div>
         </div>
 
-
         <div class="layui-form-item layui-form-text">
-            <label class="layui-form-label">谈话内容</label>
+            <label class="layui-form-label">通报内容</label>
             <div class="layui-input-inline">
-                <textarea placeholder="请输入内容" class="layui-textarea txtArea" name="content">${punish.content}</textarea>
-            </div>
-        </div>
-
-        <div class="layui-form-item layui-form-text">
-            <label class="layui-form-label">被谈话人意见</label>
-            <div class="layui-input-inline">
-                <textarea placeholder="请输入内容" class="layui-textarea txtArea"
-                          name="talkedPersonAdvice">${punish.talkedPersonAdvice}</textarea>
+                <textarea placeholder="请输入内容" class="layui-textarea txtArea" name="content" lay-verify="required">${punish.content}</textarea>
             </div>
         </div>
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">备 注</label>
             <div class="layui-input-inline">
-                <textarea placeholder="请输入内容" class="layui-textarea txtArea" name="remark"${punish.remark}></textarea>
+                <textarea placeholder="请输入内容" class="layui-textarea txtArea" name="remark"> ${punish.remark}</textarea>
             </div>
         </div>
+
         <div class="imgBox">
             <p>照片</p>
             <div class="article">
@@ -146,11 +134,9 @@
             </div>
         </div>
 
-
         <%-- 提交 --%>
         <%@ include file="./common/punish_submit.jsp" %>
     </form>
-
     <div id="template" style="display: none;">
 
         <div class="items">
@@ -172,7 +158,7 @@
 <script src="static/js/initDom.js"></script>
 <script src="static/js/imgUp1.js"></script>
 <script>
-    layui.use(['form', 'layedit', 'laydate', 'layer'], function () {
+    layui.use(['form', 'layedit', 'laydate'], function () {
         var form = layui.form,
             layer = layui.layer,
             layedit = layui.layedit,
@@ -183,21 +169,11 @@
             elem: '#time'
         });
 
+        form.render();
+
         //选择用户
         $("#selectUser").click(function (e) {
             $.get('views/user/user_select.jsp', function (html) {
-                layer.open({
-                    type: 1,
-                    title: '选择用户',
-                    area: ['1000'],
-                    content: html
-                });
-            });
-        });
-
-        //选择谈话人
-        $("#selectSecondUser").click(function (e) {
-            $.get('views/user/user_select_second.jsp', function (html) {
                 layer.open({
                     type: 1,
                     title: '选择用户',
