@@ -82,13 +82,13 @@
         //选择用户后向页面回填用户信息
         function writeBack(data) {
             debugger;
-            $("#selectUserId") ? $("#selectUserId").val(data.id) : null;
-            $("#selectUserName") ? $("#selectUserName").val(data.realname) : null;
-            $("#selectOrganizationId") ? $("#selectOrganizationId").val(data.organizationId) : null;
-            $("#selectOrganization") ? $("#selectOrganization").val(data.organizationName) : null;
-            $("#selectJobPosition") ? $("#selectJobPosition").val(data.jobPosition) : null;
-            $("#selectGender") ? $("#selectGender").val(data.gender) : null;
-            $("#selectBirthday") ? $("#selectBirthday").val(data.birthday) : null;
+            $("#selectSecondUserId") ? $("#selectSecondUserId").val(data.id) : null;
+            $("#selectSecondUserName") ? $("#selectSecondUserName").val(data.realname) : null;
+            $("#selectSecondOrganizationId") ? $("#selectSecondOrganizationId").val(data.organizationId) : null;
+            $("#selectSecondOrganization") ? $("#selectSecondOrganization").val(data.organizationName) : null;
+            $("#selectSecondJobPosition") ? $("#selectSecondJobPosition").val(data.jobPosition) : null;
+            $("#selectSecondGender") ? $("#selectSecondGender").val(data.gender) : null;
+            $("#selectSecondBirthday") ? $("#selectSecondBirthday").val(data.birthday) : null;
         }
 
     });

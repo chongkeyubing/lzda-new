@@ -211,21 +211,21 @@ public class PunishServiceImpl implements PunishService {
                 List<Attachment> attachments4 = attachmentService.find(new Attachment().setSourceId(punTalk.getAttachmentId()));
                 map.put("punish", punTalk);
                 map.put("attachments", attachments4);
-                page = "/views/punish/pun_talk_table_update";
+                page = "/views/punish/pun_talk_update";
                 break;
             case 5:
                 PunNotice punNotice = punNoticeService.findById(punishDTO.getPunishId());
                 List<Attachment> attachments5 = attachmentService.find(new Attachment().setSourceId(punNotice.getAttachmentId()));
                 map.put("punish", punNotice);
                 map.put("attachments", attachments5);
-                page = "/views/punish/pun_notice_table_update";
+                page = "/views/punish/pun_notice_update";
                 break;
             case 6:
                 PunReport punReport = punReportService.findById(punishDTO.getPunishId());
                 List<Attachment> attachments6 = attachmentService.find(new Attachment().setSourceId(punReport.getAttachmentId()));
                 map.put("punish", punReport);
                 map.put("attachments", attachments6);
-                page = "/views/punish/pun_report_table_update";
+                page = "/views/punish/pun_report_update";
                 break;
         }
         return page;
