@@ -12,4 +12,6 @@ public interface PunViolationService extends Service<PunViolation> {
 
     void add(PunViolation punViolation , HttpServletRequest request);
 
+    void update(PunViolation punViolation , HttpServletRequest request);
+
 }

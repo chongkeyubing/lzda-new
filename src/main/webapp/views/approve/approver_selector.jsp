@@ -40,7 +40,7 @@
 
         table.render({
             elem: '#userSelectTable',
-            url: '/user/findApprover',
+            url: 'user/findApprover',
             //height: 312,
             page: true, //开启分页
             cols: [[ //表头

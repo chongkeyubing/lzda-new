@@ -5,7 +5,7 @@
   //删除
   var deleteImg = function(obj){
     $(obj).parent().find('input').val('');
-    $(obj).parent().find('img.preview').attr("src","/static/images/addImg.png");
+    $(obj).parent().find('img.preview').attr("src","static/images/addImg.png");
     //IE9以下
     $(obj).parent().find('img.preview').css("filter","");
     $(obj).hide();

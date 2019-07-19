@@ -39,7 +39,7 @@
 
         var tableIns = table.render({
             elem: '#userSelectTable',
-            url: '/user/list',
+            url: 'user/list',
             method: 'post',
             //height: 312,
             page: true, //开启分页

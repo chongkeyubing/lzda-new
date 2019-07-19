@@ -9,7 +9,9 @@
         <input type="hidden" name="organizationId" id="selectOrganizationId" value="${reward.organizationId}">
 
         <input type="hidden" name="operatorName" value="${reward.operatorName}">
-        <input type="hidden" name="operatorId" c>
+        <input type="hidden" name="operatorId" value="${reward.operatorId}">
+        <%--附件id--%>
+        <input type="hidden" name="attachmentId" value="${reward.attachmentId}">
 
         <div class="layui-form-item">
             <div class="layui-inline">
@@ -87,18 +89,19 @@
         <div class="imgBox">
             <p>照片</p>
             <div class="article">
-                <%-- 修改附件暂未实现，直接重新上传--%>
-                <%--<c:forEach items="${attachments}" var="attachment">--%>
-                    <%--<div class="items">--%>
-                        <%--<img class="addImg" onclick="clickImg(this);" src="static/images/addImg.png" style="display: none;"/>--%>
-                        <%--<input name="url" type="file" class="upload_input" onchange="change(this)" accept="image/*"--%>
-                               <%--capture="camera"/>--%>
-                        <%--<div class="preBlock">--%>
-                            <%--<img class="preview" alt="" name="pic" src="${attachment.url}"/>--%>
-                        <%--</div>--%>
-                        <%--<img class="delete" onclick="deleteImg(this)" src="static/images/delete.png" style="display: block;"/>--%>
-                    <%--</div>--%>
-                <%--</c:forEach>--%>
+                <c:forEach items="${attachments}" var="attachment">
+                    <div class="items">
+                        <img class="addImg" onclick="clickImg(this);" src="static/images/addImg.png"
+                             style="display: none;"/>
+                        <input name="url" type="file" class="upload_input" onchange="change(this)" accept="image/*"
+                               capture="camera"/>
+                        <div class="preBlock">
+                            <img class="preview" alt="" name="pic" src="${attachment.url}"/>
+                        </div>
+                        <img class="delete deleteImg"  src="static/images/delete.png"
+                             style="display: block;" data-id="${attachment.id}"/>
+                    </div>
+                </c:forEach>
 
                 <div class="items">
                     <img class="addImg" onclick="clickImg(this);" src="static/images/addImg.png"/>
@@ -178,6 +181,22 @@
 
         $("#closeAdd").click(function () {
             layer.closeAll();
+        });
+
+        //图片删除
+        $(".deleteImg").click(function () {
+            debugger;
+            console.log($(this).data("id"));
+            var _this = this;
+            $.get("attachment/delete?id= " + $(this).data("id"), function (data) {
+                if (data.success) {
+                    layer.msg("删除原图成功");
+                    deleteImg(_this);
+                } else {
+                    layer.msg("删除失败");
+                }
+
+            });
         });
 
     });

@@ -1,4 +1,5 @@
 package com.mwkj.lzda.service;
+
 import com.mwkj.lzda.model.Attachment;
 import com.mwkj.lzda.core.Service;
 
@@ -11,5 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 public interface AttachmentService extends Service<Attachment> {
 
     String uploadImgsAndSaveUrls(HttpServletRequest request);
+
+    void uploadImgsAndUpdateUrls(String attachmentId, HttpServletRequest request);
 
 }

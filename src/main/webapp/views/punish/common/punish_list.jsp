@@ -119,7 +119,7 @@
                 $.get('punish/toPunishDetail' + param, function (html) {
                     layer.open({
                         type: 1,
-                        title: data.punishType + "-" + data.userName,
+                        title: PUNISH_TYPE[data.punishType] + "-" + data.userName,
                         area: ['1200px', '700px'],
                         content: html
                     });

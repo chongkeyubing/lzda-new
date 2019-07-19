@@ -10,7 +10,6 @@ import com.mwkj.lzda.service.PunishService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
-
 import javax.annotation.Resource;
 import java.util.List;
 
@@ -76,10 +75,10 @@ public class PunishServiceImpl implements PunishService {
     }
 
     /**
+     * @return java.lang.String
      * @Author libaogang
      * @Date 2019-07-18 23:30
      * @Param [punishDTO, map]
-     * @return java.lang.String
      * @Description 根据类型和id跳转到违惩新详情页
      */
     @Override
@@ -144,6 +143,49 @@ public class PunishServiceImpl implements PunishService {
 
                 break;
         }
+    }
+
+    /**
+     * @return void
+     * @Author libaogang
+     * @Date 2019-07-19 9:46
+     * @Param [punishDTO, modelMap]
+     * @Description 跳转到更新
+     */
+    @Override
+    public String toUpdate(PunishDTO punishDTO, ModelMap map) {
+        String page = null;
+        switch (punishDTO.getPunishType()) {
+            case 1:
+                PunViolation punViolation = punViolationService.findById(punishDTO.getPunishId());
+                List<Attachment> attachments = attachmentService.find(new Attachment().setSourceId(punViolation.getAttachmentId()));
+                map.put("punish", punViolation);
+                map.put("attachments", attachments);
+                page = "/views/punish/pun_violation_update";
+                break;
+            case 2:
+
+
+                break;
+            case 3:
+
+
+                break;
+            case 4:
+
+
+                break;
+            case 5:
+
+
+                break;
+            case 6:
+
+
+                break;
+        }
+
+        return page;
     }
 
 

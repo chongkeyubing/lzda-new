@@ -4,6 +4,7 @@ import com.mwkj.lzda.dto.ArchiveDTO;
 import com.mwkj.lzda.dto.PunishDTO;
 import org.springframework.ui.ModelMap;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -21,5 +22,7 @@ public interface PunishService {
     String toPunishDetail(PunishDTO punishDTO,ModelMap modelMap);
 
     void delete(PunishDTO punishDTO);
+
+    String toUpdate(PunishDTO punishDTO,ModelMap modelMap);
 
 }

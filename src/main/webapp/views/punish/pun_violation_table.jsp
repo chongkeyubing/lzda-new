@@ -55,10 +55,10 @@
                     <td>${punish.handleTime}</td>
                 </tr>
                 <tr>
-                    <td>审批人</td>
-                    <td colspan="3">${punish.userName}</td>
-                    <td>填表人</td>
-                    <td>${punish.operator}</td>
+                    <%--<td>审批人</td>--%>
+                    <%--<td colspan="3">${punish.userName}</td>--%>
+                    <td >填表人</td>
+                    <td colspan="5">${punish.operator}</td>
                 </tr>
                 <tr>
                     <td>备注</td>
@@ -74,7 +74,6 @@
                                                 <%--<img src="${attachment.url}" onclick="list(${statu.index})"/>--%>
                                             <img src="${attachment.url}"/>
                                         </a>
-
                                     </li>
                                 </c:forEach>
                             </ul>

@@ -60,4 +60,33 @@ public class AttachmentServiceImpl extends AbstractService<Attachment> implement
         }
         return attachmentId;
     }
+
+    /**
+     * @Author libaogang
+     * @Date 2019-07-19 10:53
+     * @Param [attachmentId, request]
+     * @return void
+     * @Description 修改附件，在原有附件基础上新增图片，需要给定原有关联id
+     */
+    @Override
+    public void uploadImgsAndUpdateUrls(String attachmentId, HttpServletRequest request) {
+        //上传图片
+        List<String> urls = null;
+        try {
+            urls = SpringFileUploader.uploadImgs(request);
+        } catch (IOException e) {
+            throw new AppException("图片上传失败");
+        }
+        if (!CollectionUtils.isEmpty(urls)) {
+            //保存图片路径至附件表
+            List<Attachment> attachments = new ArrayList<>();
+            for (String url : urls) {
+                Attachment attachment = new Attachment();
+                attachment.setSourceId(attachmentId);
+                attachment.setUrl(url);
+                attachments.add(attachment);
+            }
+            this.saveAll(attachments);
+        }
+    }
 }

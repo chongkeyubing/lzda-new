@@ -34,11 +34,17 @@ public class PunViolationServiceImpl extends AbstractService<PunViolation> imple
 
     @Override
     public void add(PunViolation punViolation, HttpServletRequest request) {
-        //上传图片
+        //上传图片并保存至附件表
         String attachmentId = attachmentService.uploadImgsAndSaveUrls(request);
 
         //和附件表关联
         punViolation.setAttachmentId(attachmentId);
         this.save(punViolation);
+    }
+
+    @Override
+    public void update(PunViolation punViolation, HttpServletRequest request) {
+        attachmentService.uploadImgsAndUpdateUrls(punViolation.getAttachmentId(),request);
+        this.update(punViolation);
     }
 }

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -88,5 +89,17 @@ public class PunishController {
     public Result delete(PunishDTO punishDTO) {
         punishService.delete(punishDTO);
         return ResultUtil.success();
+    }
+
+    /**
+     * @Author libaogang
+     * @Date 2019-07-19 9:45
+     * @Param [punishDTO, map]
+     * @return java.lang.String
+     * @Description 跳转到更新页面
+     */
+    @RequestMapping("/toPunishUpdate")
+    public String toPunishUpdate(PunishDTO punishDTO,ModelMap map) {
+        return punishService.toUpdate(punishDTO,map);
     }
 }

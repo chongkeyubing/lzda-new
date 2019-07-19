@@ -39,8 +39,8 @@ public class PunViolationController {
 
     @RequestMapping("/update")
     @ResponseBody
-    public Result update(PunViolation punViolation) {
-        punViolationService.update(punViolation);
+    public Result update(PunViolation punViolation,HttpServletRequest request) {
+        punViolationService.update(punViolation,request);
         return ResultUtil.success();
     }
 
@@ -51,13 +51,4 @@ public class PunViolationController {
         return ResultUtil.success(punViolation);
     }
 
-    @RequestMapping("/list")
-    @ResponseBody
-    public Result list(@RequestParam(defaultValue = "0") Integer page,
-                       @RequestParam(defaultValue = "0") Integer size) {
-        PageHelper.startPage(page, size);
-        List<PunViolation> list = punViolationService.findAll();
-        PageInfo<PunViolation> pageInfo = new PageInfo<>(list);
-        return ResultUtil.success(pageInfo);
-    }
 }

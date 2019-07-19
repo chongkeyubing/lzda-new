@@ -38,65 +38,26 @@ public class RewardServiceImpl extends AbstractService<Reward> implements Reward
         return rewardMapper.findRewardsByCondition(reward);
     }
 
-
     @Override
     public void add(Reward reward, HttpServletRequest request) {
         //上传图片
-        List<String> urls = null;
-        try {
-            urls = SpringFileUploader.uploadImgs(request);
-        } catch (IOException e) {
-            throw new AppException(e.getMessage());
-        }
-
-        String attachmentId = null;
-        if (!CollectionUtils.isEmpty(urls)) {
-            attachmentId = IDGenerator.getUUID();
-
-            //保存图片路径至附件表
-            List<Attachment> attachments = new ArrayList<>();
-            for (String url : urls) {
-                Attachment attachment = new Attachment();
-                attachment.setSourceId(attachmentId);
-                attachment.setUrl(url);
-                attachments.add(attachment);
-            }
-            attachmentService.saveAll(attachments);
-        }
+        String attachmentId = attachmentService.uploadImgsAndSaveUrls(request);
 
         //关联附件表sourceId
         reward.setAttachmentId(attachmentId);
         this.save(reward);
     }
 
+    /**
+     * @Author libaogang
+     * @Date 2019-07-19 10:57
+     * @Param [reward, request]
+     * @return void
+     * @Description 更新附件，需要原附件id
+     */
     @Override
     public void update(Reward reward, HttpServletRequest request) {
-        //上传图片
-        List<String> urls = null;
-        try {
-            urls = SpringFileUploader.uploadImgs(request);
-        } catch (IOException e) {
-            throw new AppException(e.getMessage());
-        }
-
-        String attachmentId = null;
-        if (!CollectionUtils.isEmpty(urls)) {
-            attachmentId = IDGenerator.getUUID();
-
-            //保存图片路径至附件表
-            List<Attachment> attachments = new ArrayList<>();
-            for (String url : urls) {
-                Attachment attachment = new Attachment();
-                attachment.setSourceId(attachmentId);
-                attachment.setUrl(url);
-                attachments.add(attachment);
-            }
-
-            attachmentService.saveAll(attachments);
-        }
-
-        reward.setAttachmentId(attachmentId);
-
+        attachmentService.uploadImgsAndUpdateUrls(reward.getAttachmentId(),request);
         this.update(reward);
     }
 }
