@@ -137,9 +137,9 @@
             cols: [[ //表头
                 {field: 'userName', title: '姓名'},
                 {field: 'policeCode', title: '警号'},
-                {field: 'organizationName', title: '单位', width: 340},
+                {field: 'organizationName', title: '单位'},
                 {
-                    field: 'archiveType', title: '档案类型', width: 340, templet: function (data) {
+                    field: 'archiveType', title: '档案类型',templet: function (data) {
                         for (var i = 0; i < ARCHIVE_TYPE.length; i++) {
                             if (data.archiveType == ARCHIVE_TYPE[i].type) {
                                 return ARCHIVE_TYPE[i].name;
@@ -148,7 +148,7 @@
                     }
                 },
                 {
-                    field: 'approveStatus', title: '审核状态', width: 200, templet: function (data) {
+                    field: 'approveStatus', title: '审核状态', templet: function (data) {
                         return APPROVE_STATUS[data.approveStatus]
                     }
                 },
@@ -157,7 +157,7 @@
                     title: '填表时间',
                     templet: "<div>{{layui.util.toDateString(d.createTime, 'yyyy-MM-dd HH:mm:ss')}}</div>"  //时间戳格式化
                 },
-                {field: 'operate', align: 'center', title: '操作', toolbar: '#archivesBar'}
+                {field: 'operate', align: 'center', title: '操作', toolbar: '#archivesBar', fixed: 'right'}
             ]]
         });
 
@@ -185,7 +185,7 @@
                     layer.open({
                         type: 1,
                         title: archiveName + "-" + data.userName,
-                        area: ['1200px', '700px'],
+                        area: ['100%', '100%'],
                         content: html
                     });
                 });
@@ -227,7 +227,7 @@
                 layer.open({
                     type: 1,
                     title: archiveName,
-                    area: ['1200px', '700px'],
+                    area: ['100%', '100%'],
                     content: html
                 });
             });

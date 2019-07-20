@@ -6,7 +6,7 @@
         <button class="layui-btn layui-btn-normal layui-btn-lg" lay-submit lay-filter="submitPunish">
             提交
         </button>
-        <button class="layui-btn layui-btn-danger layui-btn-lg" type="button" id="closeAdd">
+        <button class="layui-btn layui-btn-warm layui-btn-lg" type="button" id="closeAdd">
             返回
         </button>
     </div>

@@ -185,7 +185,7 @@
                     layer.open({
                         type: 1,
                         title: archiveName + "-" + data.applicantName,
-                        area: ['1200px', '700px'],
+                        area: ['100%', '100%'],
                         content: html
                     });
                 });

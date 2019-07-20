@@ -274,7 +274,7 @@
                 <%--<label class="layui-form-label">家庭主要成员及重要社会关系</label>--%>
                 <div style="float: right;margin-bottom: 15px;    margin-right: 96px;">
                     <button id="addRela" type="button" class="layui-btn layui-btn-normal">添加</button>
-                    <button id="delRela" type="button" class="layui-btn layui-btn-normal">删除</button>
+                    <button id="delRela" type="button" class="layui-btn layui-btn-danger">删除</button>
                 </div>
             </div>
 

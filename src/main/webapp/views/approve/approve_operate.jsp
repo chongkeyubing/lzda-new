@@ -35,7 +35,7 @@
                 lay-filter="approveReject">
             驳回
         </button>
-        <button id="rejectBack" type="button" class="layui-btn layui-btn-normal layui-btn-lg"
+        <button id="rejectBack" type="button" class="layui-btn layui-btn-warm layui-btn-lg"
                 lay-filter="rejectBack" style="display: none">
             返回
         </button>

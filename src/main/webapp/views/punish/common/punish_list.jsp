@@ -120,7 +120,7 @@
                     layer.open({
                         type: 1,
                         title: PUNISH_TYPE[data.punishType] + "-" + data.userName,
-                        area: ['1200px', '700px'],
+                        area: ['100%', '100%'],
                         content: html
                     });
                 });
@@ -129,7 +129,7 @@
                     layer.open({
                         type: 1,
                         title: '修改' + PUNISH_TYPE[data.punishType] + "-" + data.userName,
-                        area: ['1200px', '700px'],
+                        area: ['100%', '100%'],
                         content: html
                     });
                 });
@@ -175,7 +175,7 @@
                 layer.open({
                     type: 1,
                     title: PUNISH_TYPE[data.field.punishType],
-                    area: ['1200px', '700px'],
+                    area: ['100%', '100%'],
                     content: html
                 });
             });

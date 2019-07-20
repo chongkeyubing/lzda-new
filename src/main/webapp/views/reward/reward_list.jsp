@@ -55,7 +55,7 @@
             cols: [[ //表头
                 {field: 'userName', title: '姓名'},
                 {field: 'policeCode', title: '警号'},
-                {field: 'organization', title: '单位',width:320},
+                {field: 'organization', title: '单位', width: 320},
                 {field: 'rewardType', title: '表彰类型'},
                 {field: 'rewardTime', title: '表彰时间'},
                 {field: 'operate', align: 'center', title: '操作', toolbar: '#rewardTableBar'}
@@ -71,20 +71,20 @@
                     layer.open({
                         type: 1,
                         title: data.rewardType + "-" + data.userName,
-                        area: ['1200px', '700px'],
+                        area: ['100%', '100%'],
                         content: html
                     });
                 });
-            }else if(obj.event === 'update'){
+            } else if (obj.event === 'update') {
                 $.get('reward/toRewardUpdate?id=' + data.id, function (html) {
                     layer.open({
                         type: 1,
-                        title: '修改' + data.rewardType + "-" + data.userName,
-                        area: ['1200px', '700px'],
+                        title: '修改表彰' + "-" + data.userName,
+                        area: ['100%', '100%'],
                         content: html
                     });
                 });
-            }else if(obj.event === 'del'){
+            } else if (obj.event === 'del') {
                 debugger;
                 layer.confirm('确定删除？', function (index) {
                     $.get('reward/delete?id=' + data.id, function (data) {
@@ -113,13 +113,13 @@
                 where: param //设定异步数据接口的额外参数，任意设
             });
         }
-        
+
         $("#addReward").click(function () {
             $.get('reward/toAddReward', function (html) {
                 layer.open({
                     type: 1,
                     title: '新增表彰',
-                    area: ['1200', '700px'],
+                    area: ['100%', '100%'],
                     content: html
                 });
             });
