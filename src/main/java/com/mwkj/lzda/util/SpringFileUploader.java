@@ -44,14 +44,21 @@ public class SpringFileUploader {
                     //获取文件类型
                     String fileType = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
 
+                    String rootRealPath = request.getSession().getServletContext().getRealPath(SystemConstant.IMG_UPLOAD_ROOT_PATH);
+                    File file1 = new File(rootRealPath);
+                    if (!file1.exists()) {
+                        file1.mkdirs();
+                    }
+
                     //过滤非法文件类型
                     for (int i = 0; i < typeArr.length; i++) {
                         if (fileType.equalsIgnoreCase(typeArr[i])) {
                             String uuid = IDGenerator.getUUID();
-                            String rootRealPath = request.getSession().getServletContext().getRealPath(SystemConstant.IMG_UPLOAD_ROOT_PATH);
                             String fileName = uuid + fileType;
                             String savePath = SystemConstant.IMG_UPLOAD_ROOT_PATH + "/" + fileName;
                             String realSavePath = rootRealPath + "/" + fileName;
+
+                            //向硬盘写文件
                             file.transferTo(new File(realSavePath));
 
                             //返回上传图片的访问路径
@@ -87,14 +94,23 @@ public class SpringFileUploader {
                     //获取文件类型
                     String fileType = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
 
+                    String rootRealPath = request.getSession().getServletContext().getRealPath(SystemConstant.IMG_UPLOAD_ROOT_PATH);
+                    File file1 = new File(rootRealPath);
+                    if (!file1.exists()) {
+                        file1.mkdirs();
+                    }
+
                     //过滤非法文件类型
                     for (int i = 0; i < typeArr.length; i++) {
                         if (fileType.equalsIgnoreCase(typeArr[i])) {
                             String uuid = IDGenerator.getUUID();
-                            String rootRealPath = request.getSession().getServletContext().getRealPath(SystemConstant.IMG_UPLOAD_ROOT_PATH);
                             String fileName = uuid + fileType;
                             savePath = SystemConstant.IMG_UPLOAD_ROOT_PATH + "/" + fileName;
+
+                            //向硬盘写文件
                             String realSavePath = rootRealPath + "/" + fileName;
+
+                            //返回上传图片的访问路径
                             file.transferTo(new File(realSavePath));
                             break;
                         }
