@@ -1,21 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 
-<form class="layui-form form1">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
+
+<%--<form class="layui-form form1">
     <div class="layui-form-item">
-       <%-- <div class="layui-inline">
+       &lt;%&ndash; <div class="layui-inline">
             <label class="layui-form-label">姓名</label>
             <div class="layui-input-inline">
                 <input type="text" name="userName" autocomplete="off" class="layui-input">
             </div>
-        </div>--%>
+        </div>&ndash;%&gt;
 
-        <div class="layui-inline">
+       &lt;%&ndash; <div class="layui-inline">
             <label class="layui-form-label">上报单位</label>
             <div class="layui-input-inline">
                 <input type="text" name="policeCode" autocomplete="off" class="layui-input">
             </div>
-        </div>
+        </div>&ndash;%&gt;
+           <div class="layui-inline">
+               <label class="layui-form-label">上报单位</label>
+               <div class="layui-input-inline">
+                   <select name="organizationId" lay-search>
+                       <option value="">请选择或搜索单位</option>
+                       <c:forEach var="organization" items="${organizations}">
+                           <option value="${organization.id}">${organization.name}</option>
+                       </c:forEach>
+                   </select>
+               </div>
+           </div>
 
         <div class="layui-inline">
             <button class="layui-btn layui-btn-normal" lay-filter="queryReport" id="queryReport">查询
@@ -25,6 +40,34 @@
 
         <div class="layui-inline" style="float:right">
             <button class="layui-btn layui-btn-normal" type="button" id="addReport">新增上报</button>
+        </div>
+
+    </div>
+</form>--%>
+
+
+<form class="layui-form form1">
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">上报单位</label>
+            <div class="layui-input-inline">
+                <select name="organizationId" lay-search>
+                    <option value="">请选择或搜索单位</option>
+                    <c:forEach var="organization" items="${organizations}">
+                        <option value="${organization.id}">${organization.name}</option>
+                    </c:forEach>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-inline">
+            <button class="layui-btn layui-btn-normal" lay-submit lay-filter="queryReport" id="queryReport">查询
+            </button>
+            <button class="layui-btn layui-btn-warm" type="reset" id="resetQueryReport">清空</button>
+        </div>
+
+        <div class="layui-inline" style="float:right">
+            <button class="layui-btn layui-btn-normal" type="button" id="addReport">新增</button>
         </div>
 
     </div>
@@ -51,6 +94,7 @@
             elem: '#reportTable',
             url: 'rptincorrupt/list',
             page: true, //开启分页
+            limit:10,
             method: 'post',
             cols: [[ //表头
                 {

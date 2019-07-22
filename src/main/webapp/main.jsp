@@ -76,7 +76,7 @@
                                 <a href="rptteamthinking/toList">队伍思想状况上报</a>
                             </li>
                             <li>
-                                <a href="views/report/report_list.jsp">廉政信息上报</a>
+                                <a href="rptincorrupt/toList">廉政信息上报</a>
                             </li>
                             <li>
                                 <a href="views/report/per_list.jsp">履责纪实上报</a>
