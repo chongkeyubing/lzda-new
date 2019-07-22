@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="static/css/demos.css"/>
 <link rel="stylesheet" type="text/css" href="static/css/jquery-weui.css"/>
 <link rel="stylesheet" type="text/css" href="static/css/weui.min.css"/>
+<link rel="stylesheet" type="text/css" href="static/css/zoomify.css"/>
 
 <div class="wrapper">
     <div class="contentBox">
@@ -68,6 +69,7 @@
 <script src="static/js/initDom.js"></script>
 <script src="static/js/jquery-weui.js"></script>
 <script src="static/js/swiper.js"></script>
+<script src="static/js/zoomify.js"></script>
 
 <script>
 
@@ -82,5 +84,6 @@
         });
         pb1.open();
     }
+    // $('.imgDisplay img').zoomify();
 </script>
 
