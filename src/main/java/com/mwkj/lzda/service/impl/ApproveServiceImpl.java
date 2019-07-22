@@ -114,7 +114,7 @@ public class ApproveServiceImpl extends AbstractService<Approve> implements Appr
 
         Approve approve1 = findLastAndUpdateLastStep(approve);
         approve1.setCreateTime(null);
-
+        //角色判断
         if (SecurityUtils.getSubject().hasRole(RoleEnum.单位负责人.toString())) {
             //添加第二条记录
             approve1.setId(null);

@@ -51,6 +51,7 @@ public class ApproveController {
 
         Condition condition = new Condition(Approve.class);
         Example.Criteria criteria = condition.createCriteria();
+
         if(StringUtils.isNotBlank(approve.getCommitterName())){
             criteria.andLike("committerName","%"+ approve.getCommitterName() + "%");
         }

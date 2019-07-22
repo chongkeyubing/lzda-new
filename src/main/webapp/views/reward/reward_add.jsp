@@ -160,6 +160,7 @@
             return false;//阻止表单跳转
         });
 
+
         $("#closeAdd").click(function () {
             layer.closeAll();
         });
