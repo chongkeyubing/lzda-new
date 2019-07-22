@@ -232,7 +232,16 @@ public class UserController {
         return "/views/user/personal_info";
     }
 
+    @RequestMapping("/toDetail")
+    public String toDetail(int id,ModelMap map){
+        User user = userService.findById(id);
 
+        Role role = roleService.findById(user.getRoleid());
+        user.setRole(role.getRoleName());
+
+        map.put("user",user);
+        return "/views/user/user_detail";
+    }
 
 
 }

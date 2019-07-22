@@ -151,7 +151,7 @@
                     title: '填表时间',
                     templet: "<div>{{layui.util.toDateString(d.createTime, 'yyyy-MM-dd HH:mm:ss')}}</div>"  //时间戳格式化
                 },
-                {field: 'operate', align: 'center', title: '操作', toolbar: '#approveTableBar'}
+                {field: 'operate', align: 'center', title: '操作', toolbar: '#approveTableBar', minWidth: 150}
             ]]
         });
 

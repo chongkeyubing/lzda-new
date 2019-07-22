@@ -62,15 +62,15 @@
             page: true, //开启分页
             method: 'post',
             cols: [[ //表头
-                {field: 'organizationName', title: '上报单位',width:300},
-                {field: 'committerName', title: '上报人',width:120},
+                {field: 'organizationName', title: '上报单位'},
+                {field: 'committerName', title: '上报人'},
                 {field: 'time', title: '月份'},
                 {
                     field: 'createTime',
                     title: '创建时间',
                     templet: "<div>{{layui.util.toDateString(d.createTime, 'yyyy-MM-dd HH:mm:ss')}}</div>"
                 },
-                {field: 'operate', align: 'center', title: '操作', width:250, toolbar: '#reportTableBar'}
+                {field: 'operate', align: 'center', title: '操作', toolbar: '#reportTableBar', minWidth: 200}
             ]]
         });
 

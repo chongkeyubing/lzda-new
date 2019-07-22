@@ -171,51 +171,56 @@
 <script src="static/js/jquery-2.1.4.js"></script>
 <script src="static/js/jquery-form.js"></script>
 <script>
-    // layui.use('element', function () {
-    //     var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
-    //
-    // });
+    layui.use('layer', function () {
+        var layer = layui.layer;
 
-    $(document).ready(function () {
-        $('.menu').click(function () {
-            if (!$(this).hasClass("cur")) {
-                $('.menu').removeClass("cur").next("ul").slideUp();
-                $(this).addClass("cur").next("ul").slideDown();
+        $(document).ready(function () {
+            $('.menu').click(function () {
+                if (!$(this).hasClass("cur")) {
+                    $('.menu').removeClass("cur").next("ul").slideUp();
+                    $(this).addClass("cur").next("ul").slideDown();
 
-            } else {
-                $(this).removeClass("cur").next("ul").slideUp();
-            }
-        });
-
-        var checkIndex = null;
-        $(".leftNav dl dd ul li").click(function () {
-            if (!$(this).hasClass("cur")) {
-                checkIndex = this
-                $(this).removeClass("cur").siblings().addClass("cur");
-                $(this).addClass("cur").siblings().removeClass('cur');
-            } else {
-                if (this == checkIndex) {
-                    return
+                } else {
+                    $(this).removeClass("cur").next("ul").slideUp();
                 }
-                $(this).removeClass("cur").siblings().addClass("cur");
-            }
+            });
 
-        })
+            var checkIndex = null;
+            $(".leftNav dl dd ul li").click(function () {
+                if (!$(this).hasClass("cur")) {
+                    checkIndex = this
+                    $(this).removeClass("cur").siblings().addClass("cur");
+                    $(this).addClass("cur").siblings().removeClass('cur');
+                } else {
+                    if (this == checkIndex) {
+                        return
+                    }
+                    $(this).removeClass("cur").siblings().addClass("cur");
+                }
 
-        // ajax加载右侧主体部分页面
-        $(".leftNav a").on("click", function (event) {
-            event.preventDefault();
-            var url = $(this).attr("href");
-            if (url != '') {
-                $(".Box .right .mainContent").load(url);
-            }
+            })
+
+            // ajax加载右侧主体部分页面
+            $(".leftNav a").on("click", function (event) {
+                event.preventDefault();
+                var url = $(this).attr("href");
+                if (url != '') {
+                    layer.load(2);
+                    $(".Box .right .mainContent").load(url,function () {
+                        layer.closeAll();
+                    });
+                }
+            });
+
+            //直接展示档案信息页面
+            $(".menu01").click();
+            $("#archiveInfo").click();
+
         });
-
-        //直接展示档案信息页面
-        $(".menu01").click();
-        $("#archiveInfo").click();
 
     });
+
+
 </script>
 </body>
 
