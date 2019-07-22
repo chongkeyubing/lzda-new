@@ -20,7 +20,7 @@ import java.util.List;
 public class SpringFileUploader {
 
     //允许上传的文件类型
-    private static String[] typeArr = {".jpg", ".jpeg", ".png", ".gif", ".bmp"};
+    private static String[] typeArr = {".jpg", ".jpeg", ".png", ".bmp"};
 
     public static List<String> uploadImgs(HttpServletRequest request) throws IOException {
         //将当前上下文初始化为  CommonsMutipartResolver （多部分解析器）

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mwkj.lzda.dao.RptTeamThinkingMapper">
+  <resultMap id="BaseResultMap" type="com.mwkj.lzda.model.RptTeamThinking">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="committer_id" jdbcType="INTEGER" property="committerId" />
+    <result column="committer_name" jdbcType="VARCHAR" property="committerName" />
+    <result column="organization_id" jdbcType="INTEGER" property="organizationId" />
+    <result column="organization_name" jdbcType="VARCHAR" property="organizationName" />
+    <result column="time" jdbcType="VARCHAR" property="time" />
+    <result column="ploice_number" jdbcType="INTEGER" property="ploiceNumber" />
+    <result column="party_number" jdbcType="INTEGER" property="partyNumber" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="obey_info" jdbcType="LONGVARCHAR" property="obeyInfo" />
+    <result column="team_thinking_info" jdbcType="LONGVARCHAR" property="teamThinkingInfo" />
+    <result column="team_advantage_problem" jdbcType="LONGVARCHAR" property="teamAdvantageProblem" />
+    <result column="main_measure" jdbcType="LONGVARCHAR" property="mainMeasure" />
+    <result column="other_info" jdbcType="LONGVARCHAR" property="otherInfo" />
+  </resultMap>
+</mapper>
