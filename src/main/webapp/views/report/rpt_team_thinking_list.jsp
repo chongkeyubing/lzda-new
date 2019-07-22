@@ -18,21 +18,9 @@
             </div>
         </div>
         <div class="layui-inline">
-            <label class="layui-form-label">年份</label>
+            <label class="layui-form-label">月份</label>
             <div class="layui-input-inline">
-                <input type="text" name="year" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-inline">
-            <label class="layui-form-label">季度</label>
-            <div class="layui-input-inline">
-                <select name="quarter">
-                    <option value="">请选择</option>
-                    <option value="第一季度">第一季度</option>
-                    <option value="第二季度">第二季度</option>
-                    <option value="第三季度">第三季度</option>
-                    <option value="第四季度">第四季度</option>
-                </select>
+                <input type="text" name="time" id="queryTime" autocomplete="off" class="layui-input">
             </div>
         </div>
 
@@ -58,24 +46,25 @@
 </script>
 
 <script>
-    layui.use(['form', 'table', 'layer'], function () {
+    layui.use(['form', 'table', 'layer', 'laydate'], function () {
         var table = layui.table;
         var layer = layui.layer;
         var form = layui.form;
+        var laydate = layui.laydate;
 
         form.render();
 
         var tableIns = table.render({
             elem: '#reportTable',
-            url: 'rptresponsibilityreport/list',
+            url: 'rptteamthinking/list',
             page: true, //开启分页
             method: 'post',
             cols: [[ //表头
                 {field: 'organizationName', title: '上报单位'},
                 {field: 'committerName', title: '上报人'},
-                {field: 'type', title: '工单类别'},
-                {field: 'year', title: '年份'},
-                {field: 'quarter', title: '季度'},
+                {field: 'time', title: '月份'},
+                {field: 'time', title: '月份'},
+                {field: 'time', title: '月份'},
                 {
                     field: 'createTime',
                     title: '创建时间',
@@ -90,19 +79,19 @@
             debugger;
             var data = obj.data;
             if (obj.event === 'detail') {
-                $.get('rptresponsibilityreport/toDetail?id=' + data.id, function (html) {
+                $.get('rptteamthinking/toDetail?id=' + data.id, function (html) {
                     layer.open({
                         type: 1,
-                        title: '主体责任详情',
+                        title: '队伍思想状况',
                         area: ["100%", "100%"],
                         content: html
                     });
                 });
             } else if (obj.event === 'update') {
-                $.get('rptresponsibilityreport/toUpdate?id=' + data.id, function (html) {
+                $.get('rptteamthinking/toUpdate?id=' + data.id, function (html) {
                     layer.open({
                         type: 1,
-                        title: '修改主体责任上报',
+                        title: '修改队伍思想状况',
                         area: ["100%", "100%"],
                         content: html
                     });
@@ -110,7 +99,7 @@
             } else if (obj.event === 'del') {
                 debugger;
                 layer.confirm('确定删除？', function (index) {
-                    $.get('rptresponsibilityreport/delete?id=' + data.id, function (data) {
+                    $.get('rptteamthinking/delete?id=' + data.id, function (data) {
                         layer.close(index);
                         if (data.success) {
                             layer.msg("删除成功");
@@ -138,16 +127,21 @@
         }
 
         $("#addReport").click(function () {
-            $.get('rptresponsibilityreport/toAdd', function (html) {
+            $.get('rptteamthinking/toAdd', function (html) {
                 layer.open({
                     type: 1,
-                    title: '主体责任上报',
+                    title: '队伍思想状况上报',
                     area: ["100%", "100%"],
                     content: html
                 });
             });
         });
 
+        //日期
+        laydate.render({
+            elem: '#queryTime',
+            type: 'month'
+        });
     });
 </script>
 
