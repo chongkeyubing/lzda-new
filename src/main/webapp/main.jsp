@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="static/css/index.css">
     <link rel="stylesheet" type="text/css" href="static/layui/css/layui.css"/>
     <link rel="stylesheet" type="text/css" href="static/css/imgUp.css"/>
+    <link rel="stylesheet" type="text/css" href="static/css/tableCss.css"/>
     <script src="static/layui/layui.js"></script>
 </head>
 
@@ -56,7 +57,7 @@
                             <%--</shiro:hasPermission>--%>
                             <%--<shiro:hasPermission name="违惩信息">--%>
                             <li>
-                                <a href="">违惩信息</a>
+                                <a href="views/punish/common/punish_list.jsp">违惩信息</a>
                             </li>
                             <%--</shiro:hasPermission>--%>
                         </ul>
@@ -69,7 +70,7 @@
                         <h2 class="menu menu03">上报管理</h2>
                         <ul class="menuSideBar">
                             <li>
-                                <a href="">主体责任上报</a>
+                                <a href="rptresponsibilityreport/toList">主体责任上报</a>
                             </li>
                             <li>
                                 <a href="">队伍思想状况上报</a>
