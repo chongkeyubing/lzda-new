@@ -48,23 +48,25 @@
 
 <form class="layui-form form1">
     <div class="layui-form-item">
-        <div class="layui-inline">
-            <label class="layui-form-label">上报单位</label>
-            <div class="layui-input-inline">
-                <select name="organizationId" lay-search>
-                    <option value="">请选择或搜索单位</option>
-                    <c:forEach var="organization" items="${organizations}">
-                        <option value="${organization.id}">${organization.name}</option>
-                    </c:forEach>
-                </select>
+        <shiro:hasPermission name="查看所有人">
+            <div class="layui-inline">
+                <label class="layui-form-label">上报单位</label>
+                <div class="layui-input-inline">
+                    <select name="organizationId" lay-search>
+                        <option value="">请选择或搜索单位</option>
+                        <c:forEach var="organization" items="${organizations}">
+                            <option value="${organization.id}">${organization.name}</option>
+                        </c:forEach>
+                    </select>
+                </div>
             </div>
-        </div>
 
         <div class="layui-inline">
             <button class="layui-btn layui-btn-normal" lay-submit lay-filter="queryReport" id="queryReport">查询
             </button>
             <button class="layui-btn layui-btn-warm" type="reset" id="resetQueryReport">清空</button>
         </div>
+        </shiro:hasPermission>
 
         <div class="layui-inline" style="float:right">
             <button class="layui-btn layui-btn-normal" type="button" id="addReport">新增</button>
@@ -94,13 +96,13 @@
             elem: '#reportTable',
             url: 'rptincorrupt/list',
             page: true, //开启分页
-            limit:10,
+            limit: 10,
             method: 'post',
             cols: [[ //表头
                 {
                     field: 'committerName',
                     title: '上报人姓名',
-                    width:100
+                    width: 100
                 },
                 {
                     field: 'organizationName',
@@ -137,12 +139,12 @@
                 $.get('rptincorrupt/toReportDetail?id=' + data.id, function (html) {
                     layer.open({
                         type: 1,
-                       // title: data.rewardType + "-" + data.userName,
+                        // title: data.rewardType + "-" + data.userName,
                         area: ['1200px', '700px'],
                         content: html
                     });
                 });
-            }else if(obj.event === 'update'){
+            } else if (obj.event === 'update') {
                 $.get('rptincorrupt/toReportUpdate?id=' + data.id, function (html) {
                     layer.open({
                         type: 1,
@@ -151,7 +153,7 @@
                         content: html
                     });
                 });
-            }else if(obj.event === 'del'){
+            } else if (obj.event === 'del') {
                 debugger;
                 layer.confirm('确定删除？', function (index) {
                     $.get('rptincorrupt/delete?id=' + data.id, function (data) {
@@ -180,7 +182,7 @@
                 where: param //设定异步数据接口的额外参数，任意设
             });
         }
-        
+
         $("#addReport").click(function () {
             $.get('rptincorrupt/toAddReport', function (html) {
                 layer.open({

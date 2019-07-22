@@ -6,7 +6,7 @@
 
 <form class="layui-form form1">
     <div class="layui-form-item">
-        <shiro:hasPermission name="能查看本单位">
+        <shiro:hasPermission name="查看所有人">
             <div class="layui-inline">
                 <label class="layui-form-label">上报单位</label>
                 <div class="layui-input-inline">

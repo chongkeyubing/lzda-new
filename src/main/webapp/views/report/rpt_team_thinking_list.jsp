@@ -6,7 +6,7 @@
 
 <form class="layui-form form1">
     <div class="layui-form-item">
-        <shiro:hasPermission name="能查看本单位">
+        <shiro:hasPermission name="查看所有人">
             <div class="layui-inline">
                 <label class="layui-form-label">上报单位</label>
                 <div class="layui-input-inline">
@@ -65,14 +65,12 @@
                 {field: 'organizationName', title: '上报单位'},
                 {field: 'committerName', title: '上报人'},
                 {field: 'time', title: '月份'},
-                {field: 'time', title: '月份'},
-                {field: 'time', title: '月份'},
                 {
                     field: 'createTime',
                     title: '创建时间',
                     templet: "<div>{{layui.util.toDateString(d.createTime, 'yyyy-MM-dd HH:mm:ss')}}</div>"
                 },
-                {field: 'operate', align: 'center', title: '操作', toolbar: '#reportTableBar'}
+                {field: 'operate', align: 'center', title: '操作', width:250, toolbar: '#reportTableBar'}
             ]]
         });
 
