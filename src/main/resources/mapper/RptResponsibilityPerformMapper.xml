@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mwkj.lzda.dao.RptResponsibilityPerformMapper">
+  <resultMap id="BaseResultMap" type="com.mwkj.lzda.model.RptResponsibilityPerform">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="committer_id" jdbcType="INTEGER" property="committerId" />
+    <result column="committer_name" jdbcType="VARCHAR" property="committerName" />
+    <result column="organization_id" jdbcType="INTEGER" property="organizationId" />
+    <result column="organization_name" jdbcType="VARCHAR" property="organizationName" />
+    <result column="time" jdbcType="VARCHAR" property="time" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="attachment_id" jdbcType="VARCHAR" property="attachmentId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="participants" jdbcType="LONGVARCHAR" property="participants" />
+    <result column="title" jdbcType="LONGVARCHAR" property="title" />
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+</mapper>

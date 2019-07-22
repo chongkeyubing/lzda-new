@@ -20,7 +20,13 @@
             </div>
         </shiro:hasPermission>
         <div class="layui-inline">
-            <label class="layui-form-label">月份</label>
+            <label class="layui-form-label">标题</label>
+            <div class="layui-input-inline">
+                <input type="text" name="title" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">时间</label>
             <div class="layui-input-inline">
                 <input type="text" name="time" id="queryTime" autocomplete="off" class="layui-input">
             </div>
@@ -35,7 +41,6 @@
         <div class="layui-inline" style="float:right">
             <button class="layui-btn layui-btn-normal" type="button" id="addReport">新增</button>
         </div>
-
     </div>
 </form>
 
@@ -58,15 +63,14 @@
 
         var tableIns = table.render({
             elem: '#reportTable',
-            url: 'rptteamthinking/list',
+            url: 'rptresponsibilityperform/list',
             page: true, //开启分页
             method: 'post',
             cols: [[ //表头
                 {field: 'organizationName', title: '上报单位'},
                 {field: 'committerName', title: '上报人'},
-                {field: 'time', title: '月份'},
-                {field: 'time', title: '月份'},
-                {field: 'time', title: '月份'},
+                {field: 'time', title: '时间'},
+                {field: 'title', title: '标题'},
                 {
                     field: 'createTime',
                     title: '创建时间',
@@ -81,19 +85,19 @@
             debugger;
             var data = obj.data;
             if (obj.event === 'detail') {
-                $.get('rptteamthinking/toDetail?id=' + data.id, function (html) {
+                $.get('rptresponsibilityperform/toDetail?id=' + data.id, function (html) {
                     layer.open({
                         type: 1,
-                        title: '队伍思想状况',
+                        title: '履责纪实上报详情',
                         area: ["100%", "100%"],
                         content: html
                     });
                 });
             } else if (obj.event === 'update') {
-                $.get('rptteamthinking/toUpdate?id=' + data.id, function (html) {
+                $.get('rptresponsibilityperform/toUpdate?id=' + data.id, function (html) {
                     layer.open({
                         type: 1,
-                        title: '修改队伍思想状况',
+                        title: '修改履责纪实上报',
                         area: ["100%", "100%"],
                         content: html
                     });
@@ -101,7 +105,7 @@
             } else if (obj.event === 'del') {
                 debugger;
                 layer.confirm('确定删除？', function (index) {
-                    $.get('rptteamthinking/delete?id=' + data.id, function (data) {
+                    $.get('rptresponsibilityperform/delete?id=' + data.id, function (data) {
                         layer.close(index);
                         if (data.success) {
                             layer.msg("删除成功");
@@ -129,10 +133,10 @@
         }
 
         $("#addReport").click(function () {
-            $.get('rptteamthinking/toAdd', function (html) {
+            $.get('rptresponsibilityperform/toAdd', function (html) {
                 layer.open({
                     type: 1,
-                    title: '队伍思想状况上报',
+                    title: '履责纪实上报',
                     area: ["100%", "100%"],
                     content: html
                 });
@@ -141,9 +145,9 @@
 
         //日期
         laydate.render({
-            elem: '#queryTime',
-            type: 'month'
+            elem: '#queryTime'
         });
+
     });
 </script>
 

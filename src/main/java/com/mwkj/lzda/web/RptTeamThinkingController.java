@@ -6,10 +6,12 @@ import com.mwkj.lzda.core.layui.LayuiTableResultUtil;
 import com.mwkj.lzda.model.Attachment;
 import com.mwkj.lzda.model.RptResponsibilityReport;
 import com.mwkj.lzda.model.RptTeamThinking;
+import com.mwkj.lzda.model.User;
 import com.mwkj.lzda.service.OrganizationService;
 import com.mwkj.lzda.service.RptTeamThinkingService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -70,10 +73,17 @@ public class RptTeamThinkingController {
      */
     @RequestMapping("/list")
     @ResponseBody
-    public Result list(RptTeamThinking rptTeamThinking,
+    public Result list(RptTeamThinking rptTeamThinking, HttpSession session,
                        @RequestParam(defaultValue = "0") Integer page,
                        @RequestParam(defaultValue = "0") Integer limit) {
         PageHelper.startPage(page, limit);
+
+        //如果是能查看本单位
+        if (SecurityUtils.getSubject().isPermitted("能查看本单位")) {
+            User user = (User) session.getAttribute("currentUser");
+            rptTeamThinking.setOrganizationId(user.getOrganizationId());
+        }
+
         List<RptTeamThinking> list = rptTeamThinkingService.find(rptTeamThinking);
         PageInfo<RptTeamThinking> pageInfo = new PageInfo<>(list);
         return LayuiTableResultUtil.success(list, pageInfo.getTotal());

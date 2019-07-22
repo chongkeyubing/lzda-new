@@ -6,17 +6,20 @@
 
 <form class="layui-form form1">
     <div class="layui-form-item">
-        <div class="layui-inline">
-            <label class="layui-form-label">上报单位</label>
-            <div class="layui-input-inline">
-                <select name="organizationId" lay-search>
-                    <option value="">请选择或搜索单位</option>
-                    <c:forEach var="organization" items="${organizations}">
-                        <option value="${organization.id}">${organization.name}</option>
-                    </c:forEach>
-                </select>
+        <shiro:hasPermission name="能查看本单位">
+            <div class="layui-inline">
+                <label class="layui-form-label">上报单位</label>
+                <div class="layui-input-inline">
+                    <select name="organizationId" lay-search>
+                        <option value="">请选择或搜索单位</option>
+                        <c:forEach var="organization" items="${organizations}">
+                            <option value="${organization.id}">${organization.name}</option>
+                        </c:forEach>
+                    </select>
+                </div>
             </div>
-        </div>
+        </shiro:hasPermission>
+
         <div class="layui-inline">
             <label class="layui-form-label">年份</label>
             <div class="layui-input-inline">
