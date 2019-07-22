@@ -49,7 +49,7 @@
                                     <c:if test="${currentUser.roleid == r.id}">
                                         selected
                                     </c:if>
-                            >${r.rolename}</option>
+                            >${r.roleName}</option>
                         </c:forEach>
                     </select>
                 </div>

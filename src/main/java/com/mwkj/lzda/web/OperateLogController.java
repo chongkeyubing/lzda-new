@@ -24,7 +24,7 @@ import java.util.List;
 /**
  * @Author: libaogang
  * @Date: 2019-07-10 17:14
- * @Description 日志管理
+ * @Description 操作日志管理
  */
 @Controller
 @RequestMapping("/operatelog")

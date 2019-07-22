@@ -22,7 +22,7 @@
 
     <!-- 目前表结构设计 用户和角色是多对一 -->
     <select id="getRoles" resultType="java.lang.String">
-        select r.rolename
+        select r.role_name
         from user u
                  inner join role r on u.roleid = r.id
         where u.police_code = #{policeCode}
@@ -38,7 +38,7 @@
     </select>
 
     <select id="findUsersByCondition" parameterType="com.mwkj.lzda.model.User" resultType="com.mwkj.lzda.model.User">
-        select u.*, r.rolename as role
+        select u.*, r.role_name as role
         from user u
         inner join role r on r.id = u.roleid
         <where>

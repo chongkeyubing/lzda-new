@@ -28,7 +28,6 @@
 <table id="operateLogTable" lay-filter="operateLogTable"></table>
 
 
-
 <script>
     layui.use(['form', 'table', 'layer', 'laytpl'], function () {
         var table = layui.table;
@@ -47,7 +46,7 @@
                 {field: 'operatorName', title: '操作人姓名'},
                 {field: 'operatorCode', title: '操作人警号'},
                 {field: 'operatorIp', title: '操作人IP'},
-                {field: 'archiveOwnerName', title: '档案填报人'},
+                {field: 'archiveOwnerName', title: '表格填报人'},
                 {field: 'operateObject', title: '操作表类型',width:340},
                 {field: 'operateType', title: '操作类型'},
                 {

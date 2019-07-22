@@ -18,13 +18,13 @@ import static com.mwkj.lzda.core.ProjectConstant.*;
  */
 public class CodeGenerator {
     //JDBC配置，请修改为你项目的实际配置
-//    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/lzda?useUnicode=true&characterEncoding=utf8&useSSL=true";
-//    private static final String JDBC_USERNAME = "root";
-//    private static final String JDBC_PASSWORD = "root";
+    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/lzda?useUnicode=true&characterEncoding=utf8&useSSL=true";
+    private static final String JDBC_USERNAME = "root";
+    private static final String JDBC_PASSWORD = "root";
 
-    private static final String JDBC_URL = "jdbc:mysql://192.168.0.112:3306/lzda?useUnicode=true&characterEncoding=utf8&useSSL=true";
-    private static final String JDBC_USERNAME = "hfj";
-    private static final String JDBC_PASSWORD = "123456";
+//    private static final String JDBC_URL = "jdbc:mysql://192.168.0.112:3306/lzda?useUnicode=true&characterEncoding=utf8&useSSL=true";
+//    private static final String JDBC_USERNAME = "hfj";
+//    private static final String JDBC_PASSWORD = "123456";
     private static final String JDBC_DIVER_CLASS_NAME = "com.mysql.jdbc.Driver";
 
     private static final String PROJECT_PATH = System.getProperty("user.dir");//项目在硬盘上的基础路径
@@ -41,7 +41,7 @@ public class CodeGenerator {
     private static final String DATE = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(new Date());//@date
 
     public static void main(String[] args) {
-        genCode("pun_gift");
+        genCode("role_auth");
         //genCodeByCustomModelName("user","User");
     }
 

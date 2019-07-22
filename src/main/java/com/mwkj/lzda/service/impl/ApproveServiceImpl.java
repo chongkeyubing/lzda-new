@@ -148,7 +148,15 @@ public class ApproveServiceImpl extends AbstractService<Approve> implements Appr
         }
 
         //插入日志
-        this.insertLog(approve, request, LogOperateTypeEnum.审核通过.toString());
+        String operateObject = null;
+        for (ArchiveTypeEnum typeEnum : ArchiveTypeEnum.values()) {
+            if (approve.getArchiveType() == typeEnum.archiveType()) {
+                operateObject = typeEnum.archiveName();
+                break;
+            }
+        }
+
+        operateLogService.save(operateObject, LogOperateTypeEnum.审核通过.toString(), approve.getApplicantId());
     }
 
     /**
@@ -178,7 +186,15 @@ public class ApproveServiceImpl extends AbstractService<Approve> implements Appr
         save(approve1);
 
         //插入日志
-        this.insertLog(approve, request, LogOperateTypeEnum.审核驳回.toString());
+        String operateObject = null;
+        for (ArchiveTypeEnum typeEnum : ArchiveTypeEnum.values()) {
+            if (approve.getArchiveType() == typeEnum.archiveType()) {
+                operateObject = typeEnum.archiveName();
+                break;
+            }
+        }
+
+        operateLogService.save(operateObject, LogOperateTypeEnum.审核驳回.toString(), approve.getApplicantId());
     }
 
     /**
@@ -200,32 +216,6 @@ public class ApproveServiceImpl extends AbstractService<Approve> implements Appr
         approve1.setLastStep(0);
         update(approve1);
         return approve1;
-    }
-
-    private void insertLog(Approve approve, HttpServletRequest request, String operateType) {
-        Approve approveParam = new Approve();
-        approveParam.setArchiveId(approve.getArchiveId());
-        approveParam.setArchiveType(approve.getArchiveType());
-        approveParam.setLastStep(1);
-        Approve approve1 = findOne(approveParam);
-
-        //插入日志信息
-        User currentUser = (User) request.getSession().getAttribute("currentUser");
-        OperateLog operateLog = new OperateLog();
-        operateLog.setOperatorId(currentUser.getId());
-        operateLog.setOperatorName(currentUser.getRealname());
-        operateLog.setOperatorIp(DruidWebUtils.getRemoteAddr(request));
-        operateLog.setArchiveOwnerId(approve1.getApplicantId());
-        operateLog.setArchiveOwnerName(approve1.getApplicantName());
-        //遍历档案类型枚举
-        for (ArchiveTypeEnum typeEnum : ArchiveTypeEnum.values()) {
-            if (approve.getArchiveType() == typeEnum.archiveType()) {
-                operateLog.setOperateObject(typeEnum.archiveName());
-                break;
-            }
-        }
-        operateLog.setOperateType(operateType);
-        operateLogService.save(operateLog);
     }
 
 }

@@ -1,11 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mwkj.lzda.dao.RoleMapper">
-  <resultMap id="BaseResultMap" type="com.mwkj.lzda.model.Role">
-    <!--
-      WARNING - @mbg.generated
-    -->
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="rolename" jdbcType="VARCHAR" property="rolename" />
-  </resultMap>
+    <resultMap id="BaseResultMap" type="com.mwkj.lzda.model.Role">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="role_name" jdbcType="VARCHAR" property="roleName"/>
+        <result column="active" jdbcType="INTEGER" property="active"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+    </resultMap>
+
+    <resultMap type="com.mwkj.lzda.dto.RoleWithAuthsDTO" id="roleWithAuths">
+        <id column="id" property="roleId"/>
+        <result column="role_name" property="roleName"/>
+        <collection property="authorityList" ofType="com.mwkj.lzda.model.Authority">
+            <id column="auth_id" property="id"/>
+            <result column="auth_name" property="name"/>
+            <result column="type" property="type"/>
+        </collection>
+    </resultMap>
+
+
+    <select id="findAuthsByRoleId"  parameterType="java.lang.Integer"  resultMap="roleWithAuths">
+        select r.id, r.role_name, a.id as auth_id ,a.name as auth_name,a.type
+        from role r
+                 inner join role_auth ra on r.id = ra.rid
+                 inner join authority a on a.id = ra.aid
+        where r.id = #{id}
+    </select>
 </mapper>

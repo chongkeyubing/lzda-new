@@ -226,7 +226,7 @@ public class UserController {
         User user = userService.findById(currentUser.getId());
 
         Role role = roleService.findById(user.getRoleid());
-        user.setRole(role.getRolename());
+        user.setRole(role.getRoleName());
 
         map.put("user",user);
         return "/views/user/personal_info";

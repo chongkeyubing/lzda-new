@@ -15,26 +15,26 @@
 
         <div class="layui-form-item">
             <div class="layui-inline">
-                <label class="layui-form-label">被表彰人</label>
+                <label class="layui-form-label">被表彰人姓名</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="userName" readonly autocomplete="off" class="layui-input"
-                           placeholder="点击选择被表彰人" lay-verify="required" id="selectUserName" value="${reward.userName}">
+                    <input type="text" name="userName" readonly lay-verify="required" autocomplete="off"
+                           class="layui-input" placeholder="点击选择" style="width: 74%;display: inline-block;"
+                           id="selectUserName" value="${reward.userName}">
+                    <button class="layui-btn  layui-btn-sm layui-btn-normal" type="button" id="selectUser">选择</button>
                 </div>
             </div>
             <div class="layui-inline">
-                <label class="layui-form-label">单位</label>
+                <label class="layui-form-label">被表彰人单位</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="organization" lay-verify="required" id="selectOrganization" readonly
-                           autocomplete="off"
-                           class="layui-input" value="${reward.organization}">
+                    <input type="text" name="organization" readonly lay-verify="required" autocomplete="off"
+                           class="layui-input" id="selectOrganization" value="${reward.organization}">
                 </div>
             </div>
             <div class="layui-inline">
-                <label class="layui-form-label">职务</label>
+                <label class="layui-form-label">被表彰人职务</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="jobPosition" lay-verify="required" id="selectJobPosition" readonly
-                           autocomplete="off"
-                           class="layui-input" value="${reward.jobPosition}">
+                    <input type="text" name="jobPosition" readonly lay-verify="required" autocomplete="off"
+                           class="layui-input" id="selectJobPosition" value="${reward.jobPosition}">
                 </div>
             </div>
 
@@ -197,6 +197,18 @@
                     } else {
                         layer.msg("删除失败");
                     }
+                });
+            });
+        });
+
+        //选择用户
+        $("#selectUser").click(function (e) {
+            $.get('user/toUserSelect', function (html) {
+                layer.open({
+                    type: 1,
+                    title: '选择用户',
+                    area: ['1000'],
+                    content: html
                 });
             });
         });

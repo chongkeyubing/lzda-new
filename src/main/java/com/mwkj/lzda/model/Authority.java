@@ -20,6 +20,16 @@ public class Authority {
      */
     private String authflag;
 
+    private int type;
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
     /**
      * 获取主键
      *

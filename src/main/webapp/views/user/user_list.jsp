@@ -40,7 +40,7 @@
                     <select name="roleid">
                         <option value="">请选择角色</option>
                         <c:forEach items="${roles}" var="r">
-                            <option value="${r.id}">${r.rolename}</option>
+                            <option value="${r.id}">${r.roleName}</option>
                         </c:forEach>
                     </select>
                 </div>
