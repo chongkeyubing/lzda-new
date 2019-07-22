@@ -46,14 +46,19 @@
                 </div>
             </div>
 
-        </div>
-        <div class="layui-form-item">
-            <div class="layui-input-block">
+            <div class="layui-inline">
                 <button class="layui-btn layui-btn-normal" lay-submit lay-filter="queryUser" id="queryUser">查询
                 </button>
                 <button class="layui-btn layui-btn-warm" type="reset" id="resetQueryUser">清空</button>
             </div>
 
+        </div>
+        <div class="layui-form-item">
+            <%--<div class="layui-input-block">--%>
+                <%--<button class="layui-btn layui-btn-normal" lay-submit lay-filter="queryUser" id="queryUser">查询--%>
+                <%--</button>--%>
+                <%--<button class="layui-btn layui-btn-warm" type="reset" id="resetQueryUser">清空</button>--%>
+            <%--</div>--%>
             <div class="layui-input-inline" style="float:right">
                 <button class="layui-btn layui-btn-normal" lay-filter="addUserButton" type="button" id="addUserButton">
                     新增用户
@@ -86,15 +91,15 @@
             page: true, //开启分页
             method: 'post',
             cols: [[ //表头
-                {field: 'realname', title: '姓名', width: 100},
-                {field: 'policeCode', title: '警号', width: 100},
-                {field: 'gender', title: '性别', width: 60},
-                {field: 'role', title: '角色', width: 120},
-                {field: 'birthday', title: '出生日期',width:120},
+                {field: 'realname', title: '姓名'},
+                {field: 'policeCode', title: '警号'},
+                {field: 'gender', title: '性别'},
+                {field: 'role', title: '角色'},
+                {field: 'birthday', title: '出生日期'},
                 {field: 'organizationName', title: '单位'},
                 {field: 'jobPosition', title: '职务'},
                 {field: 'identityNumber', title: '身份证'},
-                {field: 'operate', align: 'center', title: '操作', toolbar: '#userTableBar', width: 180}
+                {field: 'operate', align: 'center', title: '操作', toolbar: '#userTableBar'}
             ]]
         });
 

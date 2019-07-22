@@ -62,8 +62,8 @@
             page: true, //开启分页
             method: 'post',
             cols: [[ //表头
-                {field: 'organizationName', title: '上报单位'},
-                {field: 'committerName', title: '上报人'},
+                {field: 'organizationName', title: '上报单位',width:300},
+                {field: 'committerName', title: '上报人',width:120},
                 {field: 'time', title: '月份'},
                 {
                     field: 'createTime',

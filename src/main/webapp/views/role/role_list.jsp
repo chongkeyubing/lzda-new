@@ -38,7 +38,7 @@
                     title: '创建时间',
                     templet: "<div>{{layui.util.toDateString(d.createTime, 'yyyy-MM-dd HH:mm:ss')}}</div>"
                 },
-                {field: 'operate', align: 'center', title: '操作', width: '40%', toolbar: '#roleTableBar'}
+                {field: 'operate', align: 'center', title: '操作', toolbar: '#roleTableBar'}
             ]]
         });
 

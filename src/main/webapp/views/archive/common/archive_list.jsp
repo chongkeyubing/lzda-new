@@ -44,14 +44,21 @@
             </div>
         </div>
         <%--</shiro:hasAnyRoles>--%>
-    </div>
-    <div class="layui-form-item">
-        <div class="layui-input-block">
+        <div class="layui-inline">
             <button class="layui-btn layui-btn-normal" lay-submit lay-filter="queryArchive" id="queryArchive">查询
             </button>
             <button class="layui-btn layui-btn-warm" type="reset" id="resetQueryArchive">清空</button>
         </div>
+
+
     </div>
+    <%--<div class="layui-form-item">--%>
+    <%--<div class="layui-input-block">--%>
+    <%--<button class="layui-btn layui-btn-normal" lay-submit lay-filter="queryArchive" id="queryArchive">查询--%>
+    <%--</button>--%>
+    <%--<button class="layui-btn layui-btn-warm" type="reset" id="resetQueryArchive">清空</button>--%>
+    <%--</div>--%>
+    <%--</div>--%>
 
 </form>
 
@@ -139,7 +146,7 @@
                 {field: 'policeCode', title: '警号'},
                 {field: 'organizationName', title: '单位'},
                 {
-                    field: 'archiveType', title: '档案类型',templet: function (data) {
+                    field: 'archiveType', title: '档案类型', templet: function (data) {
                         for (var i = 0; i < ARCHIVE_TYPE.length; i++) {
                             if (data.archiveType == ARCHIVE_TYPE[i].type) {
                                 return ARCHIVE_TYPE[i].name;
