@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface RptIncorruptMapper extends Mapper<RptIncorrupt> {
     List<RptIncorrupt> selectForPage(RptIncorrupt rptIncorrupt);
+     int selectCount(RptIncorrupt rptIncorrupt);
+     //void Update(RptIncorrupt rptIncorrupt ,Integer id);
 }

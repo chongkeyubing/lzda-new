@@ -1,7 +1,9 @@
 package com.mwkj.lzda.service;
+import com.mwkj.lzda.model.Reward;
 import com.mwkj.lzda.model.RptIncorrupt;
 import com.mwkj.lzda.core.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 
@@ -10,4 +12,6 @@ import java.util.List;
  */
 public interface RptIncorruptService extends Service<RptIncorrupt> {
     List<RptIncorrupt> selectForPage(RptIncorrupt rptIncorrupt);
+    long selectCount(RptIncorrupt rptIncorrupt);
+    //void Update(RptIncorrupt rptIncorrupt , Integer id);
 }

@@ -15,12 +15,12 @@
 							<th>廉 政 信 息</th>
 						</tr>
 						<tr>
-							<td style="text-align: left;">标题：<i></i></td>
+							<td style="text-align: left;">标题：<i>${rptIncorrupt.title}</i></td>
 						</tr>
 						<tr>
 							<td style="text-align: left;">
 								<div class="message" style="width: 100%;overflow: hidden;float: left;">
-									<span>内容：<i></i></span>
+									<span>内容：<i>${rptIncorrupt.content}</i></span>
 								</div>
 							</td>
 						</tr>						

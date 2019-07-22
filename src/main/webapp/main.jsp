@@ -75,10 +75,10 @@
                                 <a href="">队伍思想状况上报</a>
                             </li>
                             <li>
-                                <a href="">廉政信息上报</a>
+                                <a href="views/report/report_list.jsp">廉政信息上报</a>
                             </li>
                             <li>
-                                <a href="">履责纪实上报</a>
+                                <a href="views/report/per_list.jsp">履责纪实上报</a>
                             </li>
                         </ul>
                     </dd>

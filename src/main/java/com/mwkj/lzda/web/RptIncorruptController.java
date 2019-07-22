@@ -1,4 +1,5 @@
 package com.mwkj.lzda.web;
+import com.mwkj.lzda.core.Mapper;
 import com.mwkj.lzda.core.Result;
 import com.mwkj.lzda.core.ResultUtil;
 import com.mwkj.lzda.core.layui.LayuiTableResultUtil;
@@ -6,6 +7,7 @@ import com.mwkj.lzda.model.RptIncorrupt;
 import com.mwkj.lzda.service.RptIncorruptService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.stereotype.Controller;
@@ -39,7 +41,7 @@ public class RptIncorruptController {
   */
   @RequestMapping("/toAddReport")
   public String toAddReport(){
-      return "views/report/report_detail";
+      return "views/report/report_add";
   }
 
 
@@ -57,11 +59,38 @@ public class RptIncorruptController {
         return ResultUtil.success();
     }
 
+
+    /**
+    * 方法实现说明
+    * @author      zzy
+    * @Description:(跳转到修改页面)
+    * @date        2019/7/22/022 11:41
+    */
+    @RequestMapping("/toReportUpdate")
+    public String toReportUpdate(Integer id,ModelMap map){
+        RptIncorrupt rptIncorrupt =rptIncorruptService.findById(id);
+        map.put("rptIncorrupt",rptIncorrupt);
+        return "views/report/report_update";
+    }
+
+
     @RequestMapping("/detail")
     @ResponseBody
     public Result detail(@RequestParam Integer id) {
         RptIncorrupt rptIncorrupt = rptIncorruptService.findById(id);
         return ResultUtil.success(rptIncorrupt);
+    }
+    /**
+    * 方法实现说明
+    * @author      zzy
+    * @Description:(跳转到详情页面)
+    * @date         10:50
+    */
+    @RequestMapping("/toReportDetail")
+    public String toReportDetail(Integer id,ModelMap map){
+        RptIncorrupt rptIncorrupt =rptIncorruptService.findById(id);
+            map.put("rptIncorrupt",rptIncorrupt);
+        return "views/report/report_detail";
     }
 
     @RequestMapping("/list")
@@ -78,6 +107,10 @@ public class RptIncorruptController {
         //List<RptIncorrupt> list = rptIncorruptService.findAll();
         List<RptIncorrupt> list = rptIncorruptService.selectForPage(rptIncorrupt);
         PageInfo<RptIncorrupt> pageInfo = new PageInfo<>(list);
-        return ResultUtil.success(pageInfo);
+       // return ResultUtil.success(pageInfo);
+        return LayuiTableResultUtil.success(list,pageInfo.getTotal());
+
+
+
     }
 }
