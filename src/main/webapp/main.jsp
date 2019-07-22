@@ -73,7 +73,7 @@
                                 <a href="rptresponsibilityreport/toList">主体责任上报</a>
                             </li>
                             <li>
-                                <a href="">队伍思想状况上报</a>
+                                <a href="rptteamthinking/toList">队伍思想状况上报</a>
                             </li>
                             <li>
                                 <a href="views/report/report_list.jsp">廉政信息上报</a>

@@ -1,10 +1,16 @@
 package com.mwkj.lzda.web;
+
 import com.mwkj.lzda.core.Result;
 import com.mwkj.lzda.core.ResultUtil;
+import com.mwkj.lzda.core.layui.LayuiTableResultUtil;
+import com.mwkj.lzda.model.Attachment;
+import com.mwkj.lzda.model.RptResponsibilityReport;
 import com.mwkj.lzda.model.RptTeamThinking;
+import com.mwkj.lzda.service.OrganizationService;
 import com.mwkj.lzda.service.RptTeamThinkingService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.stereotype.Controller;
@@ -14,13 +20,18 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
-* Created by CodeGenerator on 2019-07-22 16:16.
-*/
+ * @Author libaogang
+ * @Date 2019-07-22 16:30
+ * @Description 队伍思想状况管理
+ */
 @Controller
 @RequestMapping("/rptteamthinking")
 public class RptTeamThinkingController {
     @Resource
     private RptTeamThinkingService rptTeamThinkingService;
+
+    @Resource
+    OrganizationService organizationService;
 
     @RequestMapping("/add")
     @ResponseBody
@@ -43,20 +54,68 @@ public class RptTeamThinkingController {
         return ResultUtil.success();
     }
 
-    @RequestMapping("/detail")
-    @ResponseBody
-    public Result detail(@RequestParam Integer id) {
+    @RequestMapping("/toDetail")
+    public String detail(@RequestParam Integer id, ModelMap map) {
         RptTeamThinking rptTeamThinking = rptTeamThinkingService.findById(id);
-        return ResultUtil.success(rptTeamThinking);
+        map.put("report", rptTeamThinking);
+        return "views/report/rpt_team_thinking_detail";
     }
 
+    /**
+     * @return com.mwkj.lzda.core.Result
+     * @Author libaogang
+     * @Date 2019-07-22 16:33
+     * @Param [page, limit]
+     * @Description 列表页表格分页条件查询
+     */
     @RequestMapping("/list")
     @ResponseBody
-    public Result list(@RequestParam(defaultValue = "0") Integer page,
+    public Result list(RptTeamThinking rptTeamThinking,
+                       @RequestParam(defaultValue = "0") Integer page,
                        @RequestParam(defaultValue = "0") Integer limit) {
         PageHelper.startPage(page, limit);
-        List<RptTeamThinking> list = rptTeamThinkingService.findAll();
+        List<RptTeamThinking> list = rptTeamThinkingService.find(rptTeamThinking);
         PageInfo<RptTeamThinking> pageInfo = new PageInfo<>(list);
-        return ResultUtil.success(pageInfo);
+        return LayuiTableResultUtil.success(list, pageInfo.getTotal());
+    }
+
+    /**
+     * @return java.lang.String
+     * @Author libaogang
+     * @Date 2019-07-22 16:33
+     * @Param [map]
+     * @Description 跳转到列表页
+     */
+    @RequestMapping("/toList")
+    public String toList(ModelMap map) {
+        //获取所有单位
+        map.put("organizations", organizationService.findAll());
+        return "views/report/rpt_team_thinking_list";
+    }
+
+
+    /**
+     * @return java.lang.String
+     * @Author libaogang
+     * @Date 2019-07-22 16:31
+     * @Param []
+     * @Description 跳转到新增页
+     */
+    @RequestMapping("/toAdd")
+    public String toAdd() {
+        return "views/report/rpt_team_thinking_add";
+    }
+
+    /**
+     * @return java.lang.String
+     * @Author libaogang
+     * @Date 2019-07-22 16:31
+     * @Param [id, map]
+     * @Description 跳转到修改页
+     */
+    @RequestMapping("/toUpdate")
+    public String toUpdate(int id, ModelMap map) {
+        map.put("report", rptTeamThinkingService.findById(id));
+        return "views/report/rpt_team_thinking_update";
     }
 }
