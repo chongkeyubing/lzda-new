@@ -15,14 +15,38 @@
     <result column="content" jdbcType="LONGVARCHAR" property="content" />
   </resultMap>
 
+<!--分页查询-->
   <select id="selectForPage" parameterType="com.mwkj.lzda.model.RptIncorrupt" resultType="com.mwkj.lzda.model.RptIncorrupt">
   select t1.* from rpt_incorrupt t1
     <where>
-      <if test="organizationName!=null and organizationName!=''">
-         t1.organization_name like '%${organizationName}%'
+      <if test="organizationId!=null and organizationId!=''">
+         t1.organization_id like '%${organizationId}%'
       </if>
     </where>
-
+    order by t1.create_time desc
   </select>
+  <!--分页长度-->
+  <select id="selectCount" parameterType="com.mwkj.lzda.model.RptIncorrupt" resultType="java.lang.Long">
+  select count(*) from rpt_incorrupt t1
+    <where>
+      <if test="organizationId!=null and organizationId!=''">
+        t1.organization_id like '%${organizationId}%'
+      </if>
+    </where>
+  </select>
+
+  <!--修改-->
+<!--  <update id="Update" parameterType="com.mwkj.lzda.model.RptIncorrupt">
+    update rpt_incorrupt <set>
+
+    <if test="title!=null and title!=''">
+      title=#{title},
+    </if>
+    <if test="content!=null and content!=''">
+      content=#{content},
+    </if>
+  </set>
+    where id=#{id}
+  </update>-->
 
 </mapper>

@@ -1,11 +1,14 @@
 package com.mwkj.lzda.web;
+import com.mwkj.lzda.core.Mapper;
 import com.mwkj.lzda.core.Result;
 import com.mwkj.lzda.core.ResultUtil;
 import com.mwkj.lzda.core.layui.LayuiTableResultUtil;
 import com.mwkj.lzda.model.RptIncorrupt;
+import com.mwkj.lzda.service.OrganizationService;
 import com.mwkj.lzda.service.RptIncorruptService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.stereotype.Controller;
@@ -23,6 +26,9 @@ public class RptIncorruptController {
     @Resource
     private RptIncorruptService rptIncorruptService;
 
+    @Resource
+    private OrganizationService organizationService;
+
     @RequestMapping("/add")
     @ResponseBody
     public Result add(RptIncorrupt rptIncorrupt) {
@@ -39,7 +45,7 @@ public class RptIncorruptController {
   */
   @RequestMapping("/toAddReport")
   public String toAddReport(){
-      return "views/report/report_detail";
+      return "views/report/report_add";
   }
 
 
@@ -57,27 +63,81 @@ public class RptIncorruptController {
         return ResultUtil.success();
     }
 
+
+    /**
+    * 方法实现说明
+    * @author      zzy
+    * @Description:(跳转到修改页面)
+    * @date        2019/7/22/022 11:41
+    */
+    @RequestMapping("/toReportUpdate")
+    public String toReportUpdate(Integer id,ModelMap map){
+        RptIncorrupt rptIncorrupt =rptIncorruptService.findById(id);
+        map.put("rptIncorrupt",rptIncorrupt);
+        return "views/report/report_update";
+    }
+
+
     @RequestMapping("/detail")
     @ResponseBody
     public Result detail(@RequestParam Integer id) {
         RptIncorrupt rptIncorrupt = rptIncorruptService.findById(id);
         return ResultUtil.success(rptIncorrupt);
     }
+    /**
+    * 方法实现说明
+    * @author      zzy
+    * @Description:(跳转到详情页面)
+    * @date         10:50
+    */
+    @RequestMapping("/toReportDetail")
+    public String toReportDetail(Integer id,ModelMap map){
+        RptIncorrupt rptIncorrupt =rptIncorruptService.findById(id);
+            map.put("rptIncorrupt",rptIncorrupt);
+        return "views/report/report_detail";
+    }
+
+
+    /**
+    * 方法实现说明
+    * @author      zzy
+    * @Description:(跳转到分页)
+    * @date        2019/7/22/022 17:36
+    */
+    @RequestMapping("/toList")
+    public String toList(ModelMap map) {
+        //获取所有单位
+        map.put("organizations", organizationService.findAll());
+        return "views/report/report_list";
+    }
+
 
     @RequestMapping("/list")
     @ResponseBody
     public Result list(@RequestParam(defaultValue = "0") Integer page,
-                       @RequestParam(defaultValue = "0") Integer size,
+                       @RequestParam(defaultValue = "0") Integer limit,
                        RptIncorrupt rptIncorrupt) {
        /* PageHelper.startPage(page, size);
         List<RptIncorrupt> list = rptIncorruptService.findRewardsByCondition(rptIncorrupt);
         PageInfo<RptIncorrupt> pageInfo = new PageInfo<>(list);*/
         //return LayuiTableResultUtil.success(list,pageInfo.getTotal());
 
-        PageHelper.startPage(page, size);
+        PageHelper.startPage(page, limit);
+
         //List<RptIncorrupt> list = rptIncorruptService.findAll();
-        List<RptIncorrupt> list = rptIncorruptService.selectForPage(rptIncorrupt);
+
+        List<RptIncorrupt> list = rptIncorruptService.find(rptIncorrupt);
+
+
+
+       /* List<RptIncorrupt> list = rptIncorruptService.selectForPage(rptIncorrupt);*/
+
+        //生成分页信息，包含总数
         PageInfo<RptIncorrupt> pageInfo = new PageInfo<>(list);
-        return ResultUtil.success(pageInfo);
+       // return ResultUtil.success(pageInfo);
+        return LayuiTableResultUtil.success(list,pageInfo.getTotal());
+
+
+
     }
 }

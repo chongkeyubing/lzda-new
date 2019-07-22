@@ -47,22 +47,22 @@
                     </dd>
 
                     <shiro:hasAnyRoles name="政治处领导,督察大队,纪委">
-                        <dd>
-                            <h2 class="menu menu02">奖惩管理</h2>
-                            <ul class="menuSideBar">
-                                    <%--<shiro:hasPermission name="奖励信息">--%>
-                                <li>
-                                    <a href="views/reward/reward_list.jsp">奖励信息</a>
-                                </li>
-                                    <%--</shiro:hasPermission>--%>
-                                    <%--<shiro:hasPermission name="违惩信息">--%>
-                                <li>
-                                    <a href="views/punish/common/punish_list.jsp">违惩信息</a>
-                                </li>
-                                    <%--</shiro:hasPermission>--%>
-                            </ul>
+                    <dd>
+                        <h2 class="menu menu02">奖惩管理</h2>
+                        <ul class="menuSideBar">
+                            <%--<shiro:hasPermission name="奖励信息">--%>
+                            <li>
+                                <a href="views/reward/reward_list.jsp">奖励信息</a>
+                            </li>
+                            <%--</shiro:hasPermission>--%>
+                            <%--<shiro:hasPermission name="违惩信息">--%>
+                            <li>
+                                <a href="views/punish/common/punish_list.jsp">违惩信息</a>
+                            </li>
+                            <%--</shiro:hasPermission>--%>
+                        </ul>
 
-                        </dd>
+                    </dd>
                     </shiro:hasAnyRoles>
 
                     <%--<shiro:hasPermission name="上报管理">--%>
@@ -76,7 +76,7 @@
                                 <a href="rptteamthinking/toList">队伍思想状况上报</a>
                             </li>
                             <li>
-                                <a href="">廉政信息上报</a>
+                                <a href="rptincorrupt/toList">廉政信息上报</a>
                             </li>
                             <li>
                                 <a href="rptresponsibilityperform/toList">履责纪实上报</a>
@@ -86,57 +86,57 @@
                     <%--</shiro:hasPermission>--%>
                     <%--<shiro:hasPermission name="廉政报告">--%>
                     <%--<dd>--%>
-                    <%--<h2 class="menu menu04">廉政报告</h2>--%>
-                    <%--<ul class="menuSideBar">--%>
-                    <%--<li>--%>
-                    <%--<a href="">廉政报告管理</a>--%>
-                    <%--</li>--%>
+                        <%--<h2 class="menu menu04">廉政报告</h2>--%>
+                        <%--<ul class="menuSideBar">--%>
+                            <%--<li>--%>
+                                <%--<a href="">廉政报告管理</a>--%>
+                            <%--</li>--%>
 
-                    <%--</ul>--%>
+                        <%--</ul>--%>
                     <%--</dd>--%>
                     <%--</shiro:hasPermission>--%>
 
                     <%--<shiro:hasPermission name="统计">--%>
                     <%--<dd>--%>
-                    <%--<h2 class="menu menu05">统计</h2>--%>
-                    <%--<ul class="menuSideBar">--%>
-                    <%--<li>--%>
-                    <%--<a href="">违规统计</a>--%>
-                    <%--</li>--%>
-                    <%--<li>--%>
-                    <%--<a href="">出国(境)统计</a>--%>
-                    <%--</li>--%>
-                    <%--<li>--%>
-                    <%--<a href="">影响公正执行职务报备统计</a>--%>
-                    <%--</li>--%>
+                        <%--<h2 class="menu menu05">统计</h2>--%>
+                        <%--<ul class="menuSideBar">--%>
+                            <%--<li>--%>
+                                <%--<a href="">违规统计</a>--%>
+                            <%--</li>--%>
+                            <%--<li>--%>
+                                <%--<a href="">出国(境)统计</a>--%>
+                            <%--</li>--%>
+                            <%--<li>--%>
+                                <%--<a href="">影响公正执行职务报备统计</a>--%>
+                            <%--</li>--%>
 
-                    <%--</ul>--%>
+                        <%--</ul>--%>
 
                     <%--</dd>--%>
                     <%--</shiro:hasPermission>--%>
                     <shiro:hasPermission name="日志">
-                        <dd>
-                            <h2 class="menu menu06">日志</h2>
-                            <ul class="menuSideBar">
-                                <li>
-                                    <a href="views/operate_log_list.jsp">日志信息</a>
-                                </li>
+                    <dd>
+                        <h2 class="menu menu06">日志</h2>
+                        <ul class="menuSideBar">
+                            <li>
+                                <a href="views/operate_log_list.jsp">日志信息</a>
+                            </li>
 
-                            </ul>
+                        </ul>
 
-                        </dd>
+                    </dd>
                     </shiro:hasPermission>
 
                     <dd>
                         <h2 class="menu menu07">用户权限</h2>
                         <ul class="menuSideBar">
                             <shiro:hasPermission name="用户权限">
-                                <li>
-                                    <a href="user/toUserList">用户管理</a>
-                                </li>
-                                <%--<li>--%>
+                            <li>
+                                <a href="user/toUserList">用户管理</a>
+                            </li>
+                            <%--<li>--%>
                                 <%--<a href="">权限管理</a>--%>
-                                <%--</li>--%>
+                            <%--</li>--%>
                             </shiro:hasPermission>
                             <li>
                                 <a href="user/toPersonalInfo">个人信息</a>
