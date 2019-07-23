@@ -106,6 +106,7 @@
                         return PUNISH_TYPE[data.punishType];
                     }
                 },
+                {field: 'operator', title: '违惩填写人'},
                 {
                     field: 'createTime',
                     title: '填表时间',

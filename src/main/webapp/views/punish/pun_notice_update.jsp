@@ -16,6 +16,7 @@
         <input type="hidden" name="userId" id="selectUserId" value="${punish.userId}">
         <%--附件id--%>
         <input type="hidden" name="attachmentId" value="${punish.attachmentId}">
+        <input type="hidden" name="punishType" value="${punishType}">
 
         <div class="layui-form-item">
             <div class="layui-inline">

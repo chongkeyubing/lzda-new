@@ -24,6 +24,16 @@ public class OperateLogDTO {
 
     private String operateType;
 
+    private String ownerOrg;
+
+    public String getOwnerOrg() {
+        return ownerOrg;
+    }
+
+    public void setOwnerOrg(String ownerOrg) {
+        this.ownerOrg = ownerOrg;
+    }
+
     public String getOperatorName() {
         return operatorName;
     }

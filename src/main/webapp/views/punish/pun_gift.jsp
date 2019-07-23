@@ -14,6 +14,7 @@
         <input type="hidden" name="userId" id="selectUserId">
         <%-- 负责人id --%>
         <input type="hidden" name="chargePersonId" id="selectSecondUserId">
+        <input type="hidden" name="punishType" value="${punishType}">
 
         <div class="layui-form-item">
             <div class="layui-inline">
@@ -152,7 +153,8 @@
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">礼品（金）处理情况</label>
             <div class="layui-input-inline">
-                <textarea placeholder="请输入内容" class="layui-textarea txtArea" name="handleInfo" lay-verify="required"></textarea>
+                <textarea placeholder="请输入内容" class="layui-textarea txtArea" name="handleInfo"
+                          lay-verify="required"></textarea>
             </div>
         </div>
 

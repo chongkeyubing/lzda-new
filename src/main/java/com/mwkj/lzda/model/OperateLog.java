@@ -35,17 +35,27 @@ public class OperateLog {
     private String operatorIp;
 
     /**
-     * 表中人id、档案拥有者id，关联user表id
-
+     * 表中人id、表格拥有者id，关联user表id
      */
     @Column(name = "archive_owner_id")
     private Integer archiveOwnerId;
 
     /**
-     * 表中人姓名、档案拥有者姓名
+     * 表中人姓名、表格拥有者姓名
      */
     @Column(name = "archive_owner_name")
     private String archiveOwnerName;
+
+    @Column(name = "owner_org")
+    private String ownerOrg;
+
+    public String getOwnerOrg() {
+        return ownerOrg;
+    }
+
+    public void setOwnerOrg(String ownerOrg) {
+        this.ownerOrg = ownerOrg;
+    }
 
     /**
      * 操作对象：26类个人填报档案表、奖惩表、上报表、统计信息
@@ -139,10 +149,8 @@ public class OperateLog {
 
     /**
      * 获取表中人id、档案拥有者id，关联user表id
-
      *
      * @return archive_owner_id - 表中人id、档案拥有者id，关联user表id
-
      */
     public Integer getArchiveOwnerId() {
         return archiveOwnerId;
@@ -150,10 +158,8 @@ public class OperateLog {
 
     /**
      * 设置表中人id、档案拥有者id，关联user表id
-
      *
      * @param archiveOwnerId 表中人id、档案拥有者id，关联user表id
-
      */
     public void setArchiveOwnerId(Integer archiveOwnerId) {
         this.archiveOwnerId = archiveOwnerId;
@@ -194,7 +200,6 @@ public class OperateLog {
     public void setOperateObject(String operateObject) {
         this.operateObject = operateObject;
     }
-
 
 
     /**

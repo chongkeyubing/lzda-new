@@ -7,7 +7,7 @@
         select * from (
 
         select p.id as punish_id, p.user_id,o.id as organization_id,p.user_name,u.police_code,o.name as organization_name
-        ,p.punish_type,p.create_time from
+        ,p.punish_type,p.operator, p.create_time from
         (
         SELECT *
         from pun_violation
@@ -26,7 +26,7 @@
         union all
 
         select p.id as punish_id, p.user_id,o.id as organization_id,p.user_name,u.police_code,o.name as organization_name
-        ,p.punish_type,p.create_time from
+        ,p.punish_type,p.operator,p.create_time from
         (
         SELECT *
         from pun_accountability
@@ -45,7 +45,7 @@
         union all
 
         select p.id as punish_id, p.user_id,o.id as organization_id,p.user_name,u.police_code,o.name as organization_name
-        ,p.punish_type,p.create_time from
+        ,p.punish_type,p.operator,p.create_time from
         (
         SELECT *
         from pun_gift
@@ -64,7 +64,7 @@
         union all
 
         select p.id as punish_id, p.user_id,o.id as organization_id,p.user_name,u.police_code,o.name as organization_name
-        ,p.punish_type,p.create_time from
+        ,p.punish_type,p.operator,p.create_time from
         (
         SELECT *
         from pun_notice
@@ -83,7 +83,7 @@
         union all
 
         select p.id as punish_id, p.user_id,o.id as organization_id,p.user_name,u.police_code,o.name as organization_name
-        ,p.punish_type,p.create_time from
+        ,p.punish_type,p.operator,p.create_time from
         (
         SELECT *
         from pun_report
@@ -102,7 +102,7 @@
         union all
 
         select p.id as punish_id, p.user_id,o.id as organization_id,p.user_name,u.police_code,o.name as organization_name
-        ,p.punish_type,p.create_time from
+        ,p.punish_type,p.operator,p.create_time from
         (
         SELECT *
         from pun_talk

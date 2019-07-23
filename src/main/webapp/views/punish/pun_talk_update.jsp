@@ -18,6 +18,7 @@
         <input type="hidden" name="talkPersonId" autocomplete="off" class="layui-input" id="selectSecondUserId">
         <%--附件id--%>
         <input type="hidden" name="attachmentId" value="${punish.attachmentId}">
+        <input type="hidden" name="punishType" value="${punishType}">
 
         <div class="layui-form-item">
             <div class="layui-inline">

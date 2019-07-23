@@ -3,8 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-<div style="width:100%; display: flex; justify-content: center;margin-left: -200px">
-    <form class="layui-form form1">
+<div style="width:100%; display: flex; justify-content: center">
+    <form class="layui-form form1" style="margin-left: -200px">
         <div class="layui-form-item">
             <div class="layui-inline">
                 <label class="layui-form-label">姓名</label>

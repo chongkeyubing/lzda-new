@@ -113,6 +113,7 @@
 
                     <%--</dd>--%>
                     <%--</shiro:hasPermission>--%>
+
                     <shiro:hasPermission name="日志">
                         <dd>
                             <h2 class="menu menu06">日志</h2>
@@ -120,9 +121,7 @@
                                 <li>
                                     <a href="views/operate_log_list.jsp">日志信息</a>
                                 </li>
-
                             </ul>
-
                         </dd>
                     </shiro:hasPermission>
 
@@ -149,6 +148,7 @@
                 </dl>
             </div>
         </div>
+
         <!-- 主体内容部分 -->
         <div class="right">
 

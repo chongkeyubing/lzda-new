@@ -16,6 +16,15 @@ public class PunishDTO {
     private Integer punishType;
     private Integer punishId;
     private Date createTime;
+    private String operator;
+
+    public String getOperator() {
+        return operator;
+    }
+
+    public void setOperator(String operator) {
+        this.operator = operator;
+    }
 
     public Integer getUserId() {
         return userId;
