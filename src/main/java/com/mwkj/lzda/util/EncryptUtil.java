@@ -14,7 +14,7 @@ public class EncryptUtil {
     /**
      * @Author libaogang
      * @Date 2019-07-15 20:13
-     * @Param [password, salt, hashIterations]
+     * @Param [password密码, salt加密盐值, hashIterations加密次数]
      * @return java.lang.String
      * @Description shiro提供的MD5加密方法
      */
