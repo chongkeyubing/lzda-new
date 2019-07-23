@@ -2,7 +2,7 @@
 		 pageEncoding="UTF-8" %>
 
 
-		<form class="layui-form form1" action="rptincorrupt/update" id="reportFrom" method="post">
+		<form class="layui-form form1" action="rptincorrupt/update" id="reportForm" method="post">
 
 
 			<input type="hidden" name="committerName" value="${rptIncorrupt.committerName}">
@@ -27,12 +27,14 @@
 				</div>
 			</div>
 
-			<div class="layui-form-item">
-				<div class="layui-input-block reset">
-					<button class="layui-btn"  lay-filter="demo1">提交</button>
-					<button type="reset" class="layui-btn">返回</button>
-				</div>
-			</div>
+			<%--<div class="layui-form-item">--%>
+				<%--<div class="layui-input-block reset">--%>
+					<%--<button class="layui-btn" lay-submit lay-filter="demo1" >提交</button>--%>
+					<%--<button type="reset" class="layui-btn">返回</button>--%>
+				<%--</div>--%>
+			<%--</div>--%>
+            <%-- 提交 --%>
+            <%@ include file="./common/report_submit.jsp" %>
 		</form>
 
 
@@ -58,28 +60,28 @@
 
 
 
-				//点击提交
-				form.on('submit(demo1)', function () {
-					debugger;
-					$("#reportFrom").ajaxSubmit({
-						success: function (data) {
-							if (data.success) {
-								//关闭当前弹窗
-								layer.closeAll();
-								layer.msg("提交成功");
-
-								//parent.tableIns.reload();
-								parent.reload();
-								//重载查询页面表格
-								/*$("#resetQueryReport").click();
-								$("#queryReport").click();*/
-							} else {
-								layer.msg("提交失败，请重新尝试或联系管理员");
-							}
-						}
-					});
-					return false;//阻止表单跳转
-				});
+				// //点击提交
+				// form.on('submit(demo1)', function () {
+				// 	debugger;
+				// 	$("#reportFrom").ajaxSubmit({
+				// 		success: function (data) {
+				// 			if (data.success) {
+				// 				//关闭当前弹窗
+				// 				layer.closeAll();
+				// 				layer.msg("提交成功");
+                //
+                //
+                //
+				// 				//重载查询页面表格
+				// 				/*$("#resetQueryReport").click();
+				// 				$("#queryReport").click();*/
+				// 			} else {
+				// 				layer.msg("提交失败，请重新尝试或联系管理员");
+				// 			}
+				// 		}
+				// 	});
+				// 	return false;//阻止表单跳转
+				// });
 
 
 

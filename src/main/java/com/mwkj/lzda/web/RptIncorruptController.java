@@ -1,4 +1,6 @@
 package com.mwkj.lzda.web;
+
+import com.mwkj.lzda.core.AppException;
 import com.mwkj.lzda.core.Mapper;
 import com.mwkj.lzda.core.Result;
 import com.mwkj.lzda.core.ResultUtil;
@@ -15,18 +17,21 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ResponseBody;
+import tk.mybatis.mapper.entity.Condition;
+import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
-* Created by CodeGenerator on 2019-07-19 10:40.
-*/
+ * Created by CodeGenerator on 2019-07-19 10:40.
+ */
 @Controller
 @RequestMapping("/rptincorrupt")
 public class RptIncorruptController {
@@ -48,32 +53,35 @@ public class RptIncorruptController {
 
         //日志操作
         //                      表名                                               操作                                    操作人
-        operateLogService.save(RptTableNameEnum.廉政信息上报.toString(), LogOperateTypeEnum.添加.toString(),rptIncorrupt.getOrganizationId());
+        operateLogService.save(RptTableNameEnum.廉政信息上报.toString(), LogOperateTypeEnum.添加.toString(), rptIncorrupt.getOrganizationId());
         return ResultUtil.success();
     }
 
-  /**
-  * 方法实现说明
-  * @author      zzy
-  * @Description:(跳转到新增页面)
-  * @date        2019/7/19/019 14:11
-  */
-  @RequestMapping("/toAddReport")
-  public String toAddReport(){
-      return "views/report/report_add";
-  }
+    /**
+     * 方法实现说明
+     *
+     * @author zzy
+     * @Description:(跳转到新增页面)
+     * @date 2019/7/19/019 14:11
+     */
+    @RequestMapping("/toAddReport")
+    public String toAddReport() {
+        return "views/report/report_add";
+    }
 
 
     @RequestMapping("/delete")
     @ResponseBody
     public Result delete(@RequestParam Integer id) {
-      RptIncorrupt rptIncorrupt=rptIncorruptService.findById(id);
-
+        RptIncorrupt rptIncorrupt = rptIncorruptService.findById(id);
+        if (ObjectUtils.isEmpty(rptIncorrupt)) {
+            throw new AppException("删除失败，数据不存在");
+        }
         rptIncorruptService.deleteById(id);
 
         //日志操作
         //                      表名              操作                                    操作人
-        operateLogService.save(RptTableNameEnum.廉政信息上报.toString(), LogOperateTypeEnum.删除.toString(),rptIncorrupt.getOrganizationId());
+        operateLogService.save(RptTableNameEnum.廉政信息上报.toString(), LogOperateTypeEnum.删除.toString(), rptIncorrupt.getOrganizationId());
         return ResultUtil.success();
     }
 
@@ -84,22 +92,23 @@ public class RptIncorruptController {
 
         //日志操作
         //                      表名              操作                                    操作人
-        operateLogService.save(RptTableNameEnum.廉政信息上报.toString(),LogOperateTypeEnum.修改.toString(),rptIncorrupt.getOrganizationId());
+        operateLogService.save(RptTableNameEnum.廉政信息上报.toString(), LogOperateTypeEnum.修改.toString(), rptIncorrupt.getOrganizationId());
 
         return ResultUtil.success();
     }
 
 
     /**
-    * 方法实现说明
-    * @author      zzy
-    * @Description:(跳转到修改页面)
-    * @date        2019/7/22/022 11:41
-    */
+     * 方法实现说明
+     *
+     * @author zzy
+     * @Description:(跳转到修改页面)
+     * @date 2019/7/22/022 11:41
+     */
     @RequestMapping("/toReportUpdate")
-    public String toReportUpdate(Integer id,ModelMap map){
-        RptIncorrupt rptIncorrupt =rptIncorruptService.findById(id);
-        map.put("rptIncorrupt",rptIncorrupt);
+    public String toReportUpdate(Integer id, ModelMap map) {
+        RptIncorrupt rptIncorrupt = rptIncorruptService.findById(id);
+        map.put("rptIncorrupt", rptIncorrupt);
         return "views/report/report_update";
     }
 
@@ -110,31 +119,34 @@ public class RptIncorruptController {
         RptIncorrupt rptIncorrupt = rptIncorruptService.findById(id);
         return ResultUtil.success(rptIncorrupt);
     }
+
     /**
-    * 方法实现说明
-    * @author      zzy
-    * @Description:(跳转到详情页面)
-    * @date         10:50
-    */
+     * 方法实现说明
+     *
+     * @author zzy
+     * @Description:(跳转到详情页面)
+     * @date 10:50
+     */
     @RequestMapping("/toReportDetail")
-    public String toReportDetail(Integer id,ModelMap map){
-        RptIncorrupt rptIncorrupt =rptIncorruptService.findById(id);
-            map.put("rptIncorrupt",rptIncorrupt);
+    public String toReportDetail(Integer id, ModelMap map) {
+        RptIncorrupt rptIncorrupt = rptIncorruptService.findById(id);
+        map.put("rptIncorrupt", rptIncorrupt);
 
         //日志操作
         //                      表名              操作                                    操作人
-        operateLogService.save(RptTableNameEnum.廉政信息上报.toString(), LogOperateTypeEnum.查看.toString(),rptIncorrupt.getOrganizationId());
+        operateLogService.save(RptTableNameEnum.廉政信息上报.toString(), LogOperateTypeEnum.查看.toString(), rptIncorrupt.getOrganizationId());
 
         return "views/report/report_detail";
     }
 
 
     /**
-    * 方法实现说明
-    * @author      zzy
-    * @Description:(跳转到分页)
-    * @date        2019/7/22/022 17:36
-    */
+     * 方法实现说明
+     *
+     * @author zzy
+     * @Description:(跳转到分页)
+     * @date 2019/7/22/022 17:36
+     */
     @RequestMapping("/toList")
     public String toList(ModelMap map) {
         //获取所有单位
@@ -155,25 +167,32 @@ public class RptIncorruptController {
 
         PageHelper.startPage(page, limit);
 
+        Condition condition = new Condition(RptIncorrupt.class);
+        Example.Criteria criteria = condition.createCriteria();
+
+        criteria.andEqualTo("organizationId",rptIncorrupt.getOrganizationId());
+
         //如果是能查看本单位
         if (SecurityUtils.getSubject().isPermitted("能查看本单位")) {
             User user = (User) session.getAttribute("currentUser");
-            rptIncorrupt.setOrganizationId(user.getOrganizationId());
+//            rptIncorrupt.setOrganizationId(user.getOrganizationId());
+            criteria.andEqualTo("organizationId",user.getOrganizationId());
         }
 
         //List<RptIncorrupt> list = rptIncorruptService.findAll();
 
-        List<RptIncorrupt> list = rptIncorruptService.find(rptIncorrupt);
+
+        condition.setOrderByClause("create_time desc");
+//        List<RptIncorrupt> list = rptIncorruptService.find(rptIncorrupt);
+        List<RptIncorrupt> list = rptIncorruptService.findByCondition(condition);
 
 
-
-       /* List<RptIncorrupt> list = rptIncorruptService.selectForPage(rptIncorrupt);*/
+        /* List<RptIncorrupt> list = rptIncorruptService.selectForPage(rptIncorrupt);*/
 
         //生成分页信息，包含总数
         PageInfo<RptIncorrupt> pageInfo = new PageInfo<>(list);
-       // return ResultUtil.success(pageInfo);
-        return LayuiTableResultUtil.success(list,pageInfo.getTotal());
-
+        // return ResultUtil.success(pageInfo);
+        return LayuiTableResultUtil.success(list, pageInfo.getTotal());
 
 
     }
