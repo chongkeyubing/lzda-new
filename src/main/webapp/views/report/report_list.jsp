@@ -61,11 +61,11 @@
                 </div>
             </div>
 
-        <div class="layui-inline">
-            <button class="layui-btn layui-btn-normal" lay-submit lay-filter="queryReport" id="queryReport">查询
-            </button>
-            <button class="layui-btn layui-btn-warm" type="reset" id="resetQueryReport">清空</button>
-        </div>
+            <div class="layui-inline">
+                <button class="layui-btn layui-btn-normal" lay-submit lay-filter="queryReport" id="queryReport">查询
+                </button>
+                <button class="layui-btn layui-btn-warm" type="reset" id="resetQueryReport">清空</button>
+            </div>
         </shiro:hasPermission>
 
         <div class="layui-inline" style="float:right">
@@ -99,14 +99,15 @@
             limit: 10,
             method: 'post',
             cols: [[ //表头
+
+                {
+                    field: 'organizationName',
+                    title: '上报单位'
+                },
                 {
                     field: 'committerName',
                     title: '上报人姓名',
                     width: 100
-                },
-                {
-                    field: 'organizationName',
-                    title: '上报单位'
                 },
                 {
                     field: 'title',

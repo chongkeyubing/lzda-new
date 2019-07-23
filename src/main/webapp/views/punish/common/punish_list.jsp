@@ -30,14 +30,20 @@
                 </select>
             </div>
         </div>
-    </div>
-    <div class="layui-form-item">
-        <div class="layui-input-block">
+        <div class="layui-inline">
             <button class="layui-btn layui-btn-normal" lay-submit lay-filter="queryPunish" id="queryPunish">查询
             </button>
             <button class="layui-btn layui-btn-warm" type="reset" id="resetQueryPunish">清空</button>
         </div>
     </div>
+
+    <%--<div class="layui-form-item">--%>
+        <%--<div class="layui-input-block">--%>
+            <%--<button class="layui-btn layui-btn-normal" lay-submit lay-filter="queryPunish" id="queryPunish">查询--%>
+            <%--</button>--%>
+            <%--<button class="layui-btn layui-btn-warm" type="reset" id="resetQueryPunish">清空</button>--%>
+        <%--</div>--%>
+    <%--</div>--%>
 </form>
 
 <form class="layui-form">
@@ -94,18 +100,19 @@
             cols: [[ //表头
                 {field: 'userName', title: '姓名'},
                 {field: 'policeCode', title: '警号'},
-                {field: 'organizationName', title: '单位', width: 340},
+                {field: 'organizationName', title: '单位'},
                 {
-                    field: 'punishType', title: '违惩类型', width: 300, templet: function (data) {
+                    field: 'punishType', title: '违惩类型', templet: function (data) {
                         return PUNISH_TYPE[data.punishType];
                     }
                 },
+                {field: 'operator', title: '违惩填写人'},
                 {
                     field: 'createTime',
                     title: '填表时间',
                     templet: "<div>{{layui.util.toDateString(d.createTime, 'yyyy-MM-dd HH:mm:ss')}}</div>"  //时间戳格式化
                 },
-                {field: 'operate', align: 'center', title: '操作', toolbar: '#punishsBar'}
+                {field: 'operate', align: 'center', title: '操作', toolbar: '#punishsBar', minWidth: 200}
             ]]
         });
 

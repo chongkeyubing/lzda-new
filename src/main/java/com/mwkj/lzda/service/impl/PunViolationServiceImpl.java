@@ -2,9 +2,12 @@ package com.mwkj.lzda.service.impl;
 
 import com.mwkj.lzda.core.AppException;
 import com.mwkj.lzda.dao.PunViolationMapper;
+import com.mwkj.lzda.enu.LogOperateTypeEnum;
+import com.mwkj.lzda.enu.PunishTypeEnum;
 import com.mwkj.lzda.model.Attachment;
 import com.mwkj.lzda.model.PunViolation;
 import com.mwkj.lzda.service.AttachmentService;
+import com.mwkj.lzda.service.OperateLogService;
 import com.mwkj.lzda.service.PunViolationService;
 import com.mwkj.lzda.core.AbstractService;
 import com.mwkj.lzda.util.IDGenerator;
@@ -32,6 +35,9 @@ public class PunViolationServiceImpl extends AbstractService<PunViolation> imple
     @Resource
     private AttachmentService attachmentService;
 
+    @Resource
+    private OperateLogService operateLogService;
+
     @Override
     public void add(PunViolation punViolation, HttpServletRequest request) {
         //上传图片并保存至附件表
@@ -40,11 +46,35 @@ public class PunViolationServiceImpl extends AbstractService<PunViolation> imple
         //和附件表关联
         punViolation.setAttachmentId(attachmentId);
         this.save(punViolation);
+
+        //遍历惩罚表类型枚举
+        String operateObject = null;
+        for (PunishTypeEnum typeEnum : PunishTypeEnum.values()) {
+            if (punViolation.getPunishType() == typeEnum.punishType()) {
+                operateObject = typeEnum.punishName();
+                break;
+            }
+        }
+
+        //插入日志信息
+        operateLogService.save(operateObject, LogOperateTypeEnum.添加.toString(), punViolation.getUserId());
     }
 
     @Override
     public void update(PunViolation punViolation, HttpServletRequest request) {
-        attachmentService.uploadImgsAndUpdateUrls(punViolation.getAttachmentId(),request);
+        attachmentService.uploadImgsAndUpdateUrls(punViolation.getAttachmentId(), request);
         this.update(punViolation);
+
+        //遍历惩罚表类型枚举
+        String operateObject = null;
+        for (PunishTypeEnum typeEnum : PunishTypeEnum.values()) {
+            if (punViolation.getPunishType() == typeEnum.punishType()) {
+                operateObject = typeEnum.punishName();
+                break;
+            }
+        }
+
+        //插入日志信息
+        operateLogService.save(operateObject, LogOperateTypeEnum.修改.toString(), punViolation.getUserId());
     }
 }

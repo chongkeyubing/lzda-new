@@ -15,6 +15,7 @@
         <input type="hidden" name="userId" id="selectUserId">
         <%--谈话人id--%>
         <input type="hidden" name="talkPersonId" autocomplete="off" class="layui-input" id="selectSecondUserId">
+            <input type="hidden" name="punishType" value="${punishType}">
 
         <div class="layui-form-item">
             <div class="layui-inline">

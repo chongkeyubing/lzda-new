@@ -53,7 +53,7 @@
         $(".deleteImg").click(function () {
             debugger;
             var _this = this;
-            layer.confirm('确定删除？', function (index) {
+            layer.confirm('确定删除原图片？', function (index) {
                 $.get("attachment/delete?id= " + $(_this).data("id"), function (data) {
                     layer.close(index); //关闭确定删除弹窗
                     if (data.success) {

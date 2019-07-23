@@ -2,9 +2,11 @@ package com.mwkj.lzda.service.impl;
 
 import com.mwkj.lzda.core.AppException;
 import com.mwkj.lzda.dao.RewardMapper;
+import com.mwkj.lzda.enu.LogOperateTypeEnum;
 import com.mwkj.lzda.model.Attachment;
 import com.mwkj.lzda.model.Reward;
 import com.mwkj.lzda.service.AttachmentService;
+import com.mwkj.lzda.service.OperateLogService;
 import com.mwkj.lzda.service.RewardService;
 import com.mwkj.lzda.core.AbstractService;
 import com.mwkj.lzda.util.IDGenerator;
@@ -33,6 +35,9 @@ public class RewardServiceImpl extends AbstractService<Reward> implements Reward
     @Resource
     private AttachmentService attachmentService;
 
+    @Resource
+    private OperateLogService operateLogService;
+
     @Override
     public List<Reward> findRewardsByCondition(Reward reward) {
         return rewardMapper.findRewardsByCondition(reward);
@@ -45,6 +50,9 @@ public class RewardServiceImpl extends AbstractService<Reward> implements Reward
 
         //关联附件表sourceId
         reward.setAttachmentId(attachmentId);
+
+        //插入日志信息
+        operateLogService.save(reward.getRewardType(), LogOperateTypeEnum.添加.toString(), reward.getUserId());
         this.save(reward);
     }
 
@@ -58,6 +66,9 @@ public class RewardServiceImpl extends AbstractService<Reward> implements Reward
     @Override
     public void update(Reward reward, HttpServletRequest request) {
         attachmentService.uploadImgsAndUpdateUrls(reward.getAttachmentId(),request);
+
+        //插入日志信息
+        operateLogService.save(reward.getRewardType(), LogOperateTypeEnum.修改.toString(), reward.getUserId());
         this.update(reward);
     }
 }

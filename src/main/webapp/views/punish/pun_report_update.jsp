@@ -9,13 +9,11 @@
         <input type="hidden" name="id" value="${punish.id}">
         <%--隐藏表单--%>
         <input type="hidden" name="organizationId" id="selectOrganizationId" value="${punish.organizationId}">
-        <!-- 填表人 -->
-        <input type="hidden" name="operatorId" value="${punish.operatorId}">
-        <%--<input type="hidden" name="operator" value="${punish.operator}">--%>
-
         <input type="hidden" name="userId" id="selectUserId" value="${punish.userId}">
         <%--附件id--%>
         <input type="hidden" name="attachmentId" value="${punish.attachmentId}">
+        <input type="hidden" name="punishType" value="${punishType}">
+
 
         <div class="layui-form-item">
             <div class="layui-inline">
@@ -103,9 +101,10 @@
                 <label class="layui-form-label">负责人</label>
                 <div class="layui-input-inline">
                     <input type="text" name="chargePerson" readonly lay-verify="required" autocomplete="off"
-                            class="layui-input" placeholder="点击选择" style="width: 74%;display: inline-block;"
+                           class="layui-input" placeholder="点击选择" style="width: 74%;display: inline-block;"
                            id="selectSecondUserName" value="${punish.chargePerson}">
-                    <button class="layui-btn  layui-btn-sm layui-btn-normal" type="button" id="selectSecondUser">选择</button>
+                    <button class="layui-btn  layui-btn-sm layui-btn-normal" type="button" id="selectSecondUser">选择
+                    </button>
                     <input type="hidden" name="chargePersonId" id="selectSecondUserId" readonly lay-verify="required"
                            autocomplete="off" class="layui-input">
                 </div>
@@ -113,13 +112,15 @@
             <div class="layui-inline">
                 <label class="layui-form-label">填表科室</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="handleDep" lay-verify="required" autocomplete="off" value="${punish.handleDep}" class="layui-input">
+                    <input type="text" name="handleDep" lay-verify="required" autocomplete="off"
+                           value="${punish.handleDep}" class="layui-input">
                 </div>
             </div>
             <div class="layui-inline">
                 <label class="layui-form-label">填表人</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="operator" lay-verify="required" autocomplete="off" value="${punish.operator}" class="layui-input"
+                    <input type="text" name="operator" lay-verify="required" autocomplete="off"
+                           value="${punish.operator}" class="layui-input"
                            readonly value="${currentUser.realname}">
                 </div>
             </div>
@@ -153,37 +154,37 @@
             </div>
         </div>
 
-            <div class="imgBox">
-                <p>照片</p>
-                <div class="article">
-                    <c:forEach items="${attachments}" var="attachment">
-                        <div class="items">
-                            <img class="addImg" onclick="clickImg(this);" src="static/images/addImg.png"
-                                 style="display: none;"/>
-                            <input name="url" type="file" class="upload_input" onchange="change(this)" accept="image/*"
-                                   capture="camera"/>
-                            <div class="preBlock">
-                                <img class="preview" alt="" name="pic" src="${attachment.url}"/>
-                            </div>
-                            <img class="delete deleteImg" src="static/images/delete.png"
-                                 style="display: block;" data-id="${attachment.id}"/>
-                        </div>
-                    </c:forEach>
-
+        <div class="imgBox">
+            <p>照片</p>
+            <div class="article">
+                <c:forEach items="${attachments}" var="attachment">
                     <div class="items">
-                        <img class="addImg" onclick="clickImg(this);" src="static/images/addImg.png"/>
+                        <img class="addImg" onclick="clickImg(this);" src="static/images/addImg.png"
+                             style="display: none;"/>
                         <input name="url" type="file" class="upload_input" onchange="change(this)" accept="image/*"
                                capture="camera"/>
                         <div class="preBlock">
-                            <img class="preview" alt="" name="pic"/>
+                            <img class="preview" alt="" name="pic" src="${attachment.url}"/>
                         </div>
-                        <img class="delete" onclick="deleteImg(this)" src="static/images/delete.png"/>
+                        <img class="delete deleteImg" src="static/images/delete.png"
+                             style="display: block;" data-id="${attachment.id}"/>
                     </div>
+                </c:forEach>
+
+                <div class="items">
+                    <img class="addImg" onclick="clickImg(this);" src="static/images/addImg.png"/>
+                    <input name="url" type="file" class="upload_input" onchange="change(this)" accept="image/*"
+                           capture="camera"/>
+                    <div class="preBlock">
+                        <img class="preview" alt="" name="pic"/>
+                    </div>
+                    <img class="delete" onclick="deleteImg(this)" src="static/images/delete.png"/>
                 </div>
             </div>
+        </div>
 
-            <%-- 提交 --%>
-            <%@ include file="./common/punish_submit.jsp" %>
+        <%-- 提交 --%>
+        <%@ include file="./common/punish_submit.jsp" %>
     </form>
 
     <div id="template" style="display: none;">
@@ -252,7 +253,7 @@
         $(".deleteImg").click(function () {
             debugger;
             var _this = this;
-            layer.confirm('确定删除？', function (index) {
+            layer.confirm('确定删除原图片？', function (index) {
                 $.get("attachment/delete?id= " + $(_this).data("id"), function (data) {
                     layer.close(index); //关闭确定删除弹窗
                     if (data.success) {

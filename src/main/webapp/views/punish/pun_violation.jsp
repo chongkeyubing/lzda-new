@@ -12,6 +12,7 @@
         <input type="hidden" name="operatorId" value="${currentUser.id}">
 
         <input type="hidden" name="userId" id="selectUserId">
+        <input type="hidden" name="punishType" value="${punishType}">
 
 
         <div class="layui-form-item">

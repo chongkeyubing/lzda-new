@@ -53,12 +53,13 @@
             page: true, //开启分页
             method: 'post',
             cols: [[ //表头
-                {field: 'userName', title: '姓名'},
-                {field: 'policeCode', title: '警号'},
-                {field: 'organization', title: '单位', width: 320},
-                {field: 'rewardType', title: '表彰类型'},
-                {field: 'rewardTime', title: '表彰时间'},
-                {field: 'operate', align: 'center', title: '操作', toolbar: '#rewardTableBar'}
+                {field: 'userName', title: '姓名',minWidth:100},
+                {field: 'policeCode', title: '警号',minWidth:100},
+                {field: 'organization', title: '单位',minWidth:300},
+                {field: 'rewardType', title: '表彰类型',minWidth:90},
+                {field: 'operatorName', title: '表彰填写人',minWidth:100},
+                {field: 'rewardTime', title: '表彰时间',minWidth:110},
+                {field: 'operate', align: 'center', title: '操作', minWidth:200, toolbar: '#rewardTableBar', minWidth: 200}
             ]]
         });
 

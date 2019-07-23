@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <div style="width:100%; display: flex; justify-content: center">
-    <form class="layui-form form1" style="margin-left: -200px">
+    <form class="layui-form form1">
         <div class="layui-form-item">
             <div class="layui-inline">
                 <label class="layui-form-label">姓名</label>
@@ -65,7 +65,6 @@
                 <div class="layui-input-inline">
                     <input type="text" name="jobPosition" autocomplete="off" lay-verify="required" class="layui-input"
                            readonly value="${user.jobPosition}">
-
                 </div>
             </div>
             <div class="layui-inline">

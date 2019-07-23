@@ -100,6 +100,7 @@ public class PunishController {
      */
     @RequestMapping("/toPunishUpdate")
     public String toPunishUpdate(PunishDTO punishDTO,ModelMap map) {
+        map.put("punishType",punishDTO.getPunishType());
         return punishService.toUpdate(punishDTO,map);
     }
 }

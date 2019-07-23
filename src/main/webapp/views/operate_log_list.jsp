@@ -46,12 +46,13 @@
                 {field: 'operatorName', title: '操作人姓名'},
                 {field: 'operatorCode', title: '操作人警号'},
                 {field: 'operatorIp', title: '操作人IP'},
-                {field: 'archiveOwnerName', title: '表格填报人'},
-                {field: 'operateObject', title: '操作表类型',width:340},
+                {field: 'archiveOwnerName', title: '表中人姓名'},
+                {field: 'ownerOrg', title: '表中人单位'},
+                {field: 'operateObject', title: '操作表类型'},
                 {field: 'operateType', title: '操作类型'},
                 {
                     field: 'createTime',
-                    title: '填表时间',
+                    title: '操作时间',
                     templet: "<div>{{layui.util.toDateString(d.createTime, 'yyyy-MM-dd HH:mm:ss')}}</div>"  //时间戳格式化
                 }
 

@@ -22,10 +22,10 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
-* @Author: libaogang
-* @Date: 2019-07-10 17:14
-* @Description TODO
-*/
+ * @Author: libaogang
+ * @Date: 2019-07-10 17:14
+ * @Description 日志管理
+ */
 @Service
 @Transactional
 public class OperateLogServiceImpl extends AbstractService<OperateLog> implements OperateLogService {
@@ -33,7 +33,7 @@ public class OperateLogServiceImpl extends AbstractService<OperateLog> implement
     private OperateLogMapper operateLogMapper;
 
     @Resource
-    private  UserMapper userMapper;
+    private UserMapper userMapper;
 
     @Override
     public List<OperateLogDTO> findAllLogsByConditions(OperateLogDTO operateLogDTO) {
@@ -46,10 +46,10 @@ public class OperateLogServiceImpl extends AbstractService<OperateLog> implement
     }
 
     /**
+     * @return void
      * @Author libaogang
      * @Date 2019-07-15 10:45
      * @Param [operateObject, operateType, archiveOwnerId]
-     * @return void
      * @Description 插入日志
      */
     @Override
@@ -71,6 +71,7 @@ public class OperateLogServiceImpl extends AbstractService<OperateLog> implement
             operateLog.setArchiveOwnerName(user.getRealname());
             operateLog.setOperateObject(operateObject);
             operateLog.setOperateType(operateType);
+            operateLog.setOwnerOrg(user.getOrganizationName());
             operateLogMapper.insertSelective(operateLog);
         }
     }

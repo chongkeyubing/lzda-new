@@ -16,6 +16,7 @@
         <input type="hidden" name="userId" id="selectUserId">
         <%-- 负责人id --%>
         <input type="hidden" name="chargePersonId" id="selectSecondUserId">
+        <input type="hidden" name="punishType" value="${punishType}">
 
         <div class="layui-form-item">
             <div class="layui-inline">
@@ -271,7 +272,7 @@
         $(".deleteImg").click(function () {
             debugger;
             var _this = this;
-            layer.confirm('确定删除？', function (index) {
+            layer.confirm('确定删除原图片？', function (index) {
                 $.get("attachment/delete?id= " + $(_this).data("id"), function (data) {
                     layer.close(index); //关闭确定删除弹窗
                     if (data.success) {
