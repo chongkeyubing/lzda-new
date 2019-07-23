@@ -53,8 +53,8 @@ public class OrganizationController {
     @RequestMapping("/list")
     @ResponseBody
     public Result list(@RequestParam(defaultValue = "0") Integer page,
-                       @RequestParam(defaultValue = "0") Integer size) {
-        PageHelper.startPage(page, size);
+                       @RequestParam(defaultValue = "0") Integer limit) {
+        PageHelper.startPage(page, limit);
         List<Organization> list = organizationService.findAll();
         PageInfo<Organization> pageInfo = new PageInfo<>(list);
         return ResultUtil.success(pageInfo);

@@ -53,8 +53,8 @@ public class AttachmentController {
     @RequestMapping("/list")
     @ResponseBody
     public Result list(@RequestParam(defaultValue = "0") Integer page,
-                       @RequestParam(defaultValue = "0") Integer size) {
-        PageHelper.startPage(page, size);
+                       @RequestParam(defaultValue = "0") Integer limit) {
+        PageHelper.startPage(page, limit);
         List<Attachment> list = attachmentService.findAll();
         PageInfo<Attachment> pageInfo = new PageInfo<>(list);
         return ResultUtil.success(pageInfo);

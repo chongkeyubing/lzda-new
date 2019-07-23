@@ -1,6 +1,7 @@
 package com.mwkj.lzda.web;
 
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.mwkj.lzda.core.AppException;
 import com.mwkj.lzda.core.Result;
 import com.mwkj.lzda.core.layui.LayuiTableResultUtil;
@@ -17,6 +18,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -74,15 +76,18 @@ public class ArchiveController {
             archive.setUserId(currentuser.getId());
         }
 
-        //开启分页查询，第三个参数为false时不进行总数查询
-        PageHelper.startPage(page, limit, false);
+        //开启分页查询
+        PageHelper.startPage(page, limit);
+
         //默认查询所有人
         List<ArchiveDTO> archives = archiveService.findAllArchivesByConditions(archive);
-        long count = archiveService.findAllArchivesCounts(archive);
 
-        return LayuiTableResultUtil.success(archives, count);
+        //long count = archiveService.findAllArchivesCounts(archive);
+
+        PageInfo<ArchiveDTO> pageInfo = new PageInfo(archives);
+
+        return LayuiTableResultUtil.success(archives, pageInfo.getTotal());
     }
-
 
 
     /**
@@ -111,7 +116,7 @@ public class ArchiveController {
      */
     @RequestMapping("/toArchive")
     public String toArchive(ArchiveDTO archive, ModelMap map, boolean approveRecord, boolean approveOperate) {
-        String page = archiveService.toArchiveDetail(archive,map,approveRecord,approveOperate);
+        String page = archiveService.toArchiveDetail(archive, map, approveRecord, approveOperate);
         if (page == null) {
             throw new AppException("该档案类型的表格不存在");
         }

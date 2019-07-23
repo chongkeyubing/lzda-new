@@ -36,7 +36,7 @@
                 </tr>
                 <tr>
                     <td>其 他</td>
-                    <td>${archive.otherInfo}人</td>
+                    <td>${archive.otherNumber}人</td>
                     <td>香烟和<br/>礼品标准</td>
                     <td>${archive.cigaretteGiftLevel}元</td>
                 </tr>

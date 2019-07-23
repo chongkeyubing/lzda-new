@@ -90,7 +90,7 @@
                 <div class="layui-input-inline">
                     <select name="arcBasicInfo.gender">
                         <option
-                                <c:if test="${currentUser.gender == '男'}">selected</c:if> value="女">男
+                                <c:if test="${currentUser.gender == '男'}">selected</c:if> value="男">男
                         </option>
                         <option
                                 <c:if test="${currentUser.gender == '女'}">selected</c:if> value="女">女
@@ -156,7 +156,7 @@
             <div class="layui-inline">
                 <label class="layui-form-label">办公电话</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="arcBasicInfo.officePhone" lay-verify="number" autocomplete="off"
+                    <input type="text" name="arcBasicInfo.officePhone" lay-verify="required|number" autocomplete="off"
                            class="layui-input">
                 </div>
             </div>
@@ -187,8 +187,8 @@
             <div class="layui-inline">
                 <label class="layui-form-label">现任职务时间</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="arcBasicInfo.jobPositionTime" id="joboPsitionTime" lay-verify="date"
-                           placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input" lay-verify="required">
+                    <input type="text" name="arcBasicInfo.jobPositionTime" id="joboPsitionTime" lay-verify="required|date"
+                           placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
                 </div>
             </div>
         </div>
@@ -211,7 +211,7 @@
             <div class="layui-inline">
                 <label class="layui-form-label">入党时间</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="arcBasicInfo.partyJoinTime" id="partyJoinTime" lay-verify="date"
+                    <input type="text" name="arcBasicInfo.partyJoinTime" id="partyJoinTime" lay-verify="required|date"
                            placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
                 </div>
             </div>

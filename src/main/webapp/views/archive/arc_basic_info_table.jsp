@@ -72,6 +72,9 @@
                     <td>个<br/>人<br/>工<br/>作<br/>简<br/>历</td>
                     <td colspan="6">${archive.workExperience}</td>
                 </tr>
+
+
+                <c:if test="${not empty arcFamilySocietyRelaList}">
                 <tr>
                     <td rowspan="${arcFamilySocietyRelaListSize}">家庭<br/>主要<br/>成员<br/>及重<br/>要社<br/>会关<br/>系</td>
                     <td>称　谓</td>
@@ -92,6 +95,7 @@
                         <td>${arcFamilySocietyRela.jobPosition}</td>
                     </tr>
                 </c:forEach>
+                </c:if>
 
                 <tr>
                     <td>其<br/>他<br/>需<br/>要<br/>说<br/>明<br/>的<br/>情<br/>况</td>

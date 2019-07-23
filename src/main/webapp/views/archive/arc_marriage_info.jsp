@@ -21,7 +21,7 @@
             <div class='layui-inline'>
                 <label class="layui-form-label">变化情况</label>
                 <div class='layui-input-inline'>
-                    <select name="changeSituation">
+                    <select name="changeSituation" lay-verify="required">
                         <option value="">请选择输入内容</option>
                         <option value="无变化">无变化</option>
                         <option value="有变化">有变化</option>

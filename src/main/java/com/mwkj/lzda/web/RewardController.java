@@ -76,10 +76,10 @@ public class RewardController {
     @RequestMapping("/list")
     @ResponseBody
     public Result list(@RequestParam(defaultValue = "0") Integer page,
-                       @RequestParam(defaultValue = "0") Integer size,
+                       @RequestParam(defaultValue = "0") Integer limit,
                        Reward reward) {
 
-        PageHelper.startPage(page, size);
+        PageHelper.startPage(page, limit);
         List<Reward> list = rewardService.findRewardsByCondition(reward);
         PageInfo<Reward> pageInfo = new PageInfo<>(list);
         return LayuiTableResultUtil.success(list, pageInfo.getTotal());
