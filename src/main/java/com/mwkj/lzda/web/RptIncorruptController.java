@@ -3,8 +3,12 @@ import com.mwkj.lzda.core.Mapper;
 import com.mwkj.lzda.core.Result;
 import com.mwkj.lzda.core.ResultUtil;
 import com.mwkj.lzda.core.layui.LayuiTableResultUtil;
+import com.mwkj.lzda.dao.RptIncorruptMapper;
+import com.mwkj.lzda.enu.LogOperateTypeEnum;
+import com.mwkj.lzda.enu.RptTableNameEnum;
 import com.mwkj.lzda.model.RptIncorrupt;
 import com.mwkj.lzda.model.User;
+import com.mwkj.lzda.service.OperateLogService;
 import com.mwkj.lzda.service.OrganizationService;
 import com.mwkj.lzda.service.RptIncorruptService;
 import com.github.pagehelper.PageHelper;
@@ -29,14 +33,22 @@ public class RptIncorruptController {
     @Resource
     private RptIncorruptService rptIncorruptService;
 
+
     @Resource
     private OrganizationService organizationService;
+
+    @Resource
+    private OperateLogService operateLogService;
+
 
     @RequestMapping("/add")
     @ResponseBody
     public Result add(RptIncorrupt rptIncorrupt) {
         rptIncorruptService.save(rptIncorrupt);
 
+        //日志操作
+        //                      表名                                               操作                                    操作人
+        operateLogService.save(RptTableNameEnum.廉政信息上报.toString(), LogOperateTypeEnum.添加.toString(),rptIncorrupt.getOrganizationId());
         return ResultUtil.success();
     }
 
@@ -55,7 +67,13 @@ public class RptIncorruptController {
     @RequestMapping("/delete")
     @ResponseBody
     public Result delete(@RequestParam Integer id) {
+      RptIncorrupt rptIncorrupt=rptIncorruptService.findById(id);
+
         rptIncorruptService.deleteById(id);
+
+        //日志操作
+        //                      表名              操作                                    操作人
+        operateLogService.save(RptTableNameEnum.廉政信息上报.toString(), LogOperateTypeEnum.删除.toString(),rptIncorrupt.getOrganizationId());
         return ResultUtil.success();
     }
 
@@ -63,6 +81,11 @@ public class RptIncorruptController {
     @ResponseBody
     public Result update(RptIncorrupt rptIncorrupt) {
         rptIncorruptService.update(rptIncorrupt);
+
+        //日志操作
+        //                      表名              操作                                    操作人
+        operateLogService.save(RptTableNameEnum.廉政信息上报.toString(),LogOperateTypeEnum.修改.toString(),rptIncorrupt.getOrganizationId());
+
         return ResultUtil.success();
     }
 
@@ -97,6 +120,11 @@ public class RptIncorruptController {
     public String toReportDetail(Integer id,ModelMap map){
         RptIncorrupt rptIncorrupt =rptIncorruptService.findById(id);
             map.put("rptIncorrupt",rptIncorrupt);
+
+        //日志操作
+        //                      表名              操作                                    操作人
+        operateLogService.save(RptTableNameEnum.廉政信息上报.toString(), LogOperateTypeEnum.查看.toString(),rptIncorrupt.getOrganizationId());
+
         return "views/report/report_detail";
     }
 

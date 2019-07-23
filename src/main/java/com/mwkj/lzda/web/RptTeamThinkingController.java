@@ -3,10 +3,13 @@ package com.mwkj.lzda.web;
 import com.mwkj.lzda.core.Result;
 import com.mwkj.lzda.core.ResultUtil;
 import com.mwkj.lzda.core.layui.LayuiTableResultUtil;
+import com.mwkj.lzda.enu.LogOperateTypeEnum;
+import com.mwkj.lzda.enu.RptTableNameEnum;
 import com.mwkj.lzda.model.Attachment;
 import com.mwkj.lzda.model.RptResponsibilityReport;
 import com.mwkj.lzda.model.RptTeamThinking;
 import com.mwkj.lzda.model.User;
+import com.mwkj.lzda.service.OperateLogService;
 import com.mwkj.lzda.service.OrganizationService;
 import com.mwkj.lzda.service.RptTeamThinkingService;
 import com.github.pagehelper.PageHelper;
@@ -33,20 +36,40 @@ public class RptTeamThinkingController {
     @Resource
     private RptTeamThinkingService rptTeamThinkingService;
 
+    /*@Resource
+    private RptTeamThinking rptTeamThinking;*/
+
     @Resource
     OrganizationService organizationService;
+
+
+    @Resource
+    private OperateLogService operateLogService;
+
 
     @RequestMapping("/add")
     @ResponseBody
     public Result add(RptTeamThinking rptTeamThinking) {
         rptTeamThinkingService.save(rptTeamThinking);
+
+        //日志操作
+        //                                                  表名                  操作                                    操作人
+        operateLogService.save(RptTableNameEnum.队伍思想状况上报.toString(), LogOperateTypeEnum.添加.toString(),rptTeamThinking.getOrganizationId());
+
         return ResultUtil.success();
     }
 
     @RequestMapping("/delete")
     @ResponseBody
     public Result delete(@RequestParam Integer id) {
+
+        RptTeamThinking rptTeamThinking=rptTeamThinkingService.findById(id);
+
         rptTeamThinkingService.deleteById(id);
+
+        //日志操作
+        //                                                  表名                  操作                                    操作人
+        operateLogService.save(RptTableNameEnum.队伍思想状况上报.toString(), LogOperateTypeEnum.删除.toString(),rptTeamThinking.getOrganizationId());
         return ResultUtil.success();
     }
 
@@ -54,6 +77,10 @@ public class RptTeamThinkingController {
     @ResponseBody
     public Result update(RptTeamThinking rptTeamThinking) {
         rptTeamThinkingService.update(rptTeamThinking);
+
+        //日志操作
+        //                                                  表名                  操作                                    操作人
+        operateLogService.save(RptTableNameEnum.队伍思想状况上报.toString(), LogOperateTypeEnum.修改.toString(),rptTeamThinking.getOrganizationId());
         return ResultUtil.success();
     }
 
@@ -61,6 +88,11 @@ public class RptTeamThinkingController {
     public String detail(@RequestParam Integer id, ModelMap map) {
         RptTeamThinking rptTeamThinking = rptTeamThinkingService.findById(id);
         map.put("report", rptTeamThinking);
+
+        //日志操作
+        //                                                  表名                  操作                                    操作人
+        operateLogService.save(RptTableNameEnum.队伍思想状况上报.toString(), LogOperateTypeEnum.查看.toString(),rptTeamThinking.getOrganizationId());
+
         return "views/report/rpt_team_thinking_detail";
     }
 

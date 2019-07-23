@@ -3,15 +3,19 @@ package com.mwkj.lzda.web;
 import com.mwkj.lzda.core.Result;
 import com.mwkj.lzda.core.ResultUtil;
 import com.mwkj.lzda.core.layui.LayuiTableResultUtil;
+import com.mwkj.lzda.enu.LogOperateTypeEnum;
+import com.mwkj.lzda.enu.RptTableNameEnum;
 import com.mwkj.lzda.model.Attachment;
 import com.mwkj.lzda.model.RptResponsibilityPerform;
 import com.mwkj.lzda.model.RptResponsibilityReport;
 import com.mwkj.lzda.model.User;
 import com.mwkj.lzda.service.AttachmentService;
+import com.mwkj.lzda.service.OperateLogService;
 import com.mwkj.lzda.service.OrganizationService;
 import com.mwkj.lzda.service.RptResponsibilityPerformService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.ui.ModelMap;
@@ -45,17 +49,33 @@ public class RptResponsibilityPerformController {
     @Resource
     private OrganizationService organizationService;
 
+
+
+    @Resource
+    private OperateLogService operateLogService;
+
     @RequestMapping("/add")
     @ResponseBody
     public Result add(RptResponsibilityPerform rptResponsibilityPerform, HttpServletRequest request) {
         rptResponsibilityPerformService.add(rptResponsibilityPerform, request);
+
+        //日志操作
+        //                      表名              操作                                    操作人
+        operateLogService.save(RptTableNameEnum.履责纪实上报.toString(), LogOperateTypeEnum.添加.toString(),rptResponsibilityPerform.getOrganizationId());
         return ResultUtil.success();
     }
 
     @RequestMapping("/delete")
     @ResponseBody
     public Result delete(@RequestParam Integer id) {
+        RptResponsibilityPerform rptResponsibilityPerform=rptResponsibilityPerformService.findById(id);
+        //if (ObjectUtils.isEmpty)
+
         rptResponsibilityPerformService.deleteById(id);
+
+        //日志操作
+        //                      表名              操作                                    操作人
+        operateLogService.save(RptTableNameEnum.履责纪实上报.toString(), LogOperateTypeEnum.删除.toString(),rptResponsibilityPerform.getOrganizationId());
         return ResultUtil.success();
     }
 
@@ -63,6 +83,11 @@ public class RptResponsibilityPerformController {
     @ResponseBody
     public Result update(RptResponsibilityPerform rptResponsibilityPerform, HttpServletRequest request) {
         rptResponsibilityPerformService.update(rptResponsibilityPerform, request);
+
+        //日志操作
+        //                      表名              操作                                    操作人
+        operateLogService.save(RptTableNameEnum.履责纪实上报.toString(), LogOperateTypeEnum.修改.toString(),rptResponsibilityPerform.getOrganizationId());
+
         return ResultUtil.success();
     }
 
@@ -84,6 +109,12 @@ public class RptResponsibilityPerformController {
 
         map.put("report", rptResponsibilityPerform);
         map.put("attachments", attachments);
+
+
+        //日志操作
+        //                                                   表名              操作                                    操作人
+        operateLogService.save(RptTableNameEnum.履责纪实上报.toString(), LogOperateTypeEnum.查看.toString(),rptResponsibilityPerform.getOrganizationId());
+
         return "views/report/rpt_responsibility_perform_detail";
     }
 

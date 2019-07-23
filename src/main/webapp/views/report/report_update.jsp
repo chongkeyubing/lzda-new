@@ -5,10 +5,10 @@
 		<form class="layui-form form1" action="rptincorrupt/update" id="reportFrom" method="post">
 
 
-		<%--	<input type="hidden" name="committerName" value="${currentUser.realname}">
-			<input type="hidden" name="committerId" value="${currentUser.id}">
-			<input type="hidden" name="organizationId" value="${currentUser.organizationId}">
-			<input type="hidden" name="organizationName" value="${currentUser.organizationName}">--%>
+			<input type="hidden" name="committerName" value="${rptIncorrupt.committerName}">
+			<input type="hidden" name="committerId" value="${rptIncorrupt.committerId}">
+			<input type="hidden" name="organizationId" value="${rptIncorrupt.organizationId}">
+			<input type="hidden" name="organizationName" value="${rptIncorrupt.organizationName}">
 
 			<input type="hidden" id="id" name="id" value="${rptIncorrupt.id}">
 
