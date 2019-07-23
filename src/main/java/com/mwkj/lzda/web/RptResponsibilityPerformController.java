@@ -1,5 +1,6 @@
 package com.mwkj.lzda.web;
 
+import com.mwkj.lzda.core.AppException;
 import com.mwkj.lzda.core.Result;
 import com.mwkj.lzda.core.ResultUtil;
 import com.mwkj.lzda.core.layui.LayuiTableResultUtil;
@@ -15,10 +16,10 @@ import com.mwkj.lzda.service.OrganizationService;
 import com.mwkj.lzda.service.RptResponsibilityPerformService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.stereotype.Controller;
@@ -69,7 +70,9 @@ public class RptResponsibilityPerformController {
     @ResponseBody
     public Result delete(@RequestParam Integer id) {
         RptResponsibilityPerform rptResponsibilityPerform=rptResponsibilityPerformService.findById(id);
-        //if (ObjectUtils.isEmpty)
+        if (ObjectUtils.isEmpty(rptResponsibilityPerform)){
+            throw new AppException("删除失败，数据不存在！！！");
+        }
 
         rptResponsibilityPerformService.deleteById(id);
 

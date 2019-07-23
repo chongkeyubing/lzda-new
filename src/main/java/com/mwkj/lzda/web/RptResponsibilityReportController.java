@@ -5,16 +5,14 @@ import com.mwkj.lzda.core.ResultUtil;
 import com.mwkj.lzda.core.layui.LayuiTableResultUtil;
 import com.mwkj.lzda.enu.LogOperateTypeEnum;
 import com.mwkj.lzda.enu.RptTableNameEnum;
-import com.mwkj.lzda.model.Attachment;
-import com.mwkj.lzda.model.OperateLog;
-import com.mwkj.lzda.model.RptResponsibilityReport;
-import com.mwkj.lzda.model.User;
+import com.mwkj.lzda.model.*;
 import com.mwkj.lzda.service.AttachmentService;
 import com.mwkj.lzda.service.OperateLogService;
 import com.mwkj.lzda.service.OrganizationService;
 import com.mwkj.lzda.service.RptResponsibilityReportService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.web.session.HttpServletSession;
 import org.springframework.ui.ModelMap;
@@ -22,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ResponseBody;
+import tk.mybatis.mapper.entity.Condition;
+import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -123,13 +123,35 @@ public class RptResponsibilityReportController {
                        @RequestParam(defaultValue = "0") Integer limit) {
         PageHelper.startPage(page, limit);
 
+        Condition condition = new Condition(RptResponsibilityReport.class);
+
+        Example.Criteria criteria = condition.createCriteria();
+        //and 条件
+        criteria.andEqualTo("organizationId",rptResponsibilityReport.getOrganizationId());
+
+        if(StringUtils.isNotBlank(rptResponsibilityReport.getYear())){
+            criteria.andEqualTo("year",rptResponsibilityReport.getYear());
+        }
+        if(StringUtils.isNotBlank(rptResponsibilityReport.getQuarter())){
+            criteria.andEqualTo("quarter",rptResponsibilityReport.getQuarter());
+        }
+
+
         //如果是能查看本单位
         if (SecurityUtils.getSubject().isPermitted("能查看本单位")) {
             User user = (User) session.getAttribute("currentUser");
-            rptResponsibilityReport.setOrganizationId(user.getOrganizationId());
+            /*rptResponsibilityReport.setOrganizationId(user.getOrganizationId());*/
+            criteria.andEqualTo("organizationId",user.getOrganizationId());
         }
 
-        List<RptResponsibilityReport> list = rptResponsibilityReportService.find(rptResponsibilityReport);
+
+
+        //构造sql语句的 order by  条件
+        condition.setOrderByClause("create_time desc");
+
+        /*List<RptResponsibilityReport> list = rptResponsibilityReportService.find(rptResponsibilityReport);*/
+        List<RptResponsibilityReport> list = rptResponsibilityReportService.findByCondition(condition);
+
         PageInfo<RptResponsibilityReport> pageInfo = new PageInfo<>(list);
         return LayuiTableResultUtil.success(list, pageInfo.getTotal());
     }

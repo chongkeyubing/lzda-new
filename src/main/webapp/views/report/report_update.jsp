@@ -16,14 +16,14 @@
 			<div class="layui-form-item" style="margin-left: 2px;">
 				<label class="layui-form-label">标题</label>
 				<div class="layui-input-block">
-					<input type="text" name="title" id="title" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+					<input type="text" name="title" id="title" lay-verify="title" lay-filter="queryReport" autocomplete="off" placeholder="请输入标题"
 						   style="width: 75%;" class="layui-input" value="${rptIncorrupt.title}">
 				</div>
 			</div>
 			<div class="layui-form-item layui-form-text">
 				<label class="layui-form-label">内容</label>
 				<div class="layui-input-block area">
-					<textarea placeholder="请输入内容" name="content" id="content" class="layui-textarea txtArea">${rptIncorrupt.content}</textarea>
+					<textarea placeholder="请输入内容" name="content" lay-filter="queryReport" id="content" class="layui-textarea txtArea">${rptIncorrupt.content}</textarea>
 				</div>
 			</div>
 

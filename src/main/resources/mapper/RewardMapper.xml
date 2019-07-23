@@ -34,5 +34,6 @@
         and u.police_code = #{policeCode}
       </if>
     </where>
+    order by create_time desc
   </select>
 </mapper>

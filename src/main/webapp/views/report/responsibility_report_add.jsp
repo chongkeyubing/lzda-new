@@ -16,7 +16,7 @@
                 <label class="layui-form-label">单位名称</label>
                 <div class="layui-input-inline">
                     <input type="text" name="organizationName" autocomplete="off" class="layui-input"
-                           lay-verify="required" value="${currentUser.organizationName}">
+                           lay-verify="required" value="${currentUser.organizationName}" already>
 
                 </div>
             </div>

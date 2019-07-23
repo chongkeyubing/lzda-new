@@ -1,25 +1,28 @@
 package com.mwkj.lzda.web;
 
+import com.mwkj.lzda.core.AppException;
 import com.mwkj.lzda.core.Result;
 import com.mwkj.lzda.core.ResultUtil;
 import com.mwkj.lzda.core.layui.LayuiTableResultUtil;
 import com.mwkj.lzda.enu.LogOperateTypeEnum;
 import com.mwkj.lzda.enu.RptTableNameEnum;
-import com.mwkj.lzda.model.Attachment;
-import com.mwkj.lzda.model.RptResponsibilityReport;
-import com.mwkj.lzda.model.RptTeamThinking;
-import com.mwkj.lzda.model.User;
+import com.mwkj.lzda.model.*;
 import com.mwkj.lzda.service.OperateLogService;
 import com.mwkj.lzda.service.OrganizationService;
 import com.mwkj.lzda.service.RptTeamThinkingService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import javafx.application.Application;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ResponseBody;
+import tk.mybatis.mapper.entity.Condition;
+import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -64,6 +67,10 @@ public class RptTeamThinkingController {
     public Result delete(@RequestParam Integer id) {
 
         RptTeamThinking rptTeamThinking=rptTeamThinkingService.findById(id);
+
+        if (ObjectUtils.isEmpty(rptTeamThinking)){
+            throw new AppException("删除失败，数据不存在！！！");
+        }
 
         rptTeamThinkingService.deleteById(id);
 
@@ -110,13 +117,32 @@ public class RptTeamThinkingController {
                        @RequestParam(defaultValue = "0") Integer limit) {
         PageHelper.startPage(page, limit);
 
+        Condition condition = new Condition(RptTeamThinking.class);
+
+        Example.Criteria criteria = condition.createCriteria();
+        //and 条件
+        criteria.andEqualTo("organizationId",rptTeamThinking.getOrganizationId());
+
+        if (StringUtils.isNotBlank(rptTeamThinking.getTime())){
+        criteria.andEqualTo("time",rptTeamThinking.getTime());
+        }
+
         //如果是能查看本单位
         if (SecurityUtils.getSubject().isPermitted("能查看本单位")) {
             User user = (User) session.getAttribute("currentUser");
-            rptTeamThinking.setOrganizationId(user.getOrganizationId());
+           // rptTeamThinking.setOrganizationId(user.getOrganizationId());
+            criteria.andEqualTo("organizationId",user.getOrganizationId());
         }
 
-        List<RptTeamThinking> list = rptTeamThinkingService.find(rptTeamThinking);
+        //构造sql语句的 order by  条件
+        condition.setOrderByClause("create_time desc");
+
+
+        /*List<RptTeamThinking> list = rptTeamThinkingService.find(rptTeamThinking);*/
+
+        List<RptTeamThinking> list = rptTeamThinkingService.findByCondition(condition);
+
+
         PageInfo<RptTeamThinking> pageInfo = new PageInfo<>(list);
         return LayuiTableResultUtil.success(list, pageInfo.getTotal());
     }

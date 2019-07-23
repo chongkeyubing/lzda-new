@@ -23,7 +23,7 @@
         <div class="layui-inline">
             <label class="layui-form-label">年份</label>
             <div class="layui-input-inline">
-                <input type="text" name="year" autocomplete="off" class="layui-input">
+                <input type="text" name="year" id="year" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-inline">
@@ -65,8 +65,10 @@
         var table = layui.table;
         var layer = layui.layer;
         var form = layui.form;
+        laydate = layui.laydate;
 
         form.render();
+
 
         var tableIns = table.render({
             elem: '#reportTable',
@@ -153,4 +155,19 @@
 
     });
 </script>
+<script>
+    layui.use(['form', 'laydate'], function () {
+        var form = layui.form,
+            layer = layui.layer,
+            laydate = layui.laydate;
 
+        form.render();
+
+        //日期
+        laydate.render({
+            elem: '#year',
+            type: 'year'
+        });
+
+    });
+</script>

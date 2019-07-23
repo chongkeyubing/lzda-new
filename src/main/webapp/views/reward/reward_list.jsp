@@ -59,6 +59,7 @@
                 {field: 'rewardType', title: '表彰类型',minWidth:90},
                 {field: 'operatorName', title: '表彰填写人',minWidth:100},
                 {field: 'rewardTime', title: '表彰时间',minWidth:110},
+                /*{field: 'createTime', title: '创建时间',templet: "<div>{{layui.util.toDateString(d.createTime, 'yyyy-MM-dd HH:mm:ss')}}</div>",minWidth:110},*/
                 {field: 'operate', align: 'center', title: '操作', minWidth:200, toolbar: '#rewardTableBar', minWidth: 200}
             ]]
         });

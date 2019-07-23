@@ -16,7 +16,8 @@
             <div class="layui-inline">
                 <label class="layui-form-label">警号</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="policeCode" lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" name="policeCode" lay-verify="required" autocomplete="off" class="layui-input"
+                           onkeyup="this.value=this.value.replace(/[^\d]/g,'') " onafterpaste="this.value=this.value.replace(/[^\d]/g,'')">
                 </div>
             </div>
         </div>

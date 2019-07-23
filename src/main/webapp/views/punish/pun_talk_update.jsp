@@ -101,21 +101,21 @@
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">谈话内容</label>
             <div class="layui-input-inline">
-                <textarea placeholder="请输入内容" class="layui-textarea txtArea" name="content">${punish.content}</textarea>
+                <textarea placeholder="请输入内容" class="layui-textarea txtArea" name="content" lay-verify="required">${punish.content}</textarea>
             </div>
         </div>
 
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">被谈话人意见</label>
             <div class="layui-input-inline">
-                <textarea placeholder="请输入内容" class="layui-textarea txtArea"
+                <textarea placeholder="请输入内容" class="layui-textarea txtArea" lay-verify="required"
                           name="talkedPersonAdvice">${punish.talkedPersonAdvice}</textarea>
             </div>
         </div>
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">备 注</label>
             <div class="layui-input-inline">
-                <textarea placeholder="请输入内容" class="layui-textarea txtArea" name="remark"${punish.remark}></textarea>
+                <textarea placeholder="请输入内容" class="layui-textarea txtArea" name="remark">${punish.remark}</textarea>
             </div>
         </div>
         <div class="imgBox">

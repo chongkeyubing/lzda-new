@@ -166,11 +166,12 @@ public class RptIncorruptController {
         //return LayuiTableResultUtil.success(list,pageInfo.getTotal());
 
         PageHelper.startPage(page, limit);
-
+        //构造sql条件
         Condition condition = new Condition(RptIncorrupt.class);
         Example.Criteria criteria = condition.createCriteria();
 
         criteria.andEqualTo("organizationId",rptIncorrupt.getOrganizationId());
+
 
         //如果是能查看本单位
         if (SecurityUtils.getSubject().isPermitted("能查看本单位")) {
