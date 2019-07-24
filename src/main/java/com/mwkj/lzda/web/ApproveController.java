@@ -69,12 +69,18 @@ public class ApproveController {
                 approve.setStatus(4); //待纪委审核
             }
         }
-        criteria.andEqualTo("status",approve.getStatus());
 
         // 待审核状态只查询最后一步是待审核的
         if(1 == approve.getStatus() || 4 == approve.getStatus()){
             criteria.andEqualTo("lastStep",1);
         }
+//
+//        if(approve.getStatus() == 0){
+//            approve.setStatus(null);
+//        }
+        criteria.andEqualTo("status",approve.getStatus());
+
+
 
         //时间倒叙
         condition.setOrderByClause("create_time desc");

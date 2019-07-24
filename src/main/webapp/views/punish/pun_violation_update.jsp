@@ -59,18 +59,18 @@
                            autocomplete="off" class="layui-input" value="${punish.birthday}">
                 </div>
             </div>
-           <%-- <div class="layui-inline">
-                <label class="layui-form-label">是否移交司法机关</label>
-                <div class="layui-input-inline">
-                    <select name="transfer" lay-verify="required">
-                        <c:forTokens items="是,否" delims="," var="transfer">
-                            <option value="${transfer}"
-                                    <c:if test="${punish.transfer == transfer}">selected</c:if>
-                            >${transfer}</option>
-                        </c:forTokens>
-                    </select>
-                </div>
-            </div>--%>
+            <%-- <div class="layui-inline">
+                 <label class="layui-form-label">是否移交司法机关</label>
+                 <div class="layui-input-inline">
+                     <select name="transfer" lay-verify="required">
+                         <c:forTokens items="是,否" delims="," var="transfer">
+                             <option value="${transfer}"
+                                     <c:if test="${punish.transfer == transfer}">selected</c:if>
+                             >${transfer}</option>
+                         </c:forTokens>
+                     </select>
+                 </div>
+             </div>--%>
 
         </div>
 
@@ -242,7 +242,7 @@
             {name: '党纪处分', types: ['党纪警告', '严重警告', '撤销党内职务', '留党查看', '开除党籍']},
             {name: '问责', types: ['通报', '诫勉谈话', '停职检查', '调整职务', '责令辞职', '降职', '免职']},
             {name: '违规', types: ['分局通报', '提醒谈话', '书面检查', '记分']},
-            {name: '违法', types: ['移交司法机关', '不移交司法机关']}
+            {name: '违法', types: ['移交司法机关', '未移交司法机关']}
         ];
 
         //违纪下拉联动

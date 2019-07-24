@@ -12,7 +12,6 @@
             </div>
         </div>
 
-
         <div class="layui-inline">
             <label class="layui-form-label">填表人姓名</label>
             <div class="layui-input-inline">
@@ -33,11 +32,13 @@
             <div class="layui-input-inline">
                 <select name="status">
                     <shiro:hasRole name="单位负责人">
+                        <%--<option value="0">请选择</option>--%>
                         <option selected value="1">待审核</option>
                         <option value="2">审核通过</option>
                         <option value="3">驳回</option>
                     </shiro:hasRole>
                     <shiro:hasAnyRoles name="纪委,督察大队">
+                        <%--<option value="0">请选择</option>--%>
                         <option selected value="4">待审核</option>
                         <option value="5">审核通过</option>
                         <option value="6">驳回</option>
