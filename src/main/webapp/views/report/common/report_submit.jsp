@@ -19,18 +19,20 @@
         //点击提交
         form.on('submit(submitReport)', function () {
             debugger;
-            layer.load(2);
+            var index = layer.load(2);
             $("#reportForm").ajaxSubmit({
                 success: function (data) {
+
                     if (data.success) {
                         //关闭当前弹窗
                         layer.closeAll();
                         layer.msg("提交成功");
 
                         //重载查询页面表格
-                        $("#resetQueryReport").click();
+                        // $("#resetQueryReport").click();
                         $("#queryReport").click();
                     } else {
+                        layer.close(index);
                         layer.msg("提交失败，请重新尝试或联系管理员");
                     }
                 }

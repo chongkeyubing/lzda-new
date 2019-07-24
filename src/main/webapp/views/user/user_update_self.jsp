@@ -128,18 +128,20 @@
             tmpInput.attr("value", $('#organizationName option:selected').text());   //将会得到选中的text值
             myform.append(tmpInput);
 
-            layer.load(2)
+            var index = layer.load(2)
             $("#userUpdateForm").ajaxSubmit({
                 success: function (data) {
+
                     if (data.success) {
                         //关闭当前弹窗
                         layer.closeAll();
                         layer.msg("修改成功");
 
                         //重载查询页面表格
-                        $("#resetQueryArchive").click();
+                        // $("#resetQueryArchive").click();
                         $("#queryArchive").click();
                     } else {
+                        layer.close(index);
                         layer.msg("修改成功，请重新尝试或联系管理员");
                     }
                 }

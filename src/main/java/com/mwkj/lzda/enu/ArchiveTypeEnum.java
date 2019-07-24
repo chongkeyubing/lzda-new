@@ -31,7 +31,9 @@ public enum ArchiveTypeEnum {
     ARC_GIFT_INFO(23,"收受礼品登记表"),
     ARC_PART_TIME_JOB(24,"在企业、中介组织和社会团体兼职"),
     ARC_HOUSE_INFO(25,"住房情况登记表"),
-    ARC_FAMILY_ABROAD_MARRIAGE(26,"子女与外国人、无国籍人通婚的情况");
+    ARC_FAMILY_ABROAD_MARRIAGE(26,"子女与外国人、无国籍人通婚的情况"),
+    ARC_LOAN(27,"借贷（担保）登记表");
+
 
     private final int archiveType;
     private final String archiveName;

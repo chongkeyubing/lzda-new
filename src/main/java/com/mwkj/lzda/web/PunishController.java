@@ -1,9 +1,11 @@
 package com.mwkj.lzda.web;
 
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.mwkj.lzda.core.Result;
 import com.mwkj.lzda.core.ResultUtil;
 import com.mwkj.lzda.core.layui.LayuiTableResultUtil;
+import com.mwkj.lzda.dto.ArchiveDTO;
 import com.mwkj.lzda.dto.PunishDTO;
 import com.mwkj.lzda.service.PunishService;
 import org.springframework.stereotype.Controller;
@@ -43,12 +45,15 @@ public class PunishController {
                                  @RequestParam(defaultValue = "0") int limit) {
 
         //开启分页查询，第三个参数为false时不进行总数查询
-        PageHelper.startPage(page, limit, false);
-        //默认查询所有人
+        PageHelper.startPage(page, limit);
+//        //默认查询所有人
         List<PunishDTO> punishs = punishService.findAllPunishByConditions(punishDTO);
-        long count = punishService.findAllPunishCounts(punishDTO);
+//        long count = punishService.findAllPunishCounts(punishDTO);
 
-        return LayuiTableResultUtil.success(punishs, count);
+        PageInfo<PunishDTO> pageInfo = new PageInfo(punishs);
+
+
+        return LayuiTableResultUtil.success(punishs, pageInfo.getTotal());
     }
 
 

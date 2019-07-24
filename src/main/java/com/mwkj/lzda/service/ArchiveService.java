@@ -13,8 +13,6 @@ import java.util.List;
 public interface ArchiveService {
     List<ArchiveDTO> findAllArchivesByConditions(ArchiveDTO archive);
 
-    long findAllArchivesCounts(ArchiveDTO archive);
-
     void updateSpecifiedArchiveStatus(int archiveType, int id, int status);
 
     String toAddArchive(ArchiveDTO archive);

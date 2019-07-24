@@ -116,7 +116,7 @@
             tmpInput.attr("value", $('#organizationName option:selected').text());   //将会得到选中的text值
             myform.append(tmpInput);
 
-            layer.load(2)
+            var index = layer.load(2)
             $("#userAddForm").ajaxSubmit({
                 success: function (data) {
                     if (data.success) {
@@ -125,9 +125,10 @@
                         layer.msg("新增成功");
 
                         //重载查询页面表格
-                        $("#resetQueryArchive").click();
+                        // $("#resetQueryArchive").click();
                         $("#queryArchive").click();
                     } else {
+                        layer.close(index);
                         layer.msg("新增失败，请重新尝试或联系管理员");
                     }
                 }

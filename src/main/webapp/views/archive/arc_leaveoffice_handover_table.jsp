@@ -57,7 +57,7 @@
                 <%--</tr>--%>
 
                 <tr>
-                    <td>备 注</td>
+                    <td>备注</td>
                     <td colspan="3">${archive.remark}</td>
                 </tr>
 
