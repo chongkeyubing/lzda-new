@@ -12,6 +12,5 @@ import java.util.List;
 public interface ArchiveMapper {
 
     List<ArchiveDTO> findAllArchivesByConditions(ArchiveDTO archive);
-    long findAllArchivesCounts(ArchiveDTO archive);
 
 }

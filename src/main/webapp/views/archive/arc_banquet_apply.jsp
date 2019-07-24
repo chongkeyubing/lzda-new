@@ -33,19 +33,19 @@
 
         <div class='layui-form-item'>
             <div class='layui-inline'>
-                <label class='layui-form-label'>亲 属</label>
+                <label class='layui-form-label'>亲属</label>
                 <div class='layui-input-inline input'>
                     <input type='text' name='relativesNumber' lay-verify="required|number" autocomplete='off' class='layui-input' value="" placeholder="人数">
                 </div>
             </div>
             <div class='layui-inline'>
-                <label class='layui-form-label'>好 友</label>
+                <label class='layui-form-label'>好友</label>
                 <div class='layui-input-inline input'>
                     <input type='text' name='friendNumber' lay-verify="required|number" autocomplete='off' class='layui-input' value="" placeholder="人数">
                 </div>
             </div>
             <div class='layui-inline'>
-                <label class='layui-form-label'>其 他</label>
+                <label class='layui-form-label'>其他</label>
                 <div class='layui-input-inline input'>
                     <input type='text' name='otherNumber' lay-verify="required|number" autocomplete='off' class='layui-input' value="" placeholder="人数">
                 </div>

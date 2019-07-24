@@ -38,7 +38,7 @@
                     <td colspan="5">${reward.content}</td>
                 </tr>
                 <tr>
-                    <td>备 注</td>
+                    <td>备注</td>
                     <td colspan="5">${reward.remark}</td>
                 </tr>
                 <c:if test="${not empty attachments}">

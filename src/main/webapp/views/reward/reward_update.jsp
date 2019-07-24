@@ -162,7 +162,7 @@
         //点击提交
         form.on('submit(submitReward)', function () {
             debugger;
-            layer.load(2)
+            var index = layer.load(2)
             $("#rewardForm").ajaxSubmit({
                 success: function (data) {
                     if (data.success) {
@@ -173,6 +173,7 @@
                         //重载查询页面表格
                         $("#queryReward").click();
                     } else {
+                        layer.close(index);
                         layer.msg("提交失败，请重新尝试或联系管理员");
                     }
                 }

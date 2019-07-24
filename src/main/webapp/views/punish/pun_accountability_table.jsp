@@ -41,7 +41,7 @@ pageEncoding="UTF-8" %>
                     </td>
                 </tr>
                 <tr>
-                    <td>备 注</td>
+                    <td>备注</td>
                     <td colspan="5">${punish.remark}</td>
                 </tr>
 

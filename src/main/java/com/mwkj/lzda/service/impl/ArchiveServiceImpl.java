@@ -2,6 +2,7 @@ package com.mwkj.lzda.service.impl;
 
 import com.alibaba.druid.util.DruidWebUtils;
 import com.mwkj.lzda.dao.ArchiveMapper;
+import com.mwkj.lzda.dto.ArcLoanDTO;
 import com.mwkj.lzda.dto.ArchiveDTO;
 import com.mwkj.lzda.enu.ArchiveTypeEnum;
 import com.mwkj.lzda.enu.LogOperateTypeEnum;
@@ -115,6 +116,9 @@ public class ArchiveServiceImpl implements ArchiveService {
     @Resource
     private ArcFamilyAbroadMarriageService arcFamilyAbroadMarriageService;
 
+    @Resource
+    private ArcLoanService arcLoanService;
+
     /**
      * @return java.util.List<com.mwkj.lzda.dto.ArchiveDTO>
      * @Author libaogang
@@ -127,10 +131,6 @@ public class ArchiveServiceImpl implements ArchiveService {
         return archiveMapper.findAllArchivesByConditions(archive);
     }
 
-    @Override
-    public long findAllArchivesCounts(ArchiveDTO archive) {
-        return archiveMapper.findAllArchivesCounts(archive);
-    }
 
     /**
      * @return java.lang.String
@@ -221,6 +221,9 @@ public class ArchiveServiceImpl implements ArchiveService {
                 break;
             case 26:
                 page = "/views/archive/arc_family_abroad_marriage";
+                break;
+            case 27:
+                page = "/views/archive/arc_loan";
                 break;
 
         }
@@ -378,6 +381,11 @@ public class ArchiveServiceImpl implements ArchiveService {
                 map.put("archive", arcFamilyAbroadMarriage); // 统一命名为archive
                 page = "/views/archive/arc_family_abroad_marriage_table";
                 break;
+            case 27:
+                ArcLoanDTO arcLoanDTO = arcLoanService.toDetail(archive.getArchiveId());
+                map.put("archive", arcLoanDTO);
+                page = "/views/archive/arc_loan_table";
+                break;
         }
 
         //附带审核记录
@@ -414,7 +422,7 @@ public class ArchiveServiceImpl implements ArchiveService {
                 break;
             }
         }
-        operateLogService.save(operateObject,LogOperateTypeEnum.查看.toString(),archive.getUserId());
+        operateLogService.save(operateObject, LogOperateTypeEnum.查看.toString(), archive.getUserId());
         return page;
     }
 
@@ -579,6 +587,12 @@ public class ArchiveServiceImpl implements ArchiveService {
                 arcFamilyAbroadMarriage.setId(id);
                 arcFamilyAbroadMarriage.setApproveStatus(status);
                 arcFamilyAbroadMarriageService.update(arcFamilyAbroadMarriage);
+                break;
+            case 27:
+                ArcLoan arcLoan = new ArcLoan();
+                arcLoan.setId(id);
+                arcLoan.setApproveStatus(status);
+                arcLoanService.update(arcLoan);
                 break;
         }
     }

@@ -105,8 +105,8 @@
             debugger;
             var param = {id: rid, roleName: $("#roleName").val()};
             $.post('role/update', param, function (data) {
+                layer.closeAll();
                 if (data.success) {
-                    layer.closeAll();
                     layer.msg("修改成功");
 
                     //重载表格

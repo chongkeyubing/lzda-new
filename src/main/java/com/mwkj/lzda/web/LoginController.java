@@ -37,7 +37,7 @@ public class LoginController {
             e.printStackTrace();
             return "/index";
         }
-        return "/main";
+        return "redirect:/main.jsp";
     }
 
     @RequestMapping("/logout")
@@ -45,4 +45,5 @@ public class LoginController {
         SecurityUtils.getSubject().logout();
         return "redirect:/index.jsp";
     }
+
 }

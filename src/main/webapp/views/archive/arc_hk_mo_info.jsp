@@ -26,7 +26,7 @@
             <div class='layui-inline'>
                 <label class='layui-form-label'>有效期</label>
                 <div class='layui-input-inline input'>
-                    <input type='text' name='expiryDate' id='expiryDate' autocomplete='off' class='layui-input' value="">
+                    <input type='text' name='expiryDate' id='expiryDate' lay-verify="required|date"  autocomplete='off' class='layui-input' value="">
                 </div>
             </div>
         </div>
@@ -45,7 +45,7 @@
         </div>
 
         <div class="layui-form-item layui-form-text">
-            <label class="layui-form-label">备 注</label>
+            <label class="layui-form-label">备注</label>
             <div class="layui-input-inline">
                 <textarea placeholder="请输入内容" name="remark" class="layui-textarea txtArea"></textarea>
             </div>

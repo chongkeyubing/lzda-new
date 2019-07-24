@@ -129,7 +129,7 @@
             var tmpInput = $("<input type='hidden' name='organizationName'/>");
             tmpInput.attr("value", $('#organizationName option:selected').text());   //将会得到选中的text值
             myform.append(tmpInput);
-            layer.load(2)
+            var index = layer.load(2)
             $("#userUpdateForm").ajaxSubmit({
                 success: function (data) {
                     if (data.success) {
@@ -140,6 +140,7 @@
                         //重载查询页面表格
                         $("#queryUser").click();
                     } else {
+                        layer.close(index);
                         layer.msg("修改成功，请重新尝试或联系管理员");
                     }
                 }

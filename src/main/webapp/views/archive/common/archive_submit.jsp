@@ -19,20 +19,20 @@
         //点击提交
         form.on('submit(submitArchive)', function () {
             debugger;
-            layer.load(2)
+            var index = layer.load(2);
             $("#archiveForm").ajaxSubmit({
                 success: function (data) {
-
                     if (data.success) {
                         //关闭当前弹窗
                         layer.closeAll();
                         layer.msg("提交成功");
 
                         //重载查询页面表格
-                        $("#resetQueryArchive").click();
+                        // $("#resetQueryArchive").click();
                         $("#queryArchive").click();
                     } else {
-                        layer.msg("提交失败，请重新尝试或联系管理员");
+                        layer.close(index);
+                        layer.msg(data.message);
                     }
                 }
             });

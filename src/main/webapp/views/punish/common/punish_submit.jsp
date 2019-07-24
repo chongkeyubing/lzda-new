@@ -19,7 +19,7 @@
         //点击提交
         form.on('submit(submitPunish)', function () {
             debugger;
-            layer.load(2);
+            var index = layer.load(2);
             $("#punishForm").ajaxSubmit({
                 success: function (data) {
                     if (data.success) {
@@ -28,9 +28,10 @@
                         layer.msg("提交成功");
 
                         //重载查询页面表格
-                        $("#resetQueryPunish").click();
+                        // $("#resetQueryPunish").click();
                         $("#queryPunish").click();
                     } else {
+                        layer.close(index);
                         layer.msg("提交失败，请重新尝试或联系管理员");
                     }
                 }
