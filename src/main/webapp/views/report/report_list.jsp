@@ -102,12 +102,13 @@
 
                 {
                     field: 'organizationName',
-                    title: '上报单位'
+                    title: '上报单位',
+                    width:  480
                 },
                 {
                     field: 'committerName',
                     title: '上报人姓名',
-                    width: 100
+                    width: 200
                 },
                 {
                     field: 'title',
@@ -127,7 +128,7 @@
                     align: 'center',
                     title: '操作',
                     toolbar: '#reportTableBar',
-                    width: 280
+                    width: 350
                 }
             ]]
         });
