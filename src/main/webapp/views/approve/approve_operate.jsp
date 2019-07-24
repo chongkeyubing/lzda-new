@@ -4,6 +4,7 @@
 <form id="approveForm" method="post" class="layui-form">
     <input type="hidden" name="archiveId" id="archiveId" value="${archive.id}">
     <input type="hidden" name="archiveType" id="archiveType" value="${archive.archiveType}">
+    <input type="hidden" name="applicantId" id="archiveId" value="${archive.userId}">
 
     <shiro:hasRole name="单位负责人">
         <div id="nextApprover" class="layui-form-item" style="padding-top: 30px">
@@ -53,7 +54,7 @@
                 layer.open({
                     type: 1,
                     title: '选择审核人',
-                    area: ['800'],
+                    area: ['1000'],
                     content: html
                 });
             });

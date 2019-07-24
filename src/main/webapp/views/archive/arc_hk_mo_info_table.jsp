@@ -24,7 +24,7 @@
                     <td>${archive.certificateNumber}</td>
                     <td><fmt:formatDate value="${archive.expiryDate}" pattern="yyyy-MM-dd"/></td>
                     <td>${archive.storekeeper}</td>
-                    <td><pre>${archive.remark}</pre></td>
+                    <td>${archive.remark}</td>
                 </tr>
 
             </table>

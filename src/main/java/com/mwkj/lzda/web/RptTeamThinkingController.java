@@ -57,7 +57,7 @@ public class RptTeamThinkingController {
 
         //日志操作
         //                                                  表名                  操作                                    操作人
-        operateLogService.save(RptTableNameEnum.队伍思想状况上报.toString(), LogOperateTypeEnum.添加.toString(),rptTeamThinking.getOrganizationId());
+        operateLogService.save(RptTableNameEnum.队伍思想状况上报.toString(), LogOperateTypeEnum.添加.toString(),rptTeamThinking.getCommitterId());
 
         return ResultUtil.success();
     }
@@ -76,7 +76,7 @@ public class RptTeamThinkingController {
 
         //日志操作
         //                                                  表名                  操作                                    操作人
-        operateLogService.save(RptTableNameEnum.队伍思想状况上报.toString(), LogOperateTypeEnum.删除.toString(),rptTeamThinking.getOrganizationId());
+        operateLogService.save(RptTableNameEnum.队伍思想状况上报.toString(), LogOperateTypeEnum.删除.toString(),rptTeamThinking.getCommitterId());
         return ResultUtil.success();
     }
 
@@ -87,7 +87,7 @@ public class RptTeamThinkingController {
 
         //日志操作
         //                                                  表名                  操作                                    操作人
-        operateLogService.save(RptTableNameEnum.队伍思想状况上报.toString(), LogOperateTypeEnum.修改.toString(),rptTeamThinking.getOrganizationId());
+        operateLogService.save(RptTableNameEnum.队伍思想状况上报.toString(), LogOperateTypeEnum.修改.toString(),rptTeamThinking.getCommitterId());
         return ResultUtil.success();
     }
 
@@ -98,7 +98,7 @@ public class RptTeamThinkingController {
 
         //日志操作
         //                                                  表名                  操作                                    操作人
-        operateLogService.save(RptTableNameEnum.队伍思想状况上报.toString(), LogOperateTypeEnum.查看.toString(),rptTeamThinking.getOrganizationId());
+        operateLogService.save(RptTableNameEnum.队伍思想状况上报.toString(), LogOperateTypeEnum.查看.toString(),rptTeamThinking.getCommitterId());
 
         return "views/report/rpt_team_thinking_detail";
     }

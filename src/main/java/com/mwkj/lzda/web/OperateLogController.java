@@ -42,8 +42,8 @@ public class OperateLogController {
 
         List<OperateLogDTO> list = operateLogService.findAllLogsByConditions(operateLogDTO);
 
-        long count = operateLogService.findAllLogsCountByConditions(operateLogDTO);
+        PageInfo<OperateLogDTO> pageInfo = new PageInfo<>(list);
 
-        return LayuiTableResultUtil.success(list, count);
+        return LayuiTableResultUtil.success(list, pageInfo.getTotal());
     }
 }
