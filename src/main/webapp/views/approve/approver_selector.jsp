@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<div style="padding: 20px;width: 800px;height: 450px;">
+<div style="padding: 20px;width: 1000px;height: 550px;">
     <!--
 <form class="layui-form form1">
     <div class="layui-form-item">

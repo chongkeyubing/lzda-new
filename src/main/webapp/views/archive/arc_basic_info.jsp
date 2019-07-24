@@ -336,7 +336,7 @@
             tempStr += "<div class='layui-input-inline'>";
             // tempStr += "<input type='text' name='' autocomplete='off' class='layui-input'>";
 
-            tempStr += "<select name='arcs[" + index + "].politicFace'>";
+            tempStr += "<select name='arcs[" + index + "].politicFace' lay-verify='required'>";
             tempStr += "<option value=''>请选政治面貌</option>";
             tempStr += "<option value='群众'>群众</option>";
             tempStr += "<option value='党员'>党员</option>";
@@ -351,21 +351,21 @@
             tempStr += "<div class='layui-inline'>";
             tempStr += "<label class='layui-form-label'>出生年月</label>";
             tempStr += "<div class='layui-input-inline'>";
-            tempStr += "<input type='text' name='arcs[" + index + "].birthday' autocomplete='off' class='layui-input' lay-verify='date'  id='relaBirthday" + index + "'>";
+            tempStr += "<input type='text' name='arcs[" + index + "].birthday' autocomplete='off' class='layui-input' lay-verify='required|date'  id='relaBirthday" + index + "'>";
             tempStr += "</div>";
             tempStr += "</div>";
 
             tempStr += "<div class='layui-inline'>";
             tempStr += "<label class='layui-form-label'>工作单位</label>";
             tempStr += "<div class='layui-input-inline'>";
-            tempStr += "<input type='text' name='arcs[" + index + "].organization' autocomplete='off' class='layui-input'>";
+            tempStr += "<input type='text' name='arcs[" + index + "].organization' autocomplete='off'  lay-verify='required' class='layui-input'>";
             tempStr += "</div>";
             tempStr += "</div>";
 
             tempStr += "<div class='layui-inline'>";
             tempStr += "<label class='layui-form-label'>职务</label>";
             tempStr += "<div class='layui-input-inline'>";
-            tempStr += "<input type='text' name='arcs[" + index + "].jobPosition' autocomplete='off' class='layui-input'>";
+            tempStr += "<input type='text' name='arcs[" + index + "].jobPosition' autocomplete='off'  lay-verify='required' class='layui-input'>";
             tempStr += "</div>";
 
             tempStr += "</div>";

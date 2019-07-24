@@ -20,7 +20,7 @@
                 layer.open({
                     type: 1,
                     title: '选择审核人',
-                    area: ['800'],
+                    area: ['1000'],
                     content: html
                 });
             });

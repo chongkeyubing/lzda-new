@@ -62,7 +62,7 @@ public class RptResponsibilityPerformController {
 
         //日志操作
         //                      表名              操作                                    操作人
-        operateLogService.save(RptTableNameEnum.履责纪实上报.toString(), LogOperateTypeEnum.添加.toString(),rptResponsibilityPerform.getOrganizationId());
+        operateLogService.save(RptTableNameEnum.履责纪实上报.toString(), LogOperateTypeEnum.添加.toString(),rptResponsibilityPerform.getCommitterId());
         return ResultUtil.success();
     }
 
@@ -78,7 +78,7 @@ public class RptResponsibilityPerformController {
 
         //日志操作
         //                      表名              操作                                    操作人
-        operateLogService.save(RptTableNameEnum.履责纪实上报.toString(), LogOperateTypeEnum.删除.toString(),rptResponsibilityPerform.getOrganizationId());
+        operateLogService.save(RptTableNameEnum.履责纪实上报.toString(), LogOperateTypeEnum.删除.toString(),rptResponsibilityPerform.getCommitterId());
         return ResultUtil.success();
     }
 
@@ -89,7 +89,7 @@ public class RptResponsibilityPerformController {
 
         //日志操作
         //                      表名              操作                                    操作人
-        operateLogService.save(RptTableNameEnum.履责纪实上报.toString(), LogOperateTypeEnum.修改.toString(),rptResponsibilityPerform.getOrganizationId());
+        operateLogService.save(RptTableNameEnum.履责纪实上报.toString(), LogOperateTypeEnum.修改.toString(),rptResponsibilityPerform.getCommitterId());
 
         return ResultUtil.success();
     }
@@ -116,7 +116,7 @@ public class RptResponsibilityPerformController {
 
         //日志操作
         //                                                   表名              操作                                    操作人
-        operateLogService.save(RptTableNameEnum.履责纪实上报.toString(), LogOperateTypeEnum.查看.toString(),rptResponsibilityPerform.getOrganizationId());
+        operateLogService.save(RptTableNameEnum.履责纪实上报.toString(), LogOperateTypeEnum.查看.toString(),rptResponsibilityPerform.getCommitterId());
 
         return "views/report/rpt_responsibility_perform_detail";
     }

@@ -43,11 +43,8 @@ public class RptResponsibilityReportController {
     @Resource
     private OrganizationService organizationService;
 
-
     @Resource
     private OperateLogService operateLogService;
-
-
 
     @Resource
     private AttachmentService attachmentService;
@@ -59,7 +56,7 @@ public class RptResponsibilityReportController {
 
         //日志操作
         //                                                  表名                  操作                                    操作人
-        operateLogService.save(RptTableNameEnum.主体责任上报.toString(), LogOperateTypeEnum.添加.toString(),rptResponsibilityReport.getOrganizationId());
+        operateLogService.save(RptTableNameEnum.主体责任上报.toString(), LogOperateTypeEnum.添加.toString(),rptResponsibilityReport.getCommitterId());
 
         return ResultUtil.success();
     }
@@ -73,7 +70,7 @@ public class RptResponsibilityReportController {
 
         //日志操作
         //                                                  表名                  操作                                    操作人
-        operateLogService.save(RptTableNameEnum.主体责任上报.toString(), LogOperateTypeEnum.删除.toString(),rptResponsibilityReport.getOrganizationId());
+        operateLogService.save(RptTableNameEnum.主体责任上报.toString(), LogOperateTypeEnum.删除.toString(),rptResponsibilityReport.getCommitterId());
 
         return ResultUtil.success();
     }
@@ -85,7 +82,7 @@ public class RptResponsibilityReportController {
 
         //日志操作
         //                                                  表名                  操作                                    操作人
-        operateLogService.save(RptTableNameEnum.主体责任上报.toString(), LogOperateTypeEnum.修改.toString(),rptResponsibilityReport.getOrganizationId());
+        operateLogService.save(RptTableNameEnum.主体责任上报.toString(), LogOperateTypeEnum.修改.toString(),rptResponsibilityReport.getCommitterId());
         return ResultUtil.success();
     }
 
@@ -104,7 +101,7 @@ public class RptResponsibilityReportController {
 
         //日志操作
         //                                                  表名                  操作                                    操作人
-        operateLogService.save(RptTableNameEnum.主体责任上报.toString(), LogOperateTypeEnum.查看.toString(),rptResponsibilityReport.getOrganizationId());
+        operateLogService.save(RptTableNameEnum.主体责任上报.toString(), LogOperateTypeEnum.查看.toString(),rptResponsibilityReport.getCommitterId());
 
         return "views/report/responsibility_report_detail";
     }

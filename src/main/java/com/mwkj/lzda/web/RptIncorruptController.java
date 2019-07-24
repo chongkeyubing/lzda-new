@@ -53,7 +53,7 @@ public class RptIncorruptController {
 
         //日志操作
         //                      表名                                               操作                                    操作人
-        operateLogService.save(RptTableNameEnum.廉政信息上报.toString(), LogOperateTypeEnum.添加.toString(), rptIncorrupt.getOrganizationId());
+        operateLogService.save(RptTableNameEnum.廉政信息上报.toString(), LogOperateTypeEnum.添加.toString(), rptIncorrupt.getCommitterId());
         return ResultUtil.success();
     }
 
@@ -81,7 +81,7 @@ public class RptIncorruptController {
 
         //日志操作
         //                      表名              操作                                    操作人
-        operateLogService.save(RptTableNameEnum.廉政信息上报.toString(), LogOperateTypeEnum.删除.toString(), rptIncorrupt.getOrganizationId());
+        operateLogService.save(RptTableNameEnum.廉政信息上报.toString(), LogOperateTypeEnum.删除.toString(), rptIncorrupt.getCommitterId());
         return ResultUtil.success();
     }
 
@@ -90,9 +90,10 @@ public class RptIncorruptController {
     public Result update(RptIncorrupt rptIncorrupt) {
         rptIncorruptService.update(rptIncorrupt);
 
+
         //日志操作
         //                      表名              操作                                    操作人
-        operateLogService.save(RptTableNameEnum.廉政信息上报.toString(), LogOperateTypeEnum.修改.toString(), rptIncorrupt.getOrganizationId());
+        operateLogService.save(RptTableNameEnum.廉政信息上报.toString(), LogOperateTypeEnum.修改.toString(), rptIncorrupt.getCommitterId());
 
         return ResultUtil.success();
     }
@@ -134,7 +135,7 @@ public class RptIncorruptController {
 
         //日志操作
         //                      表名              操作                                    操作人
-        operateLogService.save(RptTableNameEnum.廉政信息上报.toString(), LogOperateTypeEnum.查看.toString(), rptIncorrupt.getOrganizationId());
+        operateLogService.save(RptTableNameEnum.廉政信息上报.toString(), LogOperateTypeEnum.查看.toString(), rptIncorrupt.getCommitterId());
 
         return "views/report/report_detail";
     }
