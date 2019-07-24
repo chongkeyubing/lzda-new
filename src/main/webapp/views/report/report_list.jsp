@@ -141,7 +141,7 @@
                     layer.open({
                         type: 1,
                          title: '廉政信息详情',
-                        area: ['1200px', '700px'],
+                        area: ['100%', '100%'],
                         content: html
                     });
                 });
@@ -150,7 +150,7 @@
                     layer.open({
                         type: 1,
                         title: '廉政信息修改',
-                        area: ['1200px', '700px'],
+                        area: ['100%', '100%'],
                         content: html
                     });
                 });
@@ -189,7 +189,7 @@
                 layer.open({
                     type: 1,
                     title: '廉政信息上报',
-                    area: ['1200', '700px'],
+                    area: ['100%', '100%'],
                     content: html
                 });
             });

@@ -42,18 +42,17 @@
                     <td>出国<br/>（境）<br/>情况<br/>报告</td>
                     <td colspan="3">${archive.report}</td>
                 </tr>
-
             </table>
             <p class="remark">注：此表应在一般干部出国（境）归来后一周内填写上报。</p>
             <c:if test="${approveOperate}">
-                <%@ include file = "../approve/approve_operate.jsp" %>
+                <%@ include file="../approve/approve_operate.jsp" %>
             </c:if>
 
             <c:if test="${approveRecord}">
-                <%@ include file = "../approve/approve_record.jsp" %>
+                <%@ include file="../approve/approve_record.jsp" %>
             </c:if>
         </div>
     </div>
 </div>
-<%@ include file = "../common/back.jsp" %>
+<%@ include file="../common/back.jsp" %>
 

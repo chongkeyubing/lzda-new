@@ -85,7 +85,7 @@
         </div>
     </div>
 </div>
-<%@ include file = "../common/back.jsp" %>
+<%@ include file = "./common/back.jsp" %>
 <script src="static/js/imgUp1.js"></script>
 <script src="static/js/initDom.js"></script>
 <script src="static/js/jquery-weui.js"></script>
