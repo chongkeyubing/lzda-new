@@ -33,7 +33,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">主题</label>
             <div class="layui-input-inline">
-                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+                <input type="text" name="title" lay-verify="required" autocomplete="off" placeholder="请输入标题"
                        class="layui-input" style="width: 818px;">
             </div>
         </div>

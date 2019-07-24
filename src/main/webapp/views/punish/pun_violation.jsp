@@ -74,7 +74,7 @@
             <div class="layui-inline">
                 <label class="layui-form-label">违规级别</label>
                 <div class="layui-input-inline">
-                    <select name="violationLevel" id="violationLevel" lay-filter="violationLevel">
+                    <select name="violationLevel" id="violationLevel" lay-filter="violationLevel" lay-verify="required">
                         <option value="">请选择</option>
                         <option value="政务处分">政务处分</option>
                         <option value="党纪处分">党纪处分</option>
@@ -88,7 +88,7 @@
             <div class="layui-inline">
                 <label class="layui-form-label">违纪类型</label>
                 <div class="layui-input-inline">
-                    <select name="violationType" id="violationType">
+                    <select name="violationType" id="violationType" lay-verify="required">
                         <option value="">请选择违规级别</option>
                     </select>
                 </div>

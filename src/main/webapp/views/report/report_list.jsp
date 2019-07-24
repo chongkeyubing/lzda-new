@@ -140,7 +140,7 @@
                 $.get('rptincorrupt/toReportDetail?id=' + data.id, function (html) {
                     layer.open({
                         type: 1,
-                        // title: data.rewardType + "-" + data.userName,
+                         title: '廉政信息详情',
                         area: ['1200px', '700px'],
                         content: html
                     });
@@ -149,7 +149,7 @@
                 $.get('rptincorrupt/toReportUpdate?id=' + data.id, function (html) {
                     layer.open({
                         type: 1,
-                        //title: '修改' + data.rewardType + "-" + data.userName,
+                        title: '廉政信息修改',
                         area: ['1200px', '700px'],
                         content: html
                     });
@@ -188,7 +188,7 @@
             $.get('rptincorrupt/toAddReport', function (html) {
                 layer.open({
                     type: 1,
-                    title: '新增上报',
+                    title: '廉政信息上报',
                     area: ['1200', '700px'],
                     content: html
                 });

@@ -32,13 +32,13 @@
 			<div class="layui-form-item" style="margin-left: 2px;">
 				<label class="layui-form-label">标题</label>
 				<div class="layui-input-block">
-					<input type="text" name="title" id="title" lay-filter="queryReport" lay-verify="title" autocomplete="off" placeholder="请输入标题" style="width: 75%;" class="layui-input">
+					<input type="text" name="title" id="title" lay-filter="queryReport" lay-verify="required" autocomplete="off" placeholder="请输入标题" style="width: 75%;" class="layui-input">
 				</div>
 			</div>
 			<div class="layui-form-item layui-form-text">
 				<label class="layui-form-label">内容</label>
 				<div class="layui-input-block area">
-					<textarea placeholder="请输入内容" lay-filter="queryReport" name="content" id="content" class="layui-textarea txtArea"></textarea>
+					<textarea placeholder="请输入内容" lay-filter="queryReport" lay-verify="required" name="content" id="content" class="layui-textarea txtArea"></textarea>
 				</div>
 			</div>
 

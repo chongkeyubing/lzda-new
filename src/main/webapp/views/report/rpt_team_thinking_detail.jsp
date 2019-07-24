@@ -9,7 +9,7 @@
         <div class="tableHonor">
             <table>
                 <tr>
-                    <th colspan="4">队伍思想状况<i>${report.time}</i>分析报告</th>
+                    <th colspan="4">队伍思想状况<i>${report.time}</i>月份析报告</th>
                 </tr>
                 <tr>
                     <td>填报单位</td>

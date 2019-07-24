@@ -15,7 +15,7 @@
             <table>
                 <tr>单位：${report.organizationName}</tr>
                 <tr>
-                    <th colspan="5">${report.year}年${report.quarter}季度主体责任季度工单任务落实情况反馈表</th>
+                    <th colspan="5">${report.year}年${report.quarter}主体责任季度工单任务落实情况反馈表</th>
                 </tr>
                 <tr>
                     <td>工单类别</td>
