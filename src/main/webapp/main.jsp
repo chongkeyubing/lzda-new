@@ -128,7 +128,7 @@
                     <dd>
                         <h2 class="menu menu07">用户权限</h2>
                         <ul class="menuSideBar">
-                            <shiro:hasPermission name="用户权限">
+                            <shiro:hasPermission name="用户管理">
                                 <li>
                                     <a href="user/toUserList">用户管理</a>
                                 </li>
