@@ -16,14 +16,14 @@
                 <label class="layui-form-label">单位名称</label>
                 <div class="layui-input-inline">
                     <input type="text" name="organizationName" autocomplete="off" class="layui-input"
-                           lay-verify="required" value="${currentUser.organizationName}" already>
+                           lay-verify="required" value="${currentUser.organizationName}" readonly>
 
                 </div>
             </div>
             <div class="layui-inline">
                 <label class="layui-form-label">年份</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="year" id="year" autocomplete="off" class="layui-input"
+                    <input type="text" name="year" id="year1" autocomplete="off" class="layui-input"
                            lay-verify="required">
                 </div>
             </div>
@@ -107,7 +107,7 @@
 
         //日期
         laydate.render({
-            elem: '#year',
+            elem: '#year1',
             type: 'year'
         });
 
