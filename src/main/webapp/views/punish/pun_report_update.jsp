@@ -105,7 +105,7 @@
                            id="selectSecondUserName" value="${punish.chargePerson}">
                     <button class="layui-btn  layui-btn-sm layui-btn-normal" type="button" id="selectSecondUser">选择
                     </button>
-                    <input type="hidden" name="chargePersonId" id="selectSecondUserId" readonly lay-verify="required"
+                    <input type="hidden" name="chargePersonId" id="selectSecondUserId" value="${punish.chargePersonId}" readonly lay-verify="required"
                            autocomplete="off" class="layui-input">
                 </div>
             </div>
@@ -126,6 +126,23 @@
             </div>
         </div>
 
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">违规级别</label>
+                <div class="layui-input-inline">
+                    <select name="result" id="result" lay-filter="violationLevel" lay-verify="required">
+                        <c:forTokens items="属实,部分属实,不属实,待查" delims="," var="result11">
+                            <option value="${result11}"
+                                    <c:if test="${punish.result == result11}">selected</c:if>
+                            >${result11}</option>
+                        </c:forTokens>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">反映主要问题</label>
             <div class="layui-input-inline">
@@ -133,13 +150,13 @@
                           name="problem">${punish.problem}</textarea>
             </div>
         </div>
-        <div class="layui-form-item layui-form-text">
+        <%--<div class="layui-form-item layui-form-text">
             <label class="layui-form-label">核实结果</label>
             <div class="layui-input-inline">
                 <textarea placeholder="请输入内容" class="layui-textarea txtArea" lay-verify="required"
                           name="result">${punish.result}</textarea>
             </div>
-        </div>
+        </div>--%>
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">处理结果</label>
             <div class="layui-input-inline">
@@ -224,6 +241,10 @@
         laydate.render({
             elem: '#endTime'
         });
+
+
+
+
 
         //选择用户
         $("#selectUser").click(function (e) {

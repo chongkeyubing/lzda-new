@@ -42,12 +42,12 @@
                     <td colspan="5">${punish.handleBasis}</td>
                 </tr>
 
-                <tr>
+               <%-- <tr>
                     <td>处理情况</td>
                     <td colspan="3">${punish.handleInfo}</td>
                     <td>是否移交<br/>司法机关</td>
                     <td>${punish.transfer}</td>
-                </tr>
+                </tr>--%>
                 <tr>
                     <td>查处单位</td>
                     <td colspan="3">${punish.violationOrg}</td>

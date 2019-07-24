@@ -15,7 +15,7 @@
     <result column="gender" jdbcType="VARCHAR" property="gender" />
     <result column="violation_level" jdbcType="VARCHAR" property="violationLevel" />
     <result column="violation_type" jdbcType="VARCHAR" property="violationType" />
-    <result column="transfer" jdbcType="VARCHAR" property="transfer" />
+   <!-- <result column="transfer" jdbcType="VARCHAR" property="transfer" />-->
     <result column="violation_org" jdbcType="VARCHAR" property="violationOrg" />
     <result column="handle_time" jdbcType="VARCHAR" property="handleTime" />
     <result column="operator_id" jdbcType="INTEGER" property="operatorId" />

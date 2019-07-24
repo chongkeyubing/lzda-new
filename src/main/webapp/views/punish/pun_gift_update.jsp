@@ -13,7 +13,7 @@
         <!-- 填表人 -->
         <input type="hidden" name="operatorId" value="${punish.id}">
         <input type="hidden" name="operator" value="${punish.operator}">
-        <input type="hidden" name="userId" id="selectUserId">
+        <input type="hidden" name="userId" id="selectUserId" value="${punish.userId}">
         <%-- 负责人id --%>
         <input type="hidden" name="chargePersonId" id="selectSecondUserId">
         <input type="hidden" name="punishType" value="${punishType}">

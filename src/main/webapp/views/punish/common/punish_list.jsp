@@ -22,10 +22,10 @@
                 <select name="punishType" class="punishTypeView" lay-search>
                     <option value="">请选择</option>
                     <option value="1">一般干部违纪情况登记表</option>
-                    <option value="2">一般干部问责情况登记表</option>
+                   <%-- <option value="2">一般干部问责情况登记表</option>--%>
                     <option value="3">一般干部收受礼品（金）上缴情况登记表</option>
-                    <option value="4">一般干部廉政谈话情况登记表</option>
-                    <option value="5">一般干部被通报情况登记表</option>
+                   <%-- <option value="4">一般干部廉政谈话情况登记表</option>
+                    <option value="5">一般干部被通报情况登记表</option>--%>
                     <option value="6">一般干部被群众信访举报情况登记表</option>
                 </select>
             </div>
@@ -53,10 +53,10 @@
                 <select name="punishType" class="punishTypeView" lay-search>
                     <option value="">请选择</option>
                     <option value="1">一般干部违纪情况登记表</option>
-                    <option value="2">一般干部问责情况登记表</option>
+                   <%-- <option value="2">一般干部问责情况登记表</option>--%>
                     <option value="3">一般干部收受礼品（金）上缴情况登记表</option>
-                    <option value="4">一般干部廉政谈话情况登记表</option>
-                    <option value="5">一般干部被通报情况登记表</option>
+                    <%--<option value="4">一般干部廉政谈话情况登记表</option>
+                    <option value="5">一般干部被通报情况登记表</option>--%>
                     <option value="6">一般干部被群众信访举报情况登记表</option>
                 </select>
             </div>
@@ -76,10 +76,10 @@
 <script>
     var PUNISH_TYPE = {
         1: '一般干部违纪情况登记表',
-        2: '一般干部问责情况登记表',
+       /* 2: '一般干部问责情况登记表',*/
         3: '一般干部收受礼品（金）上缴情况登记表',
-        4: '一般干部廉政谈话情况登记表',
-        5: '一般干部被通报情况登记表',
+       /* 4: '一般干部廉政谈话情况登记表',
+        5: '一般干部被通报情况登记表',*/
         6: '一般干部被群众信访举报情况登记表'
     };
 </script>

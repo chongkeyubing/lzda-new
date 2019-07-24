@@ -19,5 +19,9 @@
     <result column="content" jdbcType="LONGVARCHAR" property="content" />
     <result column="result" jdbcType="LONGVARCHAR" property="result" />
     <result column="remark" jdbcType="LONGVARCHAR" property="remark" />
+
+    <result column="involved_name" jdbcType="VARCHAR" property="involvedName" />
+    <result column="involved_organization" jdbcType="VARCHAR" property="involvedOrganization" />
+
   </resultMap>
 </mapper>

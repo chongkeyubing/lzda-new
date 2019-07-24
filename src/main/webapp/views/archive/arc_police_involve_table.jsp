@@ -13,7 +13,7 @@
                 <tr>
                     <td>时间</td>
                     <td>${archive.time}</td>
-                    <td>涉警人姓名</td>
+                    <td>民警姓名</td>
                     <td>${archive.userName}</td>
                 </tr>
                 <tr>
@@ -21,6 +21,12 @@
                     <td>${archive.organization}</td>
                     <td>与民警关系</td>
                     <td>${archive.relationship}</td>
+                </tr>
+                <tr>
+                    <td>涉警人姓名</td>
+                    <td>${archive.involvedName}</td>
+                    <td>涉警人单位</td>
+                    <td>${archive.involvedOrganization}</td>
                 </tr>
                 <tr>
                     <td>涉警内容</td>

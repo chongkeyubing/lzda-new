@@ -12,7 +12,7 @@
                 </div>
             </div>
             <div class="layui-inline">
-                <label class="layui-form-label">涉警人姓名</label>
+                <label class="layui-form-label">民警姓名</label>
                 <div class="layui-input-inline">
                     <input type="text" autocomplete="off" class="layui-input" value="${currentUser.realname}" readonly>
                 </div>
@@ -27,6 +27,16 @@
         </div>
 
         <div class="layui-form-item">
+
+            <div class="layui-inline">
+                <label class="layui-form-label">涉警人姓名</label>
+                <div class="layui-input-inline">
+                    <input type="text" autocomplete="off" class="layui-input" id="involvedName" name="involvedName">
+                </div>
+            </div>
+
+
+
             <div class="layui-inline">
                 <label class="layui-form-label">与民警关系</label>
                 <div class="layui-input-inline">
@@ -38,6 +48,14 @@
                     </select>
                 </div>
             </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label">涉警人单位</label>
+                <div class="layui-input-inline">
+                    <input type="text" autocomplete="off" class="layui-input" id="involvedOrganization" name="involvedOrganization">
+                </div>
+            </div>
+
         </div>
 
         <div class="layui-form-item layui-form-text">

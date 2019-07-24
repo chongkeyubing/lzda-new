@@ -57,7 +57,7 @@
                            autocomplete="off" class="layui-input">
                 </div>
             </div>
-            <div class="layui-inline">
+           <%-- <div class="layui-inline">
                 <label class="layui-form-label">是否移交司法机关</label>
                 <div class="layui-input-inline">
                     <select name="transfer" lay-verify="required">
@@ -66,7 +66,7 @@
                         <option value="否">否</option>
                     </select>
                 </div>
-            </div>
+            </div>--%>
 
         </div>
 
@@ -79,7 +79,8 @@
                         <option value="政务处分">政务处分</option>
                         <option value="党纪处分">党纪处分</option>
                         <option value="问责">问责</option>
-                        <option value="违纪">违纪</option>
+                        <option value="违规">违规</option>
+                        <option value="违法">违法</option>
                     </select>
                 </div>
             </div>
@@ -221,7 +222,8 @@
             {name: '政务处分', types: ['政务警告', '记大过', '降级', '撤职', '开除']},
             {name: '党纪处分', types: ['党纪警告', '严重警告', '撤销党内职务', '留党查看', '开除党籍']},
             {name: '问责', types: ['通报', '诫勉谈话', '停职检查', '调整职务', '责令辞职', '降职', '免职']},
-            {name: '违纪', types: ['分局通报', '提醒谈话', '书面检查', '记分']}
+            {name: '违规', types: ['分局通报', '提醒谈话', '书面检查', '记分']},
+            {name: '违法', types: ['移交司法机关', '不移交司法机关']}
         ];
 
         //违纪下拉联动

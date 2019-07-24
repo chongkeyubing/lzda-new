@@ -120,6 +120,21 @@
                 </div>
             </div>
         </div>
+            <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">核实结果</label>
+                <div class="layui-input-inline">
+                    <select name="result" id="result" lay-filter="violationLevel">
+                        <option value="">请选择</option>
+                        <option value="属实">属实</option>
+                        <option value="部分属实">部分属实</option>
+                        <option value="不属实">不属实</option>
+                        <option value="待查">待查</option>
+                    </select>
+                </div>
+            </div>
+            </div>
+
 
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">反映主要问题</label>
@@ -128,13 +143,13 @@
                           name="problem"></textarea>
             </div>
         </div>
-        <div class="layui-form-item layui-form-text">
+      <%--  <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">核实结果</label>
             <div class="layui-input-inline">
                 <textarea placeholder="请输入内容" class="layui-textarea txtArea" lay-verify="required"
                           name="result"></textarea>
             </div>
-        </div>
+        </div>--%>
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">处理结果</label>
             <div class="layui-input-inline">

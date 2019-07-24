@@ -44,9 +44,10 @@ public class AttachmentServiceImpl extends AbstractService<Attachment> implement
             throw new AppException("图片上传失败");
         }
 
-        String attachmentId = null;
+
+        String attachmentId = IDGenerator.getUUID();
         if (!CollectionUtils.isEmpty(urls)) {
-            attachmentId = IDGenerator.getUUID();
+
 
             //保存图片路径至附件表
             List<Attachment> attachments = new ArrayList<>();

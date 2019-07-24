@@ -23,7 +23,7 @@
         left join user u on p.user_id = u.id
         left join organization o on o.id = u.organization_id
 
-        union all
+       <!-- union all
 
         select p.id as punish_id, p.user_id,o.id as organization_id,p.user_name,u.police_code,o.name as organization_name
         ,p.punish_type,p.operator,p.create_time from
@@ -40,7 +40,7 @@
         </where>
         ) p
         left join user u on p.user_id = u.id
-        left join organization o on o.id = u.organization_id
+        left join organization o on o.id = u.organization_id-->
 
         union all
 
@@ -61,7 +61,7 @@
         left join user u on p.user_id = u.id
         left join organization o on o.id = u.organization_id
 
-        union all
+       <!-- union all
 
         select p.id as punish_id, p.user_id,o.id as organization_id,p.user_name,u.police_code,o.name as organization_name
         ,p.punish_type,p.operator,p.create_time from
@@ -78,7 +78,7 @@
         </where>
         ) p
         left join user u on p.user_id = u.id
-        left join organization o on o.id = u.organization_id
+        left join organization o on o.id = u.organization_id-->
 
         union all
 
@@ -99,7 +99,7 @@
         left join user u on p.user_id = u.id
         left join organization o on o.id = u.organization_id
 
-        union all
+        <!--union all
 
         select p.id as punish_id, p.user_id,o.id as organization_id,p.user_name,u.police_code,o.name as organization_name
         ,p.punish_type,p.operator,p.create_time from
@@ -116,7 +116,7 @@
         </where>
         ) p
         left join user u on p.user_id = u.id
-        left join organization o on o.id = u.organization_id
+        left join organization o on o.id = u.organization_id-->
 
         ) punishs
         <where>
@@ -153,7 +153,7 @@
         </where>
         )
 
-        +
+       <!-- +
 
         (
         select count(*)
@@ -174,7 +174,7 @@
             </if>
 
         </where>
-        )
+        )-->
 
         +
 
@@ -199,7 +199,7 @@
         </where>
         )
 
-        +
+       <!-- +
 
         (
         select count(*)
@@ -220,7 +220,7 @@
             </if>
 
         </where>
-        )
+        )-->
 
         +
 
@@ -245,7 +245,7 @@
         </where>
         )
 
-        +
+        <!--+
 
         (
         select count(*)
@@ -266,7 +266,7 @@
             </if>
 
         </where>
-        )
+        )-->
 
         )
     </select>

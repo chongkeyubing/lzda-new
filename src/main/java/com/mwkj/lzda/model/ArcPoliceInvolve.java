@@ -89,6 +89,7 @@ public class ArcPoliceInvolve {
      */
     private String remark;
 
+
     /**
      * 获取主键
      *
@@ -359,5 +360,33 @@ public class ArcPoliceInvolve {
      */
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+
+    /**
+     * 涉警人姓名
+     */
+    @Column(name="involved_name")
+    private String involvedName;
+
+    public String getInvolvedName() {
+        return involvedName;
+    }
+
+    public void setInvolvedName(String involvedName) {
+        this.involvedName = involvedName;
+    }
+        /**
+         * 涉警人单位
+         */
+        @Column(name="involved_organization")
+        private String involvedOrganization;
+
+    public String getInvolvedOrganization() {
+        return involvedOrganization;
+    }
+
+    public void setInvolvedOrganization(String involvedOrganization) {
+        this.involvedOrganization = involvedOrganization;
     }
 }

@@ -66,7 +66,7 @@ public class PunViolation {
     /**
      * 是否移交司法机关：是 否
      */
-    private String transfer;
+    //private String transfer;
 
     /**
      * 查处单位
@@ -317,18 +317,18 @@ public class PunViolation {
      *
      * @return transfer - 是否移交司法机关：是 否
      */
-    public String getTransfer() {
+   /* public String getTransfer() {
         return transfer;
     }
-
+*/
     /**
      * 设置是否移交司法机关：是 否
      *
      * @param transfer 是否移交司法机关：是 否
      */
-    public void setTransfer(String transfer) {
+   /* public void setTransfer(String transfer) {
         this.transfer = transfer;
-    }
+    }*/
 
     /**
      * 获取查处单位
