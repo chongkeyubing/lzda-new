@@ -43,15 +43,13 @@ public class PunishController {
     public Result findAllPunishs(PunishDTO punishDTO,
                                  @RequestParam(defaultValue = "0") int page,
                                  @RequestParam(defaultValue = "0") int limit) {
-
-        //开启分页查询，第三个参数为false时不进行总数查询
+        //开启分页查询
         PageHelper.startPage(page, limit);
-//        //默认查询所有人
+
+        //默认查询所有人
         List<PunishDTO> punishs = punishService.findAllPunishByConditions(punishDTO);
-//        long count = punishService.findAllPunishCounts(punishDTO);
 
         PageInfo<PunishDTO> pageInfo = new PageInfo(punishs);
-
 
         return LayuiTableResultUtil.success(punishs, pageInfo.getTotal());
     }
@@ -97,15 +95,15 @@ public class PunishController {
     }
 
     /**
+     * @return java.lang.String
      * @Author libaogang
      * @Date 2019-07-19 9:45
      * @Param [punishDTO, map]
-     * @return java.lang.String
      * @Description 跳转到更新页面
      */
     @RequestMapping("/toPunishUpdate")
-    public String toPunishUpdate(PunishDTO punishDTO,ModelMap map) {
-        map.put("punishType",punishDTO.getPunishType());
-        return punishService.toUpdate(punishDTO,map);
+    public String toPunishUpdate(PunishDTO punishDTO, ModelMap map) {
+        map.put("punishType", punishDTO.getPunishType());
+        return punishService.toUpdate(punishDTO, map);
     }
 }
