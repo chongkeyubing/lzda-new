@@ -31,11 +31,11 @@
             </button>
             <button class="layui-btn layui-btn-warm" type="reset" id="resetQueryReport">清空</button>
         </div>
-
-        <div class="layui-inline" style="float:right">
-            <button class="layui-btn layui-btn-normal" type="button" id="addReport">新增</button>
-        </div>
-
+        <shiro:hasPermission name="上报管理新增">
+            <div class="layui-inline" style="float:right">
+                <button class="layui-btn layui-btn-normal" type="button" id="addReport">新增</button>
+            </div>
+        </shiro:hasPermission>
     </div>
 </form>
 
@@ -43,8 +43,12 @@
 
 <script type="text/html" id="reportTableBar">
     <a class="layui-btn layui-btn-sm layui-btn-normal" lay-event="detail">明细</a>
-    <a class="layui-btn layui-btn-sm layui-btn-warm" lay-event="update">修改</a>
-    <a class="layui-btn layui-btn-sm layui-btn-danger" lay-event="del">删除</a>
+    <shiro:hasPermission name="上报管理修改">
+        <a class="layui-btn layui-btn-sm layui-btn-warm" lay-event="update">修改</a>
+    </shiro:hasPermission>
+    <shiro:hasPermission name="上报管理删除">
+        <a class="layui-btn layui-btn-sm layui-btn-danger" lay-event="del">删除</a>
+    </shiro:hasPermission>
 </script>
 
 <script>
