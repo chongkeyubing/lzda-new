@@ -24,7 +24,7 @@
                     <td rowspan="3">宴 请<br/>规 模</td>
                     <td>亲 属</td>
                     <td>${archive.relativesNumber}人</td>
-                    <td rowspan="3">宴 请<br/>总<br/>桌 数</td>
+                    <td rowspan="3">宴 请<br/>标 准</td>
                     <td>宴席标准</td>
                     <td>${archive.totalLevel}元</td>
                 </tr>

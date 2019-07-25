@@ -14,21 +14,21 @@
                 </tr>
                 <tr>
                     <td>姓 名</td>
-                    <td>${archive.arcLoan.userName}</td>
+                    <td>${archive.userName}</td>
                     <td>性别</td>
-                    <td>${archive.arcLoan.gender}</td>
+                    <td>${archive.gender}</td>
                     <td>政治面貌</td>
-                    <td>${archive.arcLoan.politicFace}</td>
+                    <td>${archive.politicFace}</td>
                     <td>职务</td>
-                    <td>${archive.arcLoan.jobPosition}</td>
+                    <td>${archive.jobPosition}</td>
                 </tr>
                 <tr>
                     <td>所在单位</td>
-                    <td colspan="7">${archive.arcLoan.organization}</td>
+                    <td colspan="7">${archive.organization}</td>
                 </tr>
-                <c:if test="${not empty archive.loans}">
+                <c:if test="${not empty loans}">
                     <tr>
-                        <td rowspan="${archive.loans.size() + 1}">借出</td>
+                        <td rowspan="${loans.size() + 1}">借出</td>
                         <td>债务人</td>
                         <td>金额</td>
                         <td>约定期限</td>
@@ -36,7 +36,7 @@
                         <td>资金来源</td>
                         <td colspan="2">整改纠正情况</td>
                     </tr>
-                    <c:forEach var="loan" items="${archive.loans}">
+                    <c:forEach var="loan" items="${loans}">
                         <tr>
                             <td>${loan.cbligor}</td>
                             <td>${loan.amount}</td>
@@ -48,9 +48,9 @@
                     </c:forEach>
                 </c:if>
 
-                <c:if test="${not empty archive.borrows}">
+                <c:if test="${not empty borrows}">
                     <tr>
-                        <td rowspan="${archive.borrows.size() + 1}">借入</td>
+                        <td rowspan="${borrows.size() + 1}">借入</td>
                         <td>债权人</td>
                         <td>金额</td>
                         <td>约定期限</td>
@@ -58,7 +58,7 @@
                         <td colspan="3">整改纠正情况</td>
                     </tr>
 
-                    <c:forEach var="borrow" items="${archive.borrows}">
+                    <c:forEach var="borrow" items="${borrows}">
                         <tr>
                             <td>${borrow.creditor}</td>
                             <td>${borrow.amount}</td>
@@ -70,9 +70,9 @@
                 </c:if>
 
 
-                <c:if test="${not empty archive.assures}">
+                <c:if test="${not empty assures}">
                     <tr>
-                        <td rowspan="${archive.assures.size() + 1}">担保</td>
+                        <td rowspan="${assures.size() + 1}">担保</td>
                         <td>债权人</td>
                         <td>债务人</td>
                         <td>金额</td>
@@ -80,7 +80,7 @@
                         <td>约定年利率</td>
                         <td colspan="2">整改纠正情况</td>
                     </tr>
-                    <c:forEach var="assure" items="${archive.assures}">
+                    <c:forEach var="assure" items="${assures}">
                         <tr>
                             <td>${assure.creditor}</td>
                             <td>${assure.cbligor}</td>
@@ -91,9 +91,9 @@
                         </tr>
                     </c:forEach></c:if>
 
-                <c:if test="${not empty archive.activitys}">
+                <c:if test="${not empty activitys}">
                     <tr>
-                        <td rowspan="${archive.activitys.size() + 1}">经营活动</td>
+                        <td rowspan="${activitys.size() + 1}">经营活动</td>
                         <td>企业名称</td>
                         <td>类型</td>
                         <td>投入金额</td>
@@ -101,7 +101,7 @@
                         <td>营利情况</td>
                         <td colspan="2">整改纠正情况</td>
                     </tr>
-                    <c:forEach var="activity" items="${archive.activitys}">
+                    <c:forEach var="activity" items="${activitys}">
                         <tr>
                             <td>${activity.enterpriseName}</td>
                             <td>${activity.enterpriseType}</td>
