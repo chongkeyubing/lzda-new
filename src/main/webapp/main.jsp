@@ -163,6 +163,20 @@
 </div>
 <script src="static/js/jquery-2.1.4.js"></script>
 <script src="static/js/jquery-form.js"></script>
+<script>
+    //全局的ajax设置，处理ajax清求时sesion超时
+    $.ajaxSetup({
+        // contentType: "application/x-www-form-urlencoded;charset=utf-8",
+        complete: function (XMLHttpRequest, textStatus) {
+            debugger;
+            var sessionstatus = XMLHttpRequest.getResponseHeader("sessionstatus"); // 通过XMLHttpRequest取得响应头，sessionstatus，
+            if (sessionstatus == "timeout") {
+                // 如果超时跳转到登陆页面
+                window.location.replace("index.jsp");
+            }
+        }
+    })
+</script>
 <%--<script src="static/js/jquery.pjax.js"></script>--%>
 <script>
     layui.use('layer', function () {
@@ -206,8 +220,6 @@
                 }
             });
 
-            //$(document).pjax('a', '.Box .right .mainContent')
-
             //直接展示档案信息页面
             $(".menu01").click();
             $("#archiveInfo").click();
@@ -215,8 +227,6 @@
         });
 
     });
-
-
 </script>
 </body>
 
