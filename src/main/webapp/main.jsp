@@ -212,9 +212,9 @@
                     var sessionstatus = XMLHttpRequest.getResponseHeader("sessionstatus"); // 通过XMLHttpRequest取得响应头，sessionstatus，
                     if (sessionstatus == "timeout") {
                         // 如果超时跳转到登陆页面
-                        layer.confirm('登陆已超时，请重新登陆', {btn: ['重新登陆'], closeBtn: 0}, function () {
+                        // layer.confirm('登陆已超时，请重新登陆', {btn: ['重新登陆'], closeBtn: 0}, function () {
                             window.location.href = "index.jsp";
-                        });
+                        // });
                     }
                 }
             })

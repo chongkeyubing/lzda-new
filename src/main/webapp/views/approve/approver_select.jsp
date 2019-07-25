@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 
-<shiro:hasAnyRoles name="普通民警,单位负责人,局领导,政治处领导">
+<shiro:hasAnyRoles name="普通用户,单位负责人,局领导,政治处领导">
     <div class="layui-form-item" style="padding-top: 25px;border-top: 1px solid #f6f6f6">
         <label class="layui-form-label">档案审核人</label>
         <div class="layui-input-inline">

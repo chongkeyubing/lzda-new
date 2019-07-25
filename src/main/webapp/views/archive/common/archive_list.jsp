@@ -28,7 +28,7 @@
             </div>
         </div>
 
-        <%--<shiro:hasAnyRoles name="普通民警,单位负责人">--%>
+        <%--<shiro:hasAnyRoles name="普通用户,单位负责人">--%>
         <div class="layui-inline">
             <label class="layui-form-label">审核状态</label>
             <div class="layui-input-inline">

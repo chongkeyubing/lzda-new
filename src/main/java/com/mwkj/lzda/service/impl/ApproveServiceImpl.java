@@ -78,7 +78,7 @@ public class ApproveServiceImpl extends AbstractService<Approve> implements Appr
                 //对应档案表的档案状态修改为同样的状态
                 archiveService.updateSpecifiedArchiveStatus(approve.getArchiveType(), approve.getArchiveId(), 4);
             } else {
-                //普通民警
+                //普通用户
                 approve1.setStatus(1); //待单位负责人审核，对应档案表的档案状态默认为1
             }
 

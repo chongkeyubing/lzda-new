@@ -78,7 +78,7 @@ public class UserController {
      * @Author libaogang
      * @Date 2019-07-03 14:55
      * @Param [user, page, size]
-     * @Description 查找审核人，普通民警查找单位负责人，单位负责人查找纪委或者督察大队
+     * @Description 查找审核人，普通用户查找单位负责人，单位负责人查找纪委或者督察大队
      */
     @RequestMapping("/findApprover")
     @ResponseBody
