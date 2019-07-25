@@ -69,7 +69,9 @@
         </shiro:hasPermission>
 
         <div class="layui-inline" style="float:right">
-            <button class="layui-btn layui-btn-normal" type="button" id="addReport">新增</button>
+            <shiro:hasPermission name="上报管理新增">
+                <button class="layui-btn layui-btn-normal" type="button" id="addReport">新增</button>
+            </shiro:hasPermission>
         </div>
 
     </div>
@@ -79,8 +81,12 @@
 
 <script type="text/html" id="reportTableBar">
     <a class="layui-btn layui-btn-sm layui-btn-normal" lay-event="detail">明细</a>
-    <a class="layui-btn layui-btn-sm layui-btn-warm" lay-event="update">修改</a>
-    <a class="layui-btn layui-btn-sm layui-btn-danger" lay-event="del">删除</a>
+    <shiro:hasPermission name="上报管理修改">
+        <a class="layui-btn layui-btn-sm layui-btn-warm" lay-event="update">修改</a>
+    </shiro:hasPermission>
+    <shiro:hasPermission name="上报管理删除">
+        <a class="layui-btn layui-btn-sm layui-btn-danger" lay-event="del">删除</a>
+    </shiro:hasPermission>
 </script>
 
 <script>
@@ -103,7 +109,7 @@
                 {
                     field: 'organizationName',
                     title: '上报单位',
-                    width:  480
+                    width: 480
                 },
                 {
                     field: 'committerName',
@@ -141,7 +147,7 @@
                 $.get('rptincorrupt/toReportDetail?id=' + data.id, function (html) {
                     layer.open({
                         type: 1,
-                         title: '廉政信息详情',
+                        title: '廉政信息详情',
                         area: ['100%', '100%'],
                         content: html
                     });
