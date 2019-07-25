@@ -51,6 +51,17 @@ public class Reward {
      */
     private String organization;
 
+    @Transient
+    private String organizationName;
+
+    public String getOrganizationName() {
+        return organizationName;
+    }
+
+    public void setOrganizationName(String organizationName) {
+        this.organizationName = organizationName;
+    }
+
     /**
      * 表彰类型
      */

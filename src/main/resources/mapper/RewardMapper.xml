@@ -23,15 +23,22 @@
   </resultMap>
 
   <select id="findRewardsByCondition" parameterType="com.mwkj.lzda.model.Reward" resultType="com.mwkj.lzda.model.Reward">
-    select r.* ,u.police_code
+    select r.*,u.police_code,o.name as organization_name
     from reward r
-    inner join user u on r.user_id = u.id
+    left join user u on r.user_id = u.id
+    left join organization o on o.id = u.organization_id
     <where>
       <if test="userName!=null and userName!=''">
         and r.user_name like '%${userName}%'
       </if>
       <if test="policeCode!=null and policeCode!=''">
         and u.police_code = #{policeCode}
+      </if>
+      <if test="userId!=null and userId!=''">
+        and r.user_id = #{userId}
+      </if>
+      <if test="organizationId!=null and organizationId!=''">
+        and o.id = #{organizationId}
       </if>
     </where>
     order by create_time desc

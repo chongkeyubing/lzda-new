@@ -22,10 +22,10 @@
                 <select name="punishType" class="punishTypeView" lay-search>
                     <option value="">请选择</option>
                     <option value="1">一般干部违纪情况登记表</option>
-                   <%-- <option value="2">一般干部问责情况登记表</option>--%>
+                    <%-- <option value="2">一般干部问责情况登记表</option>--%>
                     <option value="3">一般干部收受礼品（金）上缴情况登记表</option>
-                   <%-- <option value="4">一般干部廉政谈话情况登记表</option>
-                    <option value="5">一般干部被通报情况登记表</option>--%>
+                    <%-- <option value="4">一般干部廉政谈话情况登记表</option>
+                     <option value="5">一般干部被通报情况登记表</option>--%>
                     <option value="6">一般干部被群众信访举报情况登记表</option>
                 </select>
             </div>
@@ -38,48 +38,54 @@
     </div>
 
     <%--<div class="layui-form-item">--%>
-        <%--<div class="layui-input-block">--%>
-            <%--<button class="layui-btn layui-btn-normal" lay-submit lay-filter="queryPunish" id="queryPunish">查询--%>
-            <%--</button>--%>
-            <%--<button class="layui-btn layui-btn-warm" type="reset" id="resetQueryPunish">清空</button>--%>
-        <%--</div>--%>
+    <%--<div class="layui-input-block">--%>
+    <%--<button class="layui-btn layui-btn-normal" lay-submit lay-filter="queryPunish" id="queryPunish">查询--%>
+    <%--</button>--%>
+    <%--<button class="layui-btn layui-btn-warm" type="reset" id="resetQueryPunish">清空</button>--%>
+    <%--</div>--%>
     <%--</div>--%>
 </form>
 
-<form class="layui-form">
-    <div class="layui-form-item" style="padding-top: 15px; border-top: 1px solid #f6f6f6;">
-        <div class="layui-input-block" style="float: right;margin-right: 110px;">
-            <div class="layui-input-inline">
-                <select name="punishType" class="punishTypeView" lay-search>
-                    <option value="">请选择</option>
-                    <option value="1">一般干部违纪情况登记表</option>
-                   <%-- <option value="2">一般干部问责情况登记表</option>--%>
-                    <option value="3">一般干部收受礼品（金）上缴情况登记表</option>
-                    <%--<option value="4">一般干部廉政谈话情况登记表</option>
-                    <option value="5">一般干部被通报情况登记表</option>--%>
-                    <option value="6">一般干部被群众信访举报情况登记表</option>
-                </select>
+<shiro:hasPermission name="违惩信息新增">
+    <form class="layui-form">
+        <div class="layui-form-item" style="padding-top: 15px; border-top: 1px solid #f6f6f6;">
+            <div class="layui-input-block" style="float: right;margin-right: 110px;">
+                <div class="layui-input-inline">
+                    <select name="punishType" class="punishTypeView" lay-search>
+                        <option value="">请选择</option>
+                        <option value="1">一般干部违纪情况登记表</option>
+                            <%-- <option value="2">一般干部问责情况登记表</option>--%>
+                        <option value="3">一般干部收受礼品（金）上缴情况登记表</option>
+                            <%--<option value="4">一般干部廉政谈话情况登记表</option>
+                            <option value="5">一般干部被通报情况登记表</option>--%>
+                        <option value="6">一般干部被群众信访举报情况登记表</option>
+                    </select>
+                </div>
+                <button class="layui-btn layui-btn-normal" lay-submit lay-filter="addPunish">新增</button>
             </div>
-            <button class="layui-btn layui-btn-normal" lay-submit lay-filter="addPunish">新增</button>
         </div>
-    </div>
-</form>
+    </form>
+</shiro:hasPermission>
 
 <table id="punishs" lay-filter="punishs"></table>
 
 <script type="text/html" id="punishsBar">
     <a class="layui-btn layui-btn-sm layui-btn-normal" lay-event="detail">明细</a>
-    <a class="layui-btn layui-btn-sm layui-btn-warm" lay-event="update">修改</a>
-    <a class="layui-btn layui-btn-sm layui-btn-danger" lay-event="del">删除</a>
+    <shiro:hasPermission name="违惩信息修改">
+        <a class="layui-btn layui-btn-sm layui-btn-warm" lay-event="update">修改</a>
+    </shiro:hasPermission>
+    <shiro:hasPermission name="违惩信息删除">
+        <a class="layui-btn layui-btn-sm layui-btn-danger" lay-event="del">删除</a>
+    </shiro:hasPermission>
 </script>
 
 <script>
     var PUNISH_TYPE = {
         1: '一般干部违纪情况登记表',
-       /* 2: '一般干部问责情况登记表',*/
+        /* 2: '一般干部问责情况登记表',*/
         3: '一般干部收受礼品（金）上缴情况登记表',
-       /* 4: '一般干部廉政谈话情况登记表',
-        5: '一般干部被通报情况登记表',*/
+        /* 4: '一般干部廉政谈话情况登记表',
+         5: '一般干部被通报情况登记表',*/
         6: '一般干部被群众信访举报情况登记表'
     };
 </script>

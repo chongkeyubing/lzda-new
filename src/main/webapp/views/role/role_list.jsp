@@ -51,7 +51,7 @@
                     layer.open({
                         type: 1,
                         title: '修改' + data.roleName + '权限',
-                        area: ['450px', '550px'],
+                        area: ['450px', '750px'],
                         content: html
                     });
                 });

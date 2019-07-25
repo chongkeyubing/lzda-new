@@ -55,7 +55,9 @@ public class OperateLogServiceImpl extends AbstractService<OperateLog> implement
     @Override
     public void save(String operateObject, String operateType, int archiveOwnerId) {
         Subject subject = SecurityUtils.getSubject();
-        if (subject.hasRole(RoleEnum.单位负责人.toString()) || subject.hasRole(RoleEnum.纪委.toString()) || subject.hasRole(RoleEnum.督察大队.toString())) {
+//        if (subject.hasRole(RoleEnum.单位负责人.toString()) || subject.hasRole(RoleEnum.纪委.toString())
+//                || subject.hasRole(RoleEnum.督察大队.toString()) || subject.hasRole(RoleEnum.政治处领导.toString())) {
+        if (!subject.hasRole(RoleEnum.普通用户.toString())) {
             HttpServletRequest request = WebContextHolder.getRequest();
             User currentUser = (User) request.getSession().getAttribute("currentUser");
             OperateLog operateLog = new OperateLog();

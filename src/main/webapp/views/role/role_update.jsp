@@ -55,7 +55,7 @@
                 </c:forEach>
                 <p style="margin-top: 20px">菜单权限</p>
                 <c:forEach var="auth" items="${authorities}">
-                    <c:if test="${auth.type == 0}">
+                    <c:if test="${auth.type != 1}">
                         <input value="${auth.id}" type="checkbox" name="authId" lay-skin="primary" title="${auth.name}"
                         <c:forEach var="roleAuth" items="${roleWithAuths.authorityList}">
                                <c:if test="${roleAuth.name == auth.name}">checked</c:if>

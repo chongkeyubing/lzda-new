@@ -46,23 +46,21 @@
                         </ul>
                     </dd>
 
-                    <shiro:hasAnyRoles name="政治处领导,督察大队,纪委">
-                        <dd>
-                            <h2 class="menu menu02">奖惩管理</h2>
-                            <ul class="menuSideBar">
-                                <shiro:hasPermission name="奖励信息">
-                                    <li>
-                                        <a href="views/reward/reward_list.jsp">奖励信息</a>
-                                    </li>
-                                </shiro:hasPermission>
-                                <shiro:hasPermission name="违惩信息">
-                                    <li>
-                                        <a href="views/punish/common/punish_list.jsp">违惩信息</a>
-                                    </li>
-                                </shiro:hasPermission>
-                            </ul>
-                        </dd>
-                    </shiro:hasAnyRoles>
+                    <dd>
+                        <h2 class="menu menu02">奖惩管理</h2>
+                        <ul class="menuSideBar">
+                            <shiro:hasPermission name="奖励信息">
+                                <li>
+                                    <a href="views/reward/reward_list.jsp">奖励信息</a>
+                                </li>
+                            </shiro:hasPermission>
+                            <shiro:hasPermission name="违惩信息">
+                                <li>
+                                    <a href="views/punish/common/punish_list.jsp">违惩信息</a>
+                                </li>
+                            </shiro:hasPermission>
+                        </ul>
+                    </dd>
 
                     <shiro:hasPermission name="上报管理">
                         <dd>
@@ -84,21 +82,23 @@
                         </dd>
                     </shiro:hasPermission>
 
-                    <shiro:hasPermission name="廉政报告">
+                    <shiro:hasPermission name="廉政管理">
                         <dd>
                             <h2 class="menu menu04">廉政管理</h2>
                             <ul class="menuSideBar">
-                                <shiro:hasPermission name="档案审核">
+                                <shiro:hasPermission name="廉政审批">
                                     <li>
                                         <a href="views/approve/approve_list.jsp">廉政审批</a>
                                     </li>
                                 </shiro:hasPermission>
-                                <li>
-                                    <a href="views/incorrupt/warning_list.jsp">廉政预警</a>
-                                </li>
-                                <li>
-                                    <a href="">廉政报告</a>
-                                </li>
+                                    <%--<shiro:hasPermission name="廉政预警">--%>
+                                    <%--<li>--%>
+                                    <%--<a href="views/incorrupt/warning_list.jsp">廉政预警</a>--%>
+                                    <%--</li>--%>
+                                    <%--</shiro:hasPermission>--%>
+                                    <%--<li>--%>
+                                    <%--<a href="">廉政报告</a>--%>
+                                    <%--</li>--%>
                             </ul>
                         </dd>
                     </shiro:hasPermission>
@@ -140,9 +140,9 @@
                                 <li>
                                     <a href="user/toUserList">用户管理</a>
                                 </li>
-                                <%--<li>--%>
-                                <%--<a href="">权限管理</a>--%>
-                                <%--</li>--%>
+                                <li>
+                                    <a href="views/role/role_list.jsp">权限管理</a>
+                                </li>
                             </shiro:hasPermission>
                             <li>
                                 <a href="user/toPersonalInfo">个人信息</a>

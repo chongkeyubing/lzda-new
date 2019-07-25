@@ -61,7 +61,7 @@
             cols: [[ //表头
                 {field: 'userName', title: '姓名', minWidth: 100},
                 {field: 'policeCode', title: '警号', minWidth: 100},
-                {field: 'organization', title: '单位', minWidth: 300},
+                {field: 'organizationName', title: '单位', minWidth: 300},
                 {field: 'rewardType', title: '表彰类型', minWidth: 90},
                 {field: 'operatorName', title: '表彰填写人', minWidth: 100},
                 {field: 'rewardTime', title: '表彰时间', minWidth: 110},

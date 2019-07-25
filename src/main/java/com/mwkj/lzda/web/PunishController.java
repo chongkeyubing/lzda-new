@@ -7,7 +7,10 @@ import com.mwkj.lzda.core.ResultUtil;
 import com.mwkj.lzda.core.layui.LayuiTableResultUtil;
 import com.mwkj.lzda.dto.ArchiveDTO;
 import com.mwkj.lzda.dto.PunishDTO;
+import com.mwkj.lzda.model.User;
 import com.mwkj.lzda.service.PunishService;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,11 +43,19 @@ public class PunishController {
      */
     @RequestMapping("/list")
     @ResponseBody
-    public Result findAllPunishs(PunishDTO punishDTO,
+    public Result findAllPunishs(PunishDTO punishDTO,HttpSession session,
                                  @RequestParam(defaultValue = "0") int page,
                                  @RequestParam(defaultValue = "0") int limit) {
         //开启分页查询
         PageHelper.startPage(page, limit);
+
+        User currentuser = (User) session.getAttribute("currentUser");
+        Subject subject = SecurityUtils.getSubject();
+        if (subject.isPermitted("能查看本单位")) {
+            punishDTO.setOrganizationId(currentuser.getOrganizationId());
+        } else if (subject.isPermitted("只能查看自己")) {
+            punishDTO.setUserId(currentuser.getId());
+        }
 
         //默认查询所有人
         List<PunishDTO> punishs = punishService.findAllPunishByConditions(punishDTO);

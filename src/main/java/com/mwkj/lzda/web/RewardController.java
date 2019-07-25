@@ -7,11 +7,15 @@ import com.mwkj.lzda.core.layui.LayuiTableResultUtil;
 import com.mwkj.lzda.enu.LogOperateTypeEnum;
 import com.mwkj.lzda.model.Attachment;
 import com.mwkj.lzda.model.Reward;
+import com.mwkj.lzda.model.User;
 import com.mwkj.lzda.service.AttachmentService;
 import com.mwkj.lzda.service.OperateLogService;
 import com.mwkj.lzda.service.RewardService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
+import org.apache.shiro.web.session.HttpServletSession;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +25,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -77,9 +82,18 @@ public class RewardController {
     @ResponseBody
     public Result list(@RequestParam(defaultValue = "0") Integer page,
                        @RequestParam(defaultValue = "0") Integer limit,
-                       Reward reward) {
+                       Reward reward, HttpSession session) {
 
         PageHelper.startPage(page, limit);
+
+        User currentuser = (User) session.getAttribute("currentUser");
+        Subject subject = SecurityUtils.getSubject();
+        if (subject.isPermitted("能查看本单位")) {
+            reward.setOrganizationId(currentuser.getOrganizationId());
+        } else if (subject.isPermitted("只能查看自己")) {
+            reward.setUserId(currentuser.getId());
+        }
+
         List<Reward> list = rewardService.findRewardsByCondition(reward);
         PageInfo<Reward> pageInfo = new PageInfo<>(list);
         return LayuiTableResultUtil.success(list, pageInfo.getTotal());
