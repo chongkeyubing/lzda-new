@@ -66,7 +66,6 @@ public class PunGiftServiceImpl extends AbstractService<PunGift> implements PunG
                 break;
             }
         }
-
         //插入日志信息
         operateLogService.save(operateObject, LogOperateTypeEnum.修改.toString(), punGift.getUserId());
     }
