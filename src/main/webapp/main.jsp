@@ -151,37 +151,18 @@
 
         <!-- 主体内容部分 -->
         <div class="right">
-
             <div class="mainContent"></div>
-
         </div>
 
     </div>
 
 </div>
-
-</div>
 <script src="static/js/jquery-2.1.4.js"></script>
 <script src="static/js/jquery-form.js"></script>
-<script>
-    //全局的ajax设置，处理ajax清求时sesion超时
-    $.ajaxSetup({
-        // contentType: "application/x-www-form-urlencoded;charset=utf-8",
-        complete: function (XMLHttpRequest, textStatus) {
-            debugger;
-            var sessionstatus = XMLHttpRequest.getResponseHeader("sessionstatus"); // 通过XMLHttpRequest取得响应头，sessionstatus，
-            if (sessionstatus == "timeout") {
-                // 如果超时跳转到登陆页面
-                window.location.replace("index.jsp");
-            }
-        }
-    })
-</script>
 <%--<script src="static/js/jquery.pjax.js"></script>--%>
 <script>
     layui.use('layer', function () {
         var layer = layui.layer;
-
         $(document).ready(function () {
             $('.menu').click(function () {
                 if (!$(this).hasClass("cur")) {
@@ -205,7 +186,6 @@
                     }
                     $(this).removeClass("cur").siblings().addClass("cur");
                 }
-
             })
 
             // ajax加载右侧主体部分页面
@@ -213,9 +193,9 @@
                 event.preventDefault();
                 var url = $(this).attr("href");
                 if (url != '') {
-                    layer.load(2);
+                    var index = layer.load(2);
                     $(".Box .right .mainContent").load(url, function () {
-                        layer.closeAll();
+                        layer.close(index);
                     });
                 }
             });
@@ -224,6 +204,58 @@
             $(".menu01").click();
             $("#archiveInfo").click();
 
+            //全局的ajax设置，处理ajax清求时sesion超时
+            $.ajaxSetup({
+                // contentType: "application/x-www-form-urlencoded;charset=utf-8",
+                complete: function (XMLHttpRequest, textStatus) {
+                    debugger;
+                    var sessionstatus = XMLHttpRequest.getResponseHeader("sessionstatus"); // 通过XMLHttpRequest取得响应头，sessionstatus，
+                    if (sessionstatus == "timeout") {
+                        // 如果超时跳转到登陆页面
+                        layer.confirm('登陆已超时，请重新登陆', {btn: ['重新登陆'], closeBtn: 0}, function () {
+                            window.location.href = "index.jsp";
+                        });
+                    }
+                }
+            })
+
+            //jquery ajax代理 解决ajax请求session失效问题
+            // (function ($) {
+            //     debugger;
+            //     //备份jquery的ajax方法
+            //     var _ajax = $.ajax;
+            //     //重写jquery的ajax方法
+            //     $.ajax = function (opt) {
+            //         //备份opt中error和success方法
+            //         var fn = {
+            //             error: function (XMLHttpRequest, textStatus, errorThrown) {
+            //             },
+            //             success: function (data, textStatus) {
+            //             }
+            //         }
+            //         if (opt.error) {
+            //             fn.error = opt.error;
+            //         }
+            //         if (opt.success) {
+            //             fn.success = opt.success;
+            //         }
+            //         //扩展增强处理
+            //         var _opt = $.extend(opt, {
+            //             error: function (XMLHttpRequest, textStatus, errorThrown) {
+            //                 //错误方法增强处理
+            //                 fn.error(XMLHttpRequest, textStatus, errorThrown);
+            //             },
+            //             success: function (data, textStatus, xhr) {
+            //                 debugger;
+            //                 //成功回调方法增强处理
+            //                 // todo
+            //
+            //                 fn.success(data, textStatus);
+            //             }
+            //         });
+            //         _ajax(_opt);
+            //     };
+            // })(jQuery);
         });
 
     });

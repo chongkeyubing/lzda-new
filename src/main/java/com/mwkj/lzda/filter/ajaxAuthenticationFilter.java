@@ -3,7 +3,6 @@ package com.mwkj.lzda.filter;
 import com.alibaba.fastjson.JSON;
 import com.mwkj.lzda.core.ResultUtil;
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
-
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
@@ -28,7 +27,7 @@ public class ajaxAuthenticationFilter extends FormAuthenticationFilter {
         } else {
             if (isAjax(request)) {
                 HttpServletResponse rep = (HttpServletResponse) response;
-                rep.getWriter().write(JSON.toJSONString(ResultUtil.fail("session expire")));
+                rep.getWriter().write(JSON.toJSONString(ResultUtil.fail("登陆已超时，请重新登陆")));
                 rep.setHeader("sessionstatus", "timeout");
             } else {
                 this.saveRequestAndRedirectToLogin(request, response);
