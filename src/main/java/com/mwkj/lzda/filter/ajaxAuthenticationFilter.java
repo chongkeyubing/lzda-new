@@ -25,7 +25,7 @@ public class ajaxAuthenticationFilter extends FormAuthenticationFilter {
         } else {
             if (isAjax(request)) {
                 HttpServletResponse rep = (HttpServletResponse) response;
-                rep.getWriter().write(JSON.toJSONString(ResultUtil.fail("登陆已超时，请重新登陆")));
+                rep.getWriter().write(JSON.toJSONString(ResultUtil.fail("登陆超时，请重新登陆")));
                 rep.setHeader("sessionstatus", "timeout");
             } else {
                 this.saveRequestAndRedirectToLogin(request, response);

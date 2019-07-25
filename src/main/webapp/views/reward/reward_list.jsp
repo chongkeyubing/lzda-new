@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 
 <form class="layui-form form1">
     <div class="layui-form-item">
@@ -22,10 +23,11 @@
             </button>
             <button class="layui-btn layui-btn-warm" type="reset" id="resetQueryReward">清空</button>
         </div>
-
-        <div class="layui-inline" style="float:right">
-            <button class="layui-btn layui-btn-normal" type="button" id="addReward">新增表彰</button>
-        </div>
+        <shiro:hasPermission name="奖励信息新增">
+            <div class="layui-inline" style="float:right">
+                <button class="layui-btn layui-btn-normal" type="button" id="addReward">新增表彰</button>
+            </div>
+        </shiro:hasPermission>
 
     </div>
 </form>
@@ -34,8 +36,12 @@
 
 <script type="text/html" id="rewardTableBar">
     <a class="layui-btn layui-btn-sm layui-btn-normal" lay-event="detail">明细</a>
-    <a class="layui-btn layui-btn-sm layui-btn-warm" lay-event="update">修改</a>
-    <a class="layui-btn layui-btn-sm layui-btn-danger" lay-event="del">删除</a>
+    <shiro:hasPermission name="奖励信息修改">
+        <a class="layui-btn layui-btn-sm layui-btn-warm" lay-event="update">修改</a>
+    </shiro:hasPermission>
+    <shiro:hasPermission name="奖励信息删除">
+        <a class="layui-btn layui-btn-sm layui-btn-danger" lay-event="del">删除</a>
+    </shiro:hasPermission>
 </script>
 
 <script>
@@ -53,14 +59,21 @@
             page: true, //开启分页
             method: 'post',
             cols: [[ //表头
-                {field: 'userName', title: '姓名',minWidth:100},
-                {field: 'policeCode', title: '警号',minWidth:100},
-                {field: 'organization', title: '单位',minWidth:300},
-                {field: 'rewardType', title: '表彰类型',minWidth:90},
-                {field: 'operatorName', title: '表彰填写人',minWidth:100},
-                {field: 'rewardTime', title: '表彰时间',minWidth:110},
+                {field: 'userName', title: '姓名', minWidth: 100},
+                {field: 'policeCode', title: '警号', minWidth: 100},
+                {field: 'organization', title: '单位', minWidth: 300},
+                {field: 'rewardType', title: '表彰类型', minWidth: 90},
+                {field: 'operatorName', title: '表彰填写人', minWidth: 100},
+                {field: 'rewardTime', title: '表彰时间', minWidth: 110},
                 /*{field: 'createTime', title: '创建时间',templet: "<div>{{layui.util.toDateString(d.createTime, 'yyyy-MM-dd HH:mm:ss')}}</div>",minWidth:110},*/
-                {field: 'operate', align: 'center', title: '操作', minWidth:200, toolbar: '#rewardTableBar', minWidth: 200}
+                {
+                    field: 'operate',
+                    align: 'center',
+                    title: '操作',
+                    minWidth: 200,
+                    toolbar: '#rewardTableBar',
+                    minWidth: 200
+                }
             ]]
         });
 
