@@ -68,8 +68,11 @@
             </div>
         </shiro:hasPermission>
 
+
         <div class="layui-inline" style="float:right">
             <shiro:hasPermission name="上报管理新增">
+                <button class="layui-btn layui-btn-normal" style="visibility:hidden" lay-submit lay-filter="queryReport" id="queryReport1">查询
+                </button>
                 <button class="layui-btn layui-btn-normal" type="button" id="addReport">新增</button>
             </shiro:hasPermission>
         </div>

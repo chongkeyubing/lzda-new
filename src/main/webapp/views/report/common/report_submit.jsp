@@ -31,6 +31,8 @@
                         //重载查询页面表格
                         // $("#resetQueryReport").click();
                         $("#queryReport").click();
+                        $("#queryReport1").click();
+
                     } else {
                         layer.close(index);
                         layer.msg("提交失败，请重新尝试或联系管理员");

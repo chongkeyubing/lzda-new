@@ -14,15 +14,26 @@
                 <tr>
                     <td>时 间</td>
                     <td>${archive.time}</td>
-                    <td>姓 名</td>
+                    <td>民警姓名</td>
                     <td>${archive.userName}</td>
                 </tr>
                 <tr>
                     <td>单 位</td>
                     <td>${archive.organization}</td>
+                    <td>影响人姓名</td>
+                    <td>${archive.affectName}</td>
+                    <%--<td>与民警关系</td>
+                    <td>${archive.relationship}</td>--%>
+                </tr>
+                <tr>
+                    <%--<td>影响人姓名</td>
+                    <td>${archive.affectName}</td>--%>
+                    <td>影响人单位</td>
+                    <td>${archive.affectOrganization}</td>
                     <td>与民警关系</td>
                     <td>${archive.relationship}</td>
                 </tr>
+
                 <tr>
                     <td>可能影响<br/>公正执行<br/>职务内容</td>
                     <td colspan="3">${archive.content}</td>

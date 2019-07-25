@@ -14,9 +14,9 @@
                 </div>
             </div>
             <div class='layui-inline'>
-                <label class='layui-form-label'>姓名</label>
+                <label class='layui-form-label'>民警姓名</label>
                 <div class='layui-input-inline input'>
-                    <input type='text' value="${currentUser.realname}" readonly lay-verify="required"  placeholder='' autocomplete='off' class='layui-input' value="">
+                    <input type='text' value="${currentUser.realname}" readonly lay-verify="required"  placeholder='' autocomplete='off' class='layui-input' >
                 </div>
             </div>
 
@@ -29,6 +29,14 @@
         </div>
 
         <div class='layui-form-item'>
+
+            <div class='layui-inline'>
+                <label class='layui-form-label'>影响人姓名</label>
+                <div class='layui-input-inline input'>
+                    <input type='text' name="affectName"  lay-verify="required"  placeholder='' autocomplete='off' class='layui-input'>
+                </div>
+            </div>
+
             <div class='layui-inline'>
                 <label class="layui-form-label">与民警关系</label>
                 <div class='layui-input-inline'>
@@ -41,6 +49,14 @@
                     </select>
                 </div>
             </div>
+
+            <div class='layui-inline'>
+                <label class='layui-form-label'>影响人单位</label>
+                <div class='layui-input-inline input'>
+                    <input type='text' name="affectOrganization"  lay-verify="required"  placeholder='' autocomplete='off' class='layui-input'>
+                </div>
+            </div>
+
         </div>
 
         <div class="layui-form-item layui-form-text">

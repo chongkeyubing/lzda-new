@@ -361,4 +361,33 @@ public class ArcAffectBusiness {
     public void setRemark(String remark) {
         this.remark = remark;
     }
+
+
+    /**
+     * 影响人姓名
+     */
+    @Column(name = "affect_name")
+    private String affectName;
+
+    public String getAffectName() {
+        return affectName;
+    }
+
+    public void setAffectName(String affectName) {
+        this.affectName = affectName;
+    }
+
+    /**
+     * 影响人单位
+     */
+    @Column(name = "affect_organization")
+    private String affectOrganization;
+
+    public String getAffectOrganization() {
+        return affectOrganization;
+    }
+
+    public void setAffectOrganization(String affectOrganization) {
+        this.affectOrganization = affectOrganization;
+    }
 }
