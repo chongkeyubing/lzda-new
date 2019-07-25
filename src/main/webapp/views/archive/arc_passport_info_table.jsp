@@ -37,4 +37,4 @@
         </div>
     </div>
 </div>
-<%@ include file = "../common/back.jsp" %>
+<%@ include file = "./common/back.jsp" %>

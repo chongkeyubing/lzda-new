@@ -144,4 +144,4 @@
 
     })
 </script>
-<%@ include file = "../common/back.jsp" %>
+<%@ include file = "./common/back.jsp" %>

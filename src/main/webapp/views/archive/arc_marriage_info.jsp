@@ -9,7 +9,7 @@
             <div class='layui-inline'>
                 <label class="layui-form-label">婚姻现状</label>
                 <div class='layui-input-inline'>
-                    <select name="marriageStatus">
+                    <select name="marriageStatus" lay-verify="required">
                         <option value="">请选择输入内容</option>
                         <option value="未婚">未婚</option>
                         <option value="已婚">已婚</option>

@@ -92,8 +92,8 @@ public class UserController {
         User currentUser = (User) session.getAttribute("currentUser");
         List<User> users = null;
 
-        // 如果是普通民警，查找单位负责人
-        if (SecurityUtils.getSubject().hasRole(RoleEnum.普通民警.toString())) {
+        // 如果不是单位负责人，查找单位负责人
+        if (!SecurityUtils.getSubject().hasRole(RoleEnum.单位负责人.toString())) {
             User user = new User();
             user.setRoleid(2);  //单位负责人角色id
             user.setOrganizationId(currentUser.getOrganizationId());

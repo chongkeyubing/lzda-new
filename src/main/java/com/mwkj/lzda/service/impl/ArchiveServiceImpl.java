@@ -383,7 +383,12 @@ public class ArchiveServiceImpl implements ArchiveService {
                 break;
             case 27:
                 ArcLoanDTO arcLoanDTO = arcLoanService.toDetail(archive.getArchiveId());
-                map.put("archive", arcLoanDTO);
+                map.put("archive", arcLoanDTO.getArcLoan());
+                map.put("loans",arcLoanDTO.getLoans());
+                map.put("borrows",arcLoanDTO.getBorrows());
+                map.put("assures",arcLoanDTO.getAssures());
+                map.put("activitys",arcLoanDTO.getActivitys());
+
                 page = "/views/archive/arc_loan_table";
                 break;
         }
