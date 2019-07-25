@@ -146,7 +146,7 @@
             <label class="layui-form-label">处理依据</label>
             <div class="layui-input-inline">
                 <textarea placeholder="请输入内容" class="layui-textarea txtArea" lay-verify="required"
-                          name="handleBasis">${punish.mistakeFact}</textarea>
+                          name="handleBasis">${punish.handleBasis}</textarea>
             </div>
         </div>
 

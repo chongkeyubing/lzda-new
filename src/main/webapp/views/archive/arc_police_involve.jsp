@@ -31,7 +31,7 @@
             <div class="layui-inline">
                 <label class="layui-form-label">涉警人姓名</label>
                 <div class="layui-input-inline">
-                    <input type="text" autocomplete="off" class="layui-input" id="involvedName" name="involvedName">
+                    <input type="text" autocomplete="off" lay-verify="required" class="layui-input" id="involvedName" name="involvedName">
                 </div>
             </div>
 
@@ -52,7 +52,7 @@
             <div class="layui-inline">
                 <label class="layui-form-label">涉警人单位</label>
                 <div class="layui-input-inline">
-                    <input type="text" autocomplete="off" class="layui-input" id="involvedOrganization" name="involvedOrganization">
+                    <input type="text" autocomplete="off" class="layui-input" lay-verify="required" id="involvedOrganization" name="involvedOrganization">
                 </div>
             </div>
 
