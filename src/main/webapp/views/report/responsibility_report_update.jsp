@@ -47,7 +47,7 @@
                 <label class="layui-form-label">工单类别</label>
                 <div class="layui-input-inline">
                     <select name="type" lay-verify="required">
-                        <c:forTokens items="主体责任季度工单,“第一责任人”责任季度工单" delims="," var="type">
+                        <c:forTokens items='主体责任季度工单,"第一责任人"责任季度工单' delims="," var="type">
                             <option value="${type}"
                                     <c:if test="${report.type == type}">selected</c:if>
                             >${type}</option>

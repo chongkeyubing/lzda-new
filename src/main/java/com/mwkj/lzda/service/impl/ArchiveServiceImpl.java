@@ -131,6 +131,11 @@ public class ArchiveServiceImpl implements ArchiveService {
         return archiveMapper.findAllArchivesByConditions(archive);
     }
 
+    @Override
+    public List<ArchiveDTO> findAllWarningsByConditions(ArchiveDTO archive) {
+        return archiveMapper.findAllWarningsByConditions(archive);
+    }
+
 
     /**
      * @return java.lang.String

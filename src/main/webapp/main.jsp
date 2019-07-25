@@ -38,11 +38,11 @@
                             <li>
                                 <a id="archiveInfo" href="views/archive/common/archive_list.jsp">档案信息</a>
                             </li>
-                            <shiro:hasPermission name="档案审核">
-                                <li>
-                                    <a href="views/approve/approve_list.jsp">档案审核</a>
-                                </li>
-                            </shiro:hasPermission>
+                            <%--<shiro:hasPermission name="档案审核">--%>
+                            <%--<li>--%>
+                            <%--<a href="views/approve/approve_list.jsp">档案审核</a>--%>
+                            <%--</li>--%>
+                            <%--</shiro:hasPermission>--%>
                         </ul>
                     </dd>
 
@@ -83,17 +83,25 @@
                             </ul>
                         </dd>
                     </shiro:hasPermission>
-                    <%--<shiro:hasPermission name="廉政报告">--%>
-                    <%--<dd>--%>
-                    <%--<h2 class="menu menu04">廉政报告</h2>--%>
-                    <%--<ul class="menuSideBar">--%>
-                    <%--<li>--%>
-                    <%--<a href="">廉政报告管理</a>--%>
-                    <%--</li>--%>
 
-                    <%--</ul>--%>
-                    <%--</dd>--%>
-                    <%--</shiro:hasPermission>--%>
+                    <shiro:hasPermission name="廉政报告">
+                        <dd>
+                            <h2 class="menu menu04">廉政管理</h2>
+                            <ul class="menuSideBar">
+                                <shiro:hasPermission name="档案审核">
+                                    <li>
+                                        <a href="views/approve/approve_list.jsp">廉政审批</a>
+                                    </li>
+                                </shiro:hasPermission>
+                                <li>
+                                    <a href="views/incorrupt/warning_list.jsp">廉政预警</a>
+                                </li>
+                                <li>
+                                    <a href="">廉政报告</a>
+                                </li>
+                            </ul>
+                        </dd>
+                    </shiro:hasPermission>
 
                     <%--<shiro:hasPermission name="统计">--%>
                     <%--<dd>--%>
@@ -213,7 +221,7 @@
                     if (sessionstatus == "timeout") {
                         // 如果超时跳转到登陆页面
                         // layer.confirm('登陆已超时，请重新登陆', {btn: ['重新登陆'], closeBtn: 0}, function () {
-                            window.location.href = "index.jsp";
+                        window.location.href = "index.jsp";
                         // });
                     }
                 }

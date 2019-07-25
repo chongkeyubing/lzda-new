@@ -41,7 +41,7 @@
                 </div>
             </div>
             <div class='layui-inline'>
-                <label class="layui-form-label">职务</label>
+                <label class="layui-form-label">调往职务</label>
                 <div class='layui-input-inline'>
                     <input type='text' name='toJobPosition' lay-verify="required"  placeholder='' autocomplete='off' class='layui-input' value="">
                 </div>

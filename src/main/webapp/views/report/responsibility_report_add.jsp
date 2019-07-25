@@ -49,7 +49,7 @@
                     <select name="type" lay-verify="required">
                         <option value="">请选择</option>
                         <option value="主体责任季度工单">主体责任季度工单</option>
-                        <option value="“第一责任人”责任季度工单">“第一责任人”责任季度工单</option>
+                        <option value='"第一责任人"责任季度工单'>"第一责任人"责任季度工单</option>
                     </select>
                 </div>
             </div>

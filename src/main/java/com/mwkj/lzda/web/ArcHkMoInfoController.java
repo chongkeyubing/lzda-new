@@ -18,7 +18,7 @@ import java.util.List;
 /**
 * @Author: libaogang
 * @Date: 2019-07-09 14:06
-* @Description 本人持有港澳情况
+* @Description 本人持有港澳通行证情况
 */
 @Controller
 @RequestMapping("/archkmoinfo")

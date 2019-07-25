@@ -70,7 +70,7 @@ public class ArcHkMoInfo {
     private Integer approveStatus;
 
     /**
-     * 档案类型：本人持有港澳情况登记表，固定值2无需填写
+     * 档案类型：本人持有港澳通行证情况登记表，固定值2无需填写
      */
     @Column(name = "archive_type")
     private Integer archiveType;
@@ -269,18 +269,18 @@ public class ArcHkMoInfo {
     }
 
     /**
-     * 获取档案类型：本人持有港澳情况登记表，固定值2无需填写
+     * 获取档案类型：本人持有港澳通行证情况登记表，固定值2无需填写
      *
-     * @return archive_type - 档案类型：本人持有港澳情况登记表，固定值2无需填写
+     * @return archive_type - 档案类型：本人持有港澳通行证情况登记表，固定值2无需填写
      */
     public Integer getArchiveType() {
         return archiveType;
     }
 
     /**
-     * 设置档案类型：本人持有港澳情况登记表，固定值2无需填写
+     * 设置档案类型：本人持有港澳通行证情况登记表，固定值2无需填写
      *
-     * @param archiveType 档案类型：本人持有港澳情况登记表，固定值2无需填写
+     * @param archiveType 档案类型：本人持有港澳通行证情况登记表，固定值2无需填写
      */
     public void setArchiveType(Integer archiveType) {
         this.archiveType = archiveType;

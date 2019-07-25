@@ -91,7 +91,7 @@
 <script>
     var ARCHIVE_TYPE = [
         {type: 1, name: '个人基本情况报备'},
-        {type: 2, name: '本人持有港澳情况登记表'},
+        {type: 2, name: '本人持有港澳通行证情况登记表'},
         {type: 3, name: '本人持有护照情况登记表'},
         {type: 4, name: '本人婚姻情况'},
         // {type: 5, name: '参加单位组织生活会情况登记表'},

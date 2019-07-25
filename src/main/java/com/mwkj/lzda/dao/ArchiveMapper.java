@@ -13,4 +13,6 @@ public interface ArchiveMapper {
 
     List<ArchiveDTO> findAllArchivesByConditions(ArchiveDTO archive);
 
+    List<ArchiveDTO> findAllWarningsByConditions(ArchiveDTO archive);
+
 }

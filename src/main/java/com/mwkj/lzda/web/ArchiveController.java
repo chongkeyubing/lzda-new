@@ -123,5 +123,31 @@ public class ArchiveController {
         return page;
     }
 
+    /**
+     * @Author libaogang
+     * @Date 2019-07-25 14:46
+     * @Param [archive, session, page, limit]
+     * @return com.mwkj.lzda.core.Result
+     * @Description 6种预警档案分页条件查询
+     */
+    @RequestMapping("/warningList")
+    @ResponseBody
+    public Result findAllWarnings(ArchiveDTO archive, HttpSession session,
+                                  @RequestParam(defaultValue = "0") int page,
+                                  @RequestParam(defaultValue = "0") int limit) {
+
+        //开启分页查询
+        PageHelper.startPage(page, limit);
+
+        //默认查询所有人
+        List<ArchiveDTO> archives = archiveService.findAllArchivesByConditions(archive);
+
+        //long count = archiveService.findAllArchivesCounts(archive);
+
+        PageInfo<ArchiveDTO> pageInfo = new PageInfo(archives);
+
+        return LayuiTableResultUtil.success(archives, pageInfo.getTotal());
+    }
+
 
 }

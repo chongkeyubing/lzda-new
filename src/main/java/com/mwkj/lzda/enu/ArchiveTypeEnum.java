@@ -7,7 +7,7 @@ package com.mwkj.lzda.enu;
  */
 public enum ArchiveTypeEnum {
     ARC_BASIC_INFO(1, "个人基本情况报备"),
-    ARC_HK_MO_INFO(2, "本人持有港澳情况登记表"),
+    ARC_HK_MO_INFO(2, "本人持有港澳通行证情况登记表"),
     ARC_PASSPORT_INFO(3, "本人持有护照情况登记表"),
     ARC_MARRIAGE_INFO(4,"本人婚姻情况"),
     ARC_ORGANIZATION_MEETING(5,"参加单位组织生活会情况登记表"),
