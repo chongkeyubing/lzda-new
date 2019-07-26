@@ -140,9 +140,9 @@
                                 <li>
                                     <a href="user/toUserList">用户管理</a>
                                 </li>
-                                <li>
-                                    <a href="views/role/role_list.jsp">权限管理</a>
-                                </li>
+                                <%--<li>--%>
+                                <%--<a href="views/role/role_list.jsp">权限管理</a>--%>
+                                <%--</li>--%>
                             </shiro:hasPermission>
                             <li>
                                 <a href="user/toPersonalInfo">个人信息</a>
