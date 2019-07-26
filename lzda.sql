@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : 美文局域网mysql
+ Source Server         : 本地mysql
  Source Server Type    : MySQL
- Source Server Version : 50561
- Source Host           : 192.168.0.112:3306
+ Source Server Version : 50723
+ Source Host           : localhost:3306
  Source Schema         : lzda
 
  Target Server Type    : MySQL
- Target Server Version : 50561
+ Target Server Version : 50723
  File Encoding         : 65001
 
- Date: 25/07/2019 19:12:26
+ Date: 26/07/2019 09:16:49
 */
 
 SET NAMES utf8mb4;
@@ -32,64 +32,11 @@ CREATE TABLE `approve`  (
   `status` int(1) NOT NULL COMMENT '档案审核状态:\r\n1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(2) NOT NULL COMMENT '档案类型：\r\n1个人基本情况报备\r\n2本人持有港澳情况登记表\r\n3本人持有护照情况登记表\r\n4本人婚姻情况\r\n5参加单位组织生活会情况登记表\r\n6操办宴席申请表\r\n7出国（境）情况登记表\r\n8可能影响公正执行职务报备表\r\n9离职交接情况登记表\r\n10配偶、子女及其配偶从业情况登记表\r\n11家人移居国（境）外的情况\r\n12家人连续在国（境）外工作、生活一年以上的情况\r\n13家人被司法机关追究刑事责任的情况\r\n14持有股票的情况\r\n15持有基金的情况\r\n16持有投资型保险的情况\r\n17在国（境）外的存款情况\r\n18在国（境）外的投资情况\r\n19个人认为需要报告的其他事项\r\n20子女与港澳以及台湾居民通婚的情况\r\n21涉警报备表\r\n22收入情况登记表\r\n23收受礼品登记表\r\n24在企业、中介组织和社会团体兼职\r\n25住房情况登记表\r\n26子女与外国人、无国籍人通婚的情况',
   `archive_id` int(11) NOT NULL COMMENT '档案id，关联对应档案表的id',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   `comments` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '审核意见',
   `last_step` int(1) NOT NULL DEFAULT 1 COMMENT '是否审核的最后一步：1是0否',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 235 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '档案审核表' ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of approve
--- ----------------------------
-INSERT INTO `approve` VALUES (182, 50, '徐洪芦', 50, '徐洪芦', 50, '徐洪芦', 5, 4, 14, '2019-07-17 17:01:40', '通过', 1);
-INSERT INTO `approve` VALUES (183, 50, '徐洪芦', 50, '徐洪芦', 50, '徐洪芦', 5, 19, 1, '2019-07-22 16:09:10', '通过', 1);
-INSERT INTO `approve` VALUES (184, 50, '徐洪芦', 50, '徐洪芦', 50, '徐洪芦', 5, 1, 1, '2019-07-22 16:12:52', '通过', 1);
-INSERT INTO `approve` VALUES (185, 85, '蒋定永', 80, '任中林', 80, '任中林', 1, 1, 2, '2019-07-23 14:10:20', NULL, 1);
-INSERT INTO `approve` VALUES (186, 85, '蒋定永', 80, '任中林', 80, '任中林', 1, 1, 3, '2019-07-23 14:15:52', NULL, 1);
-INSERT INTO `approve` VALUES (187, 85, '蒋定永', 80, '任中林', 80, '任中林', 1, 1, 4, '2019-07-23 14:17:06', NULL, 1);
-INSERT INTO `approve` VALUES (188, 50, '徐洪芦', 50, '徐洪芦', 50, '徐洪芦', 5, 4, 15, '2019-07-23 16:59:18', '通过', 1);
-INSERT INTO `approve` VALUES (189, 50, '徐洪芦', 50, '徐洪芦', 50, '徐洪芦', 5, 4, 16, '2019-07-23 16:59:32', '通过', 1);
-INSERT INTO `approve` VALUES (190, 50, '徐洪芦', 50, '徐洪芦', 50, '徐洪芦', 5, 4, 17, '2019-07-23 16:59:46', '通过', 1);
-INSERT INTO `approve` VALUES (191, 50, '徐洪芦', 50, '徐洪芦', 50, '徐洪芦', 5, 4, 18, '2019-07-23 16:59:53', '通过', 1);
-INSERT INTO `approve` VALUES (192, 50, '徐洪芦', 50, '徐洪芦', 50, '徐洪芦', 5, 4, 19, '2019-07-23 17:00:01', '通过', 1);
-INSERT INTO `approve` VALUES (193, 50, '徐洪芦', 50, '徐洪芦', 50, '徐洪芦', 5, 4, 20, '2019-07-23 17:00:10', '通过', 1);
-INSERT INTO `approve` VALUES (194, 50, '徐洪芦', 50, '徐洪芦', 50, '徐洪芦', 5, 4, 21, '2019-07-23 17:00:17', '通过', 1);
-INSERT INTO `approve` VALUES (195, 50, '徐洪芦', 50, '徐洪芦', 50, '徐洪芦', 5, 4, 22, '2019-07-23 17:00:26', '通过', 1);
-INSERT INTO `approve` VALUES (196, 50, '徐洪芦', 50, '徐洪芦', 50, '徐洪芦', 5, 4, 23, '2019-07-23 17:00:44', '通过', 1);
-INSERT INTO `approve` VALUES (197, 50, '徐洪芦', 50, '徐洪芦', 50, '徐洪芦', 5, 4, 24, '2019-07-23 17:00:52', '通过', 1);
-INSERT INTO `approve` VALUES (198, 50, '徐洪芦', 50, '徐洪芦', 50, '徐洪芦', 5, 4, 25, '2019-07-23 17:01:17', '通过', 1);
-INSERT INTO `approve` VALUES (199, 50, '徐洪芦', 50, '徐洪芦', 50, '徐洪芦', 5, 4, 26, '2019-07-23 17:02:01', '通过', 1);
-INSERT INTO `approve` VALUES (200, 50, '徐洪芦', 50, '徐洪芦', 50, '徐洪芦', 5, 4, 27, '2019-07-23 17:56:07', '通过', 1);
-INSERT INTO `approve` VALUES (201, 50, '徐洪芦', 50, '徐洪芦', 50, '徐洪芦', 5, 4, 28, '2019-07-23 17:56:31', '通过', 1);
-INSERT INTO `approve` VALUES (202, 50, '徐洪芦', 50, '徐洪芦', 50, '徐洪芦', 5, 6, 1, '2019-07-23 18:03:46', '通过', 1);
-INSERT INTO `approve` VALUES (203, 50, '徐洪芦', 50, '徐洪芦', 50, '徐洪芦', 5, 4, 29, '2019-07-23 18:06:02', '通过', 1);
-INSERT INTO `approve` VALUES (204, 50, '徐洪芦', 50, '徐洪芦', 50, '徐洪芦', 5, 20, 1, '2019-07-23 18:09:24', '通过', 1);
-INSERT INTO `approve` VALUES (205, 50, '徐洪芦', 50, '徐洪芦', 50, '徐洪芦', 5, 3, 1, '2019-07-23 18:14:47', '通过', 1);
-INSERT INTO `approve` VALUES (206, 50, '徐洪芦', 50, '徐洪芦', 50, '徐洪芦', 5, 19, 2, '2019-07-23 18:25:03', '通过', 1);
-INSERT INTO `approve` VALUES (207, 50, '徐洪芦', 50, '徐洪芦', 50, '徐洪芦', 5, 1, 5, '2019-07-23 18:26:49', '通过', 1);
-INSERT INTO `approve` VALUES (208, 50, '徐洪芦', 50, '徐洪芦', 50, '徐洪芦', 5, 21, 1, '2019-07-24 11:28:28', '通过', 1);
-INSERT INTO `approve` VALUES (209, 50, '徐洪芦', 50, '徐洪芦', 50, '徐洪芦', 5, 21, 2, '2019-07-24 13:52:15', '通过', 1);
-INSERT INTO `approve` VALUES (210, 50, '徐洪芦', 50, '徐洪芦', 50, '徐洪芦', 5, 27, 16, '2019-07-24 16:30:54', '通过', 1);
-INSERT INTO `approve` VALUES (211, 50, '徐洪芦', 50, '徐洪芦', 50, '徐洪芦', 5, 1, 6, '2019-07-24 16:48:33', '通过', 1);
-INSERT INTO `approve` VALUES (212, 201, '李林峰', 182, '刘玉良', 182, '刘玉良', 1, 4, 30, '2019-07-24 16:53:46', NULL, 0);
-INSERT INTO `approve` VALUES (213, 50, '徐洪芦', 50, '徐洪芦', 50, '徐洪芦', 5, 2, 1, '2019-07-24 16:56:13', '通过', 1);
-INSERT INTO `approve` VALUES (214, 50, '徐洪芦', 50, '徐洪芦', 50, '徐洪芦', 5, 23, 1, '2019-07-24 17:16:17', '通过', 1);
-INSERT INTO `approve` VALUES (219, 201, '李林峰', 182, '刘玉良', 182, '刘玉良', 2, 4, 30, '2019-07-24 17:38:13', '通过', 0);
-INSERT INTO `approve` VALUES (220, 51, '张德林', 201, '李林峰', 182, '刘玉良', 4, 4, 30, '2019-07-24 17:38:18', NULL, 1);
-INSERT INTO `approve` VALUES (221, 187, '陶松', 182, '刘玉良', 182, '刘玉良', 1, 4, 31, '2019-07-24 17:40:02', NULL, 1);
-INSERT INTO `approve` VALUES (222, 201, '李林峰', 182, '刘玉良', 182, '刘玉良', 1, 4, 32, '2019-07-24 17:40:15', NULL, 0);
-INSERT INTO `approve` VALUES (223, 201, '李林峰', 182, '刘玉良', 182, '刘玉良', 3, 4, 32, '2019-07-24 17:40:53', '撒旦发射点', 1);
-INSERT INTO `approve` VALUES (224, 50, '徐洪芦', 50, '徐洪芦', 50, '徐洪芦', 5, 27, 17, '2019-07-24 18:38:05', '通过', 1);
-INSERT INTO `approve` VALUES (225, 50, '徐洪芦', 50, '徐洪芦', 50, '徐洪芦', 5, 4, 33, '2019-07-24 18:42:41', '通过', 1);
-INSERT INTO `approve` VALUES (226, 50, '徐洪芦', 50, '徐洪芦', 50, '徐洪芦', 5, 6, 2, '2019-07-25 10:13:51', '通过', 1);
-INSERT INTO `approve` VALUES (227, 201, '李林峰', 182, '刘玉良', 182, '刘玉良', 1, 27, 18, '2019-07-25 10:24:56', NULL, 0);
-INSERT INTO `approve` VALUES (228, 201, '李林峰', 182, '刘玉良', 182, '刘玉良', 1, 27, 19, '2019-07-25 10:42:53', NULL, 0);
-INSERT INTO `approve` VALUES (229, 201, '李林峰', 182, '刘玉良', 182, '刘玉良', 2, 27, 19, '2019-07-25 10:50:35', '通过', 0);
-INSERT INTO `approve` VALUES (230, 50, '徐洪芦', 201, '李林峰', 182, '刘玉良', 4, 27, 19, '2019-07-25 10:50:35', NULL, 0);
-INSERT INTO `approve` VALUES (231, 50, '徐洪芦', 201, '李林峰', 182, '刘玉良', 5, 27, 19, '2019-07-25 10:50:53', '通过', 1);
-INSERT INTO `approve` VALUES (232, 201, '李林峰', 182, '刘玉良', 182, '刘玉良', 3, 27, 18, '2019-07-25 10:53:36', '手动阀手动阀', 1);
-INSERT INTO `approve` VALUES (233, 50, '徐洪芦', 50, '徐洪芦', 50, '徐洪芦', 5, 8, 1, '2019-07-25 15:00:12', '通过', 1);
-INSERT INTO `approve` VALUES (234, 50, '徐洪芦', 50, '徐洪芦', 50, '徐洪芦', 5, 8, 2, '2019-07-25 15:25:09', '通过', 1);
 
 -- ----------------------------
 -- Table structure for arc_abroad_info
@@ -112,7 +59,7 @@ CREATE TABLE `arc_abroad_info`  (
   `report` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '出国情况报告',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 7 COMMENT '档案类型：出国（境）情况登记表，固定值7无需填写',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
@@ -136,19 +83,13 @@ CREATE TABLE `arc_affect_business`  (
   `remark` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '备注',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 8 COMMENT '档案类型：可能影响公正执行职务报备表，固定值8无需填写',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   `affect_name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '影响人姓名',
   `affect_organization` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '影响人单位',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '可能影响公正执行职务报备表' ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of arc_affect_business
--- ----------------------------
-INSERT INTO `arc_affect_business` VALUES (1, 50, 4, '徐洪芦', '大队长', '江苏省淮安市公安局淮安分局警务督察大队', '2019-07-25', '家人', '123', '123', '123', 5, 8, '2019-07-25 15:00:12', '', '');
-INSERT INTO `arc_affect_business` VALUES (2, 50, 4, '徐洪芦', '大队长', '江苏省淮安市公安局淮安分局警务督察大队', '2019-07-25', '亲戚', '123', '123', '123', 5, 8, '2019-07-25 15:25:09', '张三', '淮安');
 
 -- ----------------------------
 -- Table structure for arc_banquet_apply
@@ -176,17 +117,11 @@ CREATE TABLE `arc_banquet_apply`  (
   `personal_apply` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '个人申请',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 6 COMMENT '档案类型：操办宴席申请表，固定值6无需填写',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '操办宴席申请表' ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of arc_banquet_apply
--- ----------------------------
-INSERT INTO `arc_banquet_apply` VALUES (1, 50, 4, '徐洪芦', '大队长', '江苏省淮安市公安局淮安分局警务督察大队', '哈哈', 2, 6, 1, 111, 111, 11, '哈哈', 'A123', '2019-07-23', '哈哈', NULL, NULL, 5, 6, '2019-07-23 18:03:46');
-INSERT INTO `arc_banquet_apply` VALUES (2, 50, 4, '徐洪芦', '大队长', '江苏省淮安市公安局淮安分局警务督察大队', 'sdf ', 112, 1111, 123, 123, 123, 123, '123', 'sdf ', '2019-07-09', 'sdfs df', 'sdf sdf', NULL, 5, 6, '2019-07-25 10:13:50');
 
 -- ----------------------------
 -- Table structure for arc_basic_info
@@ -219,20 +154,10 @@ CREATE TABLE `arc_basic_info`  (
   `other_info` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '其他需要说明的情况',
   `archive_type` int(2) NOT NULL DEFAULT 1 COMMENT '档案类型：个人基本情况报备，固定值1无需填写',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '个人基本情况报备表' ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of arc_basic_info
--- ----------------------------
-INSERT INTO `arc_basic_info` VALUES (1, 50, '徐洪芦', NULL, '汉族', '已婚', '党员', '19988776655', '051786623355', '硕士', '女', '1977-05-19', '大队长', '正科级', '2019-07-01', '江苏淮安', '320828197705194615', '2019-07-02', '第三方', '第三方', '江苏省淮安市公安局淮安分局警务督察大队', 4, '第三方', '第三方', 1, 5, '2019-07-22 16:12:52');
-INSERT INTO `arc_basic_info` VALUES (2, 80, '任中林', 'static/upload/18b47c1d3d8b4a419bb45f5535fd91eb.png', '士大夫', '未婚', '党员', '18012354123', '102', '士大夫', '女', '1963-09-05', '二级警长', '办事员', '2019-07-15', '士大夫', '320828196309050033', '2019-07-01', '士大夫', '士大夫', '江苏省淮安市公安局淮安分局警务保障室', 9, '士大夫', '士大夫', 1, 1, '2019-07-23 14:10:20');
-INSERT INTO `arc_basic_info` VALUES (3, 80, '任中林', NULL, '汉', '未婚', '党员', '18012351248', '32143214', '是否', '女', '1963-09-05', '二级警长', '办事员', '2019-07-01', '士大夫', '320828196309050033', '2019-07-01', '是豆腐干豆腐干', '士大夫s', '江苏省淮安市公安局淮安分局警务保障室', 9, '豆腐干d\'f', '地方给对方g', 1, 1, '2019-07-23 14:15:52');
-INSERT INTO `arc_basic_info` VALUES (4, 80, '任中林', NULL, '士大夫', '未婚', '党员', '18032143214', '32143214', '士大夫', '女', '1963-09-05', '二级警长', '办事员', '2019-07-01', '士大夫', '320828196309050033', '2019-07-01', '士大夫', '士大夫', '江苏省淮安市公安局淮安分局警务保障室', 9, '士大夫', '士大夫', 1, 1, '2019-07-23 14:17:06');
-INSERT INTO `arc_basic_info` VALUES (5, 50, '徐洪芦', NULL, '士大夫', '未婚', '党员', '18015232140', '123123', '士大夫', '男', '1977-05-19', '大队长', '办事员', '2019-07-01', '士大夫', '320828197705194615', '2019-07-01', '撒旦发射点', '手动阀手动阀', '江苏省淮安市公安局淮安分局警务督察大队', 4, '手动阀手动阀', '胜多负少的发射点 ', 1, 5, '2019-07-23 18:26:49');
-INSERT INTO `arc_basic_info` VALUES (6, 50, '徐洪芦', 'static/upload/98ae1a0cfa464a43bd2deb3abd563a3d.png', '汉', '未婚', '党员', '18032143214', '123123', '士大夫', '男', '1977-05-19', '大队长', '办事员', '2019-07-15', '士大夫', '320828197705194615', '2019-07-01', '士大夫', '士大夫', '江苏省淮安市公安局淮安分局警务督察大队', 4, '士大夫s', '士大夫', 1, 5, '2019-07-24 16:48:33');
 
 -- ----------------------------
 -- Table structure for arc_family_abroad
@@ -256,7 +181,7 @@ CREATE TABLE `arc_family_abroad`  (
   `remark` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '备注',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 11 COMMENT '档案类型：家人移居国外情况，固定值11无需填写',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
@@ -283,7 +208,7 @@ CREATE TABLE `arc_family_abroad_investment`  (
   `remark` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '备注',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 18 COMMENT '档案类型：在国（境）外的投资情况，固定值18无需填写',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
@@ -310,7 +235,7 @@ CREATE TABLE `arc_family_abroad_marriage`  (
   `time` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '登记时间',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 26 COMMENT '档案类型：子女与外国人、无国籍人通婚的情况，固定值26无需填写',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
@@ -337,7 +262,7 @@ CREATE TABLE `arc_family_abroad_savings`  (
   `remark` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '备注',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 17 COMMENT '档案类型：在国（境）外的存款情况，固定值17无需填写',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
@@ -363,7 +288,7 @@ CREATE TABLE `arc_family_criminal`  (
   `result` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '处理结果',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 13 COMMENT '档案类型：家人被司法机关追究刑事责任的情况，固定值13无需填写',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
@@ -390,7 +315,7 @@ CREATE TABLE `arc_family_fund`  (
   `remark` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '备注',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 14 COMMENT '档案类型：持有基金的情况，固定值15无需填写',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
@@ -416,7 +341,7 @@ CREATE TABLE `arc_family_insurance`  (
   `price` int(11) NOT NULL COMMENT '累积缴纳保费、投资资金',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 16 COMMENT '档案类型：持有投资型保险的情况，固定值16无需填写',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
@@ -443,16 +368,11 @@ CREATE TABLE `arc_family_marriage`  (
   `time` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '登记时间',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 20 COMMENT '档案类型：子女与港澳以及台湾居民通婚的情况，固定值20无需填写',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '子女与港澳以及台湾居民通婚的情况' ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of arc_family_marriage
--- ----------------------------
-INSERT INTO `arc_family_marriage` VALUES (1, 50, 4, '徐洪芦', '大队长', '江苏省淮安市公安局淮安分局警务督察大队', NULL, '哈哈', '哈哈', '哈哈', '哈哈', '哈哈', '哈哈', '2019-07-23', 5, 20, '2019-07-23 18:09:24');
 
 -- ----------------------------
 -- Table structure for arc_family_society_rela
@@ -467,15 +387,9 @@ CREATE TABLE `arc_family_society_rela`  (
   `birthday` date NOT NULL COMMENT '出生日期',
   `organization` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '工作单位',
   `job_position` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '职务',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '家庭主要成员及重要社会关系（关联arc_basic_info表）' ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of arc_family_society_rela
--- ----------------------------
-INSERT INTO `arc_family_society_rela` VALUES (1, 1, '第三方', '第三方', '群众', '2019-07-11', '第三方', '第三方', '2019-07-22 16:12:52');
-INSERT INTO `arc_family_society_rela` VALUES (2, 6, '双方的', '士大夫', '群众', '2019-07-23', '士大夫', '士大夫', '2019-07-24 16:48:33');
 
 -- ----------------------------
 -- Table structure for arc_family_stock
@@ -498,7 +412,7 @@ CREATE TABLE `arc_family_stock`  (
   `remark` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '备注',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 14 COMMENT '档案类型：持有股票的情况，固定值14无需填写',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
@@ -524,7 +438,7 @@ CREATE TABLE `arc_family_workabroad`  (
   `remark` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '备注',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 11 COMMENT '档案类型：家人移居国外情况，固定值11无需填写',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
@@ -556,16 +470,11 @@ CREATE TABLE `arc_gift_info`  (
   `gift_handle` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '处理情况:退还当事人、上缴分局、上缴单位、其他',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 23 COMMENT '档案类型：收受礼品登记表，固定值23无需填写',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '收受礼品登记表' ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of arc_gift_info
--- ----------------------------
-INSERT INTO `arc_gift_info` VALUES (1, 50, 4, '徐洪芦', '大队长', '江苏省淮安市公安局淮安分局警务督察大队', '士大夫', '士大夫', '士大夫', '2019-07-02', '士大夫', '士大夫', '胜多负少的', '士大夫', 123, 123, 123, 123, '退还当事人', 5, 23, '2019-07-24 17:16:17');
 
 -- ----------------------------
 -- Table structure for arc_hk_mo_info
@@ -584,15 +493,10 @@ CREATE TABLE `arc_hk_mo_info`  (
   `remark` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '备注',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 2 COMMENT '档案类型：本人持有港澳情况登记表，固定值2无需填写',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '本人持有港澳通行证情况登记表' ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of arc_hk_mo_info
--- ----------------------------
-INSERT INTO `arc_hk_mo_info` VALUES (1, 50, 4, '江苏省淮安市公安局淮安分局警务督察大队', '徐洪芦', '士大夫', '123123', '2019-07-01', '个人保管', '士大夫士大夫', 5, 2, '2019-07-24 16:56:13');
 
 -- ----------------------------
 -- Table structure for arc_house_info
@@ -614,7 +518,7 @@ CREATE TABLE `arc_house_info`  (
   `remark` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '备注',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 25 COMMENT '档案类型：住房情况登记表，固定值25无需填写',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
@@ -641,7 +545,7 @@ CREATE TABLE `arc_income_info`  (
   `remark` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '备注',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 22 COMMENT '档案类型：收入情况登记表，固定值22无需填写',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
@@ -669,7 +573,7 @@ CREATE TABLE `arc_leaveoffice_handover`  (
   `remark` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '备注',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 9 COMMENT '档案类型：离职交接情况登记表，固定值9无需填写',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
@@ -690,24 +594,11 @@ CREATE TABLE `arc_loan`  (
   `job_position` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '职务',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 27 COMMENT '档案类型：借贷（担保）登记表，固定值27无需填写',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '借贷（担保）登记表' ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of arc_loan
--- ----------------------------
-INSERT INTO `arc_loan` VALUES (8, 50, 4, '党员', '江苏省淮安市公安局淮安分局警务督察大队', '徐洪芦', '男', '大队长', 1, 27, '2019-07-24 13:58:16');
-INSERT INTO `arc_loan` VALUES (9, 50, 4, '党员', '江苏省淮安市公安局淮安分局警务督察大队', '徐洪芦', '男', '大队长', 1, 27, '2019-07-24 13:58:55');
-INSERT INTO `arc_loan` VALUES (11, 50, 4, '党员', '江苏省淮安市公安局淮安分局警务督察大队', '徐洪芦', '男', '大队长', 1, 27, '2019-07-24 16:07:41');
-INSERT INTO `arc_loan` VALUES (12, 50, 4, '党员', '江苏省淮安市公安局淮安分局警务督察大队', '徐洪芦', '男', '大队长', 1, 27, '2019-07-24 16:15:41');
-INSERT INTO `arc_loan` VALUES (15, 50, 4, '党员', '江苏省淮安市公安局淮安分局警务督察大队', '徐洪芦', '男', '大队长', 1, 27, '2019-07-24 16:25:14');
-INSERT INTO `arc_loan` VALUES (16, 50, 4, '党员', '江苏省淮安市公安局淮安分局警务督察大队', '徐洪芦', '男', '大队长', 5, 27, '2019-07-24 16:30:54');
-INSERT INTO `arc_loan` VALUES (17, 50, 4, '党员', '江苏省淮安市公安局淮安分局警务督察大队', '徐洪芦', '男', '大队长', 5, 27, '2019-07-24 18:38:05');
-INSERT INTO `arc_loan` VALUES (18, 182, 13, '群众', '江苏省淮安市公安局淮安分局交通警察大队', '刘玉良', '男', '二级警长', 3, 27, '2019-07-25 10:24:56');
-INSERT INTO `arc_loan` VALUES (19, 182, 13, '党员', '江苏省淮安市公安局淮安分局交通警察大队', '刘玉良', '男', '二级警长', 5, 27, '2019-07-25 10:42:52');
 
 -- ----------------------------
 -- Table structure for arc_loan_rela
@@ -732,32 +623,6 @@ CREATE TABLE `arc_loan_rela`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 29 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '借贷（担保）情况，关联借贷（担保）登记表' ROW_FORMAT = Compact;
 
 -- ----------------------------
--- Records of arc_loan_rela
--- ----------------------------
-INSERT INTO `arc_loan_rela` VALUES (1, 8, 1, NULL, '士大夫', 123, '2019-07-01', '123', '123', NULL, NULL, NULL, '123213');
-INSERT INTO `arc_loan_rela` VALUES (2, 9, 1, NULL, '士大夫', 123, '2019-07-24', '123', '123', NULL, NULL, NULL, '123');
-INSERT INTO `arc_loan_rela` VALUES (3, 9, 2, NULL, '123', 213, '2019-07-01', '123', '123', NULL, NULL, NULL, '123');
-INSERT INTO `arc_loan_rela` VALUES (10, 11, 1, NULL, '123', 123, '2019-07-24', '123', '123', NULL, NULL, NULL, '123');
-INSERT INTO `arc_loan_rela` VALUES (11, 11, 1, NULL, '123', 123, '2019-07-24', '123', '123', NULL, NULL, NULL, '123');
-INSERT INTO `arc_loan_rela` VALUES (12, 11, 2, '123', NULL, 123, '2019-07-01', '123', NULL, NULL, NULL, NULL, '123');
-INSERT INTO `arc_loan_rela` VALUES (13, 11, 3, '123', '123', 123, '2019-07-24', '123', NULL, NULL, NULL, NULL, '123');
-INSERT INTO `arc_loan_rela` VALUES (14, 11, 4, NULL, NULL, 123, NULL, NULL, '123', '123,独资', NULL, '123', '123');
-INSERT INTO `arc_loan_rela` VALUES (15, 12, 1, NULL, '士大夫', 123, '2019-07-24', '123', '123', NULL, NULL, NULL, '123');
-INSERT INTO `arc_loan_rela` VALUES (16, 12, 4, NULL, NULL, 123, NULL, NULL, '123', '士大夫,合伙', NULL, '士大夫', '123');
-INSERT INTO `arc_loan_rela` VALUES (17, 15, 1, NULL, '123', 123, '2019-07-01', '123', '123', NULL, NULL, NULL, '123');
-INSERT INTO `arc_loan_rela` VALUES (18, 15, 4, NULL, NULL, 123, NULL, NULL, '123', '123', '合伙', '123', '123');
-INSERT INTO `arc_loan_rela` VALUES (19, 15, 4, NULL, NULL, 213, NULL, NULL, '123', '123', '独资', '123', '123');
-INSERT INTO `arc_loan_rela` VALUES (20, 16, 1, NULL, '123', 123, '2019-07-08', '123', '123', NULL, NULL, NULL, '3123');
-INSERT INTO `arc_loan_rela` VALUES (21, 17, 1, NULL, 'szdfs ', 12312, '2019-07-02', '231231', '312321', NULL, NULL, NULL, 'sdf ');
-INSERT INTO `arc_loan_rela` VALUES (22, 18, 1, NULL, '士大夫', 123, '2019-07-01', '123', '第三方', NULL, NULL, NULL, '豆腐干');
-INSERT INTO `arc_loan_rela` VALUES (23, 18, 4, NULL, NULL, 12321, NULL, NULL, '胜多负少', '士大夫', '独资', '士大夫', '士大夫');
-INSERT INTO `arc_loan_rela` VALUES (24, 19, 1, NULL, '士大夫', 123, '2019-07-01', '123', '第三方', NULL, NULL, NULL, '123');
-INSERT INTO `arc_loan_rela` VALUES (25, 19, 1, NULL, '213123', 123, '2019-07-09', '213', '士大夫', NULL, NULL, NULL, '士大夫');
-INSERT INTO `arc_loan_rela` VALUES (26, 19, 2, '士大夫', NULL, 213, '2019-07-02', '213', NULL, NULL, NULL, NULL, '士大夫');
-INSERT INTO `arc_loan_rela` VALUES (27, 19, 3, '士大夫', '士大夫', 123, '2019-07-25', '123', NULL, NULL, NULL, NULL, '士大夫');
-INSERT INTO `arc_loan_rela` VALUES (28, 19, 4, NULL, NULL, 123, NULL, NULL, '士大夫', '士大夫', '独资', '士大夫士大夫', '士大夫');
-
--- ----------------------------
 -- Table structure for arc_marriage_info
 -- ----------------------------
 DROP TABLE IF EXISTS `arc_marriage_info`;
@@ -774,35 +639,11 @@ CREATE TABLE `arc_marriage_info`  (
   `change_reason` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '变化原因',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 4 COMMENT '档案类型：本人婚姻情况，固定值4无需填写',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 34 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '本人婚姻情况' ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of arc_marriage_info
--- ----------------------------
-INSERT INTO `arc_marriage_info` VALUES (14, 50, 4, '江苏省淮安市公安局淮安分局警务督察大队', '徐洪芦', '已婚', '无变化', '结婚', '2019-07-01', '是否', 5, 4, '2019-07-17 17:01:40');
-INSERT INTO `arc_marriage_info` VALUES (15, 50, 4, '江苏省淮安市公安局淮安分局警务督察大队', '徐洪芦', NULL, '无变化', '结婚', '2019-07-02', '士大夫', 5, 4, '2019-07-23 16:59:18');
-INSERT INTO `arc_marriage_info` VALUES (16, 50, 4, '江苏省淮安市公安局淮安分局警务督察大队', '徐洪芦', '未婚', '无变化', '结婚', '2019-07-03', '士大夫', 5, 4, '2019-07-23 16:59:32');
-INSERT INTO `arc_marriage_info` VALUES (17, 50, 4, '江苏省淮安市公安局淮安分局警务督察大队', '徐洪芦', '已婚', '无变化', '离婚', '2019-07-02', '手动阀手动阀', 5, 4, '2019-07-23 16:59:46');
-INSERT INTO `arc_marriage_info` VALUES (18, 50, 4, '江苏省淮安市公安局淮安分局警务督察大队', '徐洪芦', NULL, '无变化', '离婚', '2019-07-10', '士大夫', 5, 4, '2019-07-23 16:59:53');
-INSERT INTO `arc_marriage_info` VALUES (19, 50, 4, '江苏省淮安市公安局淮安分局警务督察大队', '徐洪芦', '已婚', '有变化', '丧偶', '2019-07-09', '士大夫', 5, 4, '2019-07-23 17:00:01');
-INSERT INTO `arc_marriage_info` VALUES (20, 50, 4, '江苏省淮安市公安局淮安分局警务督察大队', '徐洪芦', NULL, '无变化', '丧偶', '2019-07-02', '手动阀手动阀', 5, 4, '2019-07-23 17:00:09');
-INSERT INTO `arc_marriage_info` VALUES (21, 50, 4, '江苏省淮安市公安局淮安分局警务督察大队', '徐洪芦', '离异', '无变化', '结婚', '2019-07-03', '士大夫', 5, 4, '2019-07-23 17:00:17');
-INSERT INTO `arc_marriage_info` VALUES (22, 50, 4, '江苏省淮安市公安局淮安分局警务督察大队', '徐洪芦', '已婚', '无变化', '离婚', '2019-07-09', '士大夫士大夫但是', 5, 4, '2019-07-23 17:00:26');
-INSERT INTO `arc_marriage_info` VALUES (23, 50, 4, '江苏省淮安市公安局淮安分局警务督察大队', '徐洪芦', '已婚', '无变化', '结婚', '2019-07-02', '撒旦发射点', 5, 4, '2019-07-23 17:00:44');
-INSERT INTO `arc_marriage_info` VALUES (24, 50, 4, '江苏省淮安市公安局淮安分局警务督察大队', '徐洪芦', '未婚', '无变化', '结婚', '2019-07-02', '撒旦发射点', 5, 4, '2019-07-23 17:00:52');
-INSERT INTO `arc_marriage_info` VALUES (25, 50, 4, '江苏省淮安市公安局淮安分局警务督察大队', '徐洪芦', '未婚', '无变化', '离婚', '2019-07-01', '撒旦发射点', 5, 4, '2019-07-23 17:01:17');
-INSERT INTO `arc_marriage_info` VALUES (26, 50, 4, '江苏省淮安市公安局淮安分局警务督察大队', '徐洪芦', '离异', '无变化', '结婚', '2019-07-02', '撒旦发射点', 5, 4, '2019-07-23 17:02:00');
-INSERT INTO `arc_marriage_info` VALUES (27, 50, 4, '江苏省淮安市公安局淮安分局警务督察大队', '徐洪芦', NULL, NULL, NULL, NULL, NULL, 5, 4, '2019-07-23 17:56:07');
-INSERT INTO `arc_marriage_info` VALUES (28, 50, 4, '江苏省淮安市公安局淮安分局警务督察大队', '徐洪芦', NULL, NULL, NULL, NULL, NULL, 5, 4, '2019-07-23 17:56:31');
-INSERT INTO `arc_marriage_info` VALUES (29, 50, 4, '江苏省淮安市公安局淮安分局警务督察大队', '徐洪芦', NULL, NULL, NULL, NULL, NULL, 5, 4, '2019-07-23 18:06:02');
-INSERT INTO `arc_marriage_info` VALUES (30, 182, 13, '江苏省淮安市公安局淮安分局交通警察大队', '刘玉良', '未婚', '无变化', '结婚', '2019-07-24', '上单', 4, 4, '2019-07-24 16:53:46');
-INSERT INTO `arc_marriage_info` VALUES (31, 182, 13, '江苏省淮安市公安局淮安分局交通警察大队', '刘玉良', NULL, '无变化', '结婚', '2019-07-24', '地方都是', 1, 4, '2019-07-24 17:40:02');
-INSERT INTO `arc_marriage_info` VALUES (32, 182, 13, '江苏省淮安市公安局淮安分局交通警察大队', '刘玉良', '未婚', '无变化', '结婚', '2019-07-24', '单独发给豆腐干', 3, 4, '2019-07-24 17:40:15');
-INSERT INTO `arc_marriage_info` VALUES (33, 50, 4, '江苏省淮安市公安局淮安分局警务督察大队', '徐洪芦', NULL, '无变化', NULL, NULL, NULL, 5, 4, '2019-07-24 18:42:41');
 
 -- ----------------------------
 -- Table structure for arc_organization_meeting
@@ -823,7 +664,7 @@ CREATE TABLE `arc_organization_meeting`  (
   `remark` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '备注',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 5 COMMENT '档案类型：参加单位组织生活会情况，固定值5无需填写',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
@@ -851,7 +692,7 @@ CREATE TABLE `arc_part_time_job`  (
   `remark` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '备注',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 24 COMMENT '档案类型：在企业、中介组织和社会团体兼职，固定值24无需填写',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
@@ -874,16 +715,11 @@ CREATE TABLE `arc_passport_info`  (
   `remark` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '备注',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 3 COMMENT '档案类型：本人持有护照情况登记表，固定值3无需填写',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '本人持有护照况登记表' ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of arc_passport_info
--- ----------------------------
-INSERT INTO `arc_passport_info` VALUES (1, 50, 4, '江苏省淮安市公安局淮安分局警务督察大队', '徐洪芦', '士大夫十分', '2019-07-23', '2019-07-08', '单位保管', '手动阀手动阀', 5, 3, '2019-07-23 18:14:47');
 
 -- ----------------------------
 -- Table structure for arc_personal_other
@@ -900,17 +736,11 @@ CREATE TABLE `arc_personal_other`  (
   `promise` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '承诺',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 19 COMMENT '档案类型：个人认为需要报告的其他事项，固定值19无需填写',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '个人认为需要报告的其他事项' ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of arc_personal_other
--- ----------------------------
-INSERT INTO `arc_personal_other` VALUES (1, 50, 4, '徐洪芦', '大队长', '江苏省淮安市公安局淮安分局警务督察大队', '我已认真学习《领导干部报告个人有关事项规定》和《领导干部个人有关事项报告查核结果处理办法》，认真阅读《填表须知和每一事项表格下方的填表说明，所填内容已与配偶、子女及其配偶进行了认真核实。我郑重承诺，本人对以上所填内容的真实性和完整性负责，井自愿接受组织监督和查核。', '我已认真学习《领导干部报告个人有关事项规定》和《领导干部个人有关事项报告查核结果处理办法》，认真阅读《填表须知和每一事项表格下方的填表说明，所填内容已与配偶、子女及其配偶进行了认真核实。我郑重承诺，本人对以上所填内容的真实性和完整性负责，井自愿接受组织监督和查核。', 5, 19, '2019-07-22 16:09:10');
-INSERT INTO `arc_personal_other` VALUES (2, 50, 4, '徐洪芦', '大队长', '江苏省淮安市公安局淮安分局警务督察大队', '士大夫但是', '我已认真学习《领导干部报告个人有关事项规定》和《领导干部个人有关事项报告查核结果处理办法》，认真阅读《填表须知和每一事项表格下方的填表说明，所填内容已与配偶、子女及其配偶进行了认真核实。我郑重承诺，本人对以上所填内容的真实性和完整性负责，井自愿接受组织监督和查核。', 5, 19, '2019-07-23 18:25:03');
 
 -- ----------------------------
 -- Table structure for arc_police_involve
@@ -930,19 +760,13 @@ CREATE TABLE `arc_police_involve`  (
   `remark` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '备注',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 21 COMMENT '档案类型：涉警报备表，固定值21无需填写',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   `involved_name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '涉警人姓名',
   `involved_organization` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '涉警人单位',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '涉警报备表' ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of arc_police_involve
--- ----------------------------
-INSERT INTO `arc_police_involve` VALUES (1, 50, 4, '徐洪芦', '大队长', '江苏省淮安市公安局淮安分局警务督察大队', '2019-07-24', '朋友', '碰瓷', '已处理', '暗示法律框架', 5, 21, '2019-07-24 11:28:28', '张三', '淮安软件');
-INSERT INTO `arc_police_involve` VALUES (2, 50, 4, '徐洪芦', '大队长', '江苏省淮安市公安局淮安分局警务督察大队', '2019-07-24', '家人', '拉克丝京东方', '爱上了金佛', '索拉卡减肥的哦', 5, 21, '2019-07-24 13:52:14', '李四', '淮安的淮安');
 
 -- ----------------------------
 -- Table structure for attachment
@@ -958,38 +782,6 @@ CREATE TABLE `attachment`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 124 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
--- Records of attachment
--- ----------------------------
-INSERT INTO `attachment` VALUES (80, 'static/upload/89ea0be5de3f4fb1abc909354e6c2916.png', '0dec6fe14fd649b4b276588ad8dd4792', NULL);
-INSERT INTO `attachment` VALUES (81, 'static/upload/b2f20e8d9d174ce3b73338a132e6799b.png', '5f5c2fcbbb4140c2b2290e4fab2abf67', NULL);
-INSERT INTO `attachment` VALUES (82, 'static/upload/ce0af76922a84abfadc6d51bd5def69d.jpg', '188d458ad4fc4d3da0404693a5c96ad6', NULL);
-INSERT INTO `attachment` VALUES (83, 'static/upload/4932ba3cfb484ca580d7143b6d25ec04.jpg', '065a094452464354a63f8337ed379538', NULL);
-INSERT INTO `attachment` VALUES (84, 'static/upload/5a400b05b65b4680a632ba25d98a906c.jpg', '86c5d65113d54a119231e6c932c9d3a1', NULL);
-INSERT INTO `attachment` VALUES (86, 'static/upload/c74d84538eab4ebba3b8d8e88a0b6b66.jpg', '1e21c4be3d804b66b589ed21ced988f0', NULL);
-INSERT INTO `attachment` VALUES (87, 'static/upload/149d371b55734a30a1df8e220d2aab1c.jpg', 'b88b9c891c5843b0af45c6968c437ed8', NULL);
-INSERT INTO `attachment` VALUES (88, 'static/upload/7575b997fb0a4f00b2f44b467be3dadd.jpg', 'a19b3e2ec88944d69f6ef3a0fe25b484', NULL);
-INSERT INTO `attachment` VALUES (99, 'static/upload/a494eba838e545648e3a1abb39d016ab.jpg', '2e8f13208ab9468cbaba6530a935eca2', NULL);
-INSERT INTO `attachment` VALUES (103, 'static/upload/ea71f30b8fe04487bf9f5c5e118a8ae5.jpg', '93577f40a5834f32a8e20d9e7630fb21', NULL);
-INSERT INTO `attachment` VALUES (104, 'static/upload/ee94b9859ff44976b9b0448c47690cb1.jpg', '6017468d38c147ceafa908cd268224ed', NULL);
-INSERT INTO `attachment` VALUES (105, 'static/upload/c4dc42d62e6249dbbea6823c83d127c4.jpg', '6017468d38c147ceafa908cd268224ed', NULL);
-INSERT INTO `attachment` VALUES (108, 'static/upload/933386f877d74342a59ef9f7b8a3a806.jpg', 'a380aa6f08f1496696118d9b198e044a', NULL);
-INSERT INTO `attachment` VALUES (109, 'static/upload/8345ed5e31dd426dab30fec5a5ee4ca2.png', '61b930fc3cc54db5a8b9ba0cdf75f72f', NULL);
-INSERT INTO `attachment` VALUES (110, 'static/upload/04355679c4834641a7e0a9d2d212d6c0.png', 'c0b8fee30b9a4c1ea47e80d5fd0e5bd5', NULL);
-INSERT INTO `attachment` VALUES (111, 'static/upload/15f1bdb7f20e432faf4a2e800a356856.png', 'c0b8fee30b9a4c1ea47e80d5fd0e5bd5', NULL);
-INSERT INTO `attachment` VALUES (112, 'static/upload/1ce78dbb657d471aac3297f0b23d38ed.jpg', 'c3890d31edff44578b733e8d4c7d21b6', NULL);
-INSERT INTO `attachment` VALUES (113, 'static/upload/1dfe9b2f5d9e4051b725386a023720b7.jpg', 'c4c5f4727fe944dbbd2534792e96ad3c', NULL);
-INSERT INTO `attachment` VALUES (114, 'static/upload/70a3a8279af6485bab85a768721b22d4.jpg', 'e1a360342801480483545b39aecf183c', NULL);
-INSERT INTO `attachment` VALUES (115, 'static/upload/3bdec23f5f164dfbb9d5b2eb1581a7a0.jpg', '1fdfbde4417c4f068896d5ce8b9c341d', NULL);
-INSERT INTO `attachment` VALUES (116, 'static/upload/e81b50e985fa40baaaf43d4de4a1aef5.png', 'fe8fc9a94db54077a1ee04abd56ba8fb', NULL);
-INSERT INTO `attachment` VALUES (117, 'static/upload/85cce233fa0c4cbd897bb3a13c8ebc1f.jpg', 'eaee4536df194461a8deae380d805c0d', NULL);
-INSERT INTO `attachment` VALUES (118, 'static/upload/623e60c9ed984c4b8784679c278bc6a7.jpg', '3eb9d309c97f4c03a208221d9011afbc', NULL);
-INSERT INTO `attachment` VALUES (119, 'static/upload/d1f6c21a2153426d9ca1a61a411a0903.jpg', '19c5e290ee624d0e89d0324ef6a7a95a', NULL);
-INSERT INTO `attachment` VALUES (120, 'static/upload/ca86215a6ccd4cd1b3568688f1e67621.jpg', 'ec65ce5d8b874a2ea8c21aeb8f8f557b', NULL);
-INSERT INTO `attachment` VALUES (121, 'static/upload/7cab9d7ec97e427aaf2e75ab42a01802.png', '09491289bcb04bdab6372ce367850591', NULL);
-INSERT INTO `attachment` VALUES (122, 'static/upload/4aeb0664b53e4e7c89a19f68efe7292b.png', '28c3120ffdb849d2b4cd6e89cfe54379', NULL);
-INSERT INTO `attachment` VALUES (123, 'static/upload/42545badaac741989ba85522c7329cee.png', 'b965fbc3d57546d186ac744da805d824', NULL);
-
--- ----------------------------
 -- Table structure for authority
 -- ----------------------------
 DROP TABLE IF EXISTS `authority`;
@@ -999,7 +791,7 @@ CREATE TABLE `authority`  (
   `name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '权限名',
   `authflag` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '权限标识',
   `active` int(1) NOT NULL DEFAULT 1 COMMENT '是否有效，0：无效，1：有效',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 23 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '权限表（关联role_auth表）' ROW_FORMAT = Compact;
 
@@ -1043,573 +835,9 @@ CREATE TABLE `operate_log`  (
   `owner_org` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '表格拥有者单位',
   `operate_object` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '操作对象：26类个人填报档案表、奖惩表、上报表、统计信息',
   `operate_type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '操作类型：0查看1添加2修改3删除4提交审核5审核通过6审核驳回7上报',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 716 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of operate_log
--- ----------------------------
-INSERT INTO `operate_log` VALUES (156, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 58, '孙晓鸿', '江苏省淮安市公安局淮安分局单位内部安全保卫大队', '一般干部被通报情况登记表', '查看', '2019-07-23 10:50:17');
-INSERT INTO `operate_log` VALUES (157, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 58, '孙晓鸿', '江苏省淮安市公安局淮安分局单位内部安全保卫大队', '一般干部被通报情况登记表', '查看', '2019-07-23 10:50:26');
-INSERT INTO `operate_log` VALUES (158, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 58, '孙晓鸿', '江苏省淮安市公安局淮安分局单位内部安全保卫大队', '一般干部被通报情况登记表', '修改', '2019-07-23 10:50:31');
-INSERT INTO `operate_log` VALUES (159, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 58, '孙晓鸿', '江苏省淮安市公安局淮安分局单位内部安全保卫大队', '一般干部被通报情况登记表', '查看', '2019-07-23 11:00:16');
-INSERT INTO `operate_log` VALUES (160, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部被群众信访举报情况登记表', '查看', '2019-07-23 11:02:30');
-INSERT INTO `operate_log` VALUES (161, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部被群众信访举报情况登记表', '删除', '2019-07-23 11:02:40');
-INSERT INTO `operate_log` VALUES (162, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 58, '孙晓鸿', '江苏省淮安市公安局淮安分局单位内部安全保卫大队', '一般干部被群众信访举报情况登记表', '删除', '2019-07-23 11:02:43');
-INSERT INTO `operate_log` VALUES (163, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 65, '杨志萍', '江苏省淮安市公安局淮安分局出入境管理大队', '一般干部违纪情况登记表', '修改', '2019-07-23 11:02:48');
-INSERT INTO `operate_log` VALUES (164, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 44, '宋超', '江苏省淮安市公安局淮安分局政治处', '一般干部问责情况登记表', '修改', '2019-07-23 11:02:51');
-INSERT INTO `operate_log` VALUES (165, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 58, '孙晓鸿', '江苏省淮安市公安局淮安分局单位内部安全保卫大队', '一般干部被通报情况登记表', '修改', '2019-07-23 11:02:53');
-INSERT INTO `operate_log` VALUES (166, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 58, '孙晓鸿', '江苏省淮安市公安局淮安分局单位内部安全保卫大队', '一般干部被通报情况登记表', '查看', '2019-07-23 11:03:17');
-INSERT INTO `operate_log` VALUES (167, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 58, '孙晓鸿', '江苏省淮安市公安局淮安分局单位内部安全保卫大队', '一般干部被通报情况登记表', '修改', '2019-07-23 11:03:23');
-INSERT INTO `operate_log` VALUES (168, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 58, '孙晓鸿', '江苏省淮安市公安局淮安分局单位内部安全保卫大队', '一般干部被通报情况登记表', '查看', '2019-07-23 11:07:10');
-INSERT INTO `operate_log` VALUES (169, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '廉政信息上报', '修改', '2019-07-23 11:13:21');
-INSERT INTO `operate_log` VALUES (170, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '主体责任上报', '查看', '2019-07-23 11:13:51');
-INSERT INTO `operate_log` VALUES (171, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '主体责任上报', '修改', '2019-07-23 11:14:06');
-INSERT INTO `operate_log` VALUES (172, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '廉政信息上报', '查看', '2019-07-23 11:14:17');
-INSERT INTO `operate_log` VALUES (173, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '廉政信息上报', '添加', '2019-07-23 11:14:37');
-INSERT INTO `operate_log` VALUES (174, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '廉政信息上报', '修改', '2019-07-23 11:14:50');
-INSERT INTO `operate_log` VALUES (175, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '廉政信息上报', '修改', '2019-07-23 11:16:23');
-INSERT INTO `operate_log` VALUES (176, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '廉政信息上报', '添加', '2019-07-23 11:18:16');
-INSERT INTO `operate_log` VALUES (177, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '廉政信息上报', '修改', '2019-07-23 11:18:55');
-INSERT INTO `operate_log` VALUES (178, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '廉政信息上报', '修改', '2019-07-23 11:19:45');
-INSERT INTO `operate_log` VALUES (179, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '廉政信息上报', '修改', '2019-07-23 11:24:13');
-INSERT INTO `operate_log` VALUES (180, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '廉政信息上报', '修改', '2019-07-23 11:25:47');
-INSERT INTO `operate_log` VALUES (181, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '廉政信息上报', '添加', '2019-07-23 11:30:34');
-INSERT INTO `operate_log` VALUES (182, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '廉政信息上报', '修改', '2019-07-23 11:31:08');
-INSERT INTO `operate_log` VALUES (183, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '廉政信息上报', '修改', '2019-07-23 11:31:14');
-INSERT INTO `operate_log` VALUES (184, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '廉政信息上报', '查看', '2019-07-23 11:31:15');
-INSERT INTO `operate_log` VALUES (185, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '廉政信息上报', '删除', '2019-07-23 11:31:23');
-INSERT INTO `operate_log` VALUES (186, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 2, '高鹤洪', '江苏省淮安市公安局淮安分局', '嘉奖', '查看', '2019-07-23 13:36:52');
-INSERT INTO `operate_log` VALUES (187, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '个人基本情况报备', '查看', '2019-07-23 13:37:53');
-INSERT INTO `operate_log` VALUES (188, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '个人基本情况报备', '查看', '2019-07-23 13:47:22');
-INSERT INTO `operate_log` VALUES (189, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '个人基本情况报备', '查看', '2019-07-23 13:47:26');
-INSERT INTO `operate_log` VALUES (190, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '个人认为需要报告的其他事项', '查看', '2019-07-23 13:47:30');
-INSERT INTO `operate_log` VALUES (191, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '个人认为需要报告的其他事项', '查看', '2019-07-23 13:47:33');
-INSERT INTO `operate_log` VALUES (192, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '本人婚姻情况', '查看', '2019-07-23 13:47:45');
-INSERT INTO `operate_log` VALUES (193, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '队伍思想状况上报', '添加', '2019-07-23 14:54:31');
-INSERT INTO `operate_log` VALUES (194, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '队伍思想状况上报', '添加', '2019-07-23 14:55:02');
-INSERT INTO `operate_log` VALUES (195, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '主体责任上报', '添加', '2019-07-23 15:26:35');
-INSERT INTO `operate_log` VALUES (196, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '主体责任上报', '查看', '2019-07-23 15:26:39');
-INSERT INTO `operate_log` VALUES (197, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '主体责任上报', '查看', '2019-07-23 15:26:44');
-INSERT INTO `operate_log` VALUES (198, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '主体责任上报', '查看', '2019-07-23 15:26:49');
-INSERT INTO `operate_log` VALUES (199, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '主体责任上报', '查看', '2019-07-23 15:26:52');
-INSERT INTO `operate_log` VALUES (200, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '主体责任上报', '查看', '2019-07-23 15:26:55');
-INSERT INTO `operate_log` VALUES (201, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '主体责任上报', '查看', '2019-07-23 15:38:44');
-INSERT INTO `operate_log` VALUES (202, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 65, '杨志萍', '江苏省淮安市公安局淮安分局出入境管理大队', '一般干部违纪情况登记表', '查看', '2019-07-23 15:40:43');
-INSERT INTO `operate_log` VALUES (203, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 65, '杨志萍', '江苏省淮安市公安局淮安分局出入境管理大队', '一般干部违纪情况登记表', '修改', '2019-07-23 15:41:33');
-INSERT INTO `operate_log` VALUES (204, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 65, '杨志萍', '江苏省淮安市公安局淮安分局出入境管理大队', '一般干部违纪情况登记表', '查看', '2019-07-23 15:41:43');
-INSERT INTO `operate_log` VALUES (205, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部被群众信访举报情况登记表', '添加', '2019-07-23 15:43:31');
-INSERT INTO `operate_log` VALUES (206, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部被群众信访举报情况登记表', '添加', '2019-07-23 15:46:33');
-INSERT INTO `operate_log` VALUES (207, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部被群众信访举报情况登记表', '查看', '2019-07-23 15:46:39');
-INSERT INTO `operate_log` VALUES (208, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部被群众信访举报情况登记表', '查看', '2019-07-23 15:46:44');
-INSERT INTO `operate_log` VALUES (209, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 44, '宋超', '江苏省淮安市公安局淮安分局政治处', '一般干部被群众信访举报情况登记表', '添加', '2019-07-23 15:49:18');
-INSERT INTO `operate_log` VALUES (210, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 44, '宋超', '江苏省淮安市公安局淮安分局政治处', '一般干部被群众信访举报情况登记表', '查看', '2019-07-23 15:49:26');
-INSERT INTO `operate_log` VALUES (211, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 44, '宋超', '江苏省淮安市公安局淮安分局政治处', '一般干部被群众信访举报情况登记表', '查看', '2019-07-23 15:49:40');
-INSERT INTO `operate_log` VALUES (212, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部被群众信访举报情况登记表', '查看', '2019-07-23 15:49:42');
-INSERT INTO `operate_log` VALUES (213, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部被群众信访举报情况登记表', '查看', '2019-07-23 15:49:46');
-INSERT INTO `operate_log` VALUES (214, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部被通报情况登记表', '添加', '2019-07-23 16:20:38');
-INSERT INTO `operate_log` VALUES (215, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部被通报情况登记表', '查看', '2019-07-23 16:20:47');
-INSERT INTO `operate_log` VALUES (216, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 58, '孙晓鸿', '江苏省淮安市公安局淮安分局单位内部安全保卫大队', '一般干部被通报情况登记表', '查看', '2019-07-23 16:20:50');
-INSERT INTO `operate_log` VALUES (217, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '一般干部被通报情况登记表', '添加', '2019-07-23 16:21:20');
-INSERT INTO `operate_log` VALUES (218, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '一般干部被通报情况登记表', '查看', '2019-07-23 16:21:32');
-INSERT INTO `operate_log` VALUES (219, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部被通报情况登记表', '查看', '2019-07-23 16:21:38');
-INSERT INTO `operate_log` VALUES (220, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 58, '孙晓鸿', '江苏省淮安市公安局淮安分局单位内部安全保卫大队', '一般干部被通报情况登记表', '查看', '2019-07-23 16:21:41');
-INSERT INTO `operate_log` VALUES (221, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '一般干部被通报情况登记表', '添加', '2019-07-23 16:22:03');
-INSERT INTO `operate_log` VALUES (222, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '一般干部被通报情况登记表', '查看', '2019-07-23 16:22:10');
-INSERT INTO `operate_log` VALUES (223, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 80, '任中林', '江苏省淮安市公安局淮安分局警务保障室', '个人基本情况报备', '查看', '2019-07-23 16:48:25');
-INSERT INTO `operate_log` VALUES (224, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 80, '任中林', '江苏省淮安市公安局淮安分局警务保障室', '个人基本情况报备', '查看', '2019-07-23 16:48:29');
-INSERT INTO `operate_log` VALUES (225, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 80, '任中林', '江苏省淮安市公安局淮安分局警务保障室', '个人基本情况报备', '查看', '2019-07-23 16:48:33');
-INSERT INTO `operate_log` VALUES (226, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 80, '任中林', '江苏省淮安市公安局淮安分局警务保障室', '个人基本情况报备', '查看', '2019-07-23 16:48:44');
-INSERT INTO `operate_log` VALUES (227, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 80, '任中林', '江苏省淮安市公安局淮安分局警务保障室', '个人基本情况报备', '查看', '2019-07-23 16:48:47');
-INSERT INTO `operate_log` VALUES (228, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '本人婚姻情况', '查看', '2019-07-23 17:02:24');
-INSERT INTO `operate_log` VALUES (229, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '本人婚姻情况', '查看', '2019-07-23 17:04:38');
-INSERT INTO `operate_log` VALUES (230, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '一般干部廉政谈话情况登记表', '添加', '2019-07-23 17:11:56');
-INSERT INTO `operate_log` VALUES (231, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '一般干部廉政谈话情况登记表', '查看', '2019-07-23 17:12:06');
-INSERT INTO `operate_log` VALUES (232, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '一般干部廉政谈话情况登记表', '添加', '2019-07-23 17:12:48');
-INSERT INTO `operate_log` VALUES (233, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '一般干部廉政谈话情况登记表', '查看', '2019-07-23 17:12:57');
-INSERT INTO `operate_log` VALUES (234, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '一般干部廉政谈话情况登记表', '查看', '2019-07-23 17:13:13');
-INSERT INTO `operate_log` VALUES (235, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '一般干部廉政谈话情况登记表', '查看', '2019-07-23 17:13:24');
-INSERT INTO `operate_log` VALUES (236, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '一般干部廉政谈话情况登记表', '查看', '2019-07-23 17:13:29');
-INSERT INTO `operate_log` VALUES (237, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '一般干部廉政谈话情况登记表', '查看', '2019-07-23 17:22:03');
-INSERT INTO `operate_log` VALUES (238, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '一般干部廉政谈话情况登记表', '查看', '2019-07-23 17:22:55');
-INSERT INTO `operate_log` VALUES (239, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '一般干部廉政谈话情况登记表', '查看', '2019-07-23 17:23:00');
-INSERT INTO `operate_log` VALUES (240, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '一般干部廉政谈话情况登记表', '查看', '2019-07-23 17:41:05');
-INSERT INTO `operate_log` VALUES (241, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '嘉奖', '添加', '2019-07-23 17:41:10');
-INSERT INTO `operate_log` VALUES (242, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '一般干部廉政谈话情况登记表', '查看', '2019-07-23 17:41:17');
-INSERT INTO `operate_log` VALUES (243, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '嘉奖', '添加', '2019-07-23 17:41:28');
-INSERT INTO `operate_log` VALUES (244, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '通报表扬', '添加', '2019-07-23 17:41:38');
-INSERT INTO `operate_log` VALUES (245, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '通报表扬', '添加', '2019-07-23 17:41:49');
-INSERT INTO `operate_log` VALUES (246, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '嘉奖', '添加', '2019-07-23 17:41:59');
-INSERT INTO `operate_log` VALUES (247, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '一般干部廉政谈话情况登记表', '查看', '2019-07-23 17:42:18');
-INSERT INTO `operate_log` VALUES (248, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '一般干部廉政谈话情况登记表', '查看', '2019-07-23 17:42:28');
-INSERT INTO `operate_log` VALUES (249, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '三等功', '添加', '2019-07-23 17:43:13');
-INSERT INTO `operate_log` VALUES (250, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '通报表扬', '添加', '2019-07-23 17:43:22');
-INSERT INTO `operate_log` VALUES (251, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '嘉奖', '添加', '2019-07-23 17:43:33');
-INSERT INTO `operate_log` VALUES (252, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '二等功', '添加', '2019-07-23 17:43:46');
-INSERT INTO `operate_log` VALUES (253, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 65, '杨志萍', '江苏省淮安市公安局淮安分局出入境管理大队', '一般干部违纪情况登记表', '查看', '2019-07-23 17:51:48');
-INSERT INTO `operate_log` VALUES (254, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 65, '杨志萍', '江苏省淮安市公安局淮安分局出入境管理大队', '一般干部违纪情况登记表', '修改', '2019-07-23 17:51:59');
-INSERT INTO `operate_log` VALUES (255, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 2, '高鹤洪', '江苏省淮安市公安局淮安分局', '嘉奖', '查看', '2019-07-23 17:52:08');
-INSERT INTO `operate_log` VALUES (256, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '嘉奖', '查看', '2019-07-23 17:52:13');
-INSERT INTO `operate_log` VALUES (257, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 80, '任中林', '江苏省淮安市公安局淮安分局警务保障室', '个人基本情况报备', '查看', '2019-07-23 17:53:08');
-INSERT INTO `operate_log` VALUES (258, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 80, '任中林', '江苏省淮安市公安局淮安分局警务保障室', '个人基本情况报备', '查看', '2019-07-23 17:53:57');
-INSERT INTO `operate_log` VALUES (259, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '个人基本情况报备', '查看', '2019-07-23 17:54:07');
-INSERT INTO `operate_log` VALUES (260, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '本人婚姻情况', '查看', '2019-07-23 17:56:12');
-INSERT INTO `operate_log` VALUES (261, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '本人婚姻情况', '查看', '2019-07-23 17:56:36');
-INSERT INTO `operate_log` VALUES (262, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '操办宴席申请表  ', '查看', '2019-07-23 18:03:56');
-INSERT INTO `operate_log` VALUES (263, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '本人婚姻情况', '查看', '2019-07-23 18:04:19');
-INSERT INTO `operate_log` VALUES (264, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '操办宴席申请表  ', '查看', '2019-07-23 18:04:51');
-INSERT INTO `operate_log` VALUES (265, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '操办宴席申请表  ', '查看', '2019-07-23 18:05:14');
-INSERT INTO `operate_log` VALUES (266, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 2, '高鹤洪', '江苏省淮安市公安局淮安分局', '嘉奖', '查看', '2019-07-23 18:08:17');
-INSERT INTO `operate_log` VALUES (267, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 2, '高鹤洪', '江苏省淮安市公安局淮安分局', '嘉奖', '查看', '2019-07-23 18:08:28');
-INSERT INTO `operate_log` VALUES (268, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '通报表扬', '查看', '2019-07-23 18:08:31');
-INSERT INTO `operate_log` VALUES (269, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '嘉奖', '查看', '2019-07-23 18:08:45');
-INSERT INTO `operate_log` VALUES (270, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '二等功', '查看', '2019-07-23 18:08:47');
-INSERT INTO `operate_log` VALUES (271, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 2, '高鹤洪', '江苏省淮安市公安局淮安分局', '嘉奖', '查看', '2019-07-23 18:09:17');
-INSERT INTO `operate_log` VALUES (272, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '子女与港澳以及台湾居民通婚的情况', '查看', '2019-07-23 18:09:29');
-INSERT INTO `operate_log` VALUES (273, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '子女与港澳以及台湾居民通婚的情况', '查看', '2019-07-23 18:11:46');
-INSERT INTO `operate_log` VALUES (274, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '操办宴席申请表  ', '查看', '2019-07-23 18:12:17');
-INSERT INTO `operate_log` VALUES (275, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '操办宴席申请表  ', '查看', '2019-07-23 18:16:49');
-INSERT INTO `operate_log` VALUES (276, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '个人认为需要报告的其他事项', '查看', '2019-07-23 18:25:05');
-INSERT INTO `operate_log` VALUES (277, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '个人认为需要报告的其他事项', '查看', '2019-07-23 18:26:04');
-INSERT INTO `operate_log` VALUES (278, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '个人基本情况报备', '查看', '2019-07-23 18:26:55');
-INSERT INTO `operate_log` VALUES (279, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 65, '杨志萍', '江苏省淮安市公安局淮安分局出入境管理大队', '一般干部违纪情况登记表', '查看', '2019-07-24 08:49:20');
-INSERT INTO `operate_log` VALUES (280, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 44, '宋超', '江苏省淮安市公安局淮安分局政治处', '一般干部违纪情况登记表', '查看', '2019-07-24 08:49:29');
-INSERT INTO `operate_log` VALUES (281, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 44, '宋超', '江苏省淮安市公安局淮安分局政治处', '一般干部违纪情况登记表', '修改', '2019-07-24 08:49:44');
-INSERT INTO `operate_log` VALUES (282, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 65, '杨志萍', '江苏省淮安市公安局淮安分局出入境管理大队', '一般干部违纪情况登记表', '查看', '2019-07-24 08:49:48');
-INSERT INTO `operate_log` VALUES (283, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 44, '宋超', '江苏省淮安市公安局淮安分局政治处', '一般干部违纪情况登记表', '查看', '2019-07-24 08:49:50');
-INSERT INTO `operate_log` VALUES (284, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '添加', '2019-07-24 08:50:21');
-INSERT INTO `operate_log` VALUES (285, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '查看', '2019-07-24 08:50:26');
-INSERT INTO `operate_log` VALUES (286, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 44, '宋超', '江苏省淮安市公安局淮安分局政治处', '一般干部违纪情况登记表', '查看', '2019-07-24 08:50:50');
-INSERT INTO `operate_log` VALUES (287, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 44, '宋超', '江苏省淮安市公安局淮安分局政治处', '一般干部问责情况登记表', '查看', '2019-07-24 08:50:57');
-INSERT INTO `operate_log` VALUES (288, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '一般干部问责情况登记表', '添加', '2019-07-24 08:51:18');
-INSERT INTO `operate_log` VALUES (289, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '一般干部问责情况登记表', '查看', '2019-07-24 08:51:23');
-INSERT INTO `operate_log` VALUES (290, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 44, '宋超', '江苏省淮安市公安局淮安分局政治处', '一般干部问责情况登记表', '查看', '2019-07-24 08:51:25');
-INSERT INTO `operate_log` VALUES (291, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '一般干部问责情况登记表', '添加', '2019-07-24 08:51:39');
-INSERT INTO `operate_log` VALUES (292, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '一般干部问责情况登记表', '查看', '2019-07-24 08:51:46');
-INSERT INTO `operate_log` VALUES (293, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 377, '姬晓东', '江苏省淮安市公安局淮安分局城市管理办公室', '一般干部收受礼品（金）上缴情况登记表', '查看', '2019-07-24 08:52:00');
-INSERT INTO `operate_log` VALUES (294, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 44, '宋超', '江苏省淮安市公安局淮安分局政治处', '一般干部收受礼品（金）上缴情况登记表', '添加', '2019-07-24 08:52:34');
-INSERT INTO `operate_log` VALUES (295, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 44, '宋超', '江苏省淮安市公安局淮安分局政治处', '一般干部收受礼品（金）上缴情况登记表', '查看', '2019-07-24 08:52:49');
-INSERT INTO `operate_log` VALUES (296, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 377, '姬晓东', '江苏省淮安市公安局淮安分局城市管理办公室', '一般干部收受礼品（金）上缴情况登记表', '查看', '2019-07-24 08:52:51');
-INSERT INTO `operate_log` VALUES (297, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '一般干部收受礼品（金）上缴情况登记表', '添加', '2019-07-24 08:53:15');
-INSERT INTO `operate_log` VALUES (298, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '一般干部收受礼品（金）上缴情况登记表', '查看', '2019-07-24 08:53:24');
-INSERT INTO `operate_log` VALUES (299, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '一般干部收受礼品（金）上缴情况登记表', '查看', '2019-07-24 08:53:28');
-INSERT INTO `operate_log` VALUES (300, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '一般干部收受礼品（金）上缴情况登记表', '查看', '2019-07-24 09:31:10');
-INSERT INTO `operate_log` VALUES (301, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 377, '姬晓东', '江苏省淮安市公安局淮安分局城市管理办公室', '一般干部收受礼品（金）上缴情况登记表', '修改', '2019-07-24 09:37:18');
-INSERT INTO `operate_log` VALUES (302, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 377, '姬晓东', '江苏省淮安市公安局淮安分局城市管理办公室', '一般干部收受礼品（金）上缴情况登记表', '查看', '2019-07-24 09:37:37');
-INSERT INTO `operate_log` VALUES (303, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '查看', '2019-07-24 09:57:59');
-INSERT INTO `operate_log` VALUES (304, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部被群众信访举报情况登记表', '添加', '2019-07-24 10:06:02');
-INSERT INTO `operate_log` VALUES (305, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部被群众信访举报情况登记表', '查看', '2019-07-24 10:06:08');
-INSERT INTO `operate_log` VALUES (306, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部被群众信访举报情况登记表', '查看', '2019-07-24 10:06:55');
-INSERT INTO `operate_log` VALUES (307, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 44, '宋超', '江苏省淮安市公安局淮安分局政治处', '一般干部被群众信访举报情况登记表', '查看', '2019-07-24 10:07:01');
-INSERT INTO `operate_log` VALUES (308, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部被群众信访举报情况登记表', '查看', '2019-07-24 10:08:38');
-INSERT INTO `operate_log` VALUES (309, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部被群众信访举报情况登记表', '查看', '2019-07-24 10:27:46');
-INSERT INTO `operate_log` VALUES (310, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '涉警报备表', '查看', '2019-07-24 11:28:38');
-INSERT INTO `operate_log` VALUES (311, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '涉警报备表', '查看', '2019-07-24 11:32:24');
-INSERT INTO `operate_log` VALUES (312, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '涉警报备表', '查看', '2019-07-24 12:24:11');
-INSERT INTO `operate_log` VALUES (313, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '个人认为需要报告的其他事项', '查看', '2019-07-24 12:24:25');
-INSERT INTO `operate_log` VALUES (314, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '涉警报备表', '查看', '2019-07-24 12:26:06');
-INSERT INTO `operate_log` VALUES (315, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '涉警报备表', '查看', '2019-07-24 13:42:53');
-INSERT INTO `operate_log` VALUES (316, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '涉警报备表', '查看', '2019-07-24 13:42:57');
-INSERT INTO `operate_log` VALUES (317, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '涉警报备表', '查看', '2019-07-24 13:45:35');
-INSERT INTO `operate_log` VALUES (318, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '查看', '2019-07-24 13:46:28');
-INSERT INTO `operate_log` VALUES (319, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 65, '杨志萍', '江苏省淮安市公安局淮安分局出入境管理大队', '一般干部违纪情况登记表', '查看', '2019-07-24 13:46:41');
-INSERT INTO `operate_log` VALUES (320, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 44, '宋超', '江苏省淮安市公安局淮安分局政治处', '一般干部违纪情况登记表', '查看', '2019-07-24 13:46:44');
-INSERT INTO `operate_log` VALUES (321, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '涉警报备表', '查看', '2019-07-24 13:52:28');
-INSERT INTO `operate_log` VALUES (322, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '查看', '2019-07-24 13:52:39');
-INSERT INTO `operate_log` VALUES (323, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 65, '杨志萍', '江苏省淮安市公安局淮安分局出入境管理大队', '一般干部违纪情况登记表', '查看', '2019-07-24 13:53:07');
-INSERT INTO `operate_log` VALUES (324, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 44, '宋超', '江苏省淮安市公安局淮安分局政治处', '一般干部违纪情况登记表', '查看', '2019-07-24 13:53:12');
-INSERT INTO `operate_log` VALUES (325, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '查看', '2019-07-24 13:56:53');
-INSERT INTO `operate_log` VALUES (326, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '添加', '2019-07-24 13:59:29');
-INSERT INTO `operate_log` VALUES (327, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '查看', '2019-07-24 14:09:30');
-INSERT INTO `operate_log` VALUES (328, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '借贷（担保）登记表', '查看', '2019-07-24 14:10:07');
-INSERT INTO `operate_log` VALUES (329, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '借贷（担保）登记表', '查看', '2019-07-24 14:10:14');
-INSERT INTO `operate_log` VALUES (330, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '修改', '2019-07-24 14:12:03');
-INSERT INTO `operate_log` VALUES (331, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部被群众信访举报情况登记表', '查看', '2019-07-24 14:12:10');
-INSERT INTO `operate_log` VALUES (332, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部被群众信访举报情况登记表', '查看', '2019-07-24 14:13:23');
-INSERT INTO `operate_log` VALUES (333, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '借贷（担保）登记表', '查看', '2019-07-24 14:15:39');
-INSERT INTO `operate_log` VALUES (334, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '借贷（担保）登记表', '查看', '2019-07-24 14:15:50');
-INSERT INTO `operate_log` VALUES (335, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '借贷（担保）登记表', '查看', '2019-07-24 14:16:22');
-INSERT INTO `operate_log` VALUES (336, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '借贷（担保）登记表', '查看', '2019-07-24 14:16:44');
-INSERT INTO `operate_log` VALUES (337, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '借贷（担保）登记表', '查看', '2019-07-24 14:17:08');
-INSERT INTO `operate_log` VALUES (338, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '借贷（担保）登记表', '查看', '2019-07-24 14:18:30');
-INSERT INTO `operate_log` VALUES (339, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '借贷（担保）登记表', '查看', '2019-07-24 14:20:04');
-INSERT INTO `operate_log` VALUES (340, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '借贷（担保）登记表', '查看', '2019-07-24 14:20:52');
-INSERT INTO `operate_log` VALUES (341, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '借贷（担保）登记表', '查看', '2019-07-24 14:21:16');
-INSERT INTO `operate_log` VALUES (342, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部被群众信访举报情况登记表', '修改', '2019-07-24 14:24:23');
-INSERT INTO `operate_log` VALUES (343, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部被群众信访举报情况登记表', '查看', '2019-07-24 14:24:36');
-INSERT INTO `operate_log` VALUES (344, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部被群众信访举报情况登记表', '修改', '2019-07-24 14:29:36');
-INSERT INTO `operate_log` VALUES (345, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部被群众信访举报情况登记表', '添加', '2019-07-24 14:30:27');
-INSERT INTO `operate_log` VALUES (346, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部被群众信访举报情况登记表', '查看', '2019-07-24 14:30:33');
-INSERT INTO `operate_log` VALUES (347, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '借贷（担保）登记表', '查看', '2019-07-24 14:34:52');
-INSERT INTO `operate_log` VALUES (348, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '借贷（担保）登记表', '查看', '2019-07-24 14:35:21');
-INSERT INTO `operate_log` VALUES (349, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '借贷（担保）登记表', '查看', '2019-07-24 14:35:36');
-INSERT INTO `operate_log` VALUES (350, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '借贷（担保）登记表', '查看', '2019-07-24 14:36:10');
-INSERT INTO `operate_log` VALUES (351, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部被群众信访举报情况登记表', '修改', '2019-07-24 14:51:49');
-INSERT INTO `operate_log` VALUES (352, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '修改', '2019-07-24 14:52:09');
-INSERT INTO `operate_log` VALUES (353, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '一般干部收受礼品（金）上缴情况登记表', '修改', '2019-07-24 14:52:18');
-INSERT INTO `operate_log` VALUES (354, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '二等功', '修改', '2019-07-24 14:52:26');
-INSERT INTO `operate_log` VALUES (355, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '涉警报备表', '查看', '2019-07-24 14:52:36');
-INSERT INTO `operate_log` VALUES (356, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '一般干部廉政谈话情况登记表', '查看', '2019-07-24 15:03:07');
-INSERT INTO `operate_log` VALUES (357, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '一般干部被通报情况登记表', '查看', '2019-07-24 15:03:40');
-INSERT INTO `operate_log` VALUES (358, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '一般干部被通报情况登记表', '查看', '2019-07-24 15:05:42');
-INSERT INTO `operate_log` VALUES (359, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部被群众信访举报情况登记表', '查看', '2019-07-24 15:13:30');
-INSERT INTO `operate_log` VALUES (360, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部被群众信访举报情况登记表', '修改', '2019-07-24 15:13:37');
-INSERT INTO `operate_log` VALUES (361, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '二等功', '查看', '2019-07-24 15:14:02');
-INSERT INTO `operate_log` VALUES (362, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '嘉奖', '查看', '2019-07-24 15:14:05');
-INSERT INTO `operate_log` VALUES (363, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '三等功', '查看', '2019-07-24 15:14:08');
-INSERT INTO `operate_log` VALUES (364, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '查看', '2019-07-24 15:14:19');
-INSERT INTO `operate_log` VALUES (365, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '查看', '2019-07-24 15:14:23');
-INSERT INTO `operate_log` VALUES (366, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 65, '杨志萍', '江苏省淮安市公安局淮安分局出入境管理大队', '一般干部违纪情况登记表', '查看', '2019-07-24 15:14:25');
-INSERT INTO `operate_log` VALUES (367, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 44, '宋超', '江苏省淮安市公安局淮安分局政治处', '一般干部违纪情况登记表', '查看', '2019-07-24 15:14:32');
-INSERT INTO `operate_log` VALUES (368, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '修改', '2019-07-24 15:14:47');
-INSERT INTO `operate_log` VALUES (369, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '查看', '2019-07-24 15:14:52');
-INSERT INTO `operate_log` VALUES (370, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '查看', '2019-07-24 15:14:56');
-INSERT INTO `operate_log` VALUES (371, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 65, '杨志萍', '江苏省淮安市公安局淮安分局出入境管理大队', '一般干部违纪情况登记表', '查看', '2019-07-24 15:14:58');
-INSERT INTO `operate_log` VALUES (372, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '一般干部收受礼品（金）上缴情况登记表', '查看', '2019-07-24 15:15:04');
-INSERT INTO `operate_log` VALUES (373, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 44, '宋超', '江苏省淮安市公安局淮安分局政治处', '一般干部收受礼品（金）上缴情况登记表', '查看', '2019-07-24 15:15:07');
-INSERT INTO `operate_log` VALUES (374, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 377, '姬晓东', '江苏省淮安市公安局淮安分局城市管理办公室', '一般干部收受礼品（金）上缴情况登记表', '查看', '2019-07-24 15:15:10');
-INSERT INTO `operate_log` VALUES (375, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 65, '杨志萍', '江苏省淮安市公安局淮安分局出入境管理大队', '一般干部收受礼品（金）上缴情况登记表', '添加', '2019-07-24 15:18:16');
-INSERT INTO `operate_log` VALUES (376, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 65, '杨志萍', '江苏省淮安市公安局淮安分局出入境管理大队', '一般干部收受礼品（金）上缴情况登记表', '查看', '2019-07-24 15:18:22');
-INSERT INTO `operate_log` VALUES (377, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '一般干部收受礼品（金）上缴情况登记表', '查看', '2019-07-24 15:19:11');
-INSERT INTO `operate_log` VALUES (378, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 377, '姬晓东', '江苏省淮安市公安局淮安分局城市管理办公室', '一般干部收受礼品（金）上缴情况登记表', '查看', '2019-07-24 15:19:13');
-INSERT INTO `operate_log` VALUES (379, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 44, '宋超', '江苏省淮安市公安局淮安分局政治处', '一般干部收受礼品（金）上缴情况登记表', '查看', '2019-07-24 15:19:17');
-INSERT INTO `operate_log` VALUES (380, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '廉政信息上报', '查看', '2019-07-24 15:19:42');
-INSERT INTO `operate_log` VALUES (381, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 65, '杨志萍', '江苏省淮安市公安局淮安分局出入境管理大队', '一般干部收受礼品（金）上缴情况登记表', '查看', '2019-07-24 15:20:02');
-INSERT INTO `operate_log` VALUES (382, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 65, '杨志萍', '江苏省淮安市公安局淮安分局出入境管理大队', '一般干部收受礼品（金）上缴情况登记表', '查看', '2019-07-24 15:24:09');
-INSERT INTO `operate_log` VALUES (383, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '一般干部收受礼品（金）上缴情况登记表', '查看', '2019-07-24 15:24:13');
-INSERT INTO `operate_log` VALUES (384, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 44, '宋超', '江苏省淮安市公安局淮安分局政治处', '一般干部收受礼品（金）上缴情况登记表', '查看', '2019-07-24 15:24:19');
-INSERT INTO `operate_log` VALUES (385, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 377, '姬晓东', '江苏省淮安市公安局淮安分局城市管理办公室', '一般干部收受礼品（金）上缴情况登记表', '查看', '2019-07-24 15:24:22');
-INSERT INTO `operate_log` VALUES (386, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 44, '宋超', '江苏省淮安市公安局淮安分局政治处', '一般干部收受礼品（金）上缴情况登记表', '添加', '2019-07-24 15:26:53');
-INSERT INTO `operate_log` VALUES (387, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 44, '宋超', '江苏省淮安市公安局淮安分局政治处', '一般干部收受礼品（金）上缴情况登记表', '查看', '2019-07-24 15:27:19');
-INSERT INTO `operate_log` VALUES (388, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '借贷（担保）登记表', '查看', '2019-07-24 15:27:19');
-INSERT INTO `operate_log` VALUES (389, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 44, '宋超', '江苏省淮安市公安局淮安分局政治处', '一般干部收受礼品（金）上缴情况登记表', '修改', '2019-07-24 15:27:31');
-INSERT INTO `operate_log` VALUES (390, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 65, '杨志萍', '江苏省淮安市公安局淮安分局出入境管理大队', '一般干部收受礼品（金）上缴情况登记表', '查看', '2019-07-24 15:27:52');
-INSERT INTO `operate_log` VALUES (391, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 44, '宋超', '江苏省淮安市公安局淮安分局政治处', '一般干部收受礼品（金）上缴情况登记表', '查看', '2019-07-24 15:29:36');
-INSERT INTO `operate_log` VALUES (392, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 44, '宋超', '江苏省淮安市公安局淮安分局政治处', '一般干部收受礼品（金）上缴情况登记表', '查看', '2019-07-24 15:29:43');
-INSERT INTO `operate_log` VALUES (393, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '一般干部收受礼品（金）上缴情况登记表', '查看', '2019-07-24 15:29:53');
-INSERT INTO `operate_log` VALUES (394, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 65, '杨志萍', '江苏省淮安市公安局淮安分局出入境管理大队', '一般干部收受礼品（金）上缴情况登记表', '修改', '2019-07-24 15:31:02');
-INSERT INTO `operate_log` VALUES (395, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部收受礼品（金）上缴情况登记表', '添加', '2019-07-24 15:34:56');
-INSERT INTO `operate_log` VALUES (396, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部收受礼品（金）上缴情况登记表', '添加', '2019-07-24 15:37:07');
-INSERT INTO `operate_log` VALUES (397, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部收受礼品（金）上缴情况登记表', '修改', '2019-07-24 15:41:10');
-INSERT INTO `operate_log` VALUES (398, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 44, '宋超', '江苏省淮安市公安局淮安分局政治处', '一般干部收受礼品（金）上缴情况登记表', '添加', '2019-07-24 15:42:08');
-INSERT INTO `operate_log` VALUES (399, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 44, '宋超', '江苏省淮安市公安局淮安分局政治处', '一般干部收受礼品（金）上缴情况登记表', '查看', '2019-07-24 15:42:16');
-INSERT INTO `operate_log` VALUES (400, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 44, '宋超', '江苏省淮安市公安局淮安分局政治处', '一般干部收受礼品（金）上缴情况登记表', '修改', '2019-07-24 15:46:38');
-INSERT INTO `operate_log` VALUES (401, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '主体责任上报', '查看', '2019-07-24 15:46:47');
-INSERT INTO `operate_log` VALUES (402, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '履责纪实上报', '查看', '2019-07-24 15:47:11');
-INSERT INTO `operate_log` VALUES (403, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '查看', '2019-07-24 15:47:34');
-INSERT INTO `operate_log` VALUES (404, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 44, '宋超', '江苏省淮安市公安局淮安分局政治处', '一般干部收受礼品（金）上缴情况登记表', '查看', '2019-07-24 15:50:05');
-INSERT INTO `operate_log` VALUES (405, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部收受礼品（金）上缴情况登记表', '查看', '2019-07-24 15:50:09');
-INSERT INTO `operate_log` VALUES (406, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 44, '宋超', '江苏省淮安市公安局淮安分局政治处', '一般干部收受礼品（金）上缴情况登记表', '修改', '2019-07-24 15:50:29');
-INSERT INTO `operate_log` VALUES (407, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 44, '宋超', '江苏省淮安市公安局淮安分局政治处', '一般干部收受礼品（金）上缴情况登记表', '查看', '2019-07-24 15:50:35');
-INSERT INTO `operate_log` VALUES (408, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部收受礼品（金）上缴情况登记表', '添加', '2019-07-24 15:51:11');
-INSERT INTO `operate_log` VALUES (409, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部收受礼品（金）上缴情况登记表', '查看', '2019-07-24 15:51:16');
-INSERT INTO `operate_log` VALUES (410, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部收受礼品（金）上缴情况登记表', '修改', '2019-07-24 15:51:26');
-INSERT INTO `operate_log` VALUES (411, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部收受礼品（金）上缴情况登记表', '查看', '2019-07-24 15:51:38');
-INSERT INTO `operate_log` VALUES (412, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 44, '宋超', '江苏省淮安市公安局淮安分局政治处', '一般干部收受礼品（金）上缴情况登记表', '查看', '2019-07-24 15:51:41');
-INSERT INTO `operate_log` VALUES (413, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部收受礼品（金）上缴情况登记表', '查看', '2019-07-24 15:51:44');
-INSERT INTO `operate_log` VALUES (414, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '借贷（担保）登记表', '查看', '2019-07-24 15:52:44');
-INSERT INTO `operate_log` VALUES (415, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '借贷（担保）登记表', '查看', '2019-07-24 15:59:36');
-INSERT INTO `operate_log` VALUES (416, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '借贷（担保）登记表', '查看', '2019-07-24 16:07:44');
-INSERT INTO `operate_log` VALUES (417, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '履责纪实上报', '查看', '2019-07-24 16:08:21');
-INSERT INTO `operate_log` VALUES (418, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '借贷（担保）登记表', '查看', '2019-07-24 16:08:35');
-INSERT INTO `operate_log` VALUES (419, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '二等功', '修改', '2019-07-24 16:08:39');
-INSERT INTO `operate_log` VALUES (420, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '借贷（担保）登记表', '查看', '2019-07-24 16:08:40');
-INSERT INTO `operate_log` VALUES (421, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '借贷（担保）登记表', '查看', '2019-07-24 16:08:44');
-INSERT INTO `operate_log` VALUES (422, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '借贷（担保）登记表', '查看', '2019-07-24 16:08:49');
-INSERT INTO `operate_log` VALUES (423, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '借贷（担保）登记表', '查看', '2019-07-24 16:14:46');
-INSERT INTO `operate_log` VALUES (424, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '借贷（担保）登记表', '查看', '2019-07-24 16:15:46');
-INSERT INTO `operate_log` VALUES (425, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '借贷（担保）登记表', '查看', '2019-07-24 16:18:39');
-INSERT INTO `operate_log` VALUES (426, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '借贷（担保）登记表', '查看', '2019-07-24 16:21:05');
-INSERT INTO `operate_log` VALUES (427, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '借贷（担保）登记表', '查看', '2019-07-24 16:22:37');
-INSERT INTO `operate_log` VALUES (428, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '借贷（担保）登记表', '查看', '2019-07-24 16:25:16');
-INSERT INTO `operate_log` VALUES (429, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '借贷（担保）登记表', '查看', '2019-07-24 16:30:57');
-INSERT INTO `operate_log` VALUES (430, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '履责纪实上报', '添加', '2019-07-24 16:42:15');
-INSERT INTO `operate_log` VALUES (431, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '履责纪实上报', '查看', '2019-07-24 16:42:20');
-INSERT INTO `operate_log` VALUES (432, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '履责纪实上报', '添加', '2019-07-24 16:45:18');
-INSERT INTO `operate_log` VALUES (433, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '履责纪实上报', '查看', '2019-07-24 16:45:20');
-INSERT INTO `operate_log` VALUES (434, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '涉警报备表', '查看', '2019-07-24 16:47:18');
-INSERT INTO `operate_log` VALUES (435, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '查看', '2019-07-24 16:48:21');
-INSERT INTO `operate_log` VALUES (436, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '个人基本情况报备', '查看', '2019-07-24 16:48:34');
-INSERT INTO `operate_log` VALUES (437, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '本人婚姻情况', '查看', '2019-07-24 16:53:56');
-INSERT INTO `operate_log` VALUES (438, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '本人持有港澳情况登记表', '查看', '2019-07-24 16:56:14');
-INSERT INTO `operate_log` VALUES (439, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '本人持有港澳情况登记表', '查看', '2019-07-24 16:57:21');
-INSERT INTO `operate_log` VALUES (440, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '本人持有港澳情况登记表', '查看', '2019-07-24 16:57:24');
-INSERT INTO `operate_log` VALUES (441, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '查看', '2019-07-24 16:57:57');
-INSERT INTO `operate_log` VALUES (442, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部被群众信访举报情况登记表', '查看', '2019-07-24 16:58:06');
-INSERT INTO `operate_log` VALUES (443, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部被群众信访举报情况登记表', '查看', '2019-07-24 16:58:26');
-INSERT INTO `operate_log` VALUES (444, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '主体责任上报', '添加', '2019-07-24 17:11:15');
-INSERT INTO `operate_log` VALUES (445, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '主体责任上报', '修改', '2019-07-24 17:11:22');
-INSERT INTO `operate_log` VALUES (446, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '主体责任上报', '查看', '2019-07-24 17:11:24');
-INSERT INTO `operate_log` VALUES (447, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '主体责任上报', '删除', '2019-07-24 17:11:29');
-INSERT INTO `operate_log` VALUES (448, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '队伍思想状况上报', '添加', '2019-07-24 17:11:53');
-INSERT INTO `operate_log` VALUES (449, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '队伍思想状况上报', '修改', '2019-07-24 17:11:57');
-INSERT INTO `operate_log` VALUES (450, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '队伍思想状况上报', '删除', '2019-07-24 17:12:02');
-INSERT INTO `operate_log` VALUES (451, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '队伍思想状况上报', '查看', '2019-07-24 17:12:16');
-INSERT INTO `operate_log` VALUES (452, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '廉政信息上报', '添加', '2019-07-24 17:12:36');
-INSERT INTO `operate_log` VALUES (453, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '廉政信息上报', '修改', '2019-07-24 17:12:40');
-INSERT INTO `operate_log` VALUES (454, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '廉政信息上报', '查看', '2019-07-24 17:12:42');
-INSERT INTO `operate_log` VALUES (455, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '廉政信息上报', '删除', '2019-07-24 17:12:45');
-INSERT INTO `operate_log` VALUES (456, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '履责纪实上报', '添加', '2019-07-24 17:13:05');
-INSERT INTO `operate_log` VALUES (457, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '履责纪实上报', '修改', '2019-07-24 17:13:11');
-INSERT INTO `operate_log` VALUES (458, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '履责纪实上报', '查看', '2019-07-24 17:13:13');
-INSERT INTO `operate_log` VALUES (459, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '履责纪实上报', '删除', '2019-07-24 17:13:18');
-INSERT INTO `operate_log` VALUES (460, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '履责纪实上报', '查看', '2019-07-24 17:15:51');
-INSERT INTO `operate_log` VALUES (461, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '履责纪实上报', '查看', '2019-07-24 17:15:54');
-INSERT INTO `operate_log` VALUES (462, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '履责纪实上报', '查看', '2019-07-24 17:15:57');
-INSERT INTO `operate_log` VALUES (463, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '履责纪实上报', '修改', '2019-07-24 17:16:03');
-INSERT INTO `operate_log` VALUES (464, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '履责纪实上报', '查看', '2019-07-24 17:16:05');
-INSERT INTO `operate_log` VALUES (465, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '履责纪实上报', '查看', '2019-07-24 17:16:08');
-INSERT INTO `operate_log` VALUES (466, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '收受礼品登记表', '查看', '2019-07-24 17:16:24');
-INSERT INTO `operate_log` VALUES (467, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '廉政信息上报', '添加', '2019-07-24 17:17:14');
-INSERT INTO `operate_log` VALUES (468, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '廉政信息上报', '添加', '2019-07-24 17:20:18');
-INSERT INTO `operate_log` VALUES (469, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '廉政信息上报', '查看', '2019-07-24 17:22:33');
-INSERT INTO `operate_log` VALUES (470, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '廉政信息上报', '查看', '2019-07-24 17:22:45');
-INSERT INTO `operate_log` VALUES (471, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '廉政信息上报', '查看', '2019-07-24 17:22:45');
-INSERT INTO `operate_log` VALUES (472, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '队伍思想状况上报', '查看', '2019-07-24 17:23:10');
-INSERT INTO `operate_log` VALUES (473, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '队伍思想状况上报', '查看', '2019-07-24 17:23:38');
-INSERT INTO `operate_log` VALUES (474, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '队伍思想状况上报', '查看', '2019-07-24 17:25:18');
-INSERT INTO `operate_log` VALUES (475, 201, '李林峰', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '本人婚姻情况', '查看', '2019-07-24 17:25:23');
-INSERT INTO `operate_log` VALUES (476, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '主体责任上报', '查看', '2019-07-24 17:27:06');
-INSERT INTO `operate_log` VALUES (477, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '主体责任上报', '查看', '2019-07-24 17:27:54');
-INSERT INTO `operate_log` VALUES (478, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '主体责任上报', '查看', '2019-07-24 17:28:06');
-INSERT INTO `operate_log` VALUES (479, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '主体责任上报', '查看', '2019-07-24 17:28:28');
-INSERT INTO `operate_log` VALUES (480, 201, '李林峰', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '本人婚姻情况', '查看', '2019-07-24 17:28:53');
-INSERT INTO `operate_log` VALUES (481, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '主体责任上报', '查看', '2019-07-24 17:28:59');
-INSERT INTO `operate_log` VALUES (482, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '主体责任上报', '查看', '2019-07-24 17:29:01');
-INSERT INTO `operate_log` VALUES (483, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 4, '童云飞', '江苏省淮安市公安局淮安分局', '主体责任上报', '查看', '2019-07-24 17:29:27');
-INSERT INTO `operate_log` VALUES (484, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部被群众信访举报情况登记表', '修改', '2019-07-24 17:30:22');
-INSERT INTO `operate_log` VALUES (485, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '添加', '2019-07-24 17:31:11');
-INSERT INTO `operate_log` VALUES (486, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '查看', '2019-07-24 17:31:17');
-INSERT INTO `operate_log` VALUES (487, 201, '李林峰', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '本人婚姻情况', '查看', '2019-07-24 17:32:10');
-INSERT INTO `operate_log` VALUES (488, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '查看', '2019-07-24 17:32:27');
-INSERT INTO `operate_log` VALUES (489, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '添加', '2019-07-24 17:35:44');
-INSERT INTO `operate_log` VALUES (490, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '查看', '2019-07-24 17:35:47');
-INSERT INTO `operate_log` VALUES (491, 201, '李林峰', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '本人婚姻情况', '查看', '2019-07-24 17:37:36');
-INSERT INTO `operate_log` VALUES (492, 201, '李林峰', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '本人婚姻情况', '审核通过', '2019-07-24 17:38:29');
-INSERT INTO `operate_log` VALUES (493, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '二等功', '查看', '2019-07-24 17:39:58');
-INSERT INTO `operate_log` VALUES (494, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '本人婚姻情况', '查看', '2019-07-24 17:40:23');
-INSERT INTO `operate_log` VALUES (495, 201, '李林峰', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '本人婚姻情况', '查看', '2019-07-24 17:40:29');
-INSERT INTO `operate_log` VALUES (496, 201, '李林峰', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '本人婚姻情况', '查看', '2019-07-24 17:40:33');
-INSERT INTO `operate_log` VALUES (497, 201, '李林峰', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '本人婚姻情况', '审核驳回', '2019-07-24 17:40:53');
-INSERT INTO `operate_log` VALUES (498, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '通报表扬', '添加', '2019-07-24 17:41:15');
-INSERT INTO `operate_log` VALUES (499, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '通报表扬', '查看', '2019-07-24 17:41:22');
-INSERT INTO `operate_log` VALUES (500, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '查看', '2019-07-24 17:55:53');
-INSERT INTO `operate_log` VALUES (501, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部收受礼品（金）上缴情况登记表', '查看', '2019-07-24 17:56:03');
-INSERT INTO `operate_log` VALUES (502, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '通报表扬', '查看', '2019-07-24 18:01:11');
-INSERT INTO `operate_log` VALUES (503, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '本人婚姻情况', '查看', '2019-07-24 18:17:04');
-INSERT INTO `operate_log` VALUES (504, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '查看', '2019-07-24 18:17:53');
-INSERT INTO `operate_log` VALUES (505, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '添加', '2019-07-24 18:18:32');
-INSERT INTO `operate_log` VALUES (506, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '查看', '2019-07-24 18:18:46');
-INSERT INTO `operate_log` VALUES (507, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部被群众信访举报情况登记表', '修改', '2019-07-24 18:25:39');
-INSERT INTO `operate_log` VALUES (508, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '借贷（担保）登记表', '查看', '2019-07-24 18:38:07');
-INSERT INTO `operate_log` VALUES (509, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '借贷（担保）登记表', '查看', '2019-07-24 18:39:35');
-INSERT INTO `operate_log` VALUES (510, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '本人婚姻情况', '查看', '2019-07-24 18:42:42');
-INSERT INTO `operate_log` VALUES (511, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '廉政信息上报', '查看', '2019-07-24 19:00:04');
-INSERT INTO `operate_log` VALUES (512, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '廉政信息上报', '查看', '2019-07-24 19:01:20');
-INSERT INTO `operate_log` VALUES (513, 187, '陶松', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '本人婚姻情况', '查看', '2019-07-24 19:08:23');
-INSERT INTO `operate_log` VALUES (514, 187, '陶松', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '本人婚姻情况', '查看', '2019-07-24 19:08:45');
-INSERT INTO `operate_log` VALUES (515, 187, '陶松', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '本人婚姻情况', '查看', '2019-07-24 19:08:51');
-INSERT INTO `operate_log` VALUES (516, 187, '陶松', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '本人婚姻情况', '查看', '2019-07-24 19:08:53');
-INSERT INTO `operate_log` VALUES (517, 187, '陶松', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '本人婚姻情况', '查看', '2019-07-24 19:08:56');
-INSERT INTO `operate_log` VALUES (518, 187, '陶松', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '本人婚姻情况', '查看', '2019-07-24 19:09:16');
-INSERT INTO `operate_log` VALUES (519, 187, '陶松', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '本人婚姻情况', '查看', '2019-07-24 19:10:36');
-INSERT INTO `operate_log` VALUES (520, 187, '陶松', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '本人婚姻情况', '查看', '2019-07-24 19:10:39');
-INSERT INTO `operate_log` VALUES (521, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '廉政信息上报', '查看', '2019-07-25 08:43:54');
-INSERT INTO `operate_log` VALUES (522, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '查看', '2019-07-25 08:46:19');
-INSERT INTO `operate_log` VALUES (523, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '查看', '2019-07-25 08:46:33');
-INSERT INTO `operate_log` VALUES (524, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '通报表扬', '查看', '2019-07-25 08:46:37');
-INSERT INTO `operate_log` VALUES (525, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '主体责任上报', '查看', '2019-07-25 08:46:43');
-INSERT INTO `operate_log` VALUES (526, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '队伍思想状况上报', '查看', '2019-07-25 08:46:46');
-INSERT INTO `operate_log` VALUES (527, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '查看', '2019-07-25 08:46:50');
-INSERT INTO `operate_log` VALUES (528, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 44, '宋超', '江苏省淮安市公安局淮安分局政治处', '一般干部收受礼品（金）上缴情况登记表', '查看', '2019-07-25 08:46:55');
-INSERT INTO `operate_log` VALUES (529, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '查看', '2019-07-25 08:46:58');
-INSERT INTO `operate_log` VALUES (530, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '查看', '2019-07-25 08:48:17');
-INSERT INTO `operate_log` VALUES (531, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '查看', '2019-07-25 08:48:21');
-INSERT INTO `operate_log` VALUES (532, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '廉政信息上报', '查看', '2019-07-25 08:48:55');
-INSERT INTO `operate_log` VALUES (533, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '涉警报备表', '查看', '2019-07-25 09:13:09');
-INSERT INTO `operate_log` VALUES (534, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '涉警报备表', '查看', '2019-07-25 09:14:38');
-INSERT INTO `operate_log` VALUES (535, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '其他', '添加', '2019-07-25 09:17:50');
-INSERT INTO `operate_log` VALUES (536, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '其他', '查看', '2019-07-25 09:17:53');
-INSERT INTO `operate_log` VALUES (537, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '其他', '删除', '2019-07-25 09:17:57');
-INSERT INTO `operate_log` VALUES (538, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '通报表扬', '修改', '2019-07-25 09:18:31');
-INSERT INTO `operate_log` VALUES (539, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '通报表扬', '查看', '2019-07-25 09:18:34');
-INSERT INTO `operate_log` VALUES (540, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '查看', '2019-07-25 09:19:01');
-INSERT INTO `operate_log` VALUES (541, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '修改', '2019-07-25 09:19:52');
-INSERT INTO `operate_log` VALUES (542, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '查看', '2019-07-25 09:19:54');
-INSERT INTO `operate_log` VALUES (543, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '修改', '2019-07-25 09:20:16');
-INSERT INTO `operate_log` VALUES (544, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '查看', '2019-07-25 09:20:18');
-INSERT INTO `operate_log` VALUES (545, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '查看', '2019-07-25 09:20:33');
-INSERT INTO `operate_log` VALUES (546, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '修改', '2019-07-25 09:22:00');
-INSERT INTO `operate_log` VALUES (547, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '查看', '2019-07-25 09:22:03');
-INSERT INTO `operate_log` VALUES (548, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '查看', '2019-07-25 09:22:12');
-INSERT INTO `operate_log` VALUES (549, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '修改', '2019-07-25 09:23:38');
-INSERT INTO `operate_log` VALUES (550, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部违纪情况登记表', '查看', '2019-07-25 09:23:39');
-INSERT INTO `operate_log` VALUES (551, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 58, '孙晓鸿', '江苏省淮安市公安局淮安分局单位内部安全保卫大队', '一般干部违纪情况登记表', '添加', '2019-07-25 09:24:59');
-INSERT INTO `operate_log` VALUES (552, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 58, '孙晓鸿', '江苏省淮安市公安局淮安分局单位内部安全保卫大队', '一般干部违纪情况登记表', '查看', '2019-07-25 09:25:00');
-INSERT INTO `operate_log` VALUES (553, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '主体责任上报', '添加', '2019-07-25 09:25:35');
-INSERT INTO `operate_log` VALUES (554, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '主体责任上报', '查看', '2019-07-25 09:25:38');
-INSERT INTO `operate_log` VALUES (555, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '本人婚姻情况', '查看', '2019-07-25 09:25:53');
-INSERT INTO `operate_log` VALUES (556, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部收受礼品（金）上缴情况登记表', '查看', '2019-07-25 09:26:12');
-INSERT INTO `operate_log` VALUES (557, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '本人婚姻情况', '查看', '2019-07-25 09:26:54');
-INSERT INTO `operate_log` VALUES (558, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部收受礼品（金）上缴情况登记表', '修改', '2019-07-25 09:32:21');
-INSERT INTO `operate_log` VALUES (559, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部收受礼品（金）上缴情况登记表', '查看', '2019-07-25 09:32:22');
-INSERT INTO `operate_log` VALUES (560, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 44, '宋超', '江苏省淮安市公安局淮安分局政治处', '一般干部收受礼品（金）上缴情况登记表', '删除', '2019-07-25 09:32:46');
-INSERT INTO `operate_log` VALUES (561, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 14, '王海鸿', '江苏省淮安市公安局淮安分局', '一般干部收受礼品（金）上缴情况登记表', '添加', '2019-07-25 09:40:53');
-INSERT INTO `operate_log` VALUES (562, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 14, '王海鸿', '江苏省淮安市公安局淮安分局', '一般干部收受礼品（金）上缴情况登记表', '查看', '2019-07-25 09:40:55');
-INSERT INTO `operate_log` VALUES (563, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 14, '王海鸿', '江苏省淮安市公安局淮安分局', '一般干部收受礼品（金）上缴情况登记表', '修改', '2019-07-25 09:41:04');
-INSERT INTO `operate_log` VALUES (564, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 14, '王海鸿', '江苏省淮安市公安局淮安分局', '一般干部收受礼品（金）上缴情况登记表', '查看', '2019-07-25 09:41:06');
-INSERT INTO `operate_log` VALUES (565, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 44, '宋超', '江苏省淮安市公安局淮安分局政治处', '一般干部被群众信访举报情况登记表', '添加', '2019-07-25 09:41:46');
-INSERT INTO `operate_log` VALUES (566, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 44, '宋超', '江苏省淮安市公安局淮安分局政治处', '一般干部被群众信访举报情况登记表', '查看', '2019-07-25 09:41:50');
-INSERT INTO `operate_log` VALUES (567, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 44, '宋超', '江苏省淮安市公安局淮安分局政治处', '一般干部被群众信访举报情况登记表', '修改', '2019-07-25 09:43:32');
-INSERT INTO `operate_log` VALUES (568, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 44, '宋超', '江苏省淮安市公安局淮安分局政治处', '一般干部被群众信访举报情况登记表', '查看', '2019-07-25 09:43:33');
-INSERT INTO `operate_log` VALUES (569, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '一般干部被群众信访举报情况登记表', '删除', '2019-07-25 09:43:50');
-INSERT INTO `operate_log` VALUES (570, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '主体责任上报', '添加', '2019-07-25 09:45:00');
-INSERT INTO `operate_log` VALUES (571, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '主体责任上报', '查看', '2019-07-25 09:45:02');
-INSERT INTO `operate_log` VALUES (572, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '主体责任上报', '添加', '2019-07-25 09:45:27');
-INSERT INTO `operate_log` VALUES (573, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '主体责任上报', '查看', '2019-07-25 09:45:29');
-INSERT INTO `operate_log` VALUES (574, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '主体责任上报', '修改', '2019-07-25 09:45:44');
-INSERT INTO `operate_log` VALUES (575, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '主体责任上报', '查看', '2019-07-25 09:45:46');
-INSERT INTO `operate_log` VALUES (576, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '主体责任上报', '查看', '2019-07-25 09:45:48');
-INSERT INTO `operate_log` VALUES (577, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '主体责任上报', '查看', '2019-07-25 09:45:52');
-INSERT INTO `operate_log` VALUES (578, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '主体责任上报', '查看', '2019-07-25 09:45:54');
-INSERT INTO `operate_log` VALUES (579, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '主体责任上报', '查看', '2019-07-25 09:45:57');
-INSERT INTO `operate_log` VALUES (580, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '主体责任上报', '删除', '2019-07-25 09:46:30');
-INSERT INTO `operate_log` VALUES (581, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '队伍思想状况上报', '添加', '2019-07-25 09:46:57');
-INSERT INTO `operate_log` VALUES (582, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '队伍思想状况上报', '查看', '2019-07-25 09:47:00');
-INSERT INTO `operate_log` VALUES (583, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '队伍思想状况上报', '修改', '2019-07-25 09:47:50');
-INSERT INTO `operate_log` VALUES (584, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '队伍思想状况上报', '查看', '2019-07-25 09:47:52');
-INSERT INTO `operate_log` VALUES (585, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '队伍思想状况上报', '删除', '2019-07-25 09:48:40');
-INSERT INTO `operate_log` VALUES (586, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '廉政信息上报', '添加', '2019-07-25 09:49:00');
-INSERT INTO `operate_log` VALUES (587, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '廉政信息上报', '修改', '2019-07-25 09:50:04');
-INSERT INTO `operate_log` VALUES (588, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '廉政信息上报', '查看', '2019-07-25 09:50:06');
-INSERT INTO `operate_log` VALUES (589, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '廉政信息上报', '查看', '2019-07-25 09:50:16');
-INSERT INTO `operate_log` VALUES (590, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '廉政信息上报', '查看', '2019-07-25 09:50:24');
-INSERT INTO `operate_log` VALUES (591, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '履责纪实上报', '添加', '2019-07-25 09:51:25');
-INSERT INTO `operate_log` VALUES (592, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '履责纪实上报', '修改', '2019-07-25 09:53:07');
-INSERT INTO `operate_log` VALUES (593, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '履责纪实上报', '查看', '2019-07-25 09:53:10');
-INSERT INTO `operate_log` VALUES (594, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '履责纪实上报', '修改', '2019-07-25 09:55:54');
-INSERT INTO `operate_log` VALUES (595, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '履责纪实上报', '修改', '2019-07-25 10:04:10');
-INSERT INTO `operate_log` VALUES (596, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '履责纪实上报', '查看', '2019-07-25 10:04:11');
-INSERT INTO `operate_log` VALUES (597, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '履责纪实上报', '查看', '2019-07-25 10:06:41');
-INSERT INTO `operate_log` VALUES (598, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '履责纪实上报', '删除', '2019-07-25 10:06:58');
-INSERT INTO `operate_log` VALUES (599, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '操办宴席申请表  ', '查看', '2019-07-25 10:13:53');
-INSERT INTO `operate_log` VALUES (600, 201, '李林峰', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '借贷（担保）登记表', '查看', '2019-07-25 10:25:21');
-INSERT INTO `operate_log` VALUES (601, 201, '李林峰', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '借贷（担保）登记表', '查看', '2019-07-25 10:25:55');
-INSERT INTO `operate_log` VALUES (602, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 58, '孙晓鸿', '江苏省淮安市公安局淮安分局单位内部安全保卫大队', '一般干部违纪情况登记表', '查看', '2019-07-25 10:28:02');
-INSERT INTO `operate_log` VALUES (603, 201, '李林峰', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '借贷（担保）登记表', '查看', '2019-07-25 10:28:35');
-INSERT INTO `operate_log` VALUES (604, 201, '李林峰', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '借贷（担保）登记表', '查看', '2019-07-25 10:40:46');
-INSERT INTO `operate_log` VALUES (605, 201, '李林峰', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '借贷（担保）登记表', '查看', '2019-07-25 10:40:53');
-INSERT INTO `operate_log` VALUES (606, 201, '李林峰', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '借贷（担保）登记表', '查看', '2019-07-25 10:41:14');
-INSERT INTO `operate_log` VALUES (607, 201, '李林峰', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '借贷（担保）登记表', '查看', '2019-07-25 10:50:26');
-INSERT INTO `operate_log` VALUES (608, 201, '李林峰', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '借贷（担保）登记表', '审核通过', '2019-07-25 10:50:35');
-INSERT INTO `operate_log` VALUES (609, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '借贷（担保）登记表', '查看', '2019-07-25 10:50:49');
-INSERT INTO `operate_log` VALUES (610, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '借贷（担保）登记表', '审核通过', '2019-07-25 10:50:53');
-INSERT INTO `operate_log` VALUES (611, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '借贷（担保）登记表', '查看', '2019-07-25 10:51:13');
-INSERT INTO `operate_log` VALUES (612, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '借贷（担保）登记表', '查看', '2019-07-25 10:51:18');
-INSERT INTO `operate_log` VALUES (613, 201, '李林峰', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '借贷（担保）登记表', '查看', '2019-07-25 10:53:31');
-INSERT INTO `operate_log` VALUES (614, 201, '李林峰', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '借贷（担保）登记表', '审核驳回', '2019-07-25 10:53:36');
-INSERT INTO `operate_log` VALUES (615, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '借贷（担保）登记表', '查看', '2019-07-25 11:17:00');
-INSERT INTO `operate_log` VALUES (616, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '本人婚姻情况', '查看', '2019-07-25 11:17:15');
-INSERT INTO `operate_log` VALUES (617, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '操办宴席申请表  ', '查看', '2019-07-25 11:17:39');
-INSERT INTO `operate_log` VALUES (618, 201, '李林峰', '0:0:0:0:0:0:0:1', 201, '李林峰', '江苏省淮安市公安局淮安分局交通警察大队', '廉政信息上报', '添加', '2019-07-25 11:18:10');
-INSERT INTO `operate_log` VALUES (619, 201, '李林峰', '0:0:0:0:0:0:0:1', 201, '李林峰', '江苏省淮安市公安局淮安分局交通警察大队', '主体责任上报', '添加', '2019-07-25 11:18:28');
-INSERT INTO `operate_log` VALUES (620, 201, '李林峰', '0:0:0:0:0:0:0:1', 201, '李林峰', '江苏省淮安市公安局淮安分局交通警察大队', '主体责任上报', '查看', '2019-07-25 11:18:34');
-INSERT INTO `operate_log` VALUES (621, 201, '李林峰', '0:0:0:0:0:0:0:1', 201, '李林峰', '江苏省淮安市公安局淮安分局交通警察大队', '廉政信息上报', '查看', '2019-07-25 11:18:43');
-INSERT INTO `operate_log` VALUES (622, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 44, '宋超', '江苏省淮安市公安局淮安分局政治处', '一般干部被群众信访举报情况登记表', '修改', '2019-07-25 11:20:01');
-INSERT INTO `operate_log` VALUES (623, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 44, '宋超', '江苏省淮安市公安局淮安分局政治处', '一般干部被群众信访举报情况登记表', '修改', '2019-07-25 11:20:09');
-INSERT INTO `operate_log` VALUES (624, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 44, '宋超', '江苏省淮安市公安局淮安分局政治处', '一般干部被群众信访举报情况登记表', '查看', '2019-07-25 11:20:12');
-INSERT INTO `operate_log` VALUES (625, 201, '李林峰', '0:0:0:0:0:0:0:1', 201, '李林峰', '江苏省淮安市公安局淮安分局交通警察大队', '履责纪实上报', '添加', '2019-07-25 11:21:41');
-INSERT INTO `operate_log` VALUES (626, 201, '李林峰', '0:0:0:0:0:0:0:1', 201, '李林峰', '江苏省淮安市公安局淮安分局交通警察大队', '履责纪实上报', '查看', '2019-07-25 11:21:43');
-INSERT INTO `operate_log` VALUES (627, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '通报表扬', '查看', '2019-07-25 12:14:17');
-INSERT INTO `operate_log` VALUES (628, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '二等功', '查看', '2019-07-25 12:14:20');
-INSERT INTO `operate_log` VALUES (629, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '通报表扬', '查看', '2019-07-25 12:14:22');
-INSERT INTO `operate_log` VALUES (630, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 201, '李林峰', '江苏省淮安市公安局淮安分局交通警察大队', '廉政信息上报', '查看', '2019-07-25 12:14:44');
-INSERT INTO `operate_log` VALUES (631, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '队伍思想状况上报', '查看', '2019-07-25 12:14:47');
-INSERT INTO `operate_log` VALUES (632, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 44, '宋超', '江苏省淮安市公安局淮安分局政治处', '一般干部被群众信访举报情况登记表', '查看', '2019-07-25 12:23:55');
-INSERT INTO `operate_log` VALUES (633, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '借贷（担保）登记表', '查看', '2019-07-25 13:43:28');
-INSERT INTO `operate_log` VALUES (634, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '借贷（担保）登记表', '查看', '2019-07-25 13:43:46');
-INSERT INTO `operate_log` VALUES (635, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '借贷（担保）登记表', '查看', '2019-07-25 13:43:56');
-INSERT INTO `operate_log` VALUES (636, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '操办宴席申请表  ', '查看', '2019-07-25 13:43:58');
-INSERT INTO `operate_log` VALUES (637, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '本人婚姻情况', '查看', '2019-07-25 13:44:18');
-INSERT INTO `operate_log` VALUES (638, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '本人婚姻情况', '查看', '2019-07-25 13:44:34');
-INSERT INTO `operate_log` VALUES (639, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '借贷（担保）登记表', '查看', '2019-07-25 13:45:27');
-INSERT INTO `operate_log` VALUES (640, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '通报表扬', '查看', '2019-07-25 13:45:55');
-INSERT INTO `operate_log` VALUES (641, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '个人基本情况报备', '查看', '2019-07-25 14:00:39');
-INSERT INTO `operate_log` VALUES (642, 546, '郭爱红', '0:0:0:0:0:0:0:1', 546, '郭爱红', '江苏省淮安市公安局淮安分局林集派出所', '廉政信息上报', '添加', '2019-07-25 14:21:46');
-INSERT INTO `operate_log` VALUES (643, 546, '郭爱红', '0:0:0:0:0:0:0:1', 546, '郭爱红', '江苏省淮安市公安局淮安分局林集派出所', '廉政信息上报', '查看', '2019-07-25 14:22:09');
-INSERT INTO `operate_log` VALUES (644, 546, '郭爱红', '0:0:0:0:0:0:0:1', 546, '郭爱红', '江苏省淮安市公安局淮安分局林集派出所', '廉政信息上报', '修改', '2019-07-25 14:22:26');
-INSERT INTO `operate_log` VALUES (645, 546, '郭爱红', '0:0:0:0:0:0:0:1', 546, '郭爱红', '江苏省淮安市公安局淮安分局林集派出所', '廉政信息上报', '添加', '2019-07-25 14:24:03');
-INSERT INTO `operate_log` VALUES (646, 546, '郭爱红', '0:0:0:0:0:0:0:1', 546, '郭爱红', '江苏省淮安市公安局淮安分局林集派出所', '廉政信息上报', '添加', '2019-07-25 14:28:40');
-INSERT INTO `operate_log` VALUES (647, 546, '郭爱红', '0:0:0:0:0:0:0:1', 546, '郭爱红', '江苏省淮安市公安局淮安分局林集派出所', '廉政信息上报', '添加', '2019-07-25 14:30:55');
-INSERT INTO `operate_log` VALUES (648, 546, '郭爱红', '0:0:0:0:0:0:0:1', 546, '郭爱红', '江苏省淮安市公安局淮安分局林集派出所', '廉政信息上报', '添加', '2019-07-25 14:37:53');
-INSERT INTO `operate_log` VALUES (649, 546, '郭爱红', '0:0:0:0:0:0:0:1', 546, '郭爱红', '江苏省淮安市公安局淮安分局林集派出所', '廉政信息上报', '添加', '2019-07-25 14:38:18');
-INSERT INTO `operate_log` VALUES (650, 546, '郭爱红', '0:0:0:0:0:0:0:1', 546, '郭爱红', '江苏省淮安市公安局淮安分局林集派出所', '廉政信息上报', '添加', '2019-07-25 14:40:22');
-INSERT INTO `operate_log` VALUES (651, 546, '郭爱红', '0:0:0:0:0:0:0:1', 546, '郭爱红', '江苏省淮安市公安局淮安分局林集派出所', '廉政信息上报', '删除', '2019-07-25 14:40:27');
-INSERT INTO `operate_log` VALUES (652, 546, '郭爱红', '0:0:0:0:0:0:0:1', 546, '郭爱红', '江苏省淮安市公安局淮安分局林集派出所', '廉政信息上报', '删除', '2019-07-25 14:40:34');
-INSERT INTO `operate_log` VALUES (653, 546, '郭爱红', '0:0:0:0:0:0:0:1', 546, '郭爱红', '江苏省淮安市公安局淮安分局林集派出所', '廉政信息上报', '添加', '2019-07-25 14:42:43');
-INSERT INTO `operate_log` VALUES (654, 546, '郭爱红', '0:0:0:0:0:0:0:1', 546, '郭爱红', '江苏省淮安市公安局淮安分局林集派出所', '廉政信息上报', '添加', '2019-07-25 14:42:48');
-INSERT INTO `operate_log` VALUES (655, 546, '郭爱红', '0:0:0:0:0:0:0:1', 546, '郭爱红', '江苏省淮安市公安局淮安分局林集派出所', '廉政信息上报', '添加', '2019-07-25 14:44:35');
-INSERT INTO `operate_log` VALUES (656, 546, '郭爱红', '0:0:0:0:0:0:0:1', 546, '郭爱红', '江苏省淮安市公安局淮安分局林集派出所', '廉政信息上报', '添加', '2019-07-25 14:45:33');
-INSERT INTO `operate_log` VALUES (657, 546, '郭爱红', '0:0:0:0:0:0:0:1', 546, '郭爱红', '江苏省淮安市公安局淮安分局林集派出所', '廉政信息上报', '添加', '2019-07-25 14:51:23');
-INSERT INTO `operate_log` VALUES (658, 546, '郭爱红', '0:0:0:0:0:0:0:1', 546, '郭爱红', '江苏省淮安市公安局淮安分局林集派出所', '履责纪实上报', '添加', '2019-07-25 14:53:06');
-INSERT INTO `operate_log` VALUES (659, 546, '郭爱红', '0:0:0:0:0:0:0:1', 546, '郭爱红', '江苏省淮安市公安局淮安分局林集派出所', '廉政信息上报', '添加', '2019-07-25 14:54:42');
-INSERT INTO `operate_log` VALUES (660, 546, '郭爱红', '0:0:0:0:0:0:0:1', 546, '郭爱红', '江苏省淮安市公安局淮安分局林集派出所', '履责纪实上报', '添加', '2019-07-25 14:54:54');
-INSERT INTO `operate_log` VALUES (661, 546, '郭爱红', '0:0:0:0:0:0:0:1', 546, '郭爱红', '江苏省淮安市公安局淮安分局林集派出所', '主体责任上报', '添加', '2019-07-25 14:55:55');
-INSERT INTO `operate_log` VALUES (662, 546, '郭爱红', '0:0:0:0:0:0:0:1', 546, '郭爱红', '江苏省淮安市公安局淮安分局林集派出所', '主体责任上报', '添加', '2019-07-25 14:56:18');
-INSERT INTO `operate_log` VALUES (663, 546, '郭爱红', '0:0:0:0:0:0:0:1', 546, '郭爱红', '江苏省淮安市公安局淮安分局林集派出所', '队伍思想状况上报', '添加', '2019-07-25 14:56:48');
-INSERT INTO `operate_log` VALUES (664, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '本人持有港澳情况登记表', '查看', '2019-07-25 15:06:30');
-INSERT INTO `operate_log` VALUES (665, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '本人持有港澳情况登记表', '查看', '2019-07-25 15:07:19');
-INSERT INTO `operate_log` VALUES (666, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '操办宴席申请表  ', '查看', '2019-07-25 15:09:32');
-INSERT INTO `operate_log` VALUES (667, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '借贷（担保）登记表', '查看', '2019-07-25 15:10:01');
-INSERT INTO `operate_log` VALUES (668, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '可能影响公正执行职务报备表', '查看', '2019-07-25 15:10:57');
-INSERT INTO `operate_log` VALUES (669, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '可能影响公正执行职务报备表', '查看', '2019-07-25 15:14:21');
-INSERT INTO `operate_log` VALUES (670, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '借贷（担保）登记表', '查看', '2019-07-25 15:14:26');
-INSERT INTO `operate_log` VALUES (671, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '借贷（担保）登记表', '查看', '2019-07-25 15:14:32');
-INSERT INTO `operate_log` VALUES (672, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '借贷（担保）登记表', '查看', '2019-07-25 15:14:43');
-INSERT INTO `operate_log` VALUES (673, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '可能影响公正执行职务报备表', '查看', '2019-07-25 15:14:48');
-INSERT INTO `operate_log` VALUES (674, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '可能影响公正执行职务报备表', '查看', '2019-07-25 15:16:37');
-INSERT INTO `operate_log` VALUES (675, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '借贷（担保）登记表', '查看', '2019-07-25 15:16:39');
-INSERT INTO `operate_log` VALUES (676, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '本人婚姻情况', '查看', '2019-07-25 15:16:46');
-INSERT INTO `operate_log` VALUES (677, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '可能影响公正执行职务报备表', '查看', '2019-07-25 15:17:03');
-INSERT INTO `operate_log` VALUES (678, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '涉警报备表', '查看', '2019-07-25 15:22:59');
-INSERT INTO `operate_log` VALUES (679, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '可能影响公正执行职务报备表', '查看', '2019-07-25 15:25:18');
-INSERT INTO `operate_log` VALUES (680, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '可能影响公正执行职务报备表', '查看', '2019-07-25 15:25:34');
-INSERT INTO `operate_log` VALUES (681, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '可能影响公正执行职务报备表', '查看', '2019-07-25 15:27:07');
-INSERT INTO `operate_log` VALUES (682, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '可能影响公正执行职务报备表', '查看', '2019-07-25 15:27:32');
-INSERT INTO `operate_log` VALUES (683, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '通报表扬', '查看', '2019-07-25 15:27:49');
-INSERT INTO `operate_log` VALUES (684, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '通报表扬', '查看', '2019-07-25 15:27:51');
-INSERT INTO `operate_log` VALUES (685, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '可能影响公正执行职务报备表', '查看', '2019-07-25 15:29:39');
-INSERT INTO `operate_log` VALUES (686, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 44, '宋超', '江苏省淮安市公安局淮安分局政治处', '一般干部被群众信访举报情况登记表', '查看', '2019-07-25 15:33:10');
-INSERT INTO `operate_log` VALUES (687, 201, '李林峰', '0:0:0:0:0:0:0:1', 201, '李林峰', '江苏省淮安市公安局淮安分局交通警察大队', '主体责任上报', '查看', '2019-07-25 15:55:33');
-INSERT INTO `operate_log` VALUES (688, 201, '李林峰', '0:0:0:0:0:0:0:1', 201, '李林峰', '江苏省淮安市公安局淮安分局交通警察大队', '主体责任上报', '查看', '2019-07-25 15:56:52');
-INSERT INTO `operate_log` VALUES (689, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '通报表扬', '查看', '2019-07-25 15:58:53');
-INSERT INTO `operate_log` VALUES (690, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '通报表扬', '查看', '2019-07-25 15:59:07');
-INSERT INTO `operate_log` VALUES (691, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '通报表扬', '查看', '2019-07-25 15:59:13');
-INSERT INTO `operate_log` VALUES (692, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 546, '郭爱红', '江苏省淮安市公安局淮安分局林集派出所', '主体责任上报', '查看', '2019-07-25 16:01:21');
-INSERT INTO `operate_log` VALUES (693, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 546, '郭爱红', '江苏省淮安市公安局淮安分局林集派出所', '主体责任上报', '查看', '2019-07-25 16:01:23');
-INSERT INTO `operate_log` VALUES (694, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '主体责任上报', '查看', '2019-07-25 16:01:25');
-INSERT INTO `operate_log` VALUES (695, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 546, '郭爱红', '江苏省淮安市公安局淮安分局林集派出所', '廉政信息上报', '查看', '2019-07-25 16:39:42');
-INSERT INTO `operate_log` VALUES (696, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '通报表扬', '查看', '2019-07-25 16:49:04');
-INSERT INTO `operate_log` VALUES (697, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 19, '仇绍峰', '江苏省淮安市公安局淮安分局指挥中心', '二等功', '查看', '2019-07-25 16:49:07');
-INSERT INTO `operate_log` VALUES (698, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '嘉奖', '查看', '2019-07-25 16:49:09');
-INSERT INTO `operate_log` VALUES (699, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '嘉奖', '查看', '2019-07-25 16:49:11');
-INSERT INTO `operate_log` VALUES (700, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '通报表扬', '查看', '2019-07-25 16:55:11');
-INSERT INTO `operate_log` VALUES (701, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '通报表扬', '查看', '2019-07-25 17:03:59');
-INSERT INTO `operate_log` VALUES (702, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '通报表扬', '查看', '2019-07-25 17:10:31');
-INSERT INTO `operate_log` VALUES (703, 15, '刘斌', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '通报表扬', '查看', '2019-07-25 17:24:54');
-INSERT INTO `operate_log` VALUES (704, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '可能影响公正执行职务报备表', '查看', '2019-07-25 17:51:41');
-INSERT INTO `operate_log` VALUES (705, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 50, '徐洪芦', '江苏省淮安市公安局淮安分局警务督察大队', '可能影响公正执行职务报备表', '查看', '2019-07-25 17:52:08');
-INSERT INTO `operate_log` VALUES (706, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '借贷（担保）登记表', '查看', '2019-07-25 17:52:16');
-INSERT INTO `operate_log` VALUES (707, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '本人婚姻情况', '查看', '2019-07-25 17:52:21');
-INSERT INTO `operate_log` VALUES (708, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '借贷（担保）登记表', '查看', '2019-07-25 17:53:12');
-INSERT INTO `operate_log` VALUES (709, 50, '徐洪芦', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '一般干部违纪情况登记表', '添加', '2019-07-25 18:11:20');
-INSERT INTO `operate_log` VALUES (710, 201, '李林峰', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '一般干部违纪情况登记表', '查看', '2019-07-25 18:12:22');
-INSERT INTO `operate_log` VALUES (711, 48, '李冬冬', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '嘉奖', '查看', '2019-07-25 18:51:10');
-INSERT INTO `operate_log` VALUES (712, 48, '李冬冬', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '嘉奖', '修改', '2019-07-25 18:51:13');
-INSERT INTO `operate_log` VALUES (713, 48, '李冬冬', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '一般干部违纪情况登记表', '查看', '2019-07-25 18:52:29');
-INSERT INTO `operate_log` VALUES (714, 48, '李冬冬', '0:0:0:0:0:0:0:1', 15, '刘斌', '江苏省淮安市公安局淮安分局', '通报表扬', '查看', '2019-07-25 18:52:34');
-INSERT INTO `operate_log` VALUES (715, 201, '李林峰', '0:0:0:0:0:0:0:1', 182, '刘玉良', '江苏省淮安市公安局淮安分局交通警察大队', '嘉奖', '查看', '2019-07-25 19:04:58');
+) ENGINE = InnoDB AUTO_INCREMENT = 722 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for organization
@@ -1620,7 +848,7 @@ CREATE TABLE `organization`  (
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '单位名称',
   `parent_id` int(11) NULL DEFAULT NULL COMMENT '父单位id',
   `active` int(1) NOT NULL DEFAULT 1 COMMENT '是否有效，0：无效，1：有效',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 54 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
@@ -1700,18 +928,11 @@ CREATE TABLE `pun_accountability`  (
   `operator` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '填表人',
   `attachment_id` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '附件id，一对多关联attachment',
   `punish_type` int(1) NOT NULL DEFAULT 2 COMMENT '违惩类型：2一般干部问责情况登记表',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '一般干部问责情况登记表' ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of pun_accountability
--- ----------------------------
-INSERT INTO `pun_accountability` VALUES (2, 44, 3, '宋超', '政治处主任、三级警长', '江苏省淮安市公安局淮安分局政治处', '2019-07-01', '诫勉谈话', '胜多负少', '士大夫但是f', 50, '徐洪芦', 'a7335d7abd304c8a8a0245f1d3ea1db0', 2, '2019-07-19 14:31:39');
-INSERT INTO `pun_accountability` VALUES (3, 19, 2, '仇绍峰', '主任、三级警长', '江苏省淮安市公安局淮安分局指挥中心', '2019-07-24', '诫勉谈话', '123', '123', 50, '徐洪芦', 'b88b9c891c5843b0af45c6968c437ed8', 2, '2019-07-24 08:51:18');
-INSERT INTO `pun_accountability` VALUES (4, 19, 2, '仇绍峰', '主任、三级警长', '江苏省淮安市公安局淮安分局指挥中心', '2019-07-24', '诫勉谈话', '13', '123', 50, '徐洪芦', '0', 2, '2019-07-24 08:51:38');
 
 -- ----------------------------
 -- Table structure for pun_gift
@@ -1746,24 +967,11 @@ CREATE TABLE `pun_gift`  (
   `operator` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '填表人',
   `attachment_id` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '附件id，一对多关联attachment',
   `punish_type` int(1) NOT NULL DEFAULT 3 COMMENT '违惩类型：3一般干部收受礼品（金）情况登记表',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '一般干部收受礼品（金）情况登记表' ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of pun_gift
--- ----------------------------
-INSERT INTO `pun_gift` VALUES (1, 377, 18, '姬晓东', '二级警长', '江苏省淮安市公安局淮安分局城市管理办公室', '2019-07-03', '士大夫', 111, 111, 111, 11, '士大夫', '豆腐干', '豆腐干', '2019-07-19', '给对方', '地方g', NULL, NULL, 58, '孙晓鸿', '豆腐干地方士大夫', '豆腐干地方', 1, '徐洪芦', '2e8f13208ab9468cbaba6530a935eca2', 3, '2019-07-19 21:30:35');
-INSERT INTO `pun_gift` VALUES (2, 44, 3, '宋超', '政治处主任、三级警长', '江苏省淮安市公安局淮安分局政治处', '2019-07-24', '123', 123, 123, 123, 13, '123', '123', '123', '2019-07-24', '123', '123', NULL, NULL, 19, '仇绍峰', '123', '13', 50, '徐洪芦', 'a19b3e2ec88944d69f6ef3a0fe25b484', 3, '2019-07-24 08:52:33');
-INSERT INTO `pun_gift` VALUES (3, 19, 2, '仇绍峰', '主任、三级警长', '江苏省淮安市公安局淮安分局指挥中心', '2019-07-24', '123', 13232, 32323, 23232, 232323, '23232', '3232', '3232', '2019-07-24', '32323', '3232', NULL, NULL, 58, '孙晓鸿', '2323', '123123', 3, '徐洪芦', '0', 3, '2019-07-24 08:53:15');
-INSERT INTO `pun_gift` VALUES (4, 65, 6, '杨志萍', '二级警长', '江苏省淮安市公安局淮安分局出入境管理大队', '2019-07-24', '衡水老白干', 2, 2000, 2000, 2000, '老王', '淮安淮安', '财务', '2019-07-24', '淮安', '刑侦', NULL, NULL, 58, '孙晓鸿', '接收', '好喝', 4, '徐洪芦', '0', 3, '2019-07-24 15:18:16');
-INSERT INTO `pun_gift` VALUES (5, 44, 3, '宋超', '政治处主任、三级警长', '江苏省淮安市公安局淮安分局政治处', '2019-07-24', '雷碧', 1000, 4000, 4000, 4000, '小王', '淮安好又多超市', '老板', '2019-07-24', '清江浦区', '经侦', NULL, NULL, 131, '王军', '接收', '过期了', 5, '徐洪芦', '0', 3, '2019-07-24 15:26:52');
-INSERT INTO `pun_gift` VALUES (6, 15, 1, '刘斌', '党委委员、治安警察大队长、三级警长', '江苏省淮安市公安局淮安分局', '2019-07-24', '123', 123, 123, 123, 123, '123', '123', '123', '2019-07-24', '123', '123', NULL, NULL, 19, '仇绍峰', '123', '123', 50, '徐洪芦', '93577f40a5834f32a8e20d9e7630fb21', 3, '2019-07-24 15:34:56');
-INSERT INTO `pun_gift` VALUES (7, 15, 1, '刘斌', '党委委员、治安警察大队长、三级警长', '江苏省淮安市公安局淮安分局', '2019-07-24', '123', 123, 1231, 123, 12312, '23', '123', '31', '2019-07-24', '123', '123', NULL, NULL, 58, '孙晓鸿', '123', '123', 7, '徐洪芦', '6017468d38c147ceafa908cd268224ed', 3, '2019-07-24 15:37:05');
-INSERT INTO `pun_gift` VALUES (9, 15, 1, '刘斌', '党委委员、治安警察大队长、三级警长', '江苏省淮安市公安局淮安分局', '2019-07-24', '急支糖浆', 200, 2000, 2000, 2000, '老豹', '太极集团', '销售', '2019-07-24', '大草原', '政治处', NULL, NULL, 58, '孙晓鸿', '上缴', '就是没有备注', 9, '徐洪芦', 'a380aa6f08f1496696118d9b198e044a', 3, '2019-07-24 15:51:11');
-INSERT INTO `pun_gift` VALUES (10, 14, 1, '王海鸿', '纪检组长、主任科员', '江苏省淮安市公安局淮安分局', '2019-07-25', '香飘飘', 2000, 10000, 10000, 10000, '周杰伦', '香飘飘食品股份有限公司', '代言人', '2019-07-25', '淮安', '法制科', NULL, NULL, 15, '刘斌', '上缴', '杯装奶茶开创者,一年卖出十二亿多杯,连起来可绕地球三圈！', 10, '徐洪芦', 'eaee4536df194461a8deae380d805c0d', 3, '2019-07-25 09:40:53');
 
 -- ----------------------------
 -- Table structure for pun_notice
@@ -1786,19 +994,11 @@ CREATE TABLE `pun_notice`  (
   `operator` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '填表人',
   `attachment_id` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '附件id，一对多关联attachment',
   `punish_type` int(1) NOT NULL DEFAULT 5 COMMENT '违惩类型：5一般干部被通报情况登记表',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '一般干部被通报情况登记表' ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of pun_notice
--- ----------------------------
-INSERT INTO `pun_notice` VALUES (6, 58, 5, '孙晓鸿', '大队长、三级警长', '江苏省淮安市公安局淮安分局单位内部安全保卫大队', '2019-07-16', '市局通报', '通报批评', '1', '士大夫', '士大夫士大夫上单', 50, '徐洪芦', '0', 5, '2019-07-23 10:22:55');
-INSERT INTO `pun_notice` VALUES (7, 15, 1, '刘斌', '党委委员、治安警察大队长、三级警长', '江苏省淮安市公安局淮安分局', '2019-07-23', '分局通报', '通报批评', '1', '123', '123', 50, '徐洪芦', '0', 5, '2019-07-23 16:20:38');
-INSERT INTO `pun_notice` VALUES (8, 19, 2, '仇绍峰', '主任、三级警长', '江苏省淮安市公安局淮安分局指挥中心', '2019-07-23', '分局通报', '通报批评', '1', '222', '22', 50, '徐洪芦', '065a094452464354a63f8337ed379538', 5, '2019-07-23 16:21:20');
-INSERT INTO `pun_notice` VALUES (9, 19, 2, '仇绍峰', '主任、三级警长', '江苏省淮安市公安局淮安分局指挥中心', '2019-07-23', '分局通报', '通报批评', '1', '333', '333', 50, '徐洪芦', '0', 5, '2019-07-23 16:22:03');
 
 -- ----------------------------
 -- Table structure for pun_report
@@ -1828,20 +1028,11 @@ CREATE TABLE `pun_report`  (
   `operator` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '填表人',
   `attachment_id` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '附件id，一对多关联attachment',
   `punish_type` int(1) NOT NULL DEFAULT 6 COMMENT '违惩类型：6一般干部被群众信访举报情况登记表',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '一般干部被群众信访举报情况登记表' ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of pun_report
--- ----------------------------
-INSERT INTO `pun_report` VALUES (4, 15, 1, '刘斌', '党委委员、治安警察大队长、三级警长', '江苏省淮安市公安局淮安分局', '写检举', '123123', '2019-07-23', '123', '123', '2019-07-23', 19, '仇绍峰', '123', '123', '123', '123', NULL, 50, '徐洪芦', '0', 6, '2019-07-23 15:43:31');
-INSERT INTO `pun_report` VALUES (5, 15, 1, '刘斌', '党委委员、治安警察大队长、三级警长', '江苏省淮安市公安局淮安分局', '写检举', '123', '2019-07-23', '123', '132', '2019-07-23', 58, '孙晓鸿', '123', '123', '123', '123', '123', 50, '徐洪芦', '188d458ad4fc4d3da0404693a5c96ad6', 6, '2019-07-23 15:46:33');
-INSERT INTO `pun_report` VALUES (6, 44, 3, '宋超', '政治处主任、三级警长', '江苏省淮安市公安局淮安分局政治处', '写检举', '121', '2019-07-23', '2121', '2121', '2019-07-23', 65, '杨志萍', '123', '12321', '123', '123', '123', 50, '徐洪芦', '0', 6, '2019-07-23 15:49:18');
-INSERT INTO `pun_report` VALUES (7, 15, 1, '刘斌', '党委委员、治安警察大队长、三级警长', '江苏省淮安市公安局淮安分局', '写检举', '13', '2019-07-24', '13', '13888888888', '2019-07-24', 19, '仇绍峰', '123123', '123', '部分属实', '123', '123', 50, '徐洪芦', '0', 6, '2019-07-24 10:06:02');
-INSERT INTO `pun_report` VALUES (9, 44, 3, '宋超', '政治处主任、三级警长', '江苏省淮安市公安局淮安分局政治处', '当面向有关人员举报', '纪检委', '2019-07-25', '老陈', '13555555555', '2019-07-25', 65, '杨志萍', '法制科', '上班上网打游戏', '部分属实', '三天不准上网', '我就是备注', 50, '徐洪芦', '3eb9d309c97f4c03a208221d9011afbc', 6, '2019-07-25 09:41:46');
 
 -- ----------------------------
 -- Table structure for pun_talk
@@ -1868,17 +1059,11 @@ CREATE TABLE `pun_talk`  (
   `operator` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '填表人',
   `attachment_id` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '附件id，一对多关联attachment',
   `punish_type` int(1) NOT NULL DEFAULT 4 COMMENT '违惩类型：4一般干部廉政谈话情况登记表',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '一般干部廉政谈话情况登记表' ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of pun_talk
--- ----------------------------
-INSERT INTO `pun_talk` VALUES (2, 19, 2, '仇绍峰', '主任、三级警长', '江苏省淮安市公安局淮安分局指挥中心', '2019-07-23', '廉政信息', '淮安', 201, '李林峰', '江苏省淮安市公安局淮安分局交通警察大队', '一级警长', '江苏省定省会为淮安', '同意', '确定江苏省省会淮安', 50, '徐洪芦', '86c5d65113d54a119231e6c932c9d3a1', 4, '2019-07-23 17:11:56');
-INSERT INTO `pun_talk` VALUES (3, 19, 2, '仇绍峰', '主任、三级警长', '江苏省淮安市公安局淮安分局指挥中心', '2019-07-23', '廉政信息', '淮安', 201, '李林峰', '江苏省淮安市公安局淮安分局交通警察大队', '一级警长', '123', '123', '123', 50, '徐洪芦', '0', 4, '2019-07-23 17:12:48');
 
 -- ----------------------------
 -- Table structure for pun_violation
@@ -1905,24 +1090,11 @@ CREATE TABLE `pun_violation`  (
   `remark` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '备注',
   `attachment_id` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '附件id，一对多关联attachment',
   `punish_type` int(1) NOT NULL DEFAULT 1 COMMENT '违惩类型：1一般干部违纪情况登记表',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '一般干部违纪情况登记表' ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of pun_violation
--- ----------------------------
-INSERT INTO `pun_violation` VALUES (3, 44, 3, '宋超', '政治处主任、三级警长', '江苏省淮安市公安局淮安分局政治处', '1975-08-19', '男', '政务处分', '降级', '士大夫xzfsdkj士大夫dxfxd', '士大夫', '2019-07-01', 50, '徐洪芦', '士大夫大使馆反对', '士大夫大使馆反对', 'ddddd', '72e5687c473f492385ab89a99253f766', 1, '2019-07-19 10:04:19');
-INSERT INTO `pun_violation` VALUES (4, 65, 6, '杨志萍', '二级警长', '江苏省淮安市公安局淮安分局出入境管理大队', '1966-08-07', '女', '问责', '诫勉谈话', '士大夫 士大夫士大夫上单s地方士大夫\n士大夫上单f士大夫上单\n士大夫士大夫\n士大夫士大夫\n士大夫士大夫', '岁的法国v地方', '2019-07-06', 50, '徐洪芦', '士大夫士大夫 \n发生的士大夫', '士大夫士大夫 \n发生的士大夫', '是讽刺的是', 'ef128091ad684eaaafbde33e65fe165a', 1, '2019-07-19 17:58:27');
-INSERT INTO `pun_violation` VALUES (5, 15, 1, '刘斌', '党委委员、治安警察大队长、三级警长', '江苏省淮安市公安局淮安分局', '1979-11-25', '男', '政务处分', '政务警告', '123', '13123', '2019-07-24', 50, '徐洪芦', '123', '123', '123', '1e21c4be3d804b66b589ed21ced988f0', 1, '2019-07-24 08:50:21');
-INSERT INTO `pun_violation` VALUES (6, 15, 1, '刘斌', '党委委员、治安警察大队长、三级警长', '江苏省淮安市公安局淮安分局', '1979-11-25', '男', '违法', '不移交司法机关', '313123', '123', '2019-07-24', 50, '徐洪芦', '13123', '13123', '123123', '0', 1, '2019-07-24 13:59:29');
-INSERT INTO `pun_violation` VALUES (7, 15, 1, '刘斌', '党委委员、治安警察大队长、三级警长', '江苏省淮安市公安局淮安分局', '1979-11-25', '男', '政务处分', '政务警告', '123', '123', '2019-07-24', 50, '徐洪芦', '123', '123', '123', '0a1687bc37614ffdb3b9e619fc662921', 1, '2019-07-24 17:31:10');
-INSERT INTO `pun_violation` VALUES (8, 15, 1, '刘斌', '党委委员、治安警察大队长、三级警长', '江苏省淮安市公安局淮安分局', '1979-11-25', '男', '政务处分', '政务警告', '111', '111', '2019-07-24', 50, '徐洪芦', '拉三季度福利', '就是干', NULL, 'dab8b9bb574e487d84f0254339d90a62', 1, '2019-07-24 17:35:44');
-INSERT INTO `pun_violation` VALUES (9, 15, 1, '刘斌', '党委委员、治安警察大队长、三级警长', '江苏省淮安市公安局淮安分局', '1979-11-25', '男', '政务处分', '政务警告', '处分', '纪检委', '2019-07-24', 50, '徐洪芦', '大错特错', '看他不爽', '没有备注', 'e1a360342801480483545b39aecf183c', 1, '2019-07-24 18:18:32');
-INSERT INTO `pun_violation` VALUES (10, 58, 5, '孙晓鸿', '大队长、三级警长', '江苏省淮安市公安局淮安分局单位内部安全保卫大队', '1973-10-29', '男', '问责', '调整职务', '正在处理', '纪检委', '2019-07-25', 50, '徐洪芦', '错错错', '看着处理', '还是没有备注', '1fdfbde4417c4f068896d5ce8b9c341d', 1, '2019-07-25 09:24:59');
-INSERT INTO `pun_violation` VALUES (11, 182, 13, '刘玉良', '二级警长', '江苏省淮安市公安局淮安分局交通警察大队', '1966-07-06', '男', '政务处分', '政务警告', '士大夫', '第三方', '2019-07-09', 50, '徐洪芦', '士大夫', '士大夫', '士大夫', 'b965fbc3d57546d186ac744da805d824', 1, '2019-07-25 18:11:20');
 
 -- ----------------------------
 -- Table structure for reward
@@ -1943,29 +1115,11 @@ CREATE TABLE `reward`  (
   `attachment_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '0' COMMENT '附件uuid，关联附件表sourceId，默认0表示没有',
   `operator_name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '操作者姓名',
   `operator_id` int(1) NOT NULL COMMENT '操作者id',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 28 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '奖励信息表' ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of reward
--- ----------------------------
-INSERT INTO `reward` VALUES (12, 2, 1, '高鹤洪', '二级高级警长', '江苏省淮安市公安局淮安分局', '嘉奖', '2019-07-02', '豆腐干地方的法国队 ', '风格化法国回复', '飞跟华飞跟华211111', '91cd8cc1328744d49b288476a265be5d', '徐洪芦', 50, '2019-07-17 17:25:23');
-INSERT INTO `reward` VALUES (14, 65, 6, '杨志萍', '二级警长', '江苏省淮安市公安局淮安分局出入境管理大队', '三等功', '2019-07-09', '士大夫', '士大夫士大夫豆腐干', '豆腐干地方是', '0dec6fe14fd649b4b276588ad8dd4792', '徐洪芦', 50, '2019-07-23 10:39:42');
-INSERT INTO `reward` VALUES (15, 19, 2, '仇绍峰', '主任、三级警长', '江苏省淮安市公安局淮安分局指挥中心', '嘉奖', '2019-07-01', '士大夫', '士大夫s\'d', '手动阀手动阀士大夫士大夫', '0', '徐洪芦', 50, '2019-07-23 17:41:10');
-INSERT INTO `reward` VALUES (16, 15, 1, '刘斌', '党委委员、治安警察大队长、三级警长', '江苏省淮安市公安局淮安分局', '嘉奖', '2019-07-01', '撒旦发射点', '士大夫s', '士大夫士大夫上单发', '0', '徐洪芦', 50, '2019-07-23 17:41:28');
-INSERT INTO `reward` VALUES (17, 15, 1, '刘斌', '党委委员、治安警察大队长、三级警长', '江苏省淮安市公安局淮安分局', '通报表扬', '2019-07-09', '士大夫士大夫', '士大夫s\'d', '士大夫士大夫  ', '0', '徐洪芦', 50, '2019-07-23 17:41:38');
-INSERT INTO `reward` VALUES (18, 15, 1, '刘斌', '党委委员、治安警察大队长、三级警长', '江苏省淮安市公安局淮安分局', '通报表扬', '2019-07-01', '手动阀手动阀', '士大夫施工方法的', '豆腐干豆腐干地方 ', '0', '徐洪芦', 50, '2019-07-23 17:41:49');
-INSERT INTO `reward` VALUES (19, 15, 1, '刘斌', '党委委员、治安警察大队长、三级警长', '江苏省淮安市公安局淮安分局', '嘉奖', '2019-07-08', '撒旦发射点', '士大夫的官方', '豆腐干法山豆根地方给f', '0', '徐洪芦', 50, '2019-07-23 17:41:59');
-INSERT INTO `reward` VALUES (20, 15, 1, '刘斌', '党委委员、治安警察大队长、三级警长', '江苏省淮安市公安局淮安分局', '三等功', '2019-07-01', '大师傅似的', '士大夫上单', '第三方上单夫士大夫士大夫上单', '0', '徐洪芦', 50, '2019-07-23 17:43:13');
-INSERT INTO `reward` VALUES (21, 15, 1, '刘斌', '党委委员、治安警察大队长、三级警长', '江苏省淮安市公安局淮安分局', '通报表扬', '2019-07-01', '的分公司的', '士大夫士大夫是', '士大夫士大夫上单发生的发生的', '0', '徐洪芦', 50, '2019-07-23 17:43:22');
-INSERT INTO `reward` VALUES (22, 19, 2, '仇绍峰', '主任、三级警长', '江苏省淮安市公安局淮安分局指挥中心', '嘉奖', '2019-07-02', '手动阀手动阀', 's撒旦发射点夫士大夫上单', '士大夫士大夫士大夫上单发生的', '0', '徐洪芦', 50, '2019-07-23 17:43:33');
-INSERT INTO `reward` VALUES (23, 19, 2, '仇绍峰', '主任、三级警长', '江苏省淮安市公安局淮安分局指挥中心', '二等功', '2019-07-02', '手动阀手动阀', '士大夫士大夫s\'d', '上的豆腐干豆腐干地方鬼地方鬼地方', '0', '徐洪芦', 50, '2019-07-23 17:43:46');
-INSERT INTO `reward` VALUES (24, 15, 1, '刘斌', '党委委员、治安警察大队长、三级警长', '江苏省淮安市公安局淮安分局', '通报表扬', '2019-07-24', '纪检委', '通报表扬', '没有备注', 'c4c5f4727fe944dbbd2534792e96ad3c', '徐洪芦', 50, '2019-07-24 17:41:15');
-INSERT INTO `reward` VALUES (26, 560, 49, '梁辉', '三级警长', '江苏省淮安市公安局淮安分局禁毒大队', '通报表扬', '2019-07-10', '士大夫大师傅', '士大夫', '士大夫', '28c3120ffdb849d2b4cd6e89cfe54379', '李冬冬', 48, '2019-07-25 17:31:01');
-INSERT INTO `reward` VALUES (27, 182, 13, '刘玉良', '二级警长', '江苏省淮安市公安局淮安分局交通警察大队', '嘉奖', '2019-07-09', '双方的', '士大夫', '士大夫士大夫', '81b75a18cabd4643aa49b5af7c745b18', '李冬冬', 48, '2019-07-25 18:21:58');
 
 -- ----------------------------
 -- Table structure for role
@@ -1975,7 +1129,7 @@ CREATE TABLE `role`  (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
   `role_name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '角色名',
   `active` int(1) NOT NULL DEFAULT 1 COMMENT '是否有效，0：无效，1：有效',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `uk_name`(`role_name`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '角色表(关联user表)' ROW_FORMAT = Compact;
@@ -2067,40 +1221,10 @@ CREATE TABLE `rpt_incorrupt`  (
   `organization_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '单位名称',
   `title` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '标题',
   `content` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '内容',
-  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 35 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '廉政信息表' ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of rpt_incorrupt
--- ----------------------------
-INSERT INTO `rpt_incorrupt` VALUES (2, 50, '徐洪芦', 4, '江苏省淮安市公安局淮安分局警务督察大队', '淮安淮安1111新时代', '淮安新闻撒地方撒地方 ', '2019-07-19 16:23:21');
-INSERT INTO `rpt_incorrupt` VALUES (3, 50, '徐洪芦', 4, '江苏省淮安市公安局淮安分局警务督察大队', '淮安新闻联播', '淮安最新的新闻', '2019-07-19 16:24:57');
-INSERT INTO `rpt_incorrupt` VALUES (4, 50, '徐洪芦', 4, '江苏省淮安市公安局淮安分局警务督察大队', '000000000000', '123', '2019-07-19 16:31:27');
-INSERT INTO `rpt_incorrupt` VALUES (5, 50, '徐洪芦', 4, '江苏省淮安市公安局淮安分局警务督察大队', '20190722', '20190722', '2019-07-22 10:32:51');
-INSERT INTO `rpt_incorrupt` VALUES (6, 50, '徐洪芦', 4, '江苏省淮安市公安局淮安分局警务督察大队', '特大新闻', '特大新闻', '2019-07-22 10:47:58');
-INSERT INTO `rpt_incorrupt` VALUES (9, 50, '徐洪芦', 4, '江苏省淮安市公安局淮安分局警务督察大队', '111', '222', '2019-07-22 17:49:24');
-INSERT INTO `rpt_incorrupt` VALUES (12, 50, '徐洪芦', 4, '江苏省淮安市公安局淮安分局警务督察大队', '6666', '5', '2019-07-22 17:49:51');
-INSERT INTO `rpt_incorrupt` VALUES (13, 50, '徐洪芦', 4, '江苏省淮安市公安局淮安分局警务督察大队', '55555666666666666666', '55555\r\n', '2019-07-22 17:51:37');
-INSERT INTO `rpt_incorrupt` VALUES (14, 50, '徐洪芦', 4, '江苏省淮安市公安局淮安分局警务督察大队', '123123', '12312321', '2019-07-23 11:14:35');
-INSERT INTO `rpt_incorrupt` VALUES (15, 50, '徐洪芦', 4, '江苏省淮安市公安局淮安分局警务督察大队', '11222', '3333', '2019-07-23 11:18:16');
-INSERT INTO `rpt_incorrupt` VALUES (16, 50, '徐洪芦', 4, '江苏省淮安市公安局淮安分局警务督察大队', '地方史蒂夫防守打法撒地方撒地方', '史蒂夫都是', '2019-07-23 11:30:33');
-INSERT INTO `rpt_incorrupt` VALUES (18, 50, '徐洪芦', 4, '江苏省淮安市公安局淮安分局警务督察大队', '请问请问', '请问请问', '2019-07-24 17:17:14');
-INSERT INTO `rpt_incorrupt` VALUES (19, 50, '徐洪芦', 4, '江苏省淮安市公安局淮安分局警务督察大队', '123123', '132123123', '2019-07-24 17:20:17');
-INSERT INTO `rpt_incorrupt` VALUES (20, 50, '徐洪芦', 4, '江苏省淮安市公安局淮安分局警务督察大队', '淮安一楼房外电瓶车起火致二人死亡，车主被判赔偿96万', '大年初一凌晨，停放在出租楼下的电动车突然起火引发火灾，造成2人死亡的严重后果，2名遇难者的家属将电动车所有者上法庭。近日，淮安区人民法院林集法庭对这两起生命权、健康权、身体权纠纷作出一审判决，判决电瓶车所有者承担全责，分别赔偿两名死者家属96万余元。案件缘起\n　　2018年2月16日凌晨时，淮安市淮安区某镇发生火灾，烧毁了电瓶车、杂物、楼房等，该事故造成居住在该楼房的住户邵某及外孙女范某死亡。该案件由消防部门认定，起火原因为二轮电瓶车电线故障引燃可燃物着火所致。医院诊断证明书确认：二遇难者为呼吸道烧伤、重度烧伤，经抢救无效死亡。而该电瓶车的所有人为刘某、陶某夫妇。争议焦点\n　　在该案件中，双方当事人对案件事实均无异议，争议的主要焦点为过错责任在本案中应当如何分担。被告刘某、陶某认为，导致火灾事故发生的本质原因是电动车质量问题，并非本案两被告的过错责任问题。根据《侵权责任法》规定，必须查明本案两被告有过错，才能判决其承担赔偿责任，但根据消防部门的事故认定书已经确认是电动车故障引燃周边可燃物导致的火灾，本案两被告无过错。　　法院综合判断', '2019-07-25 09:49:00');
-INSERT INTO `rpt_incorrupt` VALUES (21, 201, '李林峰', 13, '江苏省淮安市公安局淮安分局交通警察大队', '士大夫s', '时尚大方手动阀手动阀 ', '2019-07-25 11:18:10');
-INSERT INTO `rpt_incorrupt` VALUES (22, 546, '郭爱红', 46, '江苏省淮安市公安局淮安分局林集派出所', '我爱我家', '按时缴费了', '2019-07-25 14:21:46');
-INSERT INTO `rpt_incorrupt` VALUES (23, 546, '郭爱红', 46, '江苏省淮安市公安局淮安分局林集派出所', '1111111111', '11111111111', '2019-07-25 14:24:03');
-INSERT INTO `rpt_incorrupt` VALUES (24, 546, '郭爱红', 46, '江苏省淮安市公安局淮安分局林集派出所', '123', '123', '2019-07-25 14:28:40');
-INSERT INTO `rpt_incorrupt` VALUES (25, 546, '郭爱红', 46, '江苏省淮安市公安局淮安分局林集派出所', '222', '222', '2019-07-25 14:30:52');
-INSERT INTO `rpt_incorrupt` VALUES (26, 546, '郭爱红', 46, '江苏省淮安市公安局淮安分局林集派出所', '121', '12121', '2019-07-25 14:37:52');
-INSERT INTO `rpt_incorrupt` VALUES (29, 546, '郭爱红', 46, '江苏省淮安市公安局淮安分局林集派出所', '123', '123', '2019-07-25 14:42:43');
-INSERT INTO `rpt_incorrupt` VALUES (30, 546, '郭爱红', 46, '江苏省淮安市公安局淮安分局林集派出所', '666', '666', '2019-07-25 14:42:48');
-INSERT INTO `rpt_incorrupt` VALUES (31, 546, '郭爱红', 46, '江苏省淮安市公安局淮安分局林集派出所', '222', '222', '2019-07-25 14:44:35');
-INSERT INTO `rpt_incorrupt` VALUES (32, 546, '郭爱红', 46, '江苏省淮安市公安局淮安分局林集派出所', '777', '7777', '2019-07-25 14:45:32');
-INSERT INTO `rpt_incorrupt` VALUES (33, 546, '郭爱红', 46, '江苏省淮安市公安局淮安分局林集派出所', '444555', '5555', '2019-07-25 14:51:23');
-INSERT INTO `rpt_incorrupt` VALUES (34, 546, '郭爱红', 46, '江苏省淮安市公安局淮安分局林集派出所', '123', '123', '2019-07-25 14:54:42');
 
 -- ----------------------------
 -- Table structure for rpt_responsibility_perform
@@ -2118,20 +1242,10 @@ CREATE TABLE `rpt_responsibility_perform`  (
   `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '标题',
   `content` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '内容',
   `attachment_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '附件id，一对多关联attachment',
-  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '履责纪实表' ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of rpt_responsibility_perform
--- ----------------------------
-INSERT INTO `rpt_responsibility_perform` VALUES (3, 50, '徐洪芦', 4, '江苏省淮安市公安局淮安分局警务督察大队', '2019-07-15', '士大夫', '风格和的风格大师傅似的', '士大夫豆腐干', '手动阀手动阀苟富贵', 'b301b28fd13f403fb5a7309552422914', '2019-07-22 18:10:38');
-INSERT INTO `rpt_responsibility_perform` VALUES (4, 50, '徐洪芦', 4, '江苏省淮安市公安局淮安分局警务督察大队', '2019-07-24', '123', '132', '132', '123', '09bc3686d30d45ebb672e3693f8ea162', '2019-07-24 16:42:15');
-INSERT INTO `rpt_responsibility_perform` VALUES (7, 50, '徐洪芦', 4, '江苏省淮安市公安局淮安分局警务督察大队', '2019-07-25', '淮安市月季园', '赵大、钱二，孙三、李四、王五', '淮安月季大道头茬花进入盛开期 一路美到底', '　5月以来，除了市月季园，10.8公里长的月季大道应该是市区最美丽的地方了，几十万株月季进入盛花期，姹紫嫣红的花朵把道路两侧装扮成花园仙境，引得市民、游客纷至沓来赏花、拍照。\n　　●月季花开 道路成花园\n　　15日上午，记者沿着北京路月季花大道行走发现，道路两旁的月季花开得正艳，健壮的植株屹立苗圃，浓密的花朵挤满了枝头，来往车辆经过，旋起阵阵香气。不少市民在驻足拍照的同时，惊叹今年的月季花开得浓艳，走在路上仿佛是在游园。\n　　市月季园绿化科科长苗志明介绍，月季大道建成于2014年，南起高速淮安南入口，向北一直延伸到健康路与北京路交叉口，全长10.8公里，分为大花月季、丰花月季、藤本月季、树状月季等四大类。因为道路环境相对复杂、灰尘大、车辆行驶引带来的气流较急，所以在品种选择上，月季大道种植的都是粉扇、绯扇、金凤凰、和平等植株直立性较好、土壤适应性较强的月季。\n\n　　今年因为前期气温较低、降水量较多，月季花较往年稍迟开放。“因为这是头茬花，经过一个冬天的孕育，加上我们的水肥管理和养护工作都做得好，所以花量大，开得整齐，给人以相较往年更繁茂的感觉。”苗志明说。', 'ec65ce5d8b874a2ea8c21aeb8f8f557b', '2019-07-25 09:51:25');
-INSERT INTO `rpt_responsibility_perform` VALUES (8, 201, '李林峰', 13, '江苏省淮安市公安局淮安分局交通警察大队', '2019-07-04', '士大夫', '士大夫', '士大夫', '士大夫', '09491289bcb04bdab6372ce367850591', '2019-07-25 11:21:41');
-INSERT INTO `rpt_responsibility_perform` VALUES (9, 546, '郭爱红', 46, '江苏省淮安市公安局淮安分局林集派出所', '2019-07-25', '123', '123', '123', '123', '8c392ea664454ebe881bf0b282255278', '2019-07-25 14:53:06');
-INSERT INTO `rpt_responsibility_perform` VALUES (10, 546, '郭爱红', 46, '江苏省淮安市公安局淮安分局林集派出所', '2019-07-25', '22', '222', '222', '222', 'b5e3194a0fbe40d2a1e6671615170618', '2019-07-25 14:54:54');
 
 -- ----------------------------
 -- Table structure for rpt_responsibility_report
@@ -2150,21 +1264,10 @@ CREATE TABLE `rpt_responsibility_report`  (
   `complete` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '是否完成',
   `complete_info` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '具体落实情况',
   `attachment_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '附件id，一对多关联attachment',
-  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '主体责任季度工单任务落实情况反馈表' ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of rpt_responsibility_report
--- ----------------------------
-INSERT INTO `rpt_responsibility_report` VALUES (2, 50, '徐洪芦', 4, '江苏省淮安市公安局淮安分局警务督察大队', '2018', '第二季度', '“第一责任人”责任季度工单', '21', '否', '士大', '5f5c2fcbbb4140c2b2290e4fab2abf67', '2019-07-22 15:29:19');
-INSERT INTO `rpt_responsibility_report` VALUES (3, 50, '徐洪芦', 4, '江苏省淮安市公安局淮安分局警务督察大队', '2019', '第一季度', '主体责任季度工单', '1', '是', '师傅三', '0', '2019-07-23 15:26:35');
-INSERT INTO `rpt_responsibility_report` VALUES (5, 50, '徐洪芦', 4, '江苏省淮安市公安局淮安分局警务督察大队', '2020', '第一季度', '主体责任季度工单', '1', '是', '的说法是的', 'fe8fc9a94db54077a1ee04abd56ba8fb', '2019-07-25 09:25:35');
-INSERT INTO `rpt_responsibility_report` VALUES (6, 50, '徐洪芦', 4, '江苏省淮安市公安局淮安分局警务督察大队', '2019', '第三季度', '“第一责任人”责任季度工单', '12', '是', '1312312312', 'd3c93cb671b44114ac7fead2bd21b7c9', '2019-07-25 09:45:00');
-INSERT INTO `rpt_responsibility_report` VALUES (8, 201, '李林峰', 13, '江苏省淮安市公安局淮安分局交通警察大队', '2015', '第一季度', '主体责任季度工单', '123123', '是', '士大夫', '4c8d35ecb37140d1b03b992926cb94b4', '2019-07-25 11:18:28');
-INSERT INTO `rpt_responsibility_report` VALUES (9, 546, '郭爱红', 46, '江苏省淮安市公安局淮安分局林集派出所', '2019', '第一季度', '主体责任季度工单', '2', '是', '123', 'ef519713a6694eb396c63b03fa67f170', '2019-07-25 14:55:55');
-INSERT INTO `rpt_responsibility_report` VALUES (10, 546, '郭爱红', 46, '江苏省淮安市公安局淮安分局林集派出所', '2019', '第一季度', '主体责任季度工单', '4', '是', '222', 'f7fd93695c0e4eaea70f635a6f7d1c21', '2019-07-25 14:56:18');
 
 -- ----------------------------
 -- Table structure for rpt_team_thinking
@@ -2184,18 +1287,10 @@ CREATE TABLE `rpt_team_thinking`  (
   `team_advantage_problem` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '队伍特色亮点及存在问题',
   `main_measure` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '主要措施',
   `other_info` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '其他情况',
-  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '队伍思想状况表' ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of rpt_team_thinking
--- ----------------------------
-INSERT INTO `rpt_team_thinking` VALUES (3, 50, '徐洪芦', 4, '江苏省淮安市公安局淮安分局警务督察大队', '2019-07', 123, 123, '士大夫', '士大夫', '豆腐干', '豆腐干', '梵蒂冈', '2019-07-22 17:05:03');
-INSERT INTO `rpt_team_thinking` VALUES (4, 50, '徐洪芦', 4, '江苏省淮安市公安局淮安分局警务督察大队', '2019-07', 23, 19, '良好', '优秀', '良好', '良好', '优秀', '2019-07-23 14:54:31');
-INSERT INTO `rpt_team_thinking` VALUES (7, 50, '徐洪芦', 4, '江苏省淮安市公安局淮安分局警务督察大队', '2019-07', 23, 22, '良好', '优秀', '么得问题', '么得措施', '么事情况', '2019-07-25 09:46:57');
-INSERT INTO `rpt_team_thinking` VALUES (8, 546, '郭爱红', 46, '江苏省淮安市公安局淮安分局林集派出所', '2019-07', 21, 21, 'qweqw', '请问请问', '其味无穷', '其味无穷', '王企鹅', '2019-07-25 14:56:48');
 
 -- ----------------------------
 -- Table structure for user
@@ -2214,7 +1309,7 @@ CREATE TABLE `user`  (
   `police_code` varchar(16) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '警号',
   `job_position` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '职位',
   `active` int(1) NOT NULL DEFAULT 1 COMMENT '是否有效：0无效1有效',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_roleid`(`roleid`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
