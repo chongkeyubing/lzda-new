@@ -19,6 +19,7 @@ import org.springframework.ui.ModelMap;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author: libaogang
@@ -135,7 +136,6 @@ public class ArchiveServiceImpl implements ArchiveService {
     public List<ArchiveDTO> findAllWarningsByConditions(ArchiveDTO archive) {
         return archiveMapper.findAllWarningsByConditions(archive);
     }
-
 
     /**
      * @return java.lang.String
@@ -605,6 +605,20 @@ public class ArchiveServiceImpl implements ArchiveService {
                 arcLoanService.update(arcLoan);
                 break;
         }
+    }
+
+
+    /**
+     * @Author libaogang
+     * @Date 2019-07-26 15:48
+     * @Param []
+     * @return java.util.Map<java.lang.String,java.lang.String> 生成廉政报告的参数集合
+     * @Description 获取廉政报告模板参数
+     */
+    public Map<String,String> findIncorruptReportParam(){
+        
+
+        return null;
     }
 
 

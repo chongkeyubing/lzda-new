@@ -91,11 +91,11 @@
                                         <a href="views/approve/approve_list.jsp">廉政审批</a>
                                     </li>
                                 </shiro:hasPermission>
-                                    <%--<shiro:hasPermission name="廉政预警">--%>
-                                    <%--<li>--%>
-                                    <%--<a href="views/incorrupt/warning_list.jsp">廉政预警</a>--%>
-                                    <%--</li>--%>
-                                    <%--</shiro:hasPermission>--%>
+                                <shiro:hasPermission name="廉政预警">
+                                    <li>
+                                        <a href="views/incorrupt/warning_list.jsp">廉政预警</a>
+                                    </li>
+                                </shiro:hasPermission>
                                     <%--<li>--%>
                                     <%--<a href="">廉政报告</a>--%>
                                     <%--</li>--%>
@@ -103,24 +103,47 @@
                         </dd>
                     </shiro:hasPermission>
 
-                    <%--<shiro:hasPermission name="统计">--%>
-                    <%--<dd>--%>
-                    <%--<h2 class="menu menu05">统计</h2>--%>
-                    <%--<ul class="menuSideBar">--%>
-                    <%--<li>--%>
-                    <%--<a href="">违规统计</a>--%>
-                    <%--</li>--%>
-                    <%--<li>--%>
-                    <%--<a href="">出国(境)统计</a>--%>
-                    <%--</li>--%>
-                    <%--<li>--%>
-                    <%--<a href="">影响公正执行职务报备统计</a>--%>
-                    <%--</li>--%>
+                    <shiro:hasPermission name="统计">
+                        <dd>
+                            <h2 class="menu menu05">统计</h2>
+                            <ul class="menuSideBar">
+                                <li>
+                                    <a href="">违纪统计</a>
+                                </li>
+                                <li>
+                                    <a href="">表彰统计</a>
+                                </li>
+                                <li>
+                                    <a href="">信访统计</a>
+                                </li>
+                                <li>
+                                    <a href="statistic/toStatisticPoliceInvolve">涉警报备统计</a>
+                                </li>
+                                <li>
+                                    <a href="">收受礼品登记统计</a>
+                                </li>
+                                <li>
+                                    <a href="">操办宴席申请统计</a>
+                                </li>
+                                <li>
+                                    <a href="">家人被追究刑事责任统计</a>
+                                </li>
+                                <li>
+                                    <a href="">影响公正执行职务报备统计</a>
+                                </li>
+                                <li>
+                                    <a href="">主体责任统计</a>
+                                </li>
+                                <li>
+                                    <a href="">队伍思想状况统计</a>
+                                </li>
+                                <li>
+                                    <a href="">履责纪实统计</a>
+                                </li>
+                            </ul>
 
-                    <%--</ul>--%>
-
-                    <%--</dd>--%>
-                    <%--</shiro:hasPermission>--%>
+                        </dd>
+                    </shiro:hasPermission>
 
                     <shiro:hasPermission name="日志">
                         <dd>
@@ -140,9 +163,9 @@
                                 <li>
                                     <a href="user/toUserList">用户管理</a>
                                 </li>
-                                <li>
-                                    <a href="views/role/role_list.jsp">权限管理</a>
-                                </li>
+                                <%--<li>--%>
+                                <%--<a href="views/role/role_list.jsp">权限管理</a>--%>
+                                <%--</li>--%>
                             </shiro:hasPermission>
                             <li>
                                 <a href="user/toPersonalInfo">个人信息</a>
@@ -227,43 +250,6 @@
                 }
             })
 
-            //jquery ajax代理 解决ajax请求session失效问题
-            // (function ($) {
-            //     debugger;
-            //     //备份jquery的ajax方法
-            //     var _ajax = $.ajax;
-            //     //重写jquery的ajax方法
-            //     $.ajax = function (opt) {
-            //         //备份opt中error和success方法
-            //         var fn = {
-            //             error: function (XMLHttpRequest, textStatus, errorThrown) {
-            //             },
-            //             success: function (data, textStatus) {
-            //             }
-            //         }
-            //         if (opt.error) {
-            //             fn.error = opt.error;
-            //         }
-            //         if (opt.success) {
-            //             fn.success = opt.success;
-            //         }
-            //         //扩展增强处理
-            //         var _opt = $.extend(opt, {
-            //             error: function (XMLHttpRequest, textStatus, errorThrown) {
-            //                 //错误方法增强处理
-            //                 fn.error(XMLHttpRequest, textStatus, errorThrown);
-            //             },
-            //             success: function (data, textStatus, xhr) {
-            //                 debugger;
-            //                 //成功回调方法增强处理
-            //                 // todo
-            //
-            //                 fn.success(data, textStatus);
-            //             }
-            //         });
-            //         _ajax(_opt);
-            //     };
-            // })(jQuery);
         });
 
     });

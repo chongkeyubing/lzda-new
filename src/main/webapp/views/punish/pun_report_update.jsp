@@ -46,7 +46,7 @@
                 <label class="layui-form-label">举报形式</label>
                 <div class="layui-input-inline">
                     <select name="type" lay-verify="required">
-                        <c:forTokens items="写检举,电话举报,当面向有关人员举报,网上举报" delims="," var="type">
+                        <c:forTokens items="写检举,电话举报,当面向有关人员举报,网上举报,其他" delims="," var="type">
                             <option value="${type}"
                                     <c:if test="${punish.type == type}">selected</c:if>
                             >${type}</option>
