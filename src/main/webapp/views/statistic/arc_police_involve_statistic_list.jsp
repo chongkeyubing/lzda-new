@@ -53,22 +53,19 @@
             elem: '#time',
             range: true,
             done: function (value, date, endDate) {
-                console.log(value); //得到日期生成的值，如：2017-08-18
-                console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
-                console.log(endDate); //得结束的日期时间对象，开启范围选择（range: true）才会返回。对象成员同上。
                 time = value;
             }
         });
 
         var tableIns = table.render({
             elem: '#statisticTable',
-            url: 'statistic/statisticPoliceInvolve',
+            url: 'arcpoliceinvolvestatistic/list',
             page: true, //开启分页
             limit: 9999,
             method: 'post',
             cols: [[ //表头
                 {field: 'organizationName', title: '单位'},
-                {field: 'count', title: '数量'},
+                {field: 'count', title: '填报数量'},
                 {field: 'operate', align: 'center', title: '操作', toolbar: '#statisticBar'}
             ]]
         });
@@ -79,10 +76,10 @@
             var data = obj.data;
             var param = '?organizationId=' + data.organizationId + '&time=' + time;
             if (obj.event === 'detail') {
-                $.get('statistic/toStatisticPoliceInvolveDetai' + param, function (html) {
+                $.get('arcpoliceinvolvestatistic/toDetail' + param, function (html) {
                     layer.open({
                         type: 1,
-                        title: data.organizationName + '涉警报备统计汇总',
+                        title: data.organizationName + '-涉警报备统计详情',
                         area: ['100%', '100%'],
                         content: html
                     });
@@ -93,6 +90,7 @@
         //查询按钮监听
         form.on('submit(queryStatistic)', function (data) {
             debugger;
+            time = $("#time").val();
             reloadTable(data.field);//当前容器的全部表单字段，名值对形式：{name: value}
             return false; //阻止表单跳转
         });

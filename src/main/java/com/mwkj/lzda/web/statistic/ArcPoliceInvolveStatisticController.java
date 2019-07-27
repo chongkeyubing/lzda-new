@@ -1,6 +1,5 @@
-package com.mwkj.lzda.web;
+package com.mwkj.lzda.web.statistic;
 
-import com.github.pagehelper.ISelect;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.mwkj.lzda.core.Result;
@@ -8,7 +7,7 @@ import com.mwkj.lzda.core.layui.LayuiTableResultUtil;
 import com.mwkj.lzda.dto.ArchiveStatisticParamDTO;
 import com.mwkj.lzda.dto.ArchiveStatisticResultDTO;
 import com.mwkj.lzda.service.OrganizationService;
-import com.mwkj.lzda.service.StatisticsService;
+import com.mwkj.lzda.service.StatisticService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -17,9 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @Author: libaogang
@@ -27,11 +24,11 @@ import java.util.Map;
  * @Description 统计控制器
  */
 @Controller
-@RequestMapping("/statistic")
-public class StatisticsController {
+@RequestMapping("/arcpoliceinvolvestatistic")
+public class ArcPoliceInvolveStatisticController {
 
     @Resource
-    private StatisticsService statisticsService;
+    private StatisticService statisticService;
 
     @Resource
     private OrganizationService organizationService;
@@ -43,10 +40,10 @@ public class StatisticsController {
      * @return java.lang.String
      * @Description 跳转到统计页
      */
-    @RequestMapping("/toStatisticPoliceInvolve")
+    @RequestMapping("/toList")
     public String toStatisticPoliceInvolve(ModelMap map) {
         map.put("organizations", organizationService.findAll());
-        return "views/statistic/arc_police_involve_statistic";
+        return "views/statistic/arc_police_involve_statistic_list";
     }
 
     /**
@@ -56,14 +53,14 @@ public class StatisticsController {
      * @return java.lang.String
      * @Description 跳转到明细页
      */
-    @RequestMapping("/toStatisticPoliceInvolveDetai")
+    @RequestMapping("/toDetail")
     public String toStatisticPoliceInvolveDetai(int organizationId, String time, ModelMap map) {
         map.put("organizationId", organizationId);
         map.put("time",time);
         return "views/statistic/arc_police_involve_statistic_detail";
     }
 
-    @RequestMapping("/statisticPoliceInvolve")
+    @RequestMapping("/list")
     @ResponseBody
     public Result statisticPoliceInvolve(@RequestParam(defaultValue = "0") Integer page,
                                          @RequestParam(defaultValue = "0") Integer limit,
@@ -78,7 +75,7 @@ public class StatisticsController {
 
         PageHelper.startPage(page, limit);
 
-        List<ArchiveStatisticResultDTO> list = statisticsService.statisticPoliceInvolve(archiveStatisticParamDTO);
+        List<ArchiveStatisticResultDTO> list = statisticService.statisticPoliceInvolve(archiveStatisticParamDTO);
 
         PageInfo<ArchiveStatisticParamDTO> pageInfo = new PageInfo<>();
 

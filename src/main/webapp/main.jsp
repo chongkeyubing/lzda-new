@@ -117,7 +117,7 @@
                                     <a href="">信访统计</a>
                                 </li>
                                 <li>
-                                    <a href="statistic/toStatisticPoliceInvolve">涉警报备统计</a>
+                                    <a href="arcpoliceinvolvestatistic/toList">涉警报备统计</a>
                                 </li>
                                 <li>
                                     <a href="">收受礼品登记统计</a>

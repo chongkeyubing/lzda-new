@@ -11,7 +11,7 @@ import java.util.Map;
  * @Date: 2019-07-26 16:42
  * @Description 统计
  */
-public interface StatisticsService {
+public interface StatisticService {
 
     //涉警报备统计
     List<ArchiveStatisticResultDTO> statisticPoliceInvolve(ArchiveStatisticParamDTO archiveStatisticParamDTO);

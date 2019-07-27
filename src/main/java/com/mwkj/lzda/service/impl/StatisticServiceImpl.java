@@ -3,13 +3,12 @@ package com.mwkj.lzda.service.impl;
 import com.mwkj.lzda.dao.StatisticsMapper;
 import com.mwkj.lzda.dto.ArchiveStatisticParamDTO;
 import com.mwkj.lzda.dto.ArchiveStatisticResultDTO;
-import com.mwkj.lzda.service.StatisticsService;
+import com.mwkj.lzda.service.StatisticService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @Author: libaogang
@@ -18,7 +17,7 @@ import java.util.Map;
  */
 @Service
 @Transactional
-public class StatisticsServiceImpl implements StatisticsService {
+public class StatisticServiceImpl implements StatisticService {
     @Resource
     private StatisticsMapper statisticsMapper;
 

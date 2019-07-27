@@ -267,14 +267,19 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
 .left {
     width: 240px;
     overflow: hidden;
+    overflow-y: scroll;
+    overflow-x: hidden;
     float: left;
     background-color: #fff;
+    height: 100%;
+    margin-top: -60px;
 }
 
 .leftNav {
     width: 100%;
     overflow: hidden;
     background-color: #fff;
+    margin-top: 60px;
 }
 
 .leftNav dl {
@@ -377,9 +382,13 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
 .right {
     position: absolute;
     top: 60px;
-    left: 230px;
+    left: 220px;
     padding: 25px 20px;
     right:0;
+    bottom: 0px;
+    background-color: #fff;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 

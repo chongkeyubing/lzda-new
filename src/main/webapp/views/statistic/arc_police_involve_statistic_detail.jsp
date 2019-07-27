@@ -46,15 +46,6 @@
             debugger;
             var data = obj.data;
             if (obj.event === 'detail') {
-                // $.get('archive/toArchive?id=' + data.id, function (html) {
-                //     layer.open({
-                //         type: 1,
-                //         title: '廉政信息详情',
-                //         area: ['100%', '100%'],
-                //         content: html
-                //     });
-                // });
-
                 $.post('archive/toArchive', {
                     archiveId: data.id,
                     archiveType: data.archiveType,

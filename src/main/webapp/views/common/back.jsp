@@ -10,8 +10,10 @@
 
 <script>
     layui.use(['layer'], function () {
+        var layer = layui.layer;
         $("#close").click(function () {
-            layui.layer.closeAll();
+            //layer.close(layer.index);
+            layer.closeAll();
         });
     });
 </script>
