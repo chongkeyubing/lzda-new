@@ -38,6 +38,11 @@
                             <li>
                                 <a id="archiveInfo" href="views/archive/common/archive_list.jsp">档案信息</a>
                             </li>
+
+                            <li>
+                                <a href="incorrupt/toList?userId=50">廉政自律小结${currentUser.id}</a>
+                            </li>
+
                             <%--<shiro:hasPermission name="档案审核">--%>
                             <%--<li>--%>
                             <%--<a href="views/approve/approve_list.jsp">档案审核</a>--%>
@@ -78,6 +83,8 @@
                                 <li>
                                     <a href="rptresponsibilityperform/toList">履责纪实上报</a>
                                 </li>
+
+
                             </ul>
                         </dd>
                     </shiro:hasPermission>
