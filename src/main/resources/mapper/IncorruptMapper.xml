@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mwkj.lzda.dao.IncorruptMapper">
+
+    
+<select id="selectForPage" parameterType="com.mwkj.lzda.dto.IncorruptSelfSummaryDTO"
+        resultType="com.mwkj.lzda.dto.IncorruptSelfSummaryDTO">
+
+  SELECT t.realname,r.summary FROM `incorrupt_self_summary` r
+ LEFT JOIN `user` t ON r.userId=t.id WHERE r.userId=50
+ order by  createTime desc  limit 1
+
+</select>
+
+    <update id="update">
+         UPDATE `incorrupt_self_summary` SET `summary`=#{summary}
+         WHERE `userId`=50
+    </update>
+
+
+
+</mapper>
