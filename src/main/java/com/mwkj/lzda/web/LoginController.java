@@ -1,11 +1,14 @@
 package com.mwkj.lzda.web;
 
+import com.mwkj.lzda.core.GlobalExceptionHandler;
 import com.mwkj.lzda.model.User;
 import com.mwkj.lzda.service.UserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -20,6 +23,8 @@ import javax.servlet.http.HttpSession;
  */
 @Controller
 public class LoginController {
+    private static Logger log = LoggerFactory.getLogger(LoginController.class);
+
     @Autowired
     private UserService userService;
 
@@ -34,8 +39,8 @@ public class LoginController {
         } catch (AuthenticationException e) {
             modelMap.put("msg", "账号或密码错误");
             modelMap.put("policeCode", policeCode);
-            e.printStackTrace();
-            return "/index";
+            log.info("账号或密码错误" + policeCode);
+            return "index";
         }
         return "redirect:/main.jsp";
     }

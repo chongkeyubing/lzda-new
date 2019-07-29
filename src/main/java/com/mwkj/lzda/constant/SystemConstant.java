@@ -10,7 +10,7 @@ public class SystemConstant {
     //图片上传路径
     public static final String IMG_UPLOAD_ROOT_PATH = "static/upload";
 
-    //密码加密盐值
+    //MD5加密盐值
     public static final String SALT = "lzda";
 
 

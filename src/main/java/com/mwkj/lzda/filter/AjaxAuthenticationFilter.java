@@ -3,6 +3,9 @@ package com.mwkj.lzda.filter;
 import com.alibaba.fastjson.JSON;
 import com.mwkj.lzda.core.ResultUtil;
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +16,10 @@ import javax.servlet.http.HttpServletResponse;
  * @Date: 2019-07-25 8:58
  * @Description 解决ajax请求session失效的问题
  */
-public class ajaxAuthenticationFilter extends FormAuthenticationFilter {
+public class AjaxAuthenticationFilter extends FormAuthenticationFilter {
+
+    private static Logger log = LoggerFactory.getLogger(AjaxAuthenticationFilter.class);
+
     @Override
     protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws Exception {
         if (isLoginRequest(request, response)) {
@@ -23,6 +29,7 @@ public class ajaxAuthenticationFilter extends FormAuthenticationFilter {
                 return true;
             }
         } else {
+            log.info("session失效");
             if (isAjax(request)) {
                 HttpServletResponse rep = (HttpServletResponse) response;
                 rep.getWriter().write(JSON.toJSONString(ResultUtil.fail("session expire")));
