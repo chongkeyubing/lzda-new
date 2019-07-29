@@ -39,7 +39,7 @@ public class LoginController {
         } catch (AuthenticationException e) {
             modelMap.put("msg", "账号或密码错误");
             modelMap.put("policeCode", policeCode);
-            log.info("账号或密码错误" + policeCode);
+            log.info("账号或密码错误-" + policeCode);
             return "index";
         }
         return "redirect:/main.jsp";

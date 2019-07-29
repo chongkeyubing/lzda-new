@@ -103,9 +103,11 @@
                                         <a href="views/incorrupt/warning_list.jsp">廉政预警</a>
                                     </li>
                                 </shiro:hasPermission>
-                                    <%--<li>--%>
-                                    <%--<a href="">廉政报告</a>--%>
-                                    <%--</li>--%>
+                                <shiro:hasPermission name="廉政报告">
+                                    <li>
+                                        <a href="incorruptReport/toList">廉政报告</a>
+                                    </li>
+                                </shiro:hasPermission>
                             </ul>
                         </dd>
                     </shiro:hasPermission>
