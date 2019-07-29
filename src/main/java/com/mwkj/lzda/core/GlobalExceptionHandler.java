@@ -17,12 +17,12 @@ import java.io.IOException;
  */
 public class GlobalExceptionHandler implements HandlerExceptionResolver {
 
-    private static Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
     @Override
     public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response,
                                          Object handler, Exception e) {
-        log.error(e.getMessage());
+        LOGGER.error(e.getMessage(), e);
         e.printStackTrace();
         ModelAndView mv = new ModelAndView();
         //如果是ajax请求

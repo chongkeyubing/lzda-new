@@ -21,7 +21,7 @@ import java.util.List;
 /**
  * @Author: libaogang
  * @Date: 2019-07-26 17:31
- * @Description 统计控制器
+ * @Description 涉警报备统计控制器
  */
 @Controller
 @RequestMapping("/arcpoliceinvolvestatistic")
@@ -34,10 +34,10 @@ public class ArcPoliceInvolveStatisticController {
     private OrganizationService organizationService;
 
     /**
+     * @return java.lang.String
      * @Author libaogang
      * @Date 2019-07-26 19:30
      * @Param [map]
-     * @return java.lang.String
      * @Description 跳转到统计页
      */
     @RequestMapping("/toList")
@@ -47,16 +47,16 @@ public class ArcPoliceInvolveStatisticController {
     }
 
     /**
+     * @return java.lang.String
      * @Author libaogang
      * @Date 2019-07-26 19:21
      * @Param [archiveStatisticParamDTO, time, map]
-     * @return java.lang.String
      * @Description 跳转到明细页
      */
     @RequestMapping("/toDetail")
     public String toStatisticPoliceInvolveDetai(int organizationId, String time, ModelMap map) {
         map.put("organizationId", organizationId);
-        map.put("time",time);
+        map.put("time", time);
         return "views/statistic/arc_police_involve_statistic_detail";
     }
 
