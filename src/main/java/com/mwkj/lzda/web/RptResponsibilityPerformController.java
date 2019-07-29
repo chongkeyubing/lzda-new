@@ -104,7 +104,6 @@ public class RptResponsibilityPerformController {
     @RequestMapping("/toDetail")
     public String detail(@RequestParam Integer id, ModelMap map) {
         RptResponsibilityPerform rptResponsibilityPerform = rptResponsibilityPerformService.findById(id);
-
         //查询附件
         Attachment attachment = new Attachment();
         attachment.setSourceId(rptResponsibilityPerform.getAttachmentId());
