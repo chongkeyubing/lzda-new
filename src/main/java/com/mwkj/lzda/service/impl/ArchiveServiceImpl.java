@@ -1,6 +1,5 @@
 package com.mwkj.lzda.service.impl;
 
-import cn.afterturn.easypoi.word.WordExportUtil;
 import com.mwkj.lzda.dao.ArchiveMapper;
 import com.mwkj.lzda.dto.ArcLoanDTO;
 import com.mwkj.lzda.dto.ArchiveDTO;
@@ -9,17 +8,14 @@ import com.mwkj.lzda.enu.LogOperateTypeEnum;
 import com.mwkj.lzda.enu.RoleEnum;
 import com.mwkj.lzda.model.*;
 import com.mwkj.lzda.service.*;
-import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
-
 import javax.annotation.Resource;
-import java.io.FileOutputStream;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
+
 
 /**
  * @Author: libaogang
@@ -609,36 +605,5 @@ public class ArchiveServiceImpl implements ArchiveService {
                 break;
         }
     }
-
-
-    /**
-     * @Author libaogang
-     * @Date 2019-07-26 15:48
-     * @Param [id 用户id]
-     * @return java.util.Map<java.lang.String,java.lang.String> 生成廉政报告的参数集合
-     * @Description 获取廉政报告模板参数
-     */
-    public Map<String,Object> findIncorruptReportParam(int userId){
-        Map<String,Object> paramMap = new HashMap<>();
-
-        //基本情况
-        User user =  userService.findById(userId);
-        paramMap.put("user",user);
-        paramMap.put("name",user.getRealname());
-        paramMap.put("gender",user.getGender());
-
-        try {
-            XWPFDocument doc = WordExportUtil.exportWord07(
-                    "templet/廉政报告.docx", paramMap);
-            FileOutputStream fos = new FileOutputStream("D:/excel/廉政报告.docx");
-            doc.write(fos);
-            fos.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return null;
-    }
-
 
 }
