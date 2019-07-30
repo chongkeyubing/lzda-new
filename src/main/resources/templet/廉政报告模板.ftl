@@ -2180,7 +2180,7 @@
 						<w:sz-cs w:val="24"/>
 						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
 					</w:rPr>
-					<w:t>◆时间：${business.time}，影响人姓名：${business.affectName}，与民警关系：${business.relationship}，影响人单位：${affectOrganization}</w:t>
+					<w:t>◆ 时间：${business.time}，影响人姓名：${business.affectName}，与民警关系：${business.relationship}，影响人单位：${affectOrganization}</w:t>
 				</w:r>
 			</w:p>
 			<w:p>
@@ -2320,6 +2320,56 @@
 					<w:t>6、涉警报备情况</w:t>
 				</w:r>
 			</w:p>
+			<#-------------------------------------------- 涉警报备情况开始---------------------------------------------------->
+			<#if policeInvolves?size == 0 >
+				<w:p>
+					<w:pPr>
+						<w:keepNext w:val="off"/>
+						<w:keepLines w:val="off"/>
+						<w:pageBreakBefore w:val="off"/>
+						<w:widowControl w:val="off"/>
+						<w:listPr>
+							<w:ilvl w:val="0"/>
+							<w:ilfo w:val="0"/>
+						</w:listPr>
+						<w:kinsoku/>
+						<w:wordWrap/>
+						<w:overflowPunct/>
+						<w:topLinePunct w:val="off"/>
+						<w:autoSpaceDE/>
+						<w:autoSpaceDN/>
+						<w:adjustRightInd/>
+						<w:snapToGrid/>
+						<w:spacing w:line="360" w:line-rule="auto"/>
+						<w:ind w:right="0" w:right-chars="0" w:first-line="420" w:first-line-chars="0"/>
+						<w:jc w:val="both"/>
+						<w:textAlignment w:val="auto"/>
+						<w:outlineLvl w:val="9"/>
+						<w:rPr>
+							<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
+							<w:b w:val="off"/>
+							<w:b-cs w:val="off"/>
+							<w:sz w:val="24"/>
+							<w:sz-cs w:val="24"/>
+							<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
+						</w:rPr>
+					</w:pPr>
+					<w:r>
+						<w:rPr>
+							<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
+							<w:b w:val="off"/>
+							<w:b-cs w:val="off"/>
+							<w:color w:val="auto"/>
+							<w:sz w:val="24"/>
+							<w:sz-cs w:val="24"/>
+							<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
+						</w:rPr>
+						<w:t>暂无</w:t>
+					</w:r>
+				</w:p>
+			</#if>
+			<#list policeInvolves as policeInvolve>
+
 			<w:p>
 				<w:pPr>
 					<w:keepNext w:val="off"/>
@@ -2362,59 +2412,7 @@
 						<w:sz-cs w:val="24"/>
 						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
 					</w:rPr>
-					<w:t>◆</w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:b w:val="off"/>
-						<w:b-cs w:val="off"/>
-						<w:color w:val="auto"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t> </w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:b w:val="off"/>
-						<w:b-cs w:val="off"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>时间：</w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>2019-05-14</w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>。</w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:b w:val="off"/>
-						<w:b-cs w:val="off"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>涉警人姓名：李四，与民警关系：朋友，涉警人单位：美文软件公司</w:t>
+					<w:t>◆ 时间：${policeInvolve.time}，涉警人姓名：${policeInvolve.involvedName}，与民警关系：${policeInvolve.relationship}，涉警人单位：${policeInvolve.involvedOrganization}</w:t>
 				</w:r>
 			</w:p>
 			<w:p>
@@ -2458,7 +2456,7 @@
 						<w:sz-cs w:val="24"/>
 						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
 					</w:rPr>
-					<w:t>涉警内容：XX。</w:t>
+					<w:t>涉警内容：${policeInvolve.content}。</w:t>
 				</w:r>
 			</w:p>
 			<w:p>
@@ -2502,9 +2500,11 @@
 						<w:sz-cs w:val="24"/>
 						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
 					</w:rPr>
-					<w:t>处理情况：XX。</w:t>
+					<w:t>处理情况：${policeInvolve.result}。</w:t>
 				</w:r>
 			</w:p>
+			</#list>
+			<#-------------------------------------------- 涉警报备情况结束---------------------------------------------------->
 			<w:p>
 				<w:pPr>
 					<w:keepNext w:val="off"/>
@@ -2548,21 +2548,59 @@
 						<w:sz-cs w:val="24"/>
 						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
 					</w:rPr>
-					<w:t>7、</w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:b/>
-						<w:b-cs/>
-						<w:color w:val="auto"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>收受礼品情况</w:t>
+					<w:t>7、收受礼品情况</w:t>
 				</w:r>
 			</w:p>
+
+			<#----------------------------------收受礼品开始----------------------------------------->
+			<#if arcGifts?size == 0 >
+				<w:p>
+					<w:pPr>
+						<w:keepNext w:val="off"/>
+						<w:keepLines w:val="off"/>
+						<w:pageBreakBefore w:val="off"/>
+						<w:widowControl w:val="off"/>
+						<w:listPr>
+							<w:ilvl w:val="0"/>
+							<w:ilfo w:val="0"/>
+						</w:listPr>
+						<w:kinsoku/>
+						<w:wordWrap/>
+						<w:overflowPunct/>
+						<w:topLinePunct w:val="off"/>
+						<w:autoSpaceDE/>
+						<w:autoSpaceDN/>
+						<w:adjustRightInd/>
+						<w:snapToGrid/>
+						<w:spacing w:line="360" w:line-rule="auto"/>
+						<w:ind w:right="0" w:right-chars="0" w:first-line="420" w:first-line-chars="0"/>
+						<w:jc w:val="both"/>
+						<w:textAlignment w:val="auto"/>
+						<w:outlineLvl w:val="9"/>
+						<w:rPr>
+							<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
+							<w:b w:val="off"/>
+							<w:b-cs w:val="off"/>
+							<w:sz w:val="24"/>
+							<w:sz-cs w:val="24"/>
+							<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
+						</w:rPr>
+					</w:pPr>
+					<w:r>
+						<w:rPr>
+							<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
+							<w:b w:val="off"/>
+							<w:b-cs w:val="off"/>
+							<w:color w:val="auto"/>
+							<w:sz w:val="24"/>
+							<w:sz-cs w:val="24"/>
+							<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
+						</w:rPr>
+						<w:t>暂无</w:t>
+					</w:r>
+				</w:p>
+			</#if>
+			<#list arcGifts as gift>
 			<w:p>
 				<w:pPr>
 					<w:keepNext w:val="off"/>
@@ -2605,48 +2643,7 @@
 						<w:sz-cs w:val="24"/>
 						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
 					</w:rPr>
-					<w:t>◆</w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:b w:val="off"/>
-						<w:b-cs w:val="off"/>
-						<w:color w:val="auto"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t> </w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:b w:val="off"/>
-						<w:b-cs w:val="off"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>礼品名称：水晶球，礼品折价：53元，礼金合计：53元。送礼时间：</w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>2019-05-14</w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>。</w:t>
+					<w:t>◆ 礼品名称：${gift.giftName}，礼品折价：${gift.giftPrice}元，礼金，${gift.giftMoney}元，合计：${gift.giftTotal}元，送礼时间：${gift.giftTime}</w:t>
 				</w:r>
 			</w:p>
 			<w:p>
@@ -2690,7 +2687,7 @@
 						<w:sz-cs w:val="24"/>
 						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
 					</w:rPr>
-					<w:t>送礼事由：XX</w:t>
+					<w:t>送礼事由：${gift.giftReason}</w:t>
 				</w:r>
 			</w:p>
 			<w:p>
@@ -2734,9 +2731,11 @@
 						<w:sz-cs w:val="24"/>
 						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
 					</w:rPr>
-					<w:t>处理情况：XX</w:t>
+					<w:t>处理情况：${gift.giftHandle}</w:t>
 				</w:r>
 			</w:p>
+			</#list>
+			<#-----------------------------------收受礼品结束--------------------------------------------->
 			<w:p>
 				<w:pPr>
 					<w:keepNext w:val="off"/>
