@@ -2,7 +2,7 @@
 <?mso-application progid="Word.Document"?>
 <w:wordDocument xmlns:w="http://schemas.microsoft.com/office/word/2003/wordml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:sl="http://schemas.microsoft.com/schemaLibrary/2003/core"  xmlns:aml="http://schemas.microsoft.com/aml/2001/core" xmlns:wx="http://schemas.microsoft.com/office/word/2003/auxHint" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:dt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882" w:macrosPresent="no" w:embeddedObjPresent="no" w:ocxPresent="no" xml:space="preserve">
 	<o:DocumentProperties>
-		<o:Title>关于李宝刚同志廉情报告</o:Title>
+		<o:Title>关于${user.realname}同志廉情报告</o:Title>
 		<o:Author>Administrator</o:Author>
 		<o:LastAuthor>blue831510</o:LastAuthor>
 		<o:Revision>1</o:Revision>
@@ -543,7 +543,7 @@
 						<w:rFonts w:hint="fareast"/>
 						<w:lang w:val="EN-US"/>
 					</w:rPr>
-					<w:t>关于李宝刚同志廉情报告</w:t>
+					<w:t>关于${user.realname}同志廉情报告</w:t>
 				</w:r>
 			</w:p>
 			<w:p>
@@ -577,7 +577,7 @@
 						<w:sz-cs w:val="24"/>
 						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
 					</w:rPr>
-					<w:t>根据《淮安区领导干部廉政档案管理系统》查询结果，现将李宝刚同志廉洁自律情况说明如下</w:t>
+					<w:t>根据《淮安区领导干部廉政档案管理系统》查询结果，现将${user.realname}同志廉洁自律情况说明如下</w:t>
 				</w:r>
 				<w:r>
 					<w:rPr>
@@ -673,10 +673,11 @@
 						<w:sz-cs w:val="24"/>
 						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
 					</w:rPr>
-					<w:t>李宝刚，男，1992-12-15出生，现工作于江苏省淮安市公安局淮安分局，任政委、四级高级警长。</w:t>
+					<w:t>${user.realname}，${user.gender}，${user.birthday}出生，现工作于${user.organizationName}，任${user.jobPosition}。</w:t>
 				</w:r>
 			
 			</w:p>
+
 			<w:p>
 				<w:pPr>
 					<w:keepNext w:val="off"/>
@@ -721,7 +722,56 @@
 					<w:t>二、奖励情况</w:t>
 				</w:r>
 			</w:p>
-			<w:p>
+<#-------------------------------------------- 奖励情况开始------------------------------------------------------->
+			<#if rewards?? && (rewards?size == 0) >
+				<w:p>
+					<w:pPr>
+						<w:keepNext w:val="off"/>
+						<w:keepLines w:val="off"/>
+						<w:pageBreakBefore w:val="off"/>
+						<w:widowControl w:val="off"/>
+						<w:listPr>
+							<w:ilvl w:val="0"/>
+							<w:ilfo w:val="0"/>
+						</w:listPr>
+						<w:kinsoku/>
+						<w:wordWrap/>
+						<w:overflowPunct/>
+						<w:topLinePunct w:val="off"/>
+						<w:autoSpaceDE/>
+						<w:autoSpaceDN/>
+						<w:adjustRightInd/>
+						<w:snapToGrid/>
+						<w:spacing w:line="360" w:line-rule="auto"/>
+						<w:ind w:right="0" w:right-chars="0" w:first-line="420" w:first-line-chars="0"/>
+						<w:jc w:val="both"/>
+						<w:textAlignment w:val="auto"/>
+						<w:outlineLvl w:val="9"/>
+						<w:rPr>
+							<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
+							<w:b w:val="off"/>
+							<w:b-cs w:val="off"/>
+							<w:sz w:val="24"/>
+							<w:sz-cs w:val="24"/>
+							<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
+						</w:rPr>
+					</w:pPr>
+					<w:r>
+						<w:rPr>
+							<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
+							<w:b w:val="off"/>
+							<w:b-cs w:val="off"/>
+							<w:color w:val="auto"/>
+							<w:sz w:val="24"/>
+							<w:sz-cs w:val="24"/>
+							<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
+						</w:rPr>
+						<w:t>暂无数据</w:t>
+					</w:r>
+				</w:p>
+			</#if>
+			<#list rewards as reward>
+				<w:p>
 				<w:pPr>
 					<w:keepNext w:val="off"/>
 					<w:keepLines w:val="off"/>
@@ -763,30 +813,7 @@
 						<w:sz-cs w:val="24"/>
 						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
 					</w:rPr>
-					<w:t>◆</w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:b w:val="off"/>
-						<w:b-cs w:val="off"/>
-						<w:color w:val="auto"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t> </w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:b w:val="off"/>
-						<w:b-cs w:val="off"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>一等功</w:t>
+					<w:t>◆ ${reward.rewardType}</w:t>
 				</w:r>
 			</w:p>
 			<w:p>
@@ -853,7 +880,7 @@
 						<w:sz-cs w:val="24"/>
 						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
 					</w:rPr>
-					<w:t>2019-05-14</w:t>
+					<w:t>${reward.rewardTime}</w:t>
 				</w:r>
 			</w:p>
 			<w:p>
@@ -893,7 +920,7 @@
 						<w:sz-cs w:val="24"/>
 						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
 					</w:rPr>
-					<w:t>表彰单位：XX</w:t>
+					<w:t>表彰单位：${reward.rewardOrganization}</w:t>
 				</w:r>
 			</w:p>
 			<w:p>
@@ -933,10 +960,11 @@
 						<w:sz-cs w:val="24"/>
 						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
 					</w:rPr>
-					<w:t>表彰内容：XX</w:t>
+					<w:t>表彰内容：${reward.content}</w:t>
 				</w:r>
-				
 			</w:p>
+			</#list>
+			<#-------------------------------------------- 奖励情况结束---------------------------------------------------->
 			<w:p>
 				<w:pPr>
 					<w:keepNext w:val="off"/>

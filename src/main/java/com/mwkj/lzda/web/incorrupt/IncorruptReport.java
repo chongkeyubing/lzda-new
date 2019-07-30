@@ -1,6 +1,5 @@
 package com.mwkj.lzda.web.incorrupt;
 
-import com.google.common.base.Strings;
 import com.mwkj.lzda.core.layui.LayuiDurationResolver;
 import com.mwkj.lzda.service.IncorruptReportService;
 import com.mwkj.lzda.service.OrganizationService;
@@ -58,21 +57,16 @@ public class IncorruptReport {
         Map<String, Object> paramMap = incorruptReportService.getIncorruptReportParam(id, LayuiDurationResolver.getBeginTime(time),
                 LayuiDurationResolver.getEndTime(time));
 
-        Configuration cfg = null;
+        Configuration cfg = new Configuration(Configuration.VERSION_2_3_23);
 
-        String templetFolder = "templet";
-        File file = new File("templet");
-        String s1 = request.getContextPath();
-        String s = request.getSession().getServletContext().getRealPath("") + request.getContextPath();
+        String templetFolder = this.getClass().getClassLoader().getResource("").getPath() + "templet";
 
-
-        cfg = new Configuration(Configuration.VERSION_2_3_23);
         cfg.setDirectoryForTemplateLoading(new File(templetFolder));
         cfg.setDefaultEncoding("UTF-8");
         cfg.setTemplateExceptionHandler(TemplateExceptionHandler.IGNORE_HANDLER);
 
         Template template = cfg.getTemplate("廉政报告模板.ftl");
-        Writer writer = new OutputStreamWriter(new FileOutputStream("temp/temp.doc"), "utf-8");
+        Writer writer = new OutputStreamWriter(new FileOutputStream("D:/lzda/temp.doc"), "utf-8");
         template.process(paramMap, writer);
         writer.close();
 
