@@ -13,5 +13,7 @@ public class SystemConstant {
     //MD5加密盐值
     public static final String SALT = "lzda";
 
+    //生成廉政报告临时存放路径
+    public static final String REPORT_TEMP_PATH ="D:/lzda/";
 
 }

@@ -241,7 +241,6 @@
             $.ajaxSetup({
                 // contentType: "application/x-www-form-urlencoded;charset=utf-8",
                 complete: function (XMLHttpRequest, textStatus) {
-                    debugger;
                     var sessionstatus = XMLHttpRequest.getResponseHeader("sessionstatus"); // 通过XMLHttpRequest取得响应头，sessionstatus，
                     if (sessionstatus == "timeout") {
                         // 如果超时跳转到登陆页面
