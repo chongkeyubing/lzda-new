@@ -766,7 +766,7 @@
 							<w:sz-cs w:val="24"/>
 							<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
 						</w:rPr>
-						<w:t>暂无数据</w:t>
+						<w:t>暂无</w:t>
 					</w:r>
 				</w:p>
 			</#if>
@@ -992,7 +992,7 @@
 							<w:sz-cs w:val="24"/>
 							<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
 						</w:rPr>
-						<w:t>暂无数据</w:t>
+						<w:t>暂无</w:t>
 					</w:r>
 				</w:p>
 			</#if>
@@ -1176,7 +1176,7 @@
 							<w:sz-cs w:val="24"/>
 							<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
 						</w:rPr>
-						<w:t>暂无数据</w:t>
+						<w:t>暂无</w:t>
 					</w:r>
 				</w:p>
 			</#if>
@@ -1356,19 +1356,7 @@
 						<w:sz-cs w:val="24"/>
 						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
 					</w:rPr>
-					<w:t>1、</w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:b/>
-						<w:b-cs/>
-						<w:color w:val="auto"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>个人廉洁自律小结</w:t>
+					<w:t>1、个人廉洁自律小结</w:t>
 				</w:r>
 			</w:p>
 			<w:p>
@@ -1408,7 +1396,14 @@
 						<w:sz-cs w:val="24"/>
 						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
 					</w:rPr>
-					<w:t>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</w:t>
+					<w:t>
+						<#if selfSummary??>
+							${selfSummary}
+						<#else>
+							暂无
+						</#if>
+
+					</w:t>
 				</w:r>
 			</w:p>
 			<w:p>
