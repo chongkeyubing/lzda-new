@@ -723,7 +723,7 @@
 				</w:r>
 			</w:p>
 <#-------------------------------------------- 奖励情况开始------------------------------------------------------->
-			<#if rewards?? && (rewards?size == 0) >
+			<#if rewards?size == 0 >
 				<w:p>
 					<w:pPr>
 						<w:keepNext w:val="off"/>
@@ -813,114 +813,7 @@
 						<w:sz-cs w:val="24"/>
 						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
 					</w:rPr>
-					<w:t>◆ ${reward.rewardType}</w:t>
-				</w:r>
-			</w:p>
-			<w:p>
-				<w:pPr>
-					<w:keepNext w:val="off"/>
-					<w:keepLines w:val="off"/>
-					<w:pageBreakBefore w:val="off"/>
-					<w:widowControl w:val="off"/>
-					<w:listPr>
-						<w:ilvl w:val="0"/>
-						<w:ilfo w:val="0"/>
-					</w:listPr>
-					<w:kinsoku/>
-					<w:wordWrap/>
-					<w:overflowPunct/>
-					<w:topLinePunct w:val="off"/>
-					<w:autoSpaceDE/>
-					<w:autoSpaceDN/>
-					<w:adjustRightInd/>
-					<w:snapToGrid/>
-					<w:spacing w:line="360" w:line-rule="auto"/>
-					<w:ind w:left="420" w:right="0" w:right-chars="0" w:first-line="420" w:first-line-chars="0"/>
-					<w:jc w:val="both"/>
-					<w:textAlignment w:val="auto"/>
-					<w:outlineLvl w:val="9"/>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-				</w:pPr>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>表彰</w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>时间</w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>：</w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>${reward.rewardTime}</w:t>
-				</w:r>
-			</w:p>
-			<w:p>
-				<w:pPr>
-					<w:keepNext w:val="off"/>
-					<w:keepLines w:val="off"/>
-					<w:pageBreakBefore w:val="off"/>
-					<w:widowControl w:val="off"/>
-					<w:listPr>
-						<w:ilvl w:val="0"/>
-						<w:ilfo w:val="0"/>
-					</w:listPr>
-					<w:kinsoku/>
-					<w:wordWrap/>
-					<w:overflowPunct/>
-					<w:topLinePunct w:val="off"/>
-					<w:autoSpaceDE/>
-					<w:autoSpaceDN/>
-					<w:adjustRightInd/>
-					<w:snapToGrid/>
-					<w:spacing w:line="360" w:line-rule="auto"/>
-					<w:ind w:left="420" w:right="0" w:right-chars="0" w:first-line="420" w:first-line-chars="0"/>
-					<w:jc w:val="both"/>
-					<w:textAlignment w:val="auto"/>
-					<w:outlineLvl w:val="9"/>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-				</w:pPr>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>表彰单位：${reward.rewardOrganization}</w:t>
+					<w:t>◆ ${reward.rewardType}，表彰时间：${reward.rewardTime}，表彰单位：${reward.rewardOrganization}。</w:t>
 				</w:r>
 			</w:p>
 			<w:p>
@@ -965,6 +858,7 @@
 			</w:p>
 			</#list>
 			<#-------------------------------------------- 奖励情况结束---------------------------------------------------->
+
 			<w:p>
 				<w:pPr>
 					<w:keepNext w:val="off"/>
@@ -1007,6 +901,55 @@
 					<w:t>三、惩罚情况</w:t>
 				</w:r>
 			</w:p>
+			<#-------------------------------------------- 违纪情况开始---------------------------------------------------->
+			<#if violations?size == 0 >
+				<w:p>
+					<w:pPr>
+						<w:keepNext w:val="off"/>
+						<w:keepLines w:val="off"/>
+						<w:pageBreakBefore w:val="off"/>
+						<w:widowControl w:val="off"/>
+						<w:listPr>
+							<w:ilvl w:val="0"/>
+							<w:ilfo w:val="0"/>
+						</w:listPr>
+						<w:kinsoku/>
+						<w:wordWrap/>
+						<w:overflowPunct/>
+						<w:topLinePunct w:val="off"/>
+						<w:autoSpaceDE/>
+						<w:autoSpaceDN/>
+						<w:adjustRightInd/>
+						<w:snapToGrid/>
+						<w:spacing w:line="360" w:line-rule="auto"/>
+						<w:ind w:right="0" w:right-chars="0" w:first-line="420" w:first-line-chars="0"/>
+						<w:jc w:val="both"/>
+						<w:textAlignment w:val="auto"/>
+						<w:outlineLvl w:val="9"/>
+						<w:rPr>
+							<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
+							<w:b w:val="off"/>
+							<w:b-cs w:val="off"/>
+							<w:sz w:val="24"/>
+							<w:sz-cs w:val="24"/>
+							<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
+						</w:rPr>
+					</w:pPr>
+					<w:r>
+						<w:rPr>
+							<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
+							<w:b w:val="off"/>
+							<w:b-cs w:val="off"/>
+							<w:color w:val="auto"/>
+							<w:sz w:val="24"/>
+							<w:sz-cs w:val="24"/>
+							<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
+						</w:rPr>
+						<w:t>暂无数据</w:t>
+					</w:r>
+				</w:p>
+			</#if>
+			<#list violations as violation>
 			<w:p>
 				<w:pPr>
 					<w:keepNext w:val="off"/>
@@ -1050,19 +993,7 @@
 						<w:sz-cs w:val="24"/>
 						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
 					</w:rPr>
-					<w:t>1、违纪</w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:b/>
-						<w:b-cs/>
-						<w:color w:val="auto"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>情况</w:t>
+					<w:t>1、违纪情况</w:t>
 				</w:r>
 			</w:p>
 			<w:p>
@@ -1107,41 +1038,7 @@
 						<w:sz-cs w:val="24"/>
 						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
 					</w:rPr>
-					<w:t>◆</w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:b w:val="off"/>
-						<w:b-cs w:val="off"/>
-						<w:color w:val="auto"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t> </w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:b w:val="off"/>
-						<w:b-cs w:val="off"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>政务处分</w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:b w:val="off"/>
-						<w:b-cs w:val="off"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t> 政务警告</w:t>
+					<w:t>◆ ${violation.violationLevel}，${violation.violationType}，处理时间：${violation.handleTime}。</w:t>
 				</w:r>
 			</w:p>
 			<w:p>
@@ -1181,68 +1078,11 @@
 						<w:sz-cs w:val="24"/>
 						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
 					</w:rPr>
-					<w:t>处理时间</w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>：</w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>2019-05-14</w:t>
+					<w:t>主要错误事实：${violation.mistakeFact}</w:t>
 				</w:r>
 			</w:p>
-			<w:p>
-				<w:pPr>
-					<w:keepNext w:val="off"/>
-					<w:keepLines w:val="off"/>
-					<w:pageBreakBefore w:val="off"/>
-					<w:widowControl w:val="off"/>
-					<w:listPr>
-						<w:ilvl w:val="0"/>
-						<w:ilfo w:val="0"/>
-					</w:listPr>
-					<w:kinsoku/>
-					<w:wordWrap/>
-					<w:overflowPunct/>
-					<w:topLinePunct w:val="off"/>
-					<w:autoSpaceDE/>
-					<w:autoSpaceDN/>
-					<w:adjustRightInd/>
-					<w:snapToGrid/>
-					<w:spacing w:line="360" w:line-rule="auto"/>
-					<w:ind w:left="420" w:right="0" w:right-chars="0" w:first-line="420" w:first-line-chars="0"/>
-					<w:jc w:val="both"/>
-					<w:textAlignment w:val="auto"/>
-					<w:outlineLvl w:val="9"/>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-				</w:pPr>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>主要错误事实：XX</w:t>
-				</w:r>
-				
-			</w:p>
+			</#list>
+			<#-------------------------------------------- 违纪情况结束---------------------------------------------------->
 			<w:p>
 				<w:pPr>
 					<w:keepNext w:val="off"/>
