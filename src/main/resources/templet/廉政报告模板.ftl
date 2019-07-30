@@ -1858,6 +1858,55 @@
 					<w:t>4、操办宴席情况</w:t>
 				</w:r>
 			</w:p>
+			<#-------------------------------------------- 宴席开始---------------------------------------------------->
+			<#if banquets?size == 0 >
+				<w:p>
+					<w:pPr>
+						<w:keepNext w:val="off"/>
+						<w:keepLines w:val="off"/>
+						<w:pageBreakBefore w:val="off"/>
+						<w:widowControl w:val="off"/>
+						<w:listPr>
+							<w:ilvl w:val="0"/>
+							<w:ilfo w:val="0"/>
+						</w:listPr>
+						<w:kinsoku/>
+						<w:wordWrap/>
+						<w:overflowPunct/>
+						<w:topLinePunct w:val="off"/>
+						<w:autoSpaceDE/>
+						<w:autoSpaceDN/>
+						<w:adjustRightInd/>
+						<w:snapToGrid/>
+						<w:spacing w:line="360" w:line-rule="auto"/>
+						<w:ind w:right="0" w:right-chars="0" w:first-line="420" w:first-line-chars="0"/>
+						<w:jc w:val="both"/>
+						<w:textAlignment w:val="auto"/>
+						<w:outlineLvl w:val="9"/>
+						<w:rPr>
+							<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
+							<w:b w:val="off"/>
+							<w:b-cs w:val="off"/>
+							<w:sz w:val="24"/>
+							<w:sz-cs w:val="24"/>
+							<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
+						</w:rPr>
+					</w:pPr>
+					<w:r>
+						<w:rPr>
+							<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
+							<w:b w:val="off"/>
+							<w:b-cs w:val="off"/>
+							<w:color w:val="auto"/>
+							<w:sz w:val="24"/>
+							<w:sz-cs w:val="24"/>
+							<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
+						</w:rPr>
+						<w:t>暂无</w:t>
+					</w:r>
+				</w:p>
+			</#if>
+			<#list banquets as banquet>
 			<w:p>
 				<w:pPr>
 					<w:keepNext w:val="off"/>
@@ -1900,71 +1949,7 @@
 						<w:sz-cs w:val="24"/>
 						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
 					</w:rPr>
-					<w:t>◆</w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:b w:val="off"/>
-						<w:b-cs w:val="off"/>
-						<w:color w:val="auto"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t> </w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:b w:val="off"/>
-						<w:b-cs w:val="off"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>宴请规模：亲属1人，好友2人，其他3人。</w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:b w:val="off"/>
-						<w:b-cs w:val="off"/>
-						<w:color w:val="auto"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>活动</w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:b w:val="off"/>
-						<w:b-cs w:val="off"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>时间：</w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>2019-05-14</w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>。</w:t>
+					<w:t>◆ 宴请规模：亲属${banquet.relativesNumber}人，好友${banquet.friendNumber}人，其他${banquet.otherNumber}人。活动时间：${banquet.activityTime}</w:t>
 				</w:r>
 			</w:p>
 			<w:p>
@@ -2008,7 +1993,7 @@
 						<w:sz-cs w:val="24"/>
 						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
 					</w:rPr>
-					<w:t>宴请标准：宴席标准100元/桌，酒水标准200元/桌，香烟和礼品标准300元/桌。</w:t>
+					<w:t>宴请标准：宴席标准${banquet.totalLevel}元/桌，酒水标准${banquet.wineLevel}元/桌，香烟和礼品标准${banquet.cigaretteGiftLevel}元/桌。</w:t>
 				</w:r>
 			</w:p>
 			<w:p>
@@ -2043,6 +2028,8 @@
 						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
 					</w:rPr>
 				</w:pPr>
+
+
 				<w:r>
 					<w:rPr>
 						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
@@ -2052,9 +2039,11 @@
 						<w:sz-cs w:val="24"/>
 						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
 					</w:rPr>
-					<w:t>用车情况：江苏淮安 苏H**Z**</w:t>
+					<w:t>用车来源：${banquet.vehicleSource}，车辆号码：${banquet.vehicleNumber}</w:t>
 				</w:r>
 			</w:p>
+			</#list>
+			<#-------------------------------------------- 宴席结束---------------------------------------------------->
 			<w:p>
 				<w:pPr>
 					<w:keepNext w:val="off"/>
