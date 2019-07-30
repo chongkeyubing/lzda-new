@@ -101,9 +101,11 @@ public class IncorruptReportServiceImpl implements IncorruptReportService {
         paramMap.put("punGifts", punGiftService.findByCondition(condition));
 
         //个人廉洁自律小结
-        condition = new Condition(IncorruptSelfSummary.class);
-        condition.createCriteria().andEqualTo("userid", userId);
-        paramMap.put("selfSummary", incorruptSelfSummaryService.findByCondition(condition));
+//        condition = new Condition(IncorruptSelfSummary.class);
+//        condition.createCriteria().andEqualTo("userid", userId);
+        IncorruptSelfSummary incorruptSelfSummary = new IncorruptSelfSummary();
+        incorruptSelfSummary.setUserid(userId);
+        paramMap.put("selfSummary", incorruptSelfSummaryService.findOne(incorruptSelfSummary));
 
         //信访投诉
         condition = new Condition(PunReport.class);
