@@ -1670,6 +1670,57 @@
 					<w:t>3、婚姻变化情况</w:t>
 				</w:r>
 			</w:p>
+
+			<#-------------------------------------------- 婚姻开始---------------------------------------------------->
+			<#if marriages?size == 0 >
+				<w:p>
+					<w:pPr>
+						<w:keepNext w:val="off"/>
+						<w:keepLines w:val="off"/>
+						<w:pageBreakBefore w:val="off"/>
+						<w:widowControl w:val="off"/>
+						<w:listPr>
+							<w:ilvl w:val="0"/>
+							<w:ilfo w:val="0"/>
+						</w:listPr>
+						<w:kinsoku/>
+						<w:wordWrap/>
+						<w:overflowPunct/>
+						<w:topLinePunct w:val="off"/>
+						<w:autoSpaceDE/>
+						<w:autoSpaceDN/>
+						<w:adjustRightInd/>
+						<w:snapToGrid/>
+						<w:spacing w:line="360" w:line-rule="auto"/>
+						<w:ind w:right="0" w:right-chars="0" w:first-line="420" w:first-line-chars="0"/>
+						<w:jc w:val="both"/>
+						<w:textAlignment w:val="auto"/>
+						<w:outlineLvl w:val="9"/>
+						<w:rPr>
+							<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
+							<w:b w:val="off"/>
+							<w:b-cs w:val="off"/>
+							<w:sz w:val="24"/>
+							<w:sz-cs w:val="24"/>
+							<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
+						</w:rPr>
+					</w:pPr>
+					<w:r>
+						<w:rPr>
+							<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
+							<w:b w:val="off"/>
+							<w:b-cs w:val="off"/>
+							<w:color w:val="auto"/>
+							<w:sz w:val="24"/>
+							<w:sz-cs w:val="24"/>
+							<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
+						</w:rPr>
+						<w:t>暂无</w:t>
+					</w:r>
+				</w:p>
+			</#if>
+			<#list marriages as marriage>
+
 			<w:p>
 				<w:pPr>
 					<w:keepNext w:val="off"/>
@@ -1712,48 +1763,7 @@
 						<w:sz-cs w:val="24"/>
 						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
 					</w:rPr>
-					<w:t>◆</w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:b w:val="off"/>
-						<w:b-cs w:val="off"/>
-						<w:color w:val="auto"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t> </w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:b w:val="off"/>
-						<w:b-cs w:val="off"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>婚姻现状：结婚，婚姻变化情况：有变化 离婚，变化时间：</w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>2019-05-14</w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>。</w:t>
+					<w:t>◆ 婚姻现状：${marriage.marriageStatus}，婚姻变化情况：${marriage.changeSituation}，${marriage.changeStatus}，变化时间：${marriage.changeDate}</w:t>
 				</w:r>
 			</w:p>
 			<w:p>
@@ -1797,9 +1807,11 @@
 						<w:sz-cs w:val="24"/>
 						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
 					</w:rPr>
-					<w:t>变化原因：性格不合</w:t>
+					<w:t>变化原因：${marriage.changeReason}</w:t>
 				</w:r>
 			</w:p>
+			</#list>
+			<#-------------------------------------------- 婚姻结束---------------------------------------------------->
 			<w:p>
 				<w:pPr>
 					<w:keepNext w:val="off"/>
