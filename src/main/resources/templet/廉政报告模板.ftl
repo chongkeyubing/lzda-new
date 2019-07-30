@@ -2028,8 +2028,6 @@
 						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
 					</w:rPr>
 				</w:pPr>
-
-
 				<w:r>
 					<w:rPr>
 						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
@@ -2087,21 +2085,59 @@
 						<w:sz-cs w:val="24"/>
 						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
 					</w:rPr>
-					<w:t>5、</w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:b/>
-						<w:b-cs/>
-						<w:color w:val="auto"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>可能影响公正执行职务情况</w:t>
+					<w:t>5、可能影响公正执行职务情况</w:t>
 				</w:r>
 			</w:p>
+
+			<#-------------------------------------------- 可能影响公正执行职务开始---------------------------------------------------->
+			<#if businessAffects?size == 0 >
+				<w:p>
+					<w:pPr>
+						<w:keepNext w:val="off"/>
+						<w:keepLines w:val="off"/>
+						<w:pageBreakBefore w:val="off"/>
+						<w:widowControl w:val="off"/>
+						<w:listPr>
+							<w:ilvl w:val="0"/>
+							<w:ilfo w:val="0"/>
+						</w:listPr>
+						<w:kinsoku/>
+						<w:wordWrap/>
+						<w:overflowPunct/>
+						<w:topLinePunct w:val="off"/>
+						<w:autoSpaceDE/>
+						<w:autoSpaceDN/>
+						<w:adjustRightInd/>
+						<w:snapToGrid/>
+						<w:spacing w:line="360" w:line-rule="auto"/>
+						<w:ind w:right="0" w:right-chars="0" w:first-line="420" w:first-line-chars="0"/>
+						<w:jc w:val="both"/>
+						<w:textAlignment w:val="auto"/>
+						<w:outlineLvl w:val="9"/>
+						<w:rPr>
+							<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
+							<w:b w:val="off"/>
+							<w:b-cs w:val="off"/>
+							<w:sz w:val="24"/>
+							<w:sz-cs w:val="24"/>
+							<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
+						</w:rPr>
+					</w:pPr>
+					<w:r>
+						<w:rPr>
+							<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
+							<w:b w:val="off"/>
+							<w:b-cs w:val="off"/>
+							<w:color w:val="auto"/>
+							<w:sz w:val="24"/>
+							<w:sz-cs w:val="24"/>
+							<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
+						</w:rPr>
+						<w:t>暂无</w:t>
+					</w:r>
+				</w:p>
+			</#if>
+			<#list businessAffects as business>
 			<w:p>
 				<w:pPr>
 					<w:keepNext w:val="off"/>
@@ -2144,59 +2180,7 @@
 						<w:sz-cs w:val="24"/>
 						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
 					</w:rPr>
-					<w:t>◆</w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:b w:val="off"/>
-						<w:b-cs w:val="off"/>
-						<w:color w:val="auto"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t> </w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:b w:val="off"/>
-						<w:b-cs w:val="off"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>时间：</w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>2019-05-14</w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>。</w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:b w:val="off"/>
-						<w:b-cs w:val="off"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>影响人姓名：黄豆，与民警关系：朋友，影响人单位：美文软件公司</w:t>
+					<w:t>◆时间：${business.time}，影响人姓名：${business.affectName}，与民警关系：${business.relationship}，影响人单位：${affectOrganization}</w:t>
 				</w:r>
 			</w:p>
 			<w:p>
@@ -2240,7 +2224,7 @@
 						<w:sz-cs w:val="24"/>
 						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
 					</w:rPr>
-					<w:t>可能影响公正执行职务内容：XX。</w:t>
+					<w:t>可能影响公正执行职务内容：${business.content}</w:t>
 				</w:r>
 			</w:p>
 			<w:p>
@@ -2284,9 +2268,12 @@
 						<w:sz-cs w:val="24"/>
 						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
 					</w:rPr>
-					<w:t>处理情况：XX。</w:t>
+					<w:t>处理情况：${business.handleInfo}</w:t>
 				</w:r>
 			</w:p>
+			<#--------------------------------------结束---------------------------------------------------->
+			</#list>
+
 			<w:p>
 				<w:pPr>
 					<w:keepNext w:val="off"/>
@@ -2330,19 +2317,7 @@
 						<w:sz-cs w:val="24"/>
 						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
 					</w:rPr>
-					<w:t>6、</w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:b/>
-						<w:b-cs/>
-						<w:color w:val="auto"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>涉警报备情况</w:t>
+					<w:t>6、涉警报备情况</w:t>
 				</w:r>
 			</w:p>
 			<w:p>
