@@ -2180,7 +2180,7 @@
 						<w:sz-cs w:val="24"/>
 						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
 					</w:rPr>
-					<w:t>◆ 时间：${business.time}，影响人姓名：${business.affectName}，与民警关系：${business.relationship}，影响人单位：${affectOrganization}</w:t>
+					<w:t>◆ 时间：${business.time}，影响人姓名：${business.affectName}，与民警关系：${business.relationship}，影响人单位：${business.affectOrganization}</w:t>
 				</w:r>
 			</w:p>
 			<w:p>
@@ -2778,21 +2778,59 @@
 						<w:sz-cs w:val="24"/>
 						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
 					</w:rPr>
-					<w:t>8、</w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:b/>
-						<w:b-cs/>
-						<w:color w:val="auto"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>借贷（担保）情况</w:t>
+					<w:t>8、借贷（担保）情况</w:t>
 				</w:r>
 			</w:p>
+
+            <#----------------------------------借出开始----------------------------------------->
+            <#if loans?size == 0 >
+                <w:p>
+                    <w:pPr>
+                        <w:keepNext w:val="off"/>
+                        <w:keepLines w:val="off"/>
+                        <w:pageBreakBefore w:val="off"/>
+                        <w:widowControl w:val="off"/>
+                        <w:listPr>
+                            <w:ilvl w:val="0"/>
+                            <w:ilfo w:val="0"/>
+                        </w:listPr>
+                        <w:kinsoku/>
+                        <w:wordWrap/>
+                        <w:overflowPunct/>
+                        <w:topLinePunct w:val="off"/>
+                        <w:autoSpaceDE/>
+                        <w:autoSpaceDN/>
+                        <w:adjustRightInd/>
+                        <w:snapToGrid/>
+                        <w:spacing w:line="360" w:line-rule="auto"/>
+                        <w:ind w:right="0" w:right-chars="0" w:first-line="420" w:first-line-chars="0"/>
+                        <w:jc w:val="both"/>
+                        <w:textAlignment w:val="auto"/>
+                        <w:outlineLvl w:val="9"/>
+                        <w:rPr>
+                            <w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
+                            <w:b w:val="off"/>
+                            <w:b-cs w:val="off"/>
+                            <w:sz w:val="24"/>
+                            <w:sz-cs w:val="24"/>
+                            <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
+                        </w:rPr>
+                    </w:pPr>
+                    <w:r>
+                        <w:rPr>
+                            <w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
+                            <w:b w:val="off"/>
+                            <w:b-cs w:val="off"/>
+                            <w:color w:val="auto"/>
+                            <w:sz w:val="24"/>
+                            <w:sz-cs w:val="24"/>
+                            <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
+                        </w:rPr>
+                        <w:t>◆ 借出：暂无</w:t>
+                    </w:r>
+                </w:p>
+            </#if>
+            <#list loans as loan>
 			<w:p>
 				<w:pPr>
 					<w:keepNext w:val="off"/>
@@ -2833,136 +2871,188 @@
 						<w:sz-cs w:val="24"/>
 						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
 					</w:rPr>
-					<w:t>◆</w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:b w:val="off"/>
-						<w:b-cs w:val="off"/>
-						<w:color w:val="auto"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t> </w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:b w:val="off"/>
-						<w:b-cs w:val="off"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>借出：</w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>金额5000元,约定期限至2019-5-14。</w:t>
-				</w:r>
-				
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>年利率0.1%，资金来源：士大夫时代发生的发生的，整改纠正情况：士大夫撒旦发射点发时代发生的发生的发生的发生的发生的士大夫</w:t>
+					<w:t>◆ 借出：金额${loan.amount}元，约定期限至${loan.timeLimit}，年利率${loan.interest}%，资金来源：${loan.fundSource}</w:t>
 				</w:r>
 			</w:p>
-			<w:p>
-				<w:pPr>
-					<w:keepNext w:val="off"/>
-					<w:keepLines w:val="off"/>
-					<w:pageBreakBefore w:val="off"/>
-					<w:widowControl w:val="off"/>
-					<w:listPr>
-						<w:ilvl w:val="0"/>
-						<w:ilfo w:val="0"/>
-					</w:listPr>
-					<w:kinsoku/>
-					<w:wordWrap/>
-					<w:overflowPunct/>
-					<w:topLinePunct w:val="off"/>
-					<w:autoSpaceDE/>
-					<w:autoSpaceDN/>
-					<w:adjustRightInd/>
-					<w:snapToGrid/>
-					<w:spacing w:line="360" w:line-rule="auto"/>
-					<w:ind w:right="0" w:right-chars="0" w:first-line="420" w:first-line-chars="0"/>
-					<w:jc w:val="both"/>
-					<w:textAlignment w:val="auto"/>
-					<w:outlineLvl w:val="9"/>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-				</w:pPr>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:b w:val="off"/>
-						<w:b-cs w:val="off"/>
-						<w:color w:val="auto"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>◆</w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:b w:val="off"/>
-						<w:b-cs w:val="off"/>
-						<w:color w:val="auto"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t> </w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:b w:val="off"/>
-						<w:b-cs w:val="off"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>借入：</w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>金额5000元，约定期限至2019-5-14。</w:t>
-				</w:r>
-				
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>年利率0.1%，整改纠正情况：士大夫士大夫时代发生的发生的发生的发生的发生的发生的发生的时代发射点士大夫。</w:t>
-				</w:r>
-			</w:p>
+                <w:p>
+                    <w:pPr>
+                        <w:keepNext w:val="off"/>
+                        <w:keepLines w:val="off"/>
+                        <w:pageBreakBefore w:val="off"/>
+                        <w:widowControl w:val="off"/>
+                        <w:listPr>
+                            <w:ilvl w:val="0"/>
+                            <w:ilfo w:val="0"/>
+                        </w:listPr>
+                        <w:kinsoku/>
+                        <w:wordWrap/>
+                        <w:overflowPunct/>
+                        <w:topLinePunct w:val="off"/>
+                        <w:autoSpaceDE/>
+                        <w:autoSpaceDN/>
+                        <w:adjustRightInd/>
+                        <w:snapToGrid/>
+                        <w:spacing w:line="360" w:line-rule="auto"/>
+                        <w:ind w:left="420" w:right="0" w:right-chars="0" w:first-line="420" w:first-line-chars="0"/>
+                        <w:jc w:val="both"/>
+                        <w:textAlignment w:val="auto"/>
+                        <w:outlineLvl w:val="9"/>
+                        <w:rPr>
+                            <w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
+                            <w:sz w:val="24"/>
+                            <w:sz-cs w:val="24"/>
+                            <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
+                        </w:rPr>
+                    </w:pPr>
+                    <w:r>
+                        <w:rPr>
+                            <w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
+                            <w:sz w:val="24"/>
+                            <w:sz-cs w:val="24"/>
+                            <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
+                        </w:rPr>
+                        <w:t>整改纠正情况：${loan.rectifyInfo}</w:t>
+                    </w:r>
+                </w:p>
+            </#list>
+            <#----------------------------------借出结束----------------------------------------->
+
+            <#----------------------------------借入开始----------------------------------------->
+            <#if borrows?size == 0 >
+                <w:p>
+                    <w:pPr>
+                        <w:keepNext w:val="off"/>
+                        <w:keepLines w:val="off"/>
+                        <w:pageBreakBefore w:val="off"/>
+                        <w:widowControl w:val="off"/>
+                        <w:listPr>
+                            <w:ilvl w:val="0"/>
+                            <w:ilfo w:val="0"/>
+                        </w:listPr>
+                        <w:kinsoku/>
+                        <w:wordWrap/>
+                        <w:overflowPunct/>
+                        <w:topLinePunct w:val="off"/>
+                        <w:autoSpaceDE/>
+                        <w:autoSpaceDN/>
+                        <w:adjustRightInd/>
+                        <w:snapToGrid/>
+                        <w:spacing w:line="360" w:line-rule="auto"/>
+                        <w:ind w:right="0" w:right-chars="0" w:first-line="420" w:first-line-chars="0"/>
+                        <w:jc w:val="both"/>
+                        <w:textAlignment w:val="auto"/>
+                        <w:outlineLvl w:val="9"/>
+                        <w:rPr>
+                            <w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
+                            <w:b w:val="off"/>
+                            <w:b-cs w:val="off"/>
+                            <w:sz w:val="24"/>
+                            <w:sz-cs w:val="24"/>
+                            <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
+                        </w:rPr>
+                    </w:pPr>
+                    <w:r>
+                        <w:rPr>
+                            <w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
+                            <w:b w:val="off"/>
+                            <w:b-cs w:val="off"/>
+                            <w:color w:val="auto"/>
+                            <w:sz w:val="24"/>
+                            <w:sz-cs w:val="24"/>
+                            <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
+                        </w:rPr>
+                        <w:t>◆ 借入：暂无</w:t>
+                    </w:r>
+                </w:p>
+            </#if>
+            <#list borrows as borrow>
+                <w:p>
+                    <w:pPr>
+                        <w:keepNext w:val="off"/>
+                        <w:keepLines w:val="off"/>
+                        <w:pageBreakBefore w:val="off"/>
+                        <w:widowControl w:val="off"/>
+                        <w:listPr>
+                            <w:ilvl w:val="0"/>
+                            <w:ilfo w:val="0"/>
+                        </w:listPr>
+                        <w:kinsoku/>
+                        <w:wordWrap/>
+                        <w:overflowPunct/>
+                        <w:topLinePunct w:val="off"/>
+                        <w:autoSpaceDE/>
+                        <w:autoSpaceDN/>
+                        <w:adjustRightInd/>
+                        <w:snapToGrid/>
+                        <w:spacing w:line="360" w:line-rule="auto"/>
+                        <w:ind w:right="0" w:right-chars="0" w:first-line="420" w:first-line-chars="0"/>
+                        <w:jc w:val="both"/>
+                        <w:textAlignment w:val="auto"/>
+                        <w:outlineLvl w:val="9"/>
+                        <w:rPr>
+                            <w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
+                            <w:sz w:val="24"/>
+                            <w:sz-cs w:val="24"/>
+                            <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
+                        </w:rPr>
+                    </w:pPr>
+                    <w:r>
+                        <w:rPr>
+                            <w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
+                            <w:b w:val="off"/>
+                            <w:b-cs w:val="off"/>
+                            <w:color w:val="auto"/>
+                            <w:sz w:val="24"/>
+                            <w:sz-cs w:val="24"/>
+                            <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
+                        </w:rPr>
+                        <w:t>◆ 借入：金额${borrow.amount}元，约定期限至${borrow.timeLimit}，年利率${borrow.interest}%，资金来源：${borrow.fundSource}</w:t>
+                    </w:r>
+                </w:p>
+                <w:p>
+                    <w:pPr>
+                        <w:keepNext w:val="off"/>
+                        <w:keepLines w:val="off"/>
+                        <w:pageBreakBefore w:val="off"/>
+                        <w:widowControl w:val="off"/>
+                        <w:listPr>
+                            <w:ilvl w:val="0"/>
+                            <w:ilfo w:val="0"/>
+                        </w:listPr>
+                        <w:kinsoku/>
+                        <w:wordWrap/>
+                        <w:overflowPunct/>
+                        <w:topLinePunct w:val="off"/>
+                        <w:autoSpaceDE/>
+                        <w:autoSpaceDN/>
+                        <w:adjustRightInd/>
+                        <w:snapToGrid/>
+                        <w:spacing w:line="360" w:line-rule="auto"/>
+                        <w:ind w:left="420" w:right="0" w:right-chars="0" w:first-line="420" w:first-line-chars="0"/>
+                        <w:jc w:val="both"/>
+                        <w:textAlignment w:val="auto"/>
+                        <w:outlineLvl w:val="9"/>
+                        <w:rPr>
+                            <w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
+                            <w:sz w:val="24"/>
+                            <w:sz-cs w:val="24"/>
+                            <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
+                        </w:rPr>
+                    </w:pPr>
+                    <w:r>
+                        <w:rPr>
+                            <w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
+                            <w:sz w:val="24"/>
+                            <w:sz-cs w:val="24"/>
+                            <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
+                        </w:rPr>
+                        <w:t>整改纠正情况：${borrow.rectifyInfo}</w:t>
+                    </w:r>
+                </w:p>
+            </#list>
+            <#----------------------------------借入结束----------------------------------------->
+
+
 			<w:p>
 				<w:pPr>
 					<w:keepNext w:val="off"/>
@@ -3038,6 +3128,9 @@
 					<w:t>整改纠正情况：士大夫士大夫时代发生的发生的发生的发生的发生的发生的发生的时代发射点士大夫</w:t>
 				</w:r>
 			</w:p>
+
+
+
 			<w:p>
 				<w:pPr>
 					<w:keepNext w:val="off"/>
