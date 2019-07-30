@@ -901,6 +901,53 @@
 					<w:t>三、惩罚情况</w:t>
 				</w:r>
 			</w:p>
+
+			<w:p>
+				<w:pPr>
+					<w:keepNext w:val="off"/>
+					<w:keepLines w:val="off"/>
+					<w:pageBreakBefore w:val="off"/>
+					<w:widowControl w:val="off"/>
+					<w:listPr>
+						<w:ilvl w:val="0"/>
+						<w:ilfo w:val="0"/>
+					</w:listPr>
+					<w:kinsoku/>
+					<w:wordWrap/>
+					<w:overflowPunct/>
+					<w:topLinePunct w:val="off"/>
+					<w:autoSpaceDE/>
+					<w:autoSpaceDN/>
+					<w:adjustRightInd/>
+					<w:snapToGrid/>
+					<w:spacing w:line="360" w:line-rule="auto"/>
+					<w:ind w:right="0" w:right-chars="0"/>
+					<w:jc w:val="both"/>
+					<w:textAlignment w:val="auto"/>
+					<w:outlineLvl w:val="9"/>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
+						<w:b/>
+						<w:b-cs/>
+						<w:color w:val="auto"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
+					</w:rPr>
+				</w:pPr>
+				<w:r>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<w:b/>
+						<w:b-cs/>
+						<w:color w:val="auto"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
+					</w:rPr>
+					<w:t>1、违纪情况</w:t>
+				</w:r>
+			</w:p>
 			<#-------------------------------------------- 违纪情况开始---------------------------------------------------->
 			<#if violations?size == 0 >
 				<w:p>
@@ -949,53 +996,8 @@
 					</w:r>
 				</w:p>
 			</#if>
+
 			<#list violations as violation>
-			<w:p>
-				<w:pPr>
-					<w:keepNext w:val="off"/>
-					<w:keepLines w:val="off"/>
-					<w:pageBreakBefore w:val="off"/>
-					<w:widowControl w:val="off"/>
-					<w:listPr>
-						<w:ilvl w:val="0"/>
-						<w:ilfo w:val="0"/>
-					</w:listPr>
-					<w:kinsoku/>
-					<w:wordWrap/>
-					<w:overflowPunct/>
-					<w:topLinePunct w:val="off"/>
-					<w:autoSpaceDE/>
-					<w:autoSpaceDN/>
-					<w:adjustRightInd/>
-					<w:snapToGrid/>
-					<w:spacing w:line="360" w:line-rule="auto"/>
-					<w:ind w:right="0" w:right-chars="0"/>
-					<w:jc w:val="both"/>
-					<w:textAlignment w:val="auto"/>
-					<w:outlineLvl w:val="9"/>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:b/>
-						<w:b-cs/>
-						<w:color w:val="auto"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-				</w:pPr>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:b/>
-						<w:b-cs/>
-						<w:color w:val="auto"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>1、违纪情况</w:t>
-				</w:r>
-			</w:p>
 			<w:p>
 				<w:pPr>
 					<w:keepNext w:val="off"/>
@@ -1038,7 +1040,7 @@
 						<w:sz-cs w:val="24"/>
 						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
 					</w:rPr>
-					<w:t>◆ ${violation.violationLevel}，${violation.violationType}，处理时间：${violation.handleTime}。</w:t>
+					<w:t>◆ 违纪级别：${violation.violationLevel}，违纪类型：${violation.violationType}，处理时间：${violation.handleTime}。</w:t>
 				</w:r>
 			</w:p>
 			<w:p>
@@ -1083,6 +1085,7 @@
 			</w:p>
 			</#list>
 			<#-------------------------------------------- 违纪情况结束---------------------------------------------------->
+
 			<w:p>
 				<w:pPr>
 					<w:keepNext w:val="off"/>
@@ -1126,61 +1129,148 @@
 						<w:sz-cs w:val="24"/>
 						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
 					</w:rPr>
-					<w:t>2、</w:t>
-				</w:r>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:b/>
-						<w:b-cs/>
-						<w:color w:val="auto"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>收受礼品（金）上缴情况</w:t>
+					<w:t>2、收受礼品（金）上缴情况</w:t>
 				</w:r>
 			</w:p>
-			<w:p>
-				<w:pPr>
-					<w:keepNext w:val="off"/>
-					<w:keepLines w:val="off"/>
-					<w:pageBreakBefore w:val="off"/>
-					<w:widowControl w:val="off"/>
-					<w:listPr>
-						<w:ilvl w:val="0"/>
-						<w:ilfo w:val="0"/>
-					</w:listPr>
-					<w:kinsoku/>
-					<w:wordWrap/>
-					<w:overflowPunct/>
-					<w:topLinePunct w:val="off"/>
-					<w:autoSpaceDE/>
-					<w:autoSpaceDN/>
-					<w:adjustRightInd/>
-					<w:snapToGrid/>
-					<w:spacing w:line="360" w:line-rule="auto"/>
-					<w:ind w:left="0" w:left-chars="0" w:right="0" w:right-chars="0" w:first-line="420" w:first-line-chars="0"/>
-					<w:jc w:val="both"/>
-					<w:textAlignment w:val="auto"/>
-					<w:outlineLvl w:val="9"/>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-				</w:pPr>
-				<w:r>
-					<w:rPr>
-						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
-						<w:sz w:val="24"/>
-						<w:sz-cs w:val="24"/>
-						<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
-					</w:rPr>
-					<w:t>没有相关记录。</w:t>
-				</w:r>
-			</w:p>
+			<#-------------------------------------------- 礼金开始---------------------------------------------------->
+			<#if punGifts?size == 0 >
+				<w:p>
+					<w:pPr>
+						<w:keepNext w:val="off"/>
+						<w:keepLines w:val="off"/>
+						<w:pageBreakBefore w:val="off"/>
+						<w:widowControl w:val="off"/>
+						<w:listPr>
+							<w:ilvl w:val="0"/>
+							<w:ilfo w:val="0"/>
+						</w:listPr>
+						<w:kinsoku/>
+						<w:wordWrap/>
+						<w:overflowPunct/>
+						<w:topLinePunct w:val="off"/>
+						<w:autoSpaceDE/>
+						<w:autoSpaceDN/>
+						<w:adjustRightInd/>
+						<w:snapToGrid/>
+						<w:spacing w:line="360" w:line-rule="auto"/>
+						<w:ind w:right="0" w:right-chars="0" w:first-line="420" w:first-line-chars="0"/>
+						<w:jc w:val="both"/>
+						<w:textAlignment w:val="auto"/>
+						<w:outlineLvl w:val="9"/>
+						<w:rPr>
+							<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
+							<w:b w:val="off"/>
+							<w:b-cs w:val="off"/>
+							<w:sz w:val="24"/>
+							<w:sz-cs w:val="24"/>
+							<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
+						</w:rPr>
+					</w:pPr>
+					<w:r>
+						<w:rPr>
+							<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
+							<w:b w:val="off"/>
+							<w:b-cs w:val="off"/>
+							<w:color w:val="auto"/>
+							<w:sz w:val="24"/>
+							<w:sz-cs w:val="24"/>
+							<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
+						</w:rPr>
+						<w:t>暂无数据</w:t>
+					</w:r>
+				</w:p>
+			</#if>
+
+			<#list punGifts as gift>
+				<w:p>
+					<w:pPr>
+						<w:keepNext w:val="off"/>
+						<w:keepLines w:val="off"/>
+						<w:pageBreakBefore w:val="off"/>
+						<w:widowControl w:val="off"/>
+						<w:listPr>
+							<w:ilvl w:val="0"/>
+							<w:ilfo w:val="0"/>
+						</w:listPr>
+						<w:kinsoku/>
+						<w:wordWrap/>
+						<w:overflowPunct/>
+						<w:topLinePunct w:val="off"/>
+						<w:autoSpaceDE/>
+						<w:autoSpaceDN/>
+						<w:adjustRightInd/>
+						<w:snapToGrid/>
+						<w:spacing w:line="360" w:line-rule="auto"/>
+						<w:ind w:left="420" w:right="0" w:right-chars="0"/>
+						<w:jc w:val="both"/>
+						<w:textAlignment w:val="auto"/>
+						<w:outlineLvl w:val="9"/>
+						<w:rPr>
+							<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
+							<w:b w:val="off"/>
+							<w:b-cs w:val="off"/>
+							<w:sz w:val="24"/>
+							<w:sz-cs w:val="24"/>
+							<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
+						</w:rPr>
+					</w:pPr>
+					<w:r>
+						<w:rPr>
+							<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
+							<w:b w:val="off"/>
+							<w:b-cs w:val="off"/>
+							<w:color w:val="auto"/>
+							<w:sz w:val="24"/>
+							<w:sz-cs w:val="24"/>
+							<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
+						</w:rPr>
+						<w:t>◆ 上缴礼品名称：${gift.giftName}，数量：${gift.amount}，折价：${gift.price}元，上缴礼金：${gift.money}元，合计${gift.total}元，上缴时间：${gift.time}。</w:t>
+					</w:r>
+				</w:p>
+				<w:p>
+					<w:pPr>
+						<w:keepNext w:val="off"/>
+						<w:keepLines w:val="off"/>
+						<w:pageBreakBefore w:val="off"/>
+						<w:widowControl w:val="off"/>
+						<w:listPr>
+							<w:ilvl w:val="0"/>
+							<w:ilfo w:val="0"/>
+						</w:listPr>
+						<w:kinsoku/>
+						<w:wordWrap/>
+						<w:overflowPunct/>
+						<w:topLinePunct w:val="off"/>
+						<w:autoSpaceDE/>
+						<w:autoSpaceDN/>
+						<w:adjustRightInd/>
+						<w:snapToGrid/>
+						<w:spacing w:line="360" w:line-rule="auto"/>
+						<w:ind w:left="420" w:right="0" w:right-chars="0" w:first-line="420" w:first-line-chars="0"/>
+						<w:jc w:val="both"/>
+						<w:textAlignment w:val="auto"/>
+						<w:outlineLvl w:val="9"/>
+						<w:rPr>
+							<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
+							<w:sz w:val="24"/>
+							<w:sz-cs w:val="24"/>
+							<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
+						</w:rPr>
+					</w:pPr>
+					<w:r>
+						<w:rPr>
+							<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:fareast="宋体" w:cs="宋体" w:hint="fareast"/>
+							<w:sz w:val="24"/>
+							<w:sz-cs w:val="24"/>
+							<w:lang w:val="EN-US" w:fareast="ZH-CN"/>
+						</w:rPr>
+						<w:t>礼品（金）处理情况：${gift.handleInfo}</w:t>
+					</w:r>
+				</w:p>
+			</#list>
+			<#-------------------------------------------- 礼金结束---------------------------------------------------->
+
+
 			<w:p>
 				<w:pPr>
 					<w:keepNext w:val="off"/>
