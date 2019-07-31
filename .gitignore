@@ -1,4 +1,5 @@
 .idea
 target
 *.iml
+log
 src/main/webapp/static/upload/*
