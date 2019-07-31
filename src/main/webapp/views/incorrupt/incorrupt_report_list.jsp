@@ -25,7 +25,7 @@
                 </button>
                 <button class="layui-btn layui-btn-warm" type="reset" id="resetQueryUser">清空</button>
             </div>
-            <div style="float: right;margin-right: 20px">
+            <div style="float: right;margin-right: 50px">
             <div class="layui-inline">
                 <label class="layui-form-label">报告时间段</label>
                 <div class="layui-input-inline">
@@ -34,7 +34,6 @@
             </div>
             </div>
         </div>
-
     </form>
 
     <table id="userTable" lay-filter="userTable"></table>

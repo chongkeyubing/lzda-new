@@ -23,7 +23,7 @@ import java.util.List;
 /**
  * @Author: libaogang
  * @Date: 2019-07-04 11:10
- * @Description 档案审核查询控制器
+ * @Description 违惩控制器
  */
 @Controller
 @RequestMapping("/punish")
