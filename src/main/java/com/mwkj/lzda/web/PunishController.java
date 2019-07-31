@@ -58,7 +58,7 @@ public class PunishController {
         //默认查询所有人
         List<PunishDTO> punishs = punishService.findAllPunishByConditions(punishDTO);
 
-        PageInfo<PunishDTO> pageInfo = new PageInfo(punishs);
+        PageInfo<PunishDTO> pageInfo = new PageInfo<>(punishs);
 
         return LayuiTableResultUtil.success(punishs, pageInfo.getTotal());
     }

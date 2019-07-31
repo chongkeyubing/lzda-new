@@ -34,15 +34,6 @@ public class ArchiveController {
     @Resource
     ArchiveService archiveService;
 
-    @Resource
-    ArcBasicInfoService arcBasicInfoService;
-
-    @Resource
-    ApproveService approveService;
-
-    @Resource
-    ArcFamilySocietyRelaService arcFamilySocietyRelaService;
-
     /**
      * @return java.lang.String
      * @Author libaogang
@@ -84,7 +75,7 @@ public class ArchiveController {
 
         //long count = archiveService.findAllArchivesCounts(archive);
 
-        PageInfo<ArchiveDTO> pageInfo = new PageInfo(archives);
+        PageInfo<ArchiveDTO> pageInfo = new PageInfo<>(archives);
 
         return LayuiTableResultUtil.success(archives, pageInfo.getTotal());
     }
@@ -144,7 +135,7 @@ public class ArchiveController {
 
         //long count = archiveService.findAllArchivesCounts(archive);
 
-        PageInfo<ArchiveDTO> pageInfo = new PageInfo(archives);
+        PageInfo<ArchiveDTO> pageInfo = new PageInfo<>(archives);
 
         return LayuiTableResultUtil.success(archives, pageInfo.getTotal());
     }

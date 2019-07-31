@@ -3,8 +3,10 @@ package com.mwkj.lzda.web.incorrupt;
 import com.mwkj.lzda.constant.SystemConstant;
 import com.mwkj.lzda.core.AppException;
 import com.mwkj.lzda.core.layui.LayuiDurationResolver;
+import com.mwkj.lzda.enu.LogOperateTypeEnum;
 import com.mwkj.lzda.model.User;
 import com.mwkj.lzda.service.IncorruptReportService;
+import com.mwkj.lzda.service.OperateLogService;
 import com.mwkj.lzda.service.OrganizationService;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -39,9 +41,13 @@ public class IncorruptReportController {
     @Resource
     IncorruptReportService incorruptReportService;
 
+    @Resource
+    OperateLogService operateLogService;
+
     @RequestMapping("/toList")
     public String toList(ModelMap map) {
         map.put("organizations", organizationService.findAll());
+        operateLogService.save("廉政报告", LogOperateTypeEnum.查看.toString(), null);
         return "/views/incorrupt/incorrupt_report_list";
     }
 
@@ -64,7 +70,7 @@ public class IncorruptReportController {
 
         //获取配置,加载模板
         Configuration cfg = new Configuration(Configuration.VERSION_2_3_23);
-        cfg.setClassForTemplateLoading(this.getClass(), "/templet");
+        cfg.setClassForTemplateLoading(this.getClass(), SystemConstant.TEMPLET_PATH);
         cfg.setDefaultEncoding("UTF-8");
         cfg.setTemplateExceptionHandler(TemplateExceptionHandler.IGNORE_HANDLER);
         Template template = cfg.getTemplate("廉政报告模板.ftl");
@@ -72,7 +78,8 @@ public class IncorruptReportController {
         //报告本地存放路径
         time = time.replace(" - ", "至");
         String fileName = String.format("关于%s同志廉情报告%s.docx", ((User) paramMap.get("user")).getRealname(), time);
-        File file = new File(SystemConstant.REPORT_TEMP_PATH + fileName);
+        String tempPath = this.getClass().getResource("/").getPath() + SystemConstant.TEMPLET_PATH;
+        File file = new File(tempPath + "/" + fileName);
 
         //本地生成报告
         Writer writer = new OutputStreamWriter(new FileOutputStream(file), "utf-8");
@@ -83,11 +90,12 @@ public class IncorruptReportController {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentDispositionFormData("attachment;filename=", URLEncoder.encode(fileName, "utf-8"));
         headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-        ResponseEntity responseEntity = new ResponseEntity<>(FileUtils.readFileToByteArray(file), headers, HttpStatus.CREATED);
+        ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(FileUtils.readFileToByteArray(file), headers, HttpStatus.CREATED);
 
         //删除临时文件
         file.delete();
 
+        operateLogService.save("廉政报告", LogOperateTypeEnum.导出.toString(), null);
         return responseEntity;
     }
 

@@ -49,11 +49,11 @@ public class OperateLogServiceImpl extends AbstractService<OperateLog> implement
      * @return void
      * @Author libaogang
      * @Date 2019-07-15 10:45
-     * @Param [operateObject, operateType, archiveOwnerId]
+     * @Param [operateObject 操作对象名, operateType 操作类型, archiveOwnerId 对象拥有者id]
      * @Description 插入日志
      */
     @Override
-    public void save(String operateObject, String operateType, int archiveOwnerId) {
+    public void save(String operateObject, String operateType, Integer archiveOwnerId) {
         Subject subject = SecurityUtils.getSubject();
 //        if (subject.hasRole(RoleEnum.单位负责人.toString()) || subject.hasRole(RoleEnum.纪委.toString())
 //                || subject.hasRole(RoleEnum.督察大队.toString()) || subject.hasRole(RoleEnum.政治处领导.toString())) {
@@ -64,16 +64,18 @@ public class OperateLogServiceImpl extends AbstractService<OperateLog> implement
             operateLog.setOperatorId(currentUser.getId());
             operateLog.setOperatorName(currentUser.getRealname());
             operateLog.setOperatorIp(DruidWebUtils.getRemoteAddr(request));
-            operateLog.setArchiveOwnerId(archiveOwnerId);
 
-            User user = new User();
-            user.setId(archiveOwnerId);
-            user = userMapper.selectOne(user);
+            if (null != archiveOwnerId) {
+                operateLog.setArchiveOwnerId(archiveOwnerId);
+                User user = new User();
+                user.setId(archiveOwnerId);
+                user = userMapper.selectOne(user);
+                operateLog.setArchiveOwnerName(user.getRealname());
+                operateLog.setOwnerOrg(user.getOrganizationName());
+            }
 
-            operateLog.setArchiveOwnerName(user.getRealname());
             operateLog.setOperateObject(operateObject);
             operateLog.setOperateType(operateType);
-            operateLog.setOwnerOrg(user.getOrganizationName());
             operateLogMapper.insertSelective(operateLog);
         }
     }

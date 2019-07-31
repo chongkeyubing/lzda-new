@@ -8,7 +8,7 @@ debug:当此属性设置为true时，将打印出logback内部日志信息，实
     <!-- 模块名称， 影响日志配置名，日志文件名 -->
     <property name="appName" value="lzda"/>
     <!--rootPath 日志路径，这里是相对路径，web项目eclipse下会输出到eclipse的安装目录下，如果部署到linux上的tomcat下，会输出到tomcat/bin目录 下 -->
-    <property name="rootPath" value="/"/>
+    <property name="rootPath" value="log"/>
     <contextName>${appName}</contextName>
 
     <!--控制台输出 -->
