@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import java.util.List;
+import tk.mybatis.mapper.entity.Condition;
+import tk.mybatis.mapper.entity.Example;
 
 /**
 * Created by CodeGenerator on 2019-07-26 16:39.
@@ -65,12 +67,31 @@ public class IncorruptSelfSummaryController {
 
 
     @RequestMapping("/toList")
-    public String toList(ModelMap map , IncorruptSelfSummaryMapper incorruptSelfSummaryMapper,Integer id) {
+    public String toList(ModelMap map , IncorruptSelfSummary incorruptSelfSummary) {
+        List list =incorruptSelfSummaryService.find(incorruptSelfSummary);
+/*
+        Condition condition = new Condition(IncorruptSelfSummary.class);
+
+        Example.Criteria criteria = condition.createCriteria();
+
+        //构建where 条件  userid
+        criteria.andEqualTo("userid",incorruptSelfSummary.getUserid());
+
+        incorruptSelfSummaryService.updateByCondition(incorruptSelfSummary,condition);*/
+
+       // incorruptSelfSummaryService.update(incorruptSelfSummary);
 
 
 
-       // map.put("map",incorruptSelfSummaryService.findById(id));
-        return "views/incorruptSelfSummary/incorrupt_list";
+        if (list.size()>0){
+            map.put("map",list);
+            return "views/incorruptSelfSummary/incorrupt_list";
+        }else{
+            return "views/incorruptSelfSummary/incorrupt_add";
+        }
+
+
+
     }
 
 }
