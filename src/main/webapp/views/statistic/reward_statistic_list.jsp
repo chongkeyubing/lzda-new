@@ -65,6 +65,7 @@
 
         //渲染表格
         var tableIns = table.render({
+            title:'表彰统计',  //导出时的文件名
             elem: '#statisticTable',
             url: 'rewardstatistic/list',
             page: true, //开启分页
@@ -156,7 +157,7 @@
         //导出
         form.on('submit(exportStatistic)', function (data) {
             debugger;
-            table.exportFile(tableIns.config.id, tableData.data, 'xls');
+            table.exportFile(tableIns.config.id, tableData.data, 'xlsx');
             return false; //阻止表单跳转
         });
 
