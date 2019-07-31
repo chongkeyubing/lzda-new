@@ -82,7 +82,7 @@ public class ArcFamilyCriminalStatisticController {
 
         List<ArchiveStatisticResultDTO> list = statisticService.statisticFamilyCriminal(archiveStatisticParamDTO);
 
-        PageInfo<ArchiveStatisticParamDTO> pageInfo = new PageInfo<>();
+        PageInfo<ArchiveStatisticResultDTO> pageInfo = new PageInfo<>(list);
 
         return LayuiTableResultUtil.success(list, pageInfo.getTotal());
     }

@@ -43,7 +43,7 @@ public class ArcEffectGiftStatisticController {
     * @date        2019/7/29/029 15:25
     */
     @RequestMapping("/toList")
-    public String toStatisticEffectGift(ModelMap map) {
+    public String toList(ModelMap map) {
         map.put("organizations", organizationService.findAll());
         return "views/statistic/arc_effect_gift_statistic_list";
     }
@@ -55,7 +55,7 @@ public class ArcEffectGiftStatisticController {
     * @date        2019/7/29/029 15:26
     */
     @RequestMapping("/toDetail")
-    public String toStatisticEffectGiftDetai(int organizationId, String time, ModelMap map) {
+    public String toDetail(int organizationId, String time, ModelMap map) {
         map.put("organizationId", organizationId);
         map.put("time", time);
         return "views/statistic/arc_effect_gift_statistic_detail";
@@ -69,7 +69,7 @@ public class ArcEffectGiftStatisticController {
     */
     @RequestMapping("/list")
     @ResponseBody
-    public Result statisticEffectGift(@RequestParam(defaultValue = "0") Integer page,
+    public Result list(@RequestParam(defaultValue = "0") Integer page,
                                       @RequestParam(defaultValue = "0") Integer limit,
                                       ArchiveStatisticParamDTO archiveStatisticParamDTO,
                                       String time) {
@@ -84,7 +84,7 @@ public class ArcEffectGiftStatisticController {
 
         List<ArchiveStatisticResultDTO> list = statisticService.statisticAcceptGifts(archiveStatisticParamDTO);
 
-        PageInfo<ArchiveStatisticParamDTO> pageInfo = new PageInfo<>();
+        PageInfo<ArchiveStatisticResultDTO> pageInfo = new PageInfo<>(list);
 
         return LayuiTableResultUtil.success(list, pageInfo.getTotal());
     }

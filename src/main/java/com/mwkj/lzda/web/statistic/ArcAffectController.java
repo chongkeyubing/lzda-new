@@ -85,7 +85,7 @@ public class ArcAffectController {
 
         List<ArchiveStatisticResultDTO> list = statisticService.statisticAffectBusiness(archiveStatisticParamDTO);
 
-        PageInfo<ArchiveStatisticParamDTO> pageInfo = new PageInfo<>();
+        PageInfo<ArchiveStatisticResultDTO> pageInfo = new PageInfo<>(list);
 
         return LayuiTableResultUtil.success(list, pageInfo.getTotal());
     }

@@ -77,7 +77,7 @@ public class ArcPoliceInvolveStatisticController {
 
         List<ArchiveStatisticResultDTO> list = statisticService.statisticPoliceInvolve(archiveStatisticParamDTO);
 
-        PageInfo<ArchiveStatisticParamDTO> pageInfo = new PageInfo<>();
+        PageInfo<ArchiveStatisticResultDTO> pageInfo = new PageInfo<>(list);
 
         return LayuiTableResultUtil.success(list, pageInfo.getTotal());
     }

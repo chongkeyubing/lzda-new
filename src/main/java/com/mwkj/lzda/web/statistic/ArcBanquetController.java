@@ -83,7 +83,7 @@ public class ArcBanquetController {
 
         List<ArchiveStatisticResultDTO> list = statisticService.statisticBanquetApply(archiveStatisticParamDTO);
 
-        PageInfo<ArchiveStatisticParamDTO> pageInfo = new PageInfo<>();
+        PageInfo<ArchiveStatisticResultDTO> pageInfo = new PageInfo<>(list);
 
         return LayuiTableResultUtil.success(list, pageInfo.getTotal());
     }

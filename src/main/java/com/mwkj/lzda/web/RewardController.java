@@ -3,8 +3,10 @@ package com.mwkj.lzda.web;
 import com.mwkj.lzda.core.AppException;
 import com.mwkj.lzda.core.Result;
 import com.mwkj.lzda.core.ResultUtil;
+import com.mwkj.lzda.core.layui.LayuiDurationResolver;
 import com.mwkj.lzda.core.layui.LayuiTableResultUtil;
 import com.mwkj.lzda.enu.LogOperateTypeEnum;
+import com.mwkj.lzda.model.ArcPoliceInvolve;
 import com.mwkj.lzda.model.Attachment;
 import com.mwkj.lzda.model.Reward;
 import com.mwkj.lzda.model.User;
@@ -13,6 +15,7 @@ import com.mwkj.lzda.service.OperateLogService;
 import com.mwkj.lzda.service.RewardService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.session.HttpServletSession;
@@ -22,6 +25,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ResponseBody;
+import tk.mybatis.mapper.entity.Condition;
+import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -54,7 +59,7 @@ public class RewardController {
     @ResponseBody
     public Result delete(@RequestParam Integer id) {
         Reward reward = rewardService.findById(id);
-        if(ObjectUtils.isEmpty(reward)){
+        if (ObjectUtils.isEmpty(reward)) {
             throw new AppException("删除失败，数据不存在");
         }
         rewardService.deleteById(id);
@@ -98,6 +103,41 @@ public class RewardController {
         PageInfo<Reward> pageInfo = new PageInfo<>(list);
         return LayuiTableResultUtil.success(list, pageInfo.getTotal());
     }
+
+    /**
+     * @return com.mwkj.lzda.core.Result
+     * @Author libaogang
+     * @Date 2019-07-31 14:18
+     * @Param [page, limit, reward, session]
+     * @Description 表彰统计页面点击穿透接口
+     */
+    @RequestMapping("/list1")
+    @ResponseBody
+    public Result list1(@RequestParam(defaultValue = "0") Integer page,
+                        @RequestParam(defaultValue = "0") Integer limit,
+                        Reward reward, String time) {
+
+        PageHelper.startPage(page, limit);
+        Condition condition = new Condition(Reward.class);
+        Example.Criteria criteria = condition.createCriteria();
+
+        //设置单位id
+        criteria.andEqualTo("organizationId", reward.getOrganizationId());
+        if (StringUtils.isNotBlank(reward.getRewardType())) {
+            criteria.andEqualTo("rewardType", reward.getRewardType());
+        }
+
+        if (StringUtils.isNotBlank(time)) {
+            //设置时间段
+            criteria.andBetween("rewardTime",
+                    LayuiDurationResolver.getBeginTime(time),
+                    LayuiDurationResolver.getEndTime(time));
+        }
+        List<Reward> list = rewardService.findByCondition(condition);
+        PageInfo<Reward> pageInfo = new PageInfo<>(list);
+        return LayuiTableResultUtil.success(list, pageInfo.getTotal());
+    }
+
 
     @RequestMapping("/toAddReward")
     public String toAddReward() {

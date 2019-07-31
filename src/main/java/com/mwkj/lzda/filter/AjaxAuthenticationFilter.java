@@ -17,9 +17,6 @@ import javax.servlet.http.HttpServletResponse;
  * @Description 解决ajax请求session失效的问题
  */
 public class AjaxAuthenticationFilter extends FormAuthenticationFilter {
-
-    private static Logger log = LoggerFactory.getLogger(AjaxAuthenticationFilter.class);
-
     @Override
     protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws Exception {
         if (isLoginRequest(request, response)) {
@@ -29,7 +26,6 @@ public class AjaxAuthenticationFilter extends FormAuthenticationFilter {
                 return true;
             }
         } else {
-            log.info("session失效");
             if (isAjax(request)) {
                 HttpServletResponse rep = (HttpServletResponse) response;
                 rep.getWriter().write(JSON.toJSONString(ResultUtil.fail("session expire")));

@@ -60,7 +60,7 @@
         var tableIns = table.render({
             elem: '#statisticTable',
             url: 'arcpoliceinvolvestatistic/list',
-            page: true, //开启分页
+            // page: true, //开启分页
             limit: 9999,
             method: 'post',
             cols: [[ //表头

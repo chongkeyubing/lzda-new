@@ -44,7 +44,7 @@ public class PunReportStatisticController {
     * @date        2019/7/29/029 15:25
     */
     @RequestMapping("/toList")
-    public String toStatisticEffectGift(ModelMap map) {
+    public String toList(ModelMap map) {
         map.put("organizations", organizationService.findAll());
         return "views/statistic/arc_pun_report_statistic_list";
     }
@@ -56,7 +56,7 @@ public class PunReportStatisticController {
     * @date        2019/7/29/029 15:26
     */
     @RequestMapping("/toDetail")
-    public String toStatisticEffectGiftDetai(int organizationId, String time, ModelMap map) {
+    public String toDetail(int organizationId, String time, ModelMap map) {
         map.put("organizationId", organizationId);
         map.put("time", time);
         return "views/statistic/arc_pun_report_statistic_detail";
@@ -70,7 +70,7 @@ public class PunReportStatisticController {
     */
     @RequestMapping("/list")
     @ResponseBody
-    public Result statisticEffectGift(@RequestParam(defaultValue = "0") Integer page,
+    public Result list(@RequestParam(defaultValue = "0") Integer page,
                                       @RequestParam(defaultValue = "0") Integer limit,
                                       ArchiveStatisticParamDTO archiveStatisticParamDTO,
                                       String time) {
@@ -85,7 +85,7 @@ public class PunReportStatisticController {
 
         List<ArchiveStatisticResultDTO> list = statisticService.statisticPunReport(archiveStatisticParamDTO);
 
-        PageInfo<ArchiveStatisticParamDTO> pageInfo = new PageInfo<>();
+        PageInfo<ArchiveStatisticResultDTO> pageInfo = new PageInfo<>(list);
 
         return LayuiTableResultUtil.success(list, pageInfo.getTotal());
     }

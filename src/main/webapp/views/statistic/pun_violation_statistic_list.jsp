@@ -71,7 +71,6 @@
                 {title: '党纪处分', align: 'center',colspan: 8},
                 {title: '违规', align: 'center',colspan: 5},
                 {title: '违法', align: 'center',colspan: 3}
-
                 /*,{field: 'operate', align: 'center', title: '操作', width:90,rowspan: 2, toolbar: '#statisticBar'}*/
             ],
                 [

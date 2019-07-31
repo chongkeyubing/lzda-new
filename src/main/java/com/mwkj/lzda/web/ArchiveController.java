@@ -115,10 +115,10 @@ public class ArchiveController {
     }
 
     /**
+     * @return com.mwkj.lzda.core.Result
      * @Author libaogang
      * @Date 2019-07-25 14:46
      * @Param [archive, session, page, limit]
-     * @return com.mwkj.lzda.core.Result
      * @Description 6种预警档案分页条件查询
      */
     @RequestMapping("/warningList")
