@@ -28,12 +28,15 @@
             <button class="layui-btn layui-btn-normal" lay-submit lay-filter="queryStatistic" id="queryStatistic">查询
             </button>
             <button class="layui-btn layui-btn-warm" type="reset">清空</button>
+            <button class="layui-btn layui-btn-normal" lay-submit id="exportStatistic" lay-filter="exportStatistic">导出
+            </button>
         </div>
 
     </div>
 </form>
 
 <table id="statisticTable" lay-filter="statisticTable"></table>
+
 <script type="text/html" id="statisticBar">
     <a class="layui-btn layui-btn-sm layui-btn-normal" lay-event="detail">明细</a>
 </script>
@@ -57,6 +60,10 @@
             }
         });
 
+        //用于存放导出的数据
+        var tableData;
+
+        //渲染表格
         var tableIns = table.render({
             elem: '#statisticTable',
             url: 'rewardstatistic/list',
@@ -103,7 +110,9 @@
                     }
                 }
             ]],
-            done :function () {
+            done: function (res) {
+                tableData = res;
+
                 // 点击数字展示具体数据
                 $(".detail").click(function () {
                     debugger;
@@ -144,12 +153,18 @@
             return false; //阻止表单跳转
         });
 
+        //导出
+        form.on('submit(exportStatistic)', function (data) {
+            debugger;
+            table.exportFile(tableIns.config.id, tableData.data, 'xls');
+            return false; //阻止表单跳转
+        });
+
         //表格重载
         function reloadTable(param) {
             tableIns.reload({
                 where: param //设定异步数据接口的额外参数，任意设
             });
         }
-
     });
 </script>

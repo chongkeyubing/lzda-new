@@ -6,10 +6,10 @@ package com.mwkj.lzda.dto;
  * @Description 奖励统计返回结果
  */
 public class RewardStatisticResultDTO {
-    Integer organizationId;
-    String organizationName;
-    String rewardType;
-    long count;
+    private Integer organizationId;
+    private String organizationName;
+    private String rewardType;
+    private long count;
 
     public String getRewardType() {
         return rewardType;

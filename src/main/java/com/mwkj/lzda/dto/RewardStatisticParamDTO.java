@@ -6,9 +6,9 @@ package com.mwkj.lzda.dto;
  * @Description 奖励统计入参
  */
 public class RewardStatisticParamDTO {
-    String beginTime; //开始时间
-    String endTime; //结束时间
-    Integer organizationId;//单位id
+    private String beginTime; //开始时间
+    private String endTime; //结束时间
+    private Integer organizationId;//单位id
 
     public String getBeginTime() {
         return beginTime;

@@ -6,9 +6,9 @@ package com.mwkj.lzda.dto;
  * @Description 接受档案类统计的前台参数
  */
 public class ArchiveStatisticParamDTO {
-    String beginTime; //开始时间
-    String endTime; //结束时间
-    String organizationId;//单位id
+    private String beginTime; //开始时间
+    private String endTime; //结束时间
+    private String organizationId;//单位id
 
     public String getBeginTime() {
         return beginTime;

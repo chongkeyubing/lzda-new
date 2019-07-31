@@ -6,9 +6,9 @@ package com.mwkj.lzda.dto;
  * @Description 档案类统计返回结果
  */
 public class ArchiveStatisticResultDTO {
-    String organizationId;
-    String organizationName;
-    long count;
+    private String organizationId;
+    private String organizationName;
+    private long count;
 
     public String getOrganizationId() {
         return organizationId;

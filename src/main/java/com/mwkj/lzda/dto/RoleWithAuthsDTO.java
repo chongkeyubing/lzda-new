@@ -7,12 +7,12 @@ import java.util.List;
 /**
  * @Author: libaogang
  * @Date: 2019-07-20 14:23
- * @Description TODO
+ * @Description 带权限的角色实体
  */
 public class RoleWithAuthsDTO {
-    String roleId;
-    String roleName;
-    List<Authority> authorityList;
+    private String roleId;
+    private String roleName;
+    private List<Authority> authorityList;
 
     public String getRoleName() {
         return roleName;
