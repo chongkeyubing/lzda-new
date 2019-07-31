@@ -110,7 +110,7 @@
                             <h2 class="menu menu05">统计</h2>
                             <ul class="menuSideBar">
                                 <li>
-                                    <a href="">违纪统计</a>
+                                    <a href="/punViolationStatistic/toList">违纪统计</a>
                                 </li>
                                 <li>
                                     <a href="">表彰统计</a>
