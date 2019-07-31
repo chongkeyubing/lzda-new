@@ -113,6 +113,7 @@ public class PunViolationServiceImpl extends AbstractService<PunViolation> imple
             PunViolationStatisticsVo punViolationStatisticsVo = new PunViolationStatisticsVo();
             punViolationStatisticsVo.setIndex(i);
             punViolationStatisticsVo.setDwmc(organization.getName());
+            punViolationStatisticsVo.setOrgId(organization.getId());
             //根据单位和时间段查询统计列表
             List<PunViolationVo> punViolationVos = punViolationMapper.findPunViolationStatistics(organization.getId(), beginTime, endTime);
             //遍历统计列表
@@ -254,5 +255,21 @@ public class PunViolationServiceImpl extends AbstractService<PunViolation> imple
         //插入日志信息
         operateLogService.save("违纪统计", LogOperateTypeEnum.查看统计数据.toString(), user.getId());
         return punViolationStatisticsVoList;
+    }
+
+    @Override
+    public List<PunViolation> findList(PunViolation punViolation, String time) {
+        LocalDateTime beginTime;
+        LocalDateTime endTime;
+        if (StringUtils.isNotBlank(time)) {
+            String[] splitTime = time.split("~");
+            DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            beginTime = LocalDateTime.parse(splitTime[0].trim() + " 00:00:00", df);
+            endTime = LocalDateTime.parse(splitTime[1].trim() + " 00:00:00", df);
+        } else {
+            beginTime = null;
+            endTime = null;
+        }
+        return this.punViolationMapper.findList(punViolation.getOrganizationId(), punViolation.getViolationLevel(), punViolation.getViolationType(), beginTime, endTime);
     }
 }

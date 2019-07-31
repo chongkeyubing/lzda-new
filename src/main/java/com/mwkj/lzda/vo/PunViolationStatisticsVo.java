@@ -19,6 +19,11 @@ public class PunViolationStatisticsVo implements Serializable {
     private String dwmc;
 
     /**
+     * 单位ID
+     */
+    private Integer orgId;
+
+    /**
      * 警告人数
      */
     private Integer jgCount = 0;
@@ -178,6 +183,14 @@ public class PunViolationStatisticsVo implements Serializable {
 
     public void setDwmc(String dwmc) {
         this.dwmc = dwmc;
+    }
+
+    public Integer getOrgId() {
+        return orgId;
+    }
+
+    public void setOrgId(Integer orgId) {
+        this.orgId = orgId;
     }
 
     public Integer getJgCount() {

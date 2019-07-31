@@ -20,4 +20,18 @@ public interface PunViolationMapper extends Mapper<PunViolation> {
      */
     List<PunViolationVo> findPunViolationStatistics(@Param("orgId") Integer orgId, @Param("beginTime") LocalDateTime beginTime, @Param("endTime") LocalDateTime endTime);
 
+    /**
+     * 根据参数查询违纪列表
+     *
+     * @param orgId
+     * @param violationLevel
+     * @param violationType
+     * @param beginTime
+     * @param endTime
+     * @return
+     */
+    List<PunViolation> findList(@Param("orgId") Integer orgId,
+                                @Param("violationLevel") String violationLevel,
+                                @Param("violationType") String violationType,
+                                @Param("beginTime") LocalDateTime beginTime, @Param("endTime") LocalDateTime endTime);
 }

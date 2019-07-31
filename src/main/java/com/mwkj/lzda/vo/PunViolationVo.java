@@ -14,6 +14,11 @@ public class PunViolationVo implements Serializable {
     private Integer id;
 
     /**
+     * 单位ID
+     */
+    private Integer orgId;
+
+    /**
      * 单位名称
      */
     private String orgName;
@@ -39,6 +44,14 @@ public class PunViolationVo implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getOrgId() {
+        return orgId;
+    }
+
+    public void setOrgId(Integer orgId) {
+        this.orgId = orgId;
     }
 
     public String getOrgName() {
@@ -77,6 +90,7 @@ public class PunViolationVo implements Serializable {
     public String toString() {
         return "PunViolationVo{" +
                 "id=" + id +
+                ", orgId=" + orgId +
                 ", orgName='" + orgName + '\'' +
                 ", violationLevelName='" + violationLevelName + '\'' +
                 ", violationTypeName='" + violationTypeName + '\'' +
