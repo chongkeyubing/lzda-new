@@ -8,7 +8,7 @@
         <div class="layui-inline">
             <label class="layui-form-label">单位</label>
             <div class="layui-input-inline">
-                <select name="orgId" lay-search>
+                <select name="orgId" id="orgId" lay-search>
                     <option value="">请选择或搜索单位</option>
                     <c:forEach var="organization" items="${organizations}">
                         <option value="${organization.id}">${organization.name}</option>
@@ -140,22 +140,7 @@
         });
 
         form.on('submit(exportStatistic)', function (data) {
-            layui.$.ajax({
-                url: "/punViolationStatistic/list/export"
-                ,data:data.field
-                , dataType: "json"
-                , contentType: "application/json;charset=utf-8"
-                ,success: function(d){
-                    if(d === "success"){
-                        layer.alert("导出成功");
-                    }else{
-                    layer.alert("导出失败");
-                    }
-                }
-                ,error: function(v){
-                    console.log(v);
-                }
-            })
+            window.location.href = "/punViolationStatistic/list/export?orgId="+$("#orgId").val()+"&time=" + $("#time").val();
             return false; //阻止表单跳转
         });
 
