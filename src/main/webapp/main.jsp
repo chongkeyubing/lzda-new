@@ -40,7 +40,7 @@
                             </li>
 
                             <li>
-                                <a href="incorrupt/toList?userId=50">廉政自律小结${currentUser.id}</a>
+                                <a href="incorruptselfsummary/toList?userid=${currentUser.id}">廉政自律小结</a>
                             </li>
 
                             <%--<shiro:hasPermission name="档案审核">--%>
@@ -123,22 +123,22 @@
                                     <a href="">表彰统计</a>
                                 </li>
                                 <li>
-                                    <a href="">信访统计</a>
+                                    <a href="punReport/toList">信访统计</a>
                                 </li>
                                 <li>
                                     <a href="arcpoliceinvolvestatistic/toList">涉警报备统计</a>
                                 </li>
                                 <li>
-                                    <a href="">收受礼品登记统计</a>
+                                    <a href="arcEffectGiftatistic/toList">收受礼品登记统计</a>
                                 </li>
                                 <li>
-                                    <a href="">操办宴席申请统计</a>
+                                    <a href="arcBanquet/toList">操办宴席申请统计</a>
                                 </li>
                                 <li>
-                                    <a href="">家人被追究刑事责任统计</a>
+                                    <a href="arcFamilyCriminaltistic/toList">家人被追究刑事责任统计</a>
                                 </li>
                                 <li>
-                                    <a href="">影响公正执行职务报备统计</a>
+                                    <a href="arcAffect/toList">影响公正执行职务报备统计</a>
                                 </li>
                                 <li>
                                     <a href="">主体责任统计</a>

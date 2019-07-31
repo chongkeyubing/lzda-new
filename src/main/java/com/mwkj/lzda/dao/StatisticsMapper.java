@@ -16,4 +16,18 @@ public interface StatisticsMapper {
     //涉警报备统计
     List<ArchiveStatisticResultDTO> statisticPoliceInvolve(ArchiveStatisticParamDTO archiveStatisticParamDTO);
 
+    //收受礼品统计
+    List<ArchiveStatisticResultDTO> statisticAcceptGifts(ArchiveStatisticParamDTO archiveStatisticParamDTO);
+
+    //操办宴席统计
+    List<ArchiveStatisticResultDTO> statisticBanquetApply(ArchiveStatisticParamDTO archiveStatisticParamDTO);
+
+    //家人被追究刑事责任统计
+    List<ArchiveStatisticResultDTO> statisticFamilyCriminal(ArchiveStatisticParamDTO archiveStatisticParamDTO);
+
+    //影响公正执行职务报备统计
+    List<ArchiveStatisticResultDTO> statisticAffectBusiness(ArchiveStatisticParamDTO archiveStatisticParamDTO);
+
+    //一般干部被群众信访举报情况登记
+    List<ArchiveStatisticResultDTO> statisticPunReport(ArchiveStatisticParamDTO archiveStatisticParamDTO);
 }

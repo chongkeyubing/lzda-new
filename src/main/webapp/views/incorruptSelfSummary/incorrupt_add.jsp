@@ -8,10 +8,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 
-<form class="layui-form form1" action="incorruptselfsummary/update" id="incorroptForm" method="post">
+<form class="layui-form form1" action="incorruptselfsummary/add" id="incorroptForm" method="post">
 
 
-    <input type="hidden" name="userId" value="${currentUser.id}">
+
 
     <div class="layui-form-item">
             <%--<div class="layui-inline">
@@ -21,17 +21,12 @@
                 </div>
             </div>--%>
 
-
+        <input type="hidden" name="userid" value="${currentUser.id}">
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">廉政小结</label>
             <div class="layui-input-inline" style="width:90%;">
-                    <c:forEach items="${map}" var="map">
-                        <c:if test="${map.userid == currentUser.id}">
                     <textarea style="width:80%;height: 30%;" placeholder="请输入内容" lay-filter="queryReport" lay-verify="required" name="summary" id="summary"
-                     class="layui-textarea txtArea">${map.summary}</textarea>
-                        </c:if>
-                        <input type="hidden" id="id" name="id" value="${map.id}">
-                    </c:forEach>
+                     class="layui-textarea txtArea"></textarea>
             </div>
         </div>
 
