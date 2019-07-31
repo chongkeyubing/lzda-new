@@ -131,7 +131,7 @@ public class ArchiveController {
         PageHelper.startPage(page, limit);
 
         //默认查询所有人
-        List<ArchiveDTO> archives = archiveService.findAllArchivesByConditions(archive);
+        List<ArchiveDTO> archives = archiveService.findAllWarningsByConditions(archive);
 
         //long count = archiveService.findAllArchivesCounts(archive);
 
