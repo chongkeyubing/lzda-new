@@ -28,4 +28,26 @@
     <result column="handle_basis" jdbcType="LONGVARCHAR" property="handleBasis" />
     <result column="remark" jdbcType="LONGVARCHAR" property="remark" />
   </resultMap>
+    <select id="findPunViolationStatistics" resultType="com.mwkj.lzda.vo.PunViolationVo">
+      SELECT
+      id,
+      organization AS 'orgName',
+      violation_level AS 'violationLevelName',
+      violation_type AS 'violationTypeName',
+      COUNT( 1 ) AS 'count'
+      FROM
+      pun_violation
+      WHERE
+      organization_id = #{orgId, jdbcType=INTEGER}
+      <if test="null != beginTime ">
+        AND create_time &gt; #{beginTime, jdbcType=TIMESTAMP}
+      </if>
+      <if test="null != endTime ">
+        AND create_time &lt; #{endTime, jdbcType=TIMESTAMP}
+      </if>
+      GROUP BY
+      organization_id,
+      violation_level,
+      violation_type;
+    </select>
 </mapper>

@@ -117,7 +117,7 @@
                             <h2 class="menu menu05">统计</h2>
                             <ul class="menuSideBar">
                                 <li>
-                                    <a href="">违纪统计</a>
+                                    <a href="/punViolationStatistic/toList">违纪统计</a>
                                 </li>
                                 <li>
                                     <a href="">表彰统计</a>
@@ -248,7 +248,6 @@
             $.ajaxSetup({
                 // contentType: "application/x-www-form-urlencoded;charset=utf-8",
                 complete: function (XMLHttpRequest, textStatus) {
-                    debugger;
                     var sessionstatus = XMLHttpRequest.getResponseHeader("sessionstatus"); // 通过XMLHttpRequest取得响应头，sessionstatus，
                     if (sessionstatus == "timeout") {
                         // 如果超时跳转到登陆页面

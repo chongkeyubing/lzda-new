@@ -6,5 +6,5 @@ package com.mwkj.lzda.enu;
  * @Description 日志操作类型
  */
 public enum LogOperateTypeEnum {
-    查看,添加,修改,删除,提交审核,审核通过,审核驳回,上报
+    查看,添加,修改,删除,提交审核,审核通过,审核驳回,上报,查看统计数据,导出统计数据
 }

@@ -71,8 +71,8 @@ public class ApproveServiceImpl extends AbstractService<Approve> implements Appr
             approve1.setApproverId(approve.getApproverId());
             approve1.setApproverName(approve.getApproverName());
 
-            //如果有档案审核权限的，提交给纪委审核
-            if (subject.isPermitted("档案审核")) {
+            //如果有廉政审批权限的，提交给纪委审核
+            if (subject.isPermitted("廉政审批")) {
                 approve1.setStatus(4); //待纪委审核
 
                 //对应档案表的档案状态修改为同样的状态
