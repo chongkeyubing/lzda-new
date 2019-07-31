@@ -543,7 +543,7 @@
 						<w:rFonts w:hint="fareast"/>
 						<w:lang w:val="EN-US"/>
 					</w:rPr>
-					<w:t>关于${user.realname}同志廉情报告</w:t>
+					<w:t>关于${user.realname}同志廉情报告${during}</w:t>
 				</w:r>
 			</w:p>
 			<w:p>

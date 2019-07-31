@@ -2,6 +2,7 @@ package com.mwkj.lzda.service.impl;
 
 import com.mwkj.lzda.model.*;
 import com.mwkj.lzda.service.*;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Condition;
@@ -62,7 +63,7 @@ public class IncorruptReportServiceImpl implements IncorruptReportService {
     ArcLoanRelaService arcLoanRelaService;
 
     /**
-     * @return java.util.Map<java.lang.String , java.lang.Object>
+     * @return java.util.Map<java.lang.String   ,     java.lang.Object>
      * @Author libaogang
      * @Date 2019-07-30 9:44
      * @Param [userId, beginTime, endTime]
@@ -71,6 +72,13 @@ public class IncorruptReportServiceImpl implements IncorruptReportService {
     @Override
     public Map<String, Object> getIncorruptReportParam(int userId, String beginTime, String endTime) {
         Map<String, Object> paramMap = new HashMap<>();
+
+        //时间段
+        String during = "";
+        if (StringUtils.isNotBlank(beginTime) && StringUtils.isNotBlank(endTime)) {
+            during=  beginTime + "至" + endTime;
+        }
+        paramMap.put("during", during);
 
         //基本情况
         User user = userService.findById(userId);
@@ -84,7 +92,6 @@ public class IncorruptReportServiceImpl implements IncorruptReportService {
                 .andBetween("rewardTime", beginTime, endTime)
                 .andEqualTo("userId", userId);
         paramMap.put("rewards", rewardService.findByCondition(condition));
-
 
         //违纪情况
         condition = new Condition(PunViolation.class);
@@ -101,8 +108,6 @@ public class IncorruptReportServiceImpl implements IncorruptReportService {
         paramMap.put("punGifts", punGiftService.findByCondition(condition));
 
         //个人廉洁自律小结
-//        condition = new Condition(IncorruptSelfSummary.class);
-//        condition.createCriteria().andEqualTo("userid", userId);
         IncorruptSelfSummary incorruptSelfSummary = new IncorruptSelfSummary();
         incorruptSelfSummary.setUserid(userId);
         paramMap.put("selfSummary", incorruptSelfSummaryService.findOne(incorruptSelfSummary));
@@ -154,7 +159,7 @@ public class IncorruptReportServiceImpl implements IncorruptReportService {
         condition.createCriteria()
                 .andBetween("createTime", beginTime, endTime)
                 .andEqualTo("userId", userId);
-        List<ArcLoan> arcLoanList =  arcLoanService.findByCondition(condition);
+        List<ArcLoan> arcLoanList = arcLoanService.findByCondition(condition);
 
         //借出汇总
         List<ArcLoanRela> loans = new ArrayList<>();
@@ -165,33 +170,33 @@ public class IncorruptReportServiceImpl implements IncorruptReportService {
         //经营活动汇总
         List<ArcLoanRela> activitys = new ArrayList<>();
 
-        for(ArcLoan arcLoan:arcLoanList){
+        for (ArcLoan arcLoan : arcLoanList) {
             //借出
             condition = new Condition(ArcLoanRela.class);
-            condition.createCriteria().andEqualTo("loanId",arcLoan.getId())
-                    .andEqualTo("type",1);
-            List<ArcLoanRela> arcLoanRelas1 =  arcLoanRelaService.findByCondition(condition);
+            condition.createCriteria().andEqualTo("loanId", arcLoan.getId())
+                    .andEqualTo("type", 1);
+            List<ArcLoanRela> arcLoanRelas1 = arcLoanRelaService.findByCondition(condition);
             loans.addAll(arcLoanRelas1);
 
             //借入
             condition = new Condition(ArcLoanRela.class);
-            condition.createCriteria().andEqualTo("loanId",arcLoan.getId())
-                    .andEqualTo("type",2);
-            List<ArcLoanRela> arcLoanRelas2 =  arcLoanRelaService.findByCondition(condition);
+            condition.createCriteria().andEqualTo("loanId", arcLoan.getId())
+                    .andEqualTo("type", 2);
+            List<ArcLoanRela> arcLoanRelas2 = arcLoanRelaService.findByCondition(condition);
             borrows.addAll(arcLoanRelas2);
 
             //担保
             condition = new Condition(ArcLoanRela.class);
-            condition.createCriteria().andEqualTo("loanId",arcLoan.getId())
-                    .andEqualTo("type",3);
-            List<ArcLoanRela> arcLoanRelas3 =  arcLoanRelaService.findByCondition(condition);
+            condition.createCriteria().andEqualTo("loanId", arcLoan.getId())
+                    .andEqualTo("type", 3);
+            List<ArcLoanRela> arcLoanRelas3 = arcLoanRelaService.findByCondition(condition);
             assures.addAll(arcLoanRelas3);
 
             //经营活动
             condition = new Condition(ArcLoanRela.class);
-            condition.createCriteria().andEqualTo("loanId",arcLoan.getId())
-                    .andEqualTo("type",4);
-            List<ArcLoanRela> arcLoanRelas4 =  arcLoanRelaService.findByCondition(condition);
+            condition.createCriteria().andEqualTo("loanId", arcLoan.getId())
+                    .andEqualTo("type", 4);
+            List<ArcLoanRela> arcLoanRelas4 = arcLoanRelaService.findByCondition(condition);
             activitys.addAll(arcLoanRelas4);
         }
 

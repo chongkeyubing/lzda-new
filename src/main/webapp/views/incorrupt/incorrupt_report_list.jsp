@@ -65,7 +65,7 @@
             cols: [[ //表头
                 {field: 'realname', title: '姓名', minWidth: 100},
                 {field: 'policeCode', title: '警号', minWidth: 100},
-                {field: 'role', title: '角色', minWidth: 120},
+                // {field: 'role', title: '角色', minWidth: 120},
                 {field: 'organizationName', title: '单位', minWidth: 340},
                 {field: 'jobPosition', title: '职务', minWidth: 200},
                 {field: 'operate', align: 'center', title: '操作', toolbar: '#userTableBar', minWidth: 200}

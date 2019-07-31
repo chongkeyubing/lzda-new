@@ -31,7 +31,7 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("/incorruptReport")
-public class IncorruptReport {
+public class IncorruptReportController {
 
     @Resource
     OrganizationService organizationService;
