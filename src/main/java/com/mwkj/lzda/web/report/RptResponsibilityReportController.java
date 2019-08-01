@@ -3,13 +3,11 @@ package com.mwkj.lzda.web.report;
 import com.mwkj.lzda.core.Result;
 import com.mwkj.lzda.core.ResultUtil;
 import com.mwkj.lzda.core.layui.LayuiTableResultUtil;
+import com.mwkj.lzda.dto.RptResponsibilityReportDTO;
 import com.mwkj.lzda.enu.LogOperateTypeEnum;
 import com.mwkj.lzda.enu.RptTableNameEnum;
 import com.mwkj.lzda.model.*;
-import com.mwkj.lzda.service.AttachmentService;
-import com.mwkj.lzda.service.OperateLogService;
-import com.mwkj.lzda.service.OrganizationService;
-import com.mwkj.lzda.service.RptResponsibilityReportService;
+import com.mwkj.lzda.service.*;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.apache.commons.lang3.StringUtils;
@@ -49,60 +47,74 @@ public class RptResponsibilityReportController {
     @Resource
     private AttachmentService attachmentService;
 
+    @Resource
+    private RptResponsibilityReportTaskService rptResponsibilityReportTaskService;
+
     @RequestMapping("/add")
     @ResponseBody
-    public Result add(RptResponsibilityReport rptResponsibilityReport,HttpServletRequest request) {
-        rptResponsibilityReportService.add(rptResponsibilityReport,request);
-
-        //日志操作
-        //                                                  表名                  操作                                    操作人
-        operateLogService.save(RptTableNameEnum.主体责任上报.toString(), LogOperateTypeEnum.添加.toString(),rptResponsibilityReport.getCommitterId());
-
+    public Result add(RptResponsibilityReportDTO rptResponsibilityReportDTO, HttpServletRequest request) {
+        rptResponsibilityReportService.add(rptResponsibilityReportDTO, request);
         return ResultUtil.success();
     }
 
     @RequestMapping("/delete")
     @ResponseBody
     public Result delete(@RequestParam Integer id) {
-        RptResponsibilityReport rptResponsibilityReport=rptResponsibilityReportService.findById(id);
-
+        //删除主表数据
+        RptResponsibilityReport rptResponsibilityReport = rptResponsibilityReportService.findById(id);
         rptResponsibilityReportService.deleteById(id);
+
+        //删除任务表数据
+        RptResponsibilityReportTask rptResponsibilityReportTask = new RptResponsibilityReportTask();
+        rptResponsibilityReportTask.setResponsibilityReportId(id);
+        rptResponsibilityReportTaskService.delete(rptResponsibilityReportTask);
 
         //日志操作
         //                                                  表名                  操作                                    操作人
-        operateLogService.save(RptTableNameEnum.主体责任上报.toString(), LogOperateTypeEnum.删除.toString(),rptResponsibilityReport.getCommitterId());
+        operateLogService.save(RptTableNameEnum.主体责任上报.toString(), LogOperateTypeEnum.删除.toString(), rptResponsibilityReport.getCommitterId());
 
         return ResultUtil.success();
     }
 
     @RequestMapping("/update")
     @ResponseBody
-    public Result update(RptResponsibilityReport rptResponsibilityReport,HttpServletRequest request) {
-        rptResponsibilityReportService.update(rptResponsibilityReport,request);
+    public Result update(RptResponsibilityReportDTO rptResponsibilityReportDTO, HttpServletRequest request) {
+        rptResponsibilityReportService.update(rptResponsibilityReportDTO, request);
+
 
         //日志操作
         //                                                  表名                  操作                                    操作人
-        operateLogService.save(RptTableNameEnum.主体责任上报.toString(), LogOperateTypeEnum.修改.toString(),rptResponsibilityReport.getCommitterId());
+        operateLogService.save(RptTableNameEnum.主体责任上报.toString(),
+                LogOperateTypeEnum.修改.toString(),
+                rptResponsibilityReportDTO.getReport().getCommitterId());
         return ResultUtil.success();
     }
 
     @RequestMapping("/toDetail")
-    public String detail(@RequestParam Integer id ,ModelMap map) {
+    public String detail(@RequestParam Integer id, ModelMap map) {
+        //主表
         RptResponsibilityReport rptResponsibilityReport = rptResponsibilityReportService.findById(id);
+        map.put("report", rptResponsibilityReport);
+
+        //主体责任季度工单
+        RptResponsibilityReportTask rptResponsibilityReportTask = new RptResponsibilityReportTask();
+        rptResponsibilityReportTask.setResponsibilityReportId(id);
+        rptResponsibilityReportTask.setType("0");
+        map.put("tasks1", rptResponsibilityReportTaskService.find(rptResponsibilityReportTask));
+
+        //“第一责任人”责任季度工单
+        rptResponsibilityReportTask = new RptResponsibilityReportTask();
+        rptResponsibilityReportTask.setType("1");
+        map.put("tasks2", rptResponsibilityReportTaskService.find(rptResponsibilityReportTask));
 
         //查询附件
         Attachment attachment = new Attachment();
         attachment.setSourceId(rptResponsibilityReport.getAttachmentId());
-        List<Attachment> attachments =  attachmentService.find(attachment);
-
-        map.put("report",rptResponsibilityReport);
-        map.put("attachments",attachments);
-
+        List<Attachment> attachments = attachmentService.find(attachment);
+        map.put("attachments", attachments);
 
         //日志操作
-        //                                                  表名                  操作                                    操作人
-        operateLogService.save(RptTableNameEnum.主体责任上报.toString(), LogOperateTypeEnum.查看.toString(),rptResponsibilityReport.getCommitterId());
-
+        operateLogService.save(RptTableNameEnum.主体责任上报.toString(), LogOperateTypeEnum.查看.toString(), rptResponsibilityReport.getCommitterId());
         return "views/report/responsibility_report_detail";
     }
 
@@ -121,32 +133,27 @@ public class RptResponsibilityReportController {
         PageHelper.startPage(page, limit);
 
         Condition condition = new Condition(RptResponsibilityReport.class);
-
         Example.Criteria criteria = condition.createCriteria();
+
         //and 条件
-        criteria.andEqualTo("organizationId",rptResponsibilityReport.getOrganizationId());
+        criteria.andEqualTo("organizationId", rptResponsibilityReport.getOrganizationId());
 
-        if(StringUtils.isNotBlank(rptResponsibilityReport.getYear())){
-            criteria.andEqualTo("year",rptResponsibilityReport.getYear());
+        if (StringUtils.isNotBlank(rptResponsibilityReport.getYear())) {
+            criteria.andEqualTo("year", rptResponsibilityReport.getYear());
         }
-        if(StringUtils.isNotBlank(rptResponsibilityReport.getQuarter())){
-            criteria.andEqualTo("quarter",rptResponsibilityReport.getQuarter());
+        if (StringUtils.isNotBlank(rptResponsibilityReport.getQuarter())) {
+            criteria.andEqualTo("quarter", rptResponsibilityReport.getQuarter());
         }
-
 
         //如果是能查看本单位
         if (SecurityUtils.getSubject().isPermitted("能查看本单位")) {
             User user = (User) session.getAttribute("currentUser");
-            /*rptResponsibilityReport.setOrganizationId(user.getOrganizationId());*/
-            criteria.andEqualTo("organizationId",user.getOrganizationId());
+            criteria.andEqualTo("organizationId", user.getOrganizationId());
         }
 
-
-
-        //构造sql语句的 order by  条件
+        //构造sql语句的 order by 条件
         condition.setOrderByClause("create_time desc");
 
-        /*List<RptResponsibilityReport> list = rptResponsibilityReportService.find(rptResponsibilityReport);*/
         List<RptResponsibilityReport> list = rptResponsibilityReportService.findByCondition(condition);
 
         PageInfo<RptResponsibilityReport> pageInfo = new PageInfo<>(list);
@@ -154,10 +161,10 @@ public class RptResponsibilityReportController {
     }
 
     /**
+     * @return java.lang.String
      * @Author libaogang
      * @Date 2019-07-22 15:24
      * @Param [map]
-     * @return java.lang.String
      * @Description 跳转到列表页
      */
     @RequestMapping("/toList")
@@ -168,10 +175,10 @@ public class RptResponsibilityReportController {
     }
 
     /**
+     * @return java.lang.String
      * @Author libaogang
      * @Date 2019-07-22 15:24
      * @Param []
-     * @return java.lang.String
      * @Description 跳转到新增页
      */
     @RequestMapping("/toAdd")
@@ -180,23 +187,27 @@ public class RptResponsibilityReportController {
     }
 
     /**
+     * @return java.lang.String
      * @Author libaogang
      * @Date 2019-07-22 15:24
      * @Param [id, map]
-     * @return java.lang.String
      * @Description 跳转到更新页
      */
     @RequestMapping("/toUpdate")
-    public String toUpdate(int id ,ModelMap map ) {
+    public String toUpdate(int id, ModelMap map) {
         RptResponsibilityReport rptResponsibilityReport = rptResponsibilityReportService.findById(id);
+        map.put("report", rptResponsibilityReport);
 
         //查询附件
         Attachment attachment = new Attachment();
         attachment.setSourceId(rptResponsibilityReport.getAttachmentId());
-        List<Attachment> attachments =  attachmentService.find(attachment);
+        List<Attachment> attachments = attachmentService.find(attachment);
+        map.put("attachments", attachments);
 
-        map.put("report",rptResponsibilityReport);
-        map.put("attachments",attachments);
+        //任务表
+        RptResponsibilityReportTask rptResponsibilityReportTask = new RptResponsibilityReportTask();
+        rptResponsibilityReportTask.setResponsibilityReportId(id);
+        map.put("tasks", rptResponsibilityReportTaskService.find(rptResponsibilityReportTask));
 
         return "views/report/responsibility_report_update";
     }

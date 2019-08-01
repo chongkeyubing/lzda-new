@@ -46,25 +46,6 @@ public class RptResponsibilityReport {
      */
     private String quarter;
 
-    /**
-     * 工单类别：主体责任季度工单、第一责任人责任季度工单
-     */
-    private String type;
-
-    private String taskOrder;
-
-    public String getTaskOrder() {
-        return taskOrder;
-    }
-
-    public void setTaskOrder(String taskOrder) {
-        this.taskOrder = taskOrder;
-    }
-
-    /**
-     * 是否完成
-     */
-    private String complete;
 
     /**
      * 附件id，一对多关联attachment
@@ -78,11 +59,6 @@ public class RptResponsibilityReport {
     @Column(name = "create_time")
     private Date createTime;
 
-    /**
-     * 具体落实情况
-     */
-    @Column(name = "complete_info")
-    private String completeInfo;
 
     /**
      * 获取主键
@@ -211,42 +187,6 @@ public class RptResponsibilityReport {
     }
 
     /**
-     * 获取工单类别：主体责任季度工单、第一责任人责任季度工单
-     *
-     * @return type - 工单类别：主体责任季度工单、第一责任人责任季度工单
-     */
-    public String getType() {
-        return type;
-    }
-
-    /**
-     * 设置工单类别：主体责任季度工单、第一责任人责任季度工单
-     *
-     * @param type 工单类别：主体责任季度工单、第一责任人责任季度工单
-     */
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    /**
-     * 获取是否完成
-     *
-     * @return complete - 是否完成
-     */
-    public String getComplete() {
-        return complete;
-    }
-
-    /**
-     * 设置是否完成
-     *
-     * @param complete 是否完成
-     */
-    public void setComplete(String complete) {
-        this.complete = complete;
-    }
-
-    /**
      * 获取附件id，一对多关联attachment
      *
      * @return attachment_id - 附件id，一对多关联attachment
@@ -282,21 +222,4 @@ public class RptResponsibilityReport {
         this.createTime = createTime;
     }
 
-    /**
-     * 获取具体落实情况
-     *
-     * @return complete_info - 具体落实情况
-     */
-    public String getCompleteInfo() {
-        return completeInfo;
-    }
-
-    /**
-     * 设置具体落实情况
-     *
-     * @param completeInfo 具体落实情况
-     */
-    public void setCompleteInfo(String completeInfo) {
-        this.completeInfo = completeInfo;
-    }
 }
