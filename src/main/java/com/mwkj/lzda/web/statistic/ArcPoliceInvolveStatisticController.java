@@ -6,6 +6,8 @@ import com.mwkj.lzda.core.Result;
 import com.mwkj.lzda.core.layui.LayuiTableResultUtil;
 import com.mwkj.lzda.dto.ArchiveStatisticParamDTO;
 import com.mwkj.lzda.dto.ArchiveStatisticResultDTO;
+import com.mwkj.lzda.enu.LogOperateTypeEnum;
+import com.mwkj.lzda.service.OperateLogService;
 import com.mwkj.lzda.service.OrganizationService;
 import com.mwkj.lzda.service.StatisticService;
 import org.apache.commons.lang3.StringUtils;
@@ -33,6 +35,10 @@ public class ArcPoliceInvolveStatisticController {
     @Resource
     private OrganizationService organizationService;
 
+    @Resource
+    private OperateLogService operateLogService;
+
+
     /**
      * @return java.lang.String
      * @Author libaogang
@@ -43,6 +49,8 @@ public class ArcPoliceInvolveStatisticController {
     @RequestMapping("/toList")
     public String toStatisticPoliceInvolve(ModelMap map) {
         map.put("organizations", organizationService.findAll());
+        //插入日志信息
+        operateLogService.save("涉警报备统计", LogOperateTypeEnum.查看.toString(), null);
         return "views/statistic/arc_police_involve_statistic_list";
     }
 

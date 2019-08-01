@@ -8,6 +8,8 @@ import com.mwkj.lzda.core.layui.LayuiTableResultUtil;
 import com.mwkj.lzda.dto.ArchiveStatisticParamDTO;
 import com.mwkj.lzda.dto.ArchiveStatisticResultDTO;
 import com.mwkj.lzda.dto.RewardStatisticParamDTO;
+import com.mwkj.lzda.enu.LogOperateTypeEnum;
+import com.mwkj.lzda.service.OperateLogService;
 import com.mwkj.lzda.service.OrganizationService;
 import com.mwkj.lzda.service.StatisticService;
 import com.mwkj.lzda.vo.RewardStatisticVO;
@@ -36,9 +38,14 @@ public class RewardStatisticController {
     @Resource
     private OrganizationService organizationService;
 
+    @Resource
+    private OperateLogService operateLogService;
+
     @RequestMapping("/toList")
     public String toList(ModelMap map) {
         map.put("organizations", organizationService.findAll());
+        //插入日志信息
+        operateLogService.save("表彰统计", LogOperateTypeEnum.查看.toString(), null);
         return "views/statistic/reward_statistic_list";
     }
 

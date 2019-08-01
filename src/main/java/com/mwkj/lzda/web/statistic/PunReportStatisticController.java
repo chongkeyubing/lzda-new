@@ -6,12 +6,10 @@ import com.mwkj.lzda.core.Result;
 import com.mwkj.lzda.core.layui.LayuiTableResultUtil;
 import com.mwkj.lzda.dto.ArchiveStatisticParamDTO;
 import com.mwkj.lzda.dto.ArchiveStatisticResultDTO;
+import com.mwkj.lzda.enu.LogOperateTypeEnum;
 import com.mwkj.lzda.model.ArcGiftInfo;
 import com.mwkj.lzda.model.PunReport;
-import com.mwkj.lzda.service.ArcGiftInfoService;
-import com.mwkj.lzda.service.OrganizationService;
-import com.mwkj.lzda.service.PunReportService;
-import com.mwkj.lzda.service.StatisticService;
+import com.mwkj.lzda.service.*;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -37,6 +35,10 @@ public class PunReportStatisticController {
     @Resource
     private PunReportService punReportService;
 
+    @Resource
+    private OperateLogService operateLogService;
+
+
     /**
     * 方法实现说明
     * @author      zzy
@@ -46,6 +48,8 @@ public class PunReportStatisticController {
     @RequestMapping("/toList")
     public String toList(ModelMap map) {
         map.put("organizations", organizationService.findAll());
+        //插入日志信息
+        operateLogService.save("信访统计", LogOperateTypeEnum.查看.toString(), null);
         return "views/statistic/arc_pun_report_statistic_list";
     }
 
