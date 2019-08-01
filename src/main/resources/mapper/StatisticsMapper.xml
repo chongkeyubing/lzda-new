@@ -6,7 +6,8 @@
     <select id="statisticPoliceInvolve" parameterType="com.mwkj.lzda.dto.ArchiveStatisticParamDTO"
             resultType="com.mwkj.lzda.dto.ArchiveStatisticResultDTO">
         select a.count, a.organization_id, o.name as organization_name
-        from (
+        from organization o
+        left join (
         SELECT organization_id, count(*) as count
         from arc_police_involve
         <if test="beginTime!=null and beginTime!='' and endTime!=null and endTime!=''">
@@ -16,15 +17,15 @@
         <if test="organizationId!=null and organizationId!=''">
             having organization_id = #{organizationId}
         </if>
-        ) a
-        left join organization o on o.id = a.organization_id
+        ) a on o.id = a.organization_id
     </select>
 
     <!--收受礼品统计-->
     <select id="statisticAcceptGifts" parameterType="com.mwkj.lzda.dto.ArchiveStatisticParamDTO"
             resultType="com.mwkj.lzda.dto.ArchiveStatisticResultDTO">
         select a.count, a.organization_id, o.name as organization_name
-        from (
+        from organization o
+        left join (
         SELECT organization_id, count(*) as count
         from arc_gift_info
         <if test="beginTime!=null and beginTime!='' and endTime!=null and endTime!=''">
@@ -34,15 +35,15 @@
         <if test="organizationId!=null and organizationId!=''">
             having organization_id = #{organizationId}
         </if>
-        ) a
-        left join organization o on o.id = a.organization_id
+        ) a on o.id = a.organization_id
     </select>
 
     <!--操办宴席统计-->
     <select id="statisticBanquetApply" parameterType="com.mwkj.lzda.dto.ArchiveStatisticParamDTO"
             resultType="com.mwkj.lzda.dto.ArchiveStatisticResultDTO">
         select a.count, a.organization_id, o.name as organization_name
-        from (
+        from organization o
+        left join (
         SELECT organization_id, count(*) as count
         from arc_banquet_apply
         <if test="beginTime!=null and beginTime!='' and endTime!=null and endTime!=''">
@@ -52,8 +53,7 @@
         <if test="organizationId!=null and organizationId!=''">
             having organization_id = #{organizationId}
         </if>
-        ) a
-        left join organization o on o.id = a.organization_id
+        ) a on o.id = a.organization_id
     </select>
 
 
@@ -61,7 +61,8 @@
     <select id="statisticFamilyCriminal" parameterType="com.mwkj.lzda.dto.ArchiveStatisticParamDTO"
             resultType="com.mwkj.lzda.dto.ArchiveStatisticResultDTO">
         select a.count, a.organization_id, o.name as organization_name
-        from (
+        from organization o
+        left join (
         SELECT organization_id, count(*) as count
         from arc_family_criminal
         <if test="beginTime!=null and beginTime!='' and endTime!=null and endTime!=''">
@@ -71,15 +72,15 @@
         <if test="organizationId!=null and organizationId!=''">
             having organization_id = #{organizationId}
         </if>
-        ) a
-        left join organization o on o.id = a.organization_id
+        ) a on o.id = a.organization_id
     </select>
 
     <!--影响公正执行职务报备统计-->
     <select id="statisticAffectBusiness" parameterType="com.mwkj.lzda.dto.ArchiveStatisticParamDTO"
             resultType="com.mwkj.lzda.dto.ArchiveStatisticResultDTO">
         select a.count, a.organization_id, o.name as organization_name
-        from (
+        from organization o
+        left join (
         SELECT organization_id, count(*) as count
         from arc_family_criminal
         <if test="beginTime!=null and beginTime!='' and endTime!=null and endTime!=''">
@@ -89,15 +90,15 @@
         <if test="organizationId!=null and organizationId!=''">
             having organization_id = #{organizationId}
         </if>
-        ) a
-        left join organization o on o.id = a.organization_id
+        ) a on o.id = a.organization_id
     </select>
 
     <!--一般干部被群众信访举报情况登记统计-->
     <select id="statisticPunReport" parameterType="com.mwkj.lzda.dto.ArchiveStatisticParamDTO"
             resultType="com.mwkj.lzda.dto.ArchiveStatisticResultDTO">
         select a.count, a.organization_id, o.name as organization_name
-        from (
+        from organization o
+        left join (
         SELECT organization_id, count(*) as count
         from pun_report
         <if test="beginTime!=null and beginTime!='' and endTime!=null and endTime!=''">
@@ -107,8 +108,7 @@
         <if test="organizationId!=null and organizationId!=''">
             having organization_id = #{organizationId}
         </if>
-        ) a
-        left join organization o on o.id = a.organization_id
+        ) a on o.id = a.organization_id
     </select>
 
     <!-- 表彰统计 -->
