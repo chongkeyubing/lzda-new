@@ -18,7 +18,6 @@ public class BasicInfoDTO {
     //家庭或重要社会关系
     private List<ArcFamilySocietyRela> arcs;
 
-
     public ArcBasicInfo getArcBasicInfo() {
         return arcBasicInfo;
     }

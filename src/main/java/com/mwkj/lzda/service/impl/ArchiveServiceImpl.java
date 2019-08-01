@@ -1,6 +1,5 @@
 package com.mwkj.lzda.service.impl;
 
-import com.alibaba.druid.util.DruidWebUtils;
 import com.mwkj.lzda.dao.ArchiveMapper;
 import com.mwkj.lzda.dto.ArcLoanDTO;
 import com.mwkj.lzda.dto.ArchiveDTO;
@@ -9,16 +8,14 @@ import com.mwkj.lzda.enu.LogOperateTypeEnum;
 import com.mwkj.lzda.enu.RoleEnum;
 import com.mwkj.lzda.model.*;
 import com.mwkj.lzda.service.*;
-import com.mwkj.lzda.util.WebContextHolder;
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
-
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+
+
 
 /**
  * @Author: libaogang
@@ -28,6 +25,9 @@ import java.util.List;
 @Service
 @Transactional
 public class ArchiveServiceImpl implements ArchiveService {
+
+    @Resource
+    private UserService userService;
 
     @Resource
     private ArchiveMapper archiveMapper;
@@ -135,7 +135,6 @@ public class ArchiveServiceImpl implements ArchiveService {
     public List<ArchiveDTO> findAllWarningsByConditions(ArchiveDTO archive) {
         return archiveMapper.findAllWarningsByConditions(archive);
     }
-
 
     /**
      * @return java.lang.String
@@ -606,6 +605,5 @@ public class ArchiveServiceImpl implements ArchiveService {
                 break;
         }
     }
-
 
 }

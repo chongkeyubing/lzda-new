@@ -4,11 +4,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 
-<link rel="stylesheet" type="text/css" href="static/css/imgUp.css"/>
-<link rel="stylesheet" type="text/css" href="static/css/demos.css"/>
-<link rel="stylesheet" type="text/css" href="static/css/jquery-weui.css"/>
-<link rel="stylesheet" type="text/css" href="static/css/weui.min.css"/>
-
 <div class="wrapper">
     <div class="contentBox">
         <div class="tableHonor">
@@ -23,12 +18,32 @@
                     <td>是否完成</td>
                     <td colspan="2">具体落实情况</td>
                 </tr>
-                <tr>
-                    <td>${report.type}</td>
-                    <td>${report.taskOrder}</td>
-                    <td>${report.complete}</td>
-                    <td colspan="2">${report.completeInfo}</td>
-                </tr>
+
+                <c:if test="${not empty tasks1}">
+                    <c:forEach items="${tasks1}" var="task1" varStatus="status">
+                        <tr>
+                            <c:if test="${status.first}">
+                                <td rowspan="${tasks1.size()}">主体责任<br/>季度工单</td>
+                            </c:if>
+                            <td>${task1.taskOrder}</td>
+                            <td>${task1.complete}</td>
+                            <td colspan="2">${task1.completeInfo}</td>
+                        </tr>
+                    </c:forEach>
+                </c:if>
+
+                <c:if test="${not empty tasks2}">
+                    <c:forEach items="${tasks2}" var="task2" varStatus="status">
+                        <tr>
+                            <c:if test="${status.first}">
+                                <td rowspan="${tasks2.size()}">“第一责任人”责任<br/>季度工单</td>
+                            </c:if>
+                            <td>${task2.taskOrder}</td>
+                            <td>${task2.complete}</td>
+                            <td colspan="2">${task2.completeInfo}</td>
+                        </tr>
+                    </c:forEach>
+                </c:if>
 
                 <c:if test="${not empty attachments}">
                     <tr class="imgDisplay">
@@ -38,7 +53,6 @@
                                 <c:forEach items="${attachments}" var="attachment" varStatus="statu">
                                     <li>
                                         <a href="${attachment.url}" target="_blank">
-                                                <%--<img src="${attachment.url}" onclick="list(${statu.index})"/>--%>
                                             <img src="${attachment.url}"/>
                                         </a>
                                     </li>
@@ -55,8 +69,4 @@
     </div>
 </div>
 
-<%@ include file = "../common/back.jsp" %>
-<script src="static/js/imgUp1.js"></script>
-<script src="static/js/initDom.js"></script>
-<script src="static/js/jquery-weui.js"></script>
-<script src="static/js/swiper.js"></script>
+<%@ include file="../common/back.jsp" %>

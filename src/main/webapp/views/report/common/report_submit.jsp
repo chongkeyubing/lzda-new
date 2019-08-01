@@ -22,7 +22,6 @@
             var index = layer.load(2);
             $("#reportForm").ajaxSubmit({
                 success: function (data) {
-
                     if (data.success) {
                         //关闭当前弹窗
                         layer.closeAll();
@@ -35,7 +34,7 @@
 
                     } else {
                         layer.close(index);
-                        layer.msg("提交失败，请重新尝试或联系管理员");
+                        layer.msg(data.message);
                     }
                 }
             });

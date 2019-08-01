@@ -82,7 +82,6 @@
             cols: [[ //表头
                 {field: 'organizationName', title: '上报单位'},
                 {field: 'committerName', title: '上报人'},
-                {field: 'type', title: '工单类别'},
                 {field: 'year', title: '年份'},
                 {field: 'quarter', title: '季度'},
                 {

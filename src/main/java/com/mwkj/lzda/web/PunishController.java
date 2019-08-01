@@ -5,7 +5,6 @@ import com.github.pagehelper.PageInfo;
 import com.mwkj.lzda.core.Result;
 import com.mwkj.lzda.core.ResultUtil;
 import com.mwkj.lzda.core.layui.LayuiTableResultUtil;
-import com.mwkj.lzda.dto.ArchiveDTO;
 import com.mwkj.lzda.dto.PunishDTO;
 import com.mwkj.lzda.model.User;
 import com.mwkj.lzda.service.PunishService;
@@ -18,14 +17,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
  * @Author: libaogang
  * @Date: 2019-07-04 11:10
- * @Description 档案审核查询控制器
+ * @Description 违惩控制器
  */
 @Controller
 @RequestMapping("/punish")
@@ -60,7 +58,7 @@ public class PunishController {
         //默认查询所有人
         List<PunishDTO> punishs = punishService.findAllPunishByConditions(punishDTO);
 
-        PageInfo<PunishDTO> pageInfo = new PageInfo(punishs);
+        PageInfo<PunishDTO> pageInfo = new PageInfo<>(punishs);
 
         return LayuiTableResultUtil.success(punishs, pageInfo.getTotal());
     }

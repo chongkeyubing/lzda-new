@@ -34,7 +34,7 @@
                     <td colspan="5">${reward.rewardOrganization}</td>
                 </tr>
                 <tr>
-                    <td>问<br/>责<br/>内<br/>容</td>
+                    <td>表<br/>彰<br/>内<br/>容</td>
                     <td colspan="5">${reward.content}</td>
                 </tr>
                 <tr>
@@ -64,7 +64,7 @@
         </div>
     </div>
 </div>
-<%@ include file = "../common/back.jsp" %>
+<%@ include file="../common/backone.jsp" %>
 <script src="static/js/imgUp1.js"></script>
 <script src="static/js/initDom.js"></script>
 <script src="static/js/jquery-weui.js"></script>
@@ -84,6 +84,7 @@
         });
         pb1.open();
     }
+
     // $('.imgDisplay img').zoomify();
 </script>
 

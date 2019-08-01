@@ -61,7 +61,7 @@
                     <td colspan="2">${archive.jobPosition}</td>
                     <td>职 级</td>
                     <td>${archive.jobPositionLevel}</td>
-                    <td>任现职务时间</td>
+                    <td>现任职务时间</td>
                     <td><fmt:formatDate value="${archive.jobPositionTime}" pattern="yyyy-MM-dd"/></td>
                 </tr>
                 <tr>
@@ -75,26 +75,26 @@
 
 
                 <c:if test="${not empty arcFamilySocietyRelaList}">
-                <tr>
-                    <td rowspan="${arcFamilySocietyRelaListSize}">家庭<br/>主要<br/>成员<br/>及重<br/>要社<br/>会关<br/>系</td>
-                    <td>称　谓</td>
-                    <td>姓　名</td>
-                    <td>出生年月</td>
-                    <td>政治面貌</td>
-                    <td style="width: 10%;">工作单位</td>
-                    <td>职务</td>
-                </tr>
-
-                <c:forEach var="arcFamilySocietyRela" items="${arcFamilySocietyRelaList}">
                     <tr>
-                        <td>${arcFamilySocietyRela.appellation}</td>
-                        <td>${arcFamilySocietyRela.name}</td>
-                        <td><fmt:formatDate value="${arcFamilySocietyRela.birthday}" pattern="yyyy-MM-dd"/></td>
-                        <td>${arcFamilySocietyRela.politicFace}</td>
-                        <td>${arcFamilySocietyRela.organization}</td>
-                        <td>${arcFamilySocietyRela.jobPosition}</td>
+                        <td rowspan="${arcFamilySocietyRelaListSize}">家庭<br/>主要<br/>成员<br/>及重<br/>要社<br/>会关<br/>系</td>
+                        <td>称　谓</td>
+                        <td>姓　名</td>
+                        <td>出生年月</td>
+                        <td>政治面貌</td>
+                        <td style="width: 10%;">工作单位</td>
+                        <td>职务</td>
                     </tr>
-                </c:forEach>
+
+                    <c:forEach var="arcFamilySocietyRela" items="${arcFamilySocietyRelaList}">
+                        <tr>
+                            <td>${arcFamilySocietyRela.appellation}</td>
+                            <td>${arcFamilySocietyRela.name}</td>
+                            <td><fmt:formatDate value="${arcFamilySocietyRela.birthday}" pattern="yyyy-MM-dd"/></td>
+                            <td>${arcFamilySocietyRela.politicFace}</td>
+                            <td>${arcFamilySocietyRela.organization}</td>
+                            <td>${arcFamilySocietyRela.jobPosition}</td>
+                        </tr>
+                    </c:forEach>
                 </c:if>
 
                 <tr>
@@ -104,44 +104,44 @@
             </table>
 
             <c:if test="${approveOperate}">
-                <%@ include file = "../approve/approve_operate.jsp" %>
+                <%@ include file="../approve/approve_operate.jsp" %>
             </c:if>
 
             <c:if test="${approveRecord}">
-                <%@ include file = "../approve/approve_record.jsp" %>
+                <%@ include file="../approve/approve_record.jsp" %>
             </c:if>
         </div>
 
     </div>
 </div>
 <script>
-    $(function(){
-        var $fix1=$(".fix1").height()
-        var $fix1_b=$(".fix1 td").css('border')
-        var $fix1_n=parseInt($fix1_b,10)*2
-        var $fix1H=$fix1+$fix1_n
+    $(function () {
+        var $fix1 = $(".fix1").height()
+        var $fix1_b = $(".fix1 td").css('border')
+        var $fix1_n = parseInt($fix1_b, 10) * 2
+        var $fix1H = $fix1 + $fix1_n
 
 
-        var $fix2=$(".fix2").height()
-        var $fix2_b=$(".fix2 td").css('border')
-        var $fix2_n=parseInt($fix2_b,10)*2
-        var $fix2H=$fix2+$fix2_n
+        var $fix2 = $(".fix2").height()
+        var $fix2_b = $(".fix2 td").css('border')
+        var $fix2_n = parseInt($fix2_b, 10) * 2
+        var $fix2H = $fix2 + $fix2_n
 
-        var $fix3=$(".fix3").height()
-        var $fix3_b=$(".fix3 td").css('border')
-        var $fix3_n=parseInt($fix3_b,10)*2
-        var $fix3H=$fix3+$fix3_n
+        var $fix3 = $(".fix3").height()
+        var $fix3_b = $(".fix3 td").css('border')
+        var $fix3_n = parseInt($fix3_b, 10) * 2
+        var $fix3H = $fix3 + $fix3_n
 
-        var $fix4=$(".fix4").height()
-        var $fix4_b=$(".fix4 td").css('border')
-        var $fix4_n=parseInt($fix4_b,10)*2
-        var $fix4H=$fix4+$fix4_n
+        var $fix4 = $(".fix4").height()
+        var $fix4_b = $(".fix4 td").css('border')
+        var $fix4_n = parseInt($fix4_b, 10) * 2
+        var $fix4H = $fix4 + $fix4_n
 
 
-        var imgHeight=$fix1H+$fix2H+$fix3H+$fix4H
+        var imgHeight = $fix1H + $fix2H + $fix3H + $fix4H
         console.log(imgHeight)
-        $(".tableHonor table .imgShow").css('maxHeight',imgHeight)
+        $(".tableHonor table .imgShow").css('maxHeight', imgHeight)
 
     })
 </script>
-<%@ include file = "./common/back.jsp" %>
+<%@ include file="./common/back.jsp" %>

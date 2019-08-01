@@ -9,7 +9,7 @@
         <div class="tableHonor">
             <table>
                 <tr>
-                    <th colspan="4">队伍思想状况<i>${report.time}</i>月份析报告</th>
+                    <th colspan="4">队伍思想状况${report.time}月份析报告</th>
                 </tr>
                 <tr>
                     <td>填报单位</td>
@@ -19,8 +19,7 @@
                 </tr>
                 <tr>
                     <td>基本情况</td>
-                    <td colspan="3">民警<i>${report.ploiceNumber}</i>人，其中党员
-                        <i>${report.partyNumber}</i>人。
+                    <td colspan="3">民警${report.ploiceNumber}人，其中党员${report.partyNumber}人。
                     </td>
                 </tr>
                 <tr>
@@ -47,4 +46,5 @@
         </div>
     </div>
 </div>
+
 <%@ include file="../common/back.jsp" %>

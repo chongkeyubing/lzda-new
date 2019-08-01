@@ -36,14 +36,6 @@
             <button class="layui-btn layui-btn-warm" type="reset" id="resetQueryPunish">清空</button>
         </div>
     </div>
-
-    <%--<div class="layui-form-item">--%>
-    <%--<div class="layui-input-block">--%>
-    <%--<button class="layui-btn layui-btn-normal" lay-submit lay-filter="queryPunish" id="queryPunish">查询--%>
-    <%--</button>--%>
-    <%--<button class="layui-btn layui-btn-warm" type="reset" id="resetQueryPunish">清空</button>--%>
-    <%--</div>--%>
-    <%--</div>--%>
 </form>
 
 <shiro:hasPermission name="违惩信息新增">

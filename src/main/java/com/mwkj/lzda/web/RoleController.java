@@ -15,6 +15,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.mwkj.lzda.service.UserService;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.stereotype.Controller;
@@ -106,7 +107,7 @@ public class RoleController {
      * @Description 跳转到更新页
      */
     @RequestMapping("/toUpdate")
-    public String toRoleUpdate(int id, Map map){
+    public String toRoleUpdate(int id, ModelMap map){
         //查询所有权限
         List<Authority> authorities = authorityService.findAll();
 

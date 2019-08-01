@@ -26,7 +26,7 @@ import java.util.List;
 /**
  * @Author: libaogang
  * @Date: 2019-07-04 11:10
- * @Description 档案审核查询控制器
+ * @Description 廉政审批查询控制器
  */
 @Controller
 @RequestMapping("/approve")
@@ -39,7 +39,7 @@ public class ApproveController {
      * @Author libaogang
      * @Date 2019-07-08 9:56
      * @Param [approve, page, limit]
-     * @Description 档案审核查询
+     * @Description 廉政审批查询
      */
     @RequestMapping("/list")
     @ResponseBody

@@ -34,15 +34,6 @@ public class ArchiveController {
     @Resource
     ArchiveService archiveService;
 
-    @Resource
-    ArcBasicInfoService arcBasicInfoService;
-
-    @Resource
-    ApproveService approveService;
-
-    @Resource
-    ArcFamilySocietyRelaService arcFamilySocietyRelaService;
-
     /**
      * @return java.lang.String
      * @Author libaogang
@@ -84,7 +75,7 @@ public class ArchiveController {
 
         //long count = archiveService.findAllArchivesCounts(archive);
 
-        PageInfo<ArchiveDTO> pageInfo = new PageInfo(archives);
+        PageInfo<ArchiveDTO> pageInfo = new PageInfo<>(archives);
 
         return LayuiTableResultUtil.success(archives, pageInfo.getTotal());
     }
@@ -124,10 +115,10 @@ public class ArchiveController {
     }
 
     /**
+     * @return com.mwkj.lzda.core.Result
      * @Author libaogang
      * @Date 2019-07-25 14:46
      * @Param [archive, session, page, limit]
-     * @return com.mwkj.lzda.core.Result
      * @Description 6种预警档案分页条件查询
      */
     @RequestMapping("/warningList")
@@ -140,11 +131,11 @@ public class ArchiveController {
         PageHelper.startPage(page, limit);
 
         //默认查询所有人
-        List<ArchiveDTO> archives = archiveService.findAllArchivesByConditions(archive);
+        List<ArchiveDTO> archives = archiveService.findAllWarningsByConditions(archive);
 
         //long count = archiveService.findAllArchivesCounts(archive);
 
-        PageInfo<ArchiveDTO> pageInfo = new PageInfo(archives);
+        PageInfo<ArchiveDTO> pageInfo = new PageInfo<>(archives);
 
         return LayuiTableResultUtil.success(archives, pageInfo.getTotal());
     }

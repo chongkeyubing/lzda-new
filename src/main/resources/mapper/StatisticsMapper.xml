@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mwkj.lzda.dao.StatisticsMapper">
+
+    <!--涉警报备统计-->
+    <select id="statisticPoliceInvolve" parameterType="com.mwkj.lzda.dto.ArchiveStatisticParamDTO"
+            resultType="com.mwkj.lzda.dto.ArchiveStatisticResultDTO">
+        select a.count, a.organization_id, o.name as organization_name
+        from organization o
+        left join (
+        SELECT organization_id, count(*) as count
+        from arc_police_involve
+        <if test="beginTime!=null and beginTime!='' and endTime!=null and endTime!=''">
+            where time BETWEEN #{beginTime} and #{endTime}
+        </if>
+        group by organization_id
+        <if test="organizationId!=null and organizationId!=''">
+            having organization_id = #{organizationId}
+        </if>
+        ) a on o.id = a.organization_id
+    </select>
+
+    <!--收受礼品统计-->
+    <select id="statisticAcceptGifts" parameterType="com.mwkj.lzda.dto.ArchiveStatisticParamDTO"
+            resultType="com.mwkj.lzda.dto.ArchiveStatisticResultDTO">
+        select a.count, a.organization_id, o.name as organization_name
+        from organization o
+        left join (
+        SELECT organization_id, count(*) as count
+        from arc_gift_info
+        <if test="beginTime!=null and beginTime!='' and endTime!=null and endTime!=''">
+            where gift_time BETWEEN #{beginTime} and #{endTime}
+        </if>
+        group by organization_id
+        <if test="organizationId!=null and organizationId!=''">
+            having organization_id = #{organizationId}
+        </if>
+        ) a on o.id = a.organization_id
+    </select>
+
+    <!--操办宴席统计-->
+    <select id="statisticBanquetApply" parameterType="com.mwkj.lzda.dto.ArchiveStatisticParamDTO"
+            resultType="com.mwkj.lzda.dto.ArchiveStatisticResultDTO">
+        select a.count, a.organization_id, o.name as organization_name
+        from organization o
+        left join (
+        SELECT organization_id, count(*) as count
+        from arc_banquet_apply
+        <if test="beginTime!=null and beginTime!='' and endTime!=null and endTime!=''">
+            where activity_time BETWEEN #{beginTime} and #{endTime}
+        </if>
+        group by organization_id
+        <if test="organizationId!=null and organizationId!=''">
+            having organization_id = #{organizationId}
+        </if>
+        ) a on o.id = a.organization_id
+    </select>
+
+
+    <!--家人被追究刑事责任统计-->
+    <select id="statisticFamilyCriminal" parameterType="com.mwkj.lzda.dto.ArchiveStatisticParamDTO"
+            resultType="com.mwkj.lzda.dto.ArchiveStatisticResultDTO">
+        select a.count, a.organization_id, o.name as organization_name
+        from organization o
+        left join (
+        SELECT organization_id, count(*) as count
+        from arc_family_criminal
+        <if test="beginTime!=null and beginTime!='' and endTime!=null and endTime!=''">
+            where time BETWEEN #{beginTime} and #{endTime}
+        </if>
+        group by organization_id
+        <if test="organizationId!=null and organizationId!=''">
+            having organization_id = #{organizationId}
+        </if>
+        ) a on o.id = a.organization_id
+    </select>
+
+    <!--影响公正执行职务报备统计-->
+    <select id="statisticAffectBusiness" parameterType="com.mwkj.lzda.dto.ArchiveStatisticParamDTO"
+            resultType="com.mwkj.lzda.dto.ArchiveStatisticResultDTO">
+        select a.count, a.organization_id, o.name as organization_name
+        from organization o
+        left join (
+        SELECT organization_id, count(*) as count
+        from arc_family_criminal
+        <if test="beginTime!=null and beginTime!='' and endTime!=null and endTime!=''">
+            where time BETWEEN #{beginTime} and #{endTime}
+        </if>
+        group by organization_id
+        <if test="organizationId!=null and organizationId!=''">
+            having organization_id = #{organizationId}
+        </if>
+        ) a on o.id = a.organization_id
+    </select>
+
+    <!--一般干部被群众信访举报情况登记统计-->
+    <select id="statisticPunReport" parameterType="com.mwkj.lzda.dto.ArchiveStatisticParamDTO"
+            resultType="com.mwkj.lzda.dto.ArchiveStatisticResultDTO">
+        select a.count, a.organization_id, o.name as organization_name
+        from organization o
+        left join (
+        SELECT organization_id, count(*) as count
+        from pun_report
+        <if test="beginTime!=null and beginTime!='' and endTime!=null and endTime!=''">
+            where time BETWEEN #{beginTime} and #{endTime}
+        </if>
+        group by organization_id
+        <if test="organizationId!=null and organizationId!=''">
+            having organization_id = #{organizationId}
+        </if>
+        ) a on o.id = a.organization_id
+    </select>
+
+    <!-- 表彰统计 -->
+    <select id="statisticReward" parameterType="com.mwkj.lzda.dto.RewardStatisticParamDTO"
+            resultType="com.mwkj.lzda.dto.RewardStatisticResultDTO">
+        select a.count, reward_type, a.organization_id, o.name as organization_name
+        from organization o
+        left join (
+        select organization_id, reward_type, count(*) as count
+        from reward r
+        <if test="beginTime!=null and beginTime!='' and endTime!=null and endTime!=''">
+            where reward_time BETWEEN #{beginTime} and #{endTime}
+        </if>
+        group by organization_id, reward_type
+        <if test="organizationId!=null and organizationId!=''">
+            having organization_id = #{organizationId}
+        </if>
+        ) a on o.id = a.organization_id
+    </select>
+</mapper>

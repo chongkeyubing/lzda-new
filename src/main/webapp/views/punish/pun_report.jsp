@@ -11,7 +11,7 @@
         <!-- 填表人 -->
         <input type="hidden" name="operatorId" value="${currentUser.id}">
         <input type="hidden" name="userId" id="selectUserId">
-            <input type="hidden" name="punishType" value="${punishType}">
+        <input type="hidden" name="punishType" value="${punishType}">
 
         <div class="layui-form-item">
             <div class="layui-inline">
@@ -49,6 +49,7 @@
                         <option value="电话举报">电话举报</option>
                         <option value="当面向有关人员举报">当面向有关人员举报</option>
                         <option value="网上举报">网上举报</option>
+                        <option value="其他">其他</option>
                     </select>
                 </div>
             </div>
@@ -99,9 +100,10 @@
                 <label class="layui-form-label">负责人</label>
                 <div class="layui-input-inline">
                     <input type="text" name="chargePerson" readonly lay-verify="required" autocomplete="off"
-                            class="layui-input" placeholder="点击选择" style="width: 74%;display: inline-block;"
-                           id="selectSecondUserName" >
-                    <button class="layui-btn  layui-btn-sm layui-btn-normal" type="button" id="selectSecondUser">选择</button>
+                           class="layui-input" placeholder="点击选择" style="width: 74%;display: inline-block;"
+                           id="selectSecondUserName">
+                    <button class="layui-btn  layui-btn-sm layui-btn-normal" type="button" id="selectSecondUser">选择
+                    </button>
                     <input type="hidden" name="chargePersonId" id="selectSecondUserId" readonly lay-verify="required"
                            autocomplete="off" class="layui-input">
                 </div>
@@ -120,7 +122,7 @@
                 </div>
             </div>
         </div>
-            <div class="layui-form-item">
+        <div class="layui-form-item">
             <div class="layui-inline">
                 <label class="layui-form-label">核实结果</label>
                 <div class="layui-input-inline">
@@ -133,7 +135,7 @@
                     </select>
                 </div>
             </div>
-            </div>
+        </div>
 
 
         <div class="layui-form-item layui-form-text">
@@ -143,13 +145,13 @@
                           name="problem"></textarea>
             </div>
         </div>
-      <%--  <div class="layui-form-item layui-form-text">
-            <label class="layui-form-label">核实结果</label>
-            <div class="layui-input-inline">
-                <textarea placeholder="请输入内容" class="layui-textarea txtArea" lay-verify="required"
-                          name="result"></textarea>
-            </div>
-        </div>--%>
+        <%--  <div class="layui-form-item layui-form-text">
+              <label class="layui-form-label">核实结果</label>
+              <div class="layui-input-inline">
+                  <textarea placeholder="请输入内容" class="layui-textarea txtArea" lay-verify="required"
+                            name="result"></textarea>
+              </div>
+          </div>--%>
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">处理结果</label>
             <div class="layui-input-inline">
@@ -244,7 +246,6 @@
                 });
             });
         });
-
 
 
     });
