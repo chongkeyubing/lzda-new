@@ -103,7 +103,6 @@ public class RptResponsibilityReportController {
         map.put("tasks1", rptResponsibilityReportTaskService.find(rptResponsibilityReportTask));
 
         //“第一责任人”责任季度工单
-        rptResponsibilityReportTask = new RptResponsibilityReportTask();
         rptResponsibilityReportTask.setType("1");
         map.put("tasks2", rptResponsibilityReportTaskService.find(rptResponsibilityReportTask));
 
