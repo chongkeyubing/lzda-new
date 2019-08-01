@@ -1,5 +1,6 @@
 package com.mwkj.lzda.service.impl;
 
+import com.mwkj.lzda.core.AppException;
 import com.mwkj.lzda.dao.RptResponsibilityReportMapper;
 import com.mwkj.lzda.dto.RptResponsibilityReportDTO;
 import com.mwkj.lzda.model.PunNotice;
@@ -12,6 +13,7 @@ import com.mwkj.lzda.service.RptResponsibilityReportTaskService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
 
 import javax.annotation.Resource;
@@ -46,10 +48,15 @@ public class RptResponsibilityReportServiceImpl extends AbstractService<RptRespo
         report.setAttachmentId(attachmentId);
         this.save(report);
 
+        if (CollectionUtils.isEmpty(rptResponsibilityReportDTO.getTasks())) {
+            throw new AppException("请新增工单");
+        }
+
         //保存任务表
         for (RptResponsibilityReportTask rptResponsibilityReportTask : rptResponsibilityReportDTO.getTasks()) {
             rptResponsibilityReportTask.setResponsibilityReportId(report.getId());
         }
+
         rptResponsibilityReportTaskService.saveAll(rptResponsibilityReportDTO.getTasks());
     }
 
@@ -71,9 +78,9 @@ public class RptResponsibilityReportServiceImpl extends AbstractService<RptRespo
 
         //重新添加工单
         Iterator<RptResponsibilityReportTask> iterator = rptResponsibilityReportTasks.iterator();
-        while(iterator.hasNext()){
+        while (iterator.hasNext()) {
             RptResponsibilityReportTask task = iterator.next();
-            if (StringUtils.isEmpty(task.getType())){
+            if (StringUtils.isEmpty(task.getType())) {
                 iterator.remove();
             }
             task.setResponsibilityReportId(report.getId());
