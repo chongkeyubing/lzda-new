@@ -115,7 +115,8 @@
     <select id="statisticReward" parameterType="com.mwkj.lzda.dto.RewardStatisticParamDTO"
             resultType="com.mwkj.lzda.dto.RewardStatisticResultDTO">
         select a.count, reward_type, a.organization_id, o.name as organization_name
-        from (
+        from organization o
+        left join (
         select organization_id, reward_type, count(*) as count
         from reward r
         <if test="beginTime!=null and beginTime!='' and endTime!=null and endTime!=''">
@@ -125,7 +126,6 @@
         <if test="organizationId!=null and organizationId!=''">
             having organization_id = #{organizationId}
         </if>
-        ) a
-        left join organization o on o.id = a.organization_id
+        ) a on o.id = a.organization_id
     </select>
 </mapper>
