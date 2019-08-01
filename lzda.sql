@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : 本地mysql
+ Source Server         : 美文局域网mysql
  Source Server Type    : MySQL
- Source Server Version : 50723
- Source Host           : localhost:3306
+ Source Server Version : 50561
+ Source Host           : 192.168.0.112:3306
  Source Schema         : lzda
 
  Target Server Type    : MySQL
- Target Server Version : 50723
+ Target Server Version : 50561
  File Encoding         : 65001
 
- Date: 26/07/2019 09:16:49
+ Date: 01/08/2019 15:57:58
 */
 
 SET NAMES utf8mb4;
@@ -32,11 +32,11 @@ CREATE TABLE `approve`  (
   `status` int(1) NOT NULL COMMENT '档案审核状态:\r\n1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(2) NOT NULL COMMENT '档案类型：\r\n1个人基本情况报备\r\n2本人持有港澳情况登记表\r\n3本人持有护照情况登记表\r\n4本人婚姻情况\r\n5参加单位组织生活会情况登记表\r\n6操办宴席申请表\r\n7出国（境）情况登记表\r\n8可能影响公正执行职务报备表\r\n9离职交接情况登记表\r\n10配偶、子女及其配偶从业情况登记表\r\n11家人移居国（境）外的情况\r\n12家人连续在国（境）外工作、生活一年以上的情况\r\n13家人被司法机关追究刑事责任的情况\r\n14持有股票的情况\r\n15持有基金的情况\r\n16持有投资型保险的情况\r\n17在国（境）外的存款情况\r\n18在国（境）外的投资情况\r\n19个人认为需要报告的其他事项\r\n20子女与港澳以及台湾居民通婚的情况\r\n21涉警报备表\r\n22收入情况登记表\r\n23收受礼品登记表\r\n24在企业、中介组织和社会团体兼职\r\n25住房情况登记表\r\n26子女与外国人、无国籍人通婚的情况',
   `archive_id` int(11) NOT NULL COMMENT '档案id，关联对应档案表的id',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `comments` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '审核意见',
   `last_step` int(1) NOT NULL DEFAULT 1 COMMENT '是否审核的最后一步：1是0否',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 235 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '档案审核表' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 251 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '档案审核表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for arc_abroad_info
@@ -59,7 +59,7 @@ CREATE TABLE `arc_abroad_info`  (
   `report` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '出国情况报告',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 7 COMMENT '档案类型：出国（境）情况登记表，固定值7无需填写',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
@@ -83,13 +83,13 @@ CREATE TABLE `arc_affect_business`  (
   `remark` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '备注',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 8 COMMENT '档案类型：可能影响公正执行职务报备表，固定值8无需填写',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `affect_name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '影响人姓名',
   `affect_organization` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '影响人单位',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '可能影响公正执行职务报备表' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '可能影响公正执行职务报备表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for arc_banquet_apply
@@ -117,11 +117,11 @@ CREATE TABLE `arc_banquet_apply`  (
   `personal_apply` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '个人申请',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 6 COMMENT '档案类型：操办宴席申请表，固定值6无需填写',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '操办宴席申请表' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '操办宴席申请表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for arc_basic_info
@@ -154,10 +154,10 @@ CREATE TABLE `arc_basic_info`  (
   `other_info` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '其他需要说明的情况',
   `archive_type` int(2) NOT NULL DEFAULT 1 COMMENT '档案类型：个人基本情况报备，固定值1无需填写',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '个人基本情况报备表' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '个人基本情况报备表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for arc_family_abroad
@@ -181,7 +181,7 @@ CREATE TABLE `arc_family_abroad`  (
   `remark` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '备注',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 11 COMMENT '档案类型：家人移居国外情况，固定值11无需填写',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
@@ -208,7 +208,7 @@ CREATE TABLE `arc_family_abroad_investment`  (
   `remark` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '备注',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 18 COMMENT '档案类型：在国（境）外的投资情况，固定值18无需填写',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
@@ -235,7 +235,7 @@ CREATE TABLE `arc_family_abroad_marriage`  (
   `time` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '登记时间',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 26 COMMENT '档案类型：子女与外国人、无国籍人通婚的情况，固定值26无需填写',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
@@ -262,7 +262,7 @@ CREATE TABLE `arc_family_abroad_savings`  (
   `remark` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '备注',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 17 COMMENT '档案类型：在国（境）外的存款情况，固定值17无需填写',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
@@ -288,11 +288,11 @@ CREATE TABLE `arc_family_criminal`  (
   `result` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '处理结果',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 13 COMMENT '档案类型：家人被司法机关追究刑事责任的情况，固定值13无需填写',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '家人被司法机关追究刑事责任的情况' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '家人被司法机关追究刑事责任的情况' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for arc_family_fund
@@ -315,7 +315,7 @@ CREATE TABLE `arc_family_fund`  (
   `remark` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '备注',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 14 COMMENT '档案类型：持有基金的情况，固定值15无需填写',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
@@ -341,7 +341,7 @@ CREATE TABLE `arc_family_insurance`  (
   `price` int(11) NOT NULL COMMENT '累积缴纳保费、投资资金',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 16 COMMENT '档案类型：持有投资型保险的情况，固定值16无需填写',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
@@ -368,7 +368,7 @@ CREATE TABLE `arc_family_marriage`  (
   `time` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '登记时间',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 20 COMMENT '档案类型：子女与港澳以及台湾居民通婚的情况，固定值20无需填写',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
@@ -387,7 +387,7 @@ CREATE TABLE `arc_family_society_rela`  (
   `birthday` date NOT NULL COMMENT '出生日期',
   `organization` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '工作单位',
   `job_position` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '职务',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '家庭主要成员及重要社会关系（关联arc_basic_info表）' ROW_FORMAT = Compact;
 
@@ -412,7 +412,7 @@ CREATE TABLE `arc_family_stock`  (
   `remark` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '备注',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 14 COMMENT '档案类型：持有股票的情况，固定值14无需填写',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
@@ -438,7 +438,7 @@ CREATE TABLE `arc_family_workabroad`  (
   `remark` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '备注',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 11 COMMENT '档案类型：家人移居国外情况，固定值11无需填写',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
@@ -470,11 +470,11 @@ CREATE TABLE `arc_gift_info`  (
   `gift_handle` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '处理情况:退还当事人、上缴分局、上缴单位、其他',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 23 COMMENT '档案类型：收受礼品登记表，固定值23无需填写',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '收受礼品登记表' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '收受礼品登记表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for arc_hk_mo_info
@@ -493,7 +493,7 @@ CREATE TABLE `arc_hk_mo_info`  (
   `remark` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '备注',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 2 COMMENT '档案类型：本人持有港澳情况登记表，固定值2无需填写',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '本人持有港澳通行证情况登记表' ROW_FORMAT = Compact;
@@ -518,7 +518,7 @@ CREATE TABLE `arc_house_info`  (
   `remark` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '备注',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 25 COMMENT '档案类型：住房情况登记表，固定值25无需填写',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
@@ -545,7 +545,7 @@ CREATE TABLE `arc_income_info`  (
   `remark` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '备注',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 22 COMMENT '档案类型：收入情况登记表，固定值22无需填写',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
@@ -573,7 +573,7 @@ CREATE TABLE `arc_leaveoffice_handover`  (
   `remark` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '备注',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 9 COMMENT '档案类型：离职交接情况登记表，固定值9无需填写',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
@@ -594,11 +594,11 @@ CREATE TABLE `arc_loan`  (
   `job_position` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '职务',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 27 COMMENT '档案类型：借贷（担保）登记表，固定值27无需填写',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '借贷（担保）登记表' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 23 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '借贷（担保）登记表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for arc_loan_rela
@@ -620,7 +620,7 @@ CREATE TABLE `arc_loan_rela`  (
   `rectify_info` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '整改情况',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_loan_id`(`loan_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 29 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '借贷（担保）情况，关联借贷（担保）登记表' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 38 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '借贷（担保）情况，关联借贷（担保）登记表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for arc_marriage_info
@@ -639,11 +639,11 @@ CREATE TABLE `arc_marriage_info`  (
   `change_reason` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '变化原因',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 4 COMMENT '档案类型：本人婚姻情况，固定值4无需填写',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 34 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '本人婚姻情况' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 37 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '本人婚姻情况' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for arc_organization_meeting
@@ -664,7 +664,7 @@ CREATE TABLE `arc_organization_meeting`  (
   `remark` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '备注',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 5 COMMENT '档案类型：参加单位组织生活会情况，固定值5无需填写',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
@@ -692,7 +692,7 @@ CREATE TABLE `arc_part_time_job`  (
   `remark` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '备注',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 24 COMMENT '档案类型：在企业、中介组织和社会团体兼职，固定值24无需填写',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
@@ -715,7 +715,7 @@ CREATE TABLE `arc_passport_info`  (
   `remark` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '备注',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 3 COMMENT '档案类型：本人持有护照情况登记表，固定值3无需填写',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
@@ -736,7 +736,7 @@ CREATE TABLE `arc_personal_other`  (
   `promise` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '承诺',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 19 COMMENT '档案类型：个人认为需要报告的其他事项，固定值19无需填写',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
@@ -760,13 +760,13 @@ CREATE TABLE `arc_police_involve`  (
   `remark` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '备注',
   `approve_status` int(1) NOT NULL DEFAULT 1 COMMENT '审核状态：1待单位负责人审核\r\n2单位负责人审核通过\r\n3单位负责人驳回\r\n4待纪委审核\r\n5纪委审核通过\r\n6纪委审核驳回',
   `archive_type` int(1) NOT NULL DEFAULT 21 COMMENT '档案类型：涉警报备表，固定值21无需填写',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `involved_name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '涉警人姓名',
   `involved_organization` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '涉警人单位',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '涉警报备表' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '涉警报备表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for attachment
@@ -779,7 +779,7 @@ CREATE TABLE `attachment`  (
   `quick_url` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '缩略图url',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_source_id`(`source_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 124 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 139 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for authority
@@ -791,7 +791,7 @@ CREATE TABLE `authority`  (
   `name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '权限名',
   `authflag` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '权限标识',
   `active` int(1) NOT NULL DEFAULT 1 COMMENT '是否有效，0：无效，1：有效',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 23 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '权限表（关联role_auth表）' ROW_FORMAT = Compact;
 
@@ -822,6 +822,18 @@ INSERT INTO `authority` VALUES (21, 0, '廉政预警', '廉政预警', 1, '2019-
 INSERT INTO `authority` VALUES (22, 0, '廉政管理', '廉政管理', 1, '2019-07-25 19:01:18');
 
 -- ----------------------------
+-- Table structure for incorrupt_self_summary
+-- ----------------------------
+DROP TABLE IF EXISTS `incorrupt_self_summary`;
+CREATE TABLE `incorrupt_self_summary`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+  `userId` int(11) NOT NULL COMMENT '用户id，关联user表id',
+  `summary` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '廉政自律小结',
+  `createTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
 -- Table structure for operate_log
 -- ----------------------------
 DROP TABLE IF EXISTS `operate_log`;
@@ -830,14 +842,14 @@ CREATE TABLE `operate_log`  (
   `operator_id` int(11) NOT NULL COMMENT '操作人id，关联user表id',
   `operator_name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '操作人姓名',
   `operator_ip` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '操作人真实ip',
-  `archive_owner_id` int(11) NOT NULL COMMENT '表格拥有者id，关联user表id\r\n',
-  `archive_owner_name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '表格拥有者姓名',
-  `owner_org` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '表格拥有者单位',
+  `archive_owner_id` int(11) NULL DEFAULT NULL COMMENT '表格拥有者id，关联user表id\r\n',
+  `archive_owner_name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '表格拥有者姓名',
+  `owner_org` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '表格拥有者单位',
   `operate_object` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '操作对象：26类个人填报档案表、奖惩表、上报表、统计信息',
   `operate_type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '操作类型：0查看1添加2修改3删除4提交审核5审核通过6审核驳回7上报',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 722 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 1487 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for organization
@@ -848,7 +860,7 @@ CREATE TABLE `organization`  (
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '单位名称',
   `parent_id` int(11) NULL DEFAULT NULL COMMENT '父单位id',
   `active` int(1) NOT NULL DEFAULT 1 COMMENT '是否有效，0：无效，1：有效',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 54 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
@@ -928,7 +940,7 @@ CREATE TABLE `pun_accountability`  (
   `operator` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '填表人',
   `attachment_id` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '附件id，一对多关联attachment',
   `punish_type` int(1) NOT NULL DEFAULT 2 COMMENT '违惩类型：2一般干部问责情况登记表',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
@@ -967,11 +979,11 @@ CREATE TABLE `pun_gift`  (
   `operator` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '填表人',
   `attachment_id` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '附件id，一对多关联attachment',
   `punish_type` int(1) NOT NULL DEFAULT 3 COMMENT '违惩类型：3一般干部收受礼品（金）情况登记表',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '一般干部收受礼品（金）情况登记表' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '一般干部收受礼品（金）情况登记表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for pun_notice
@@ -994,7 +1006,7 @@ CREATE TABLE `pun_notice`  (
   `operator` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '填表人',
   `attachment_id` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '附件id，一对多关联attachment',
   `punish_type` int(1) NOT NULL DEFAULT 5 COMMENT '违惩类型：5一般干部被通报情况登记表',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
@@ -1028,11 +1040,11 @@ CREATE TABLE `pun_report`  (
   `operator` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '填表人',
   `attachment_id` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '附件id，一对多关联attachment',
   `punish_type` int(1) NOT NULL DEFAULT 6 COMMENT '违惩类型：6一般干部被群众信访举报情况登记表',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '一般干部被群众信访举报情况登记表' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '一般干部被群众信访举报情况登记表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for pun_talk
@@ -1059,7 +1071,7 @@ CREATE TABLE `pun_talk`  (
   `operator` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '填表人',
   `attachment_id` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '附件id，一对多关联attachment',
   `punish_type` int(1) NOT NULL DEFAULT 4 COMMENT '违惩类型：4一般干部廉政谈话情况登记表',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
@@ -1090,11 +1102,11 @@ CREATE TABLE `pun_violation`  (
   `remark` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '备注',
   `attachment_id` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '附件id，一对多关联attachment',
   `punish_type` int(1) NOT NULL DEFAULT 1 COMMENT '违惩类型：1一般干部违纪情况登记表',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '一般干部违纪情况登记表' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '一般干部违纪情况登记表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for reward
@@ -1107,7 +1119,7 @@ CREATE TABLE `reward`  (
   `user_name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '被表彰人姓名',
   `job_position` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '职务',
   `organization` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '单位名称',
-  `reward_type` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '表彰类型',
+  `reward_type` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '表彰类型：表彰、嘉奖、三等功、二等功、一等功、其他',
   `reward_time` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '表彰时间',
   `reward_organization` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '表彰单位',
   `content` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '表彰内容',
@@ -1115,11 +1127,11 @@ CREATE TABLE `reward`  (
   `attachment_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '0' COMMENT '附件uuid，关联附件表sourceId，默认0表示没有',
   `operator_name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '操作者姓名',
   `operator_id` int(1) NOT NULL COMMENT '操作者id',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_user_id`(`user_id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 28 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '奖励信息表' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 41 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '奖励信息表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for role
@@ -1129,7 +1141,7 @@ CREATE TABLE `role`  (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
   `role_name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '角色名',
   `active` int(1) NOT NULL DEFAULT 1 COMMENT '是否有效，0：无效，1：有效',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `uk_name`(`role_name`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '角色表(关联user表)' ROW_FORMAT = Compact;
@@ -1221,7 +1233,7 @@ CREATE TABLE `rpt_incorrupt`  (
   `organization_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '单位名称',
   `title` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '标题',
   `content` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '内容',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 35 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '廉政信息表' ROW_FORMAT = Compact;
@@ -1242,10 +1254,10 @@ CREATE TABLE `rpt_responsibility_perform`  (
   `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '标题',
   `content` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '内容',
   `attachment_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '附件id，一对多关联attachment',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '履责纪实表' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '履责纪实表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for rpt_responsibility_report
@@ -1259,15 +1271,26 @@ CREATE TABLE `rpt_responsibility_report`  (
   `organization_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '单位名称',
   `year` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '年份',
   `quarter` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '季度：第一二三四季度',
+  `attachment_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '附件id，一对多关联attachment',
+  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `index_organization_id`(`organization_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 31 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '主体责任季度工单任务落实情况反馈表' ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Table structure for rpt_responsibility_report_task
+-- ----------------------------
+DROP TABLE IF EXISTS `rpt_responsibility_report_task`;
+CREATE TABLE `rpt_responsibility_report_task`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `responsibility_report_id` int(11) NOT NULL COMMENT '关联rpt_responsibility_report表id',
   `type` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '工单类别：主体责任季度工单、第一责任人责任季度工单',
   `task_order` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '任务序号',
   `complete` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '是否完成',
   `complete_info` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '具体落实情况',
-  `attachment_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '附件id，一对多关联attachment',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `index_organization_id`(`organization_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '主体责任季度工单任务落实情况反馈表' ROW_FORMAT = Compact;
+  INDEX `index_responsibility_report_id`(`responsibility_report_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 66 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '主体责任季度工单表，关联主体责任主表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for rpt_team_thinking
@@ -1287,10 +1310,10 @@ CREATE TABLE `rpt_team_thinking`  (
   `team_advantage_problem` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '队伍特色亮点及存在问题',
   `main_measure` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '主要措施',
   `other_info` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '其他情况',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '队伍思想状况表' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '队伍思想状况表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for user
@@ -1309,7 +1332,7 @@ CREATE TABLE `user`  (
   `police_code` varchar(16) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '警号',
   `job_position` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '职位',
   `active` int(1) NOT NULL DEFAULT 1 COMMENT '是否有效：0无效1有效',
-  `create_time` timestamp DEFAULT NOW() COMMENT '创建时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_roleid`(`roleid`) USING BTREE,
   INDEX `index_organization_id`(`organization_id`) USING BTREE
