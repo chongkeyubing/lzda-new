@@ -76,7 +76,7 @@ public class PunViolationStatisticController implements Serializable {
         String contextPath = request.getServletContext().getRealPath("/");
         String templetPath = contextPath + "resources" + File.separator + "templet" + File.separator + "违纪统计表模板.xlsx";
         String fileName = orgName + "违纪统计表" + time + ".xlsx";
-        EasyPOIUtil.exportByTemplate(templetPath, map, "/export/", fileName);
+        EasyPOIUtil.exportByTemplate(templetPath, map, "/export", fileName);
         File file = new File("/export" + File.separator + fileName);
         //下载
         if (file.exists()) {
@@ -119,5 +119,19 @@ public class PunViolationStatisticController implements Serializable {
             }
         }
 
+    }
+
+
+    @RequestMapping("/toDetail")
+    public String toDetail(@RequestParam(required = false) int orgId,
+                           @RequestParam(required = false) String time,
+                           @RequestParam(required = false) String violationLevel,
+                           @RequestParam(required = false) String violationType,
+                           ModelMap map) {
+        map.put("orgId", orgId);
+        map.put("time", time);
+        map.put("violationLevel", violationLevel);
+        map.put("violationType", violationType);
+        return "views/statistic/pun_violation_statistic_detail";
     }
 }

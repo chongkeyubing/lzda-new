@@ -31,6 +31,7 @@
     <select id="findPunViolationStatistics" resultType="com.mwkj.lzda.vo.PunViolationVo">
       SELECT
       id,
+      organization_id AS 'orgId',
       organization AS 'orgName',
       violation_level AS 'violationLevelName',
       violation_type AS 'violationTypeName',
@@ -49,5 +50,27 @@
       organization_id,
       violation_level,
       violation_type;
+    </select>
+    <select id="findList" resultType="com.mwkj.lzda.model.PunViolation">
+      SELECT
+      *
+      FROM
+      pun_violation
+      WHERE 1=1
+      <if test="null != orgId ">
+        AND organization_id = #{orgId, jdbcType=INTEGER}
+      </if>
+      <if test="null != violationLevel and '' != violationLevel">
+        AND violation_level = #{violationLevel, jdbcType=VARCHAR}
+      </if>
+      <if test="null != violationType and '' != violationType">
+        AND violation_type = #{violationType, jdbcType=VARCHAR}
+      </if>
+      <if test="null != beginTime ">
+        AND create_time &gt; #{beginTime, jdbcType=TIMESTAMP}
+      </if>
+      <if test="null != endTime ">
+        AND create_time &lt; #{endTime, jdbcType=TIMESTAMP}
+      </if>
     </select>
 </mapper>
