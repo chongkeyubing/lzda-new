@@ -65,6 +65,10 @@ public class RptResponsibilityReportServiceImpl extends AbstractService<RptRespo
         RptResponsibilityReport report = rptResponsibilityReportDTO.getReport();
         List<RptResponsibilityReportTask> rptResponsibilityReportTasks = rptResponsibilityReportDTO.getTasks();
 
+        if (CollectionUtils.isEmpty(rptResponsibilityReportTasks)) {
+            throw new AppException("请新增工单");
+        }
+
         //更新主表
         this.update(report);
 
