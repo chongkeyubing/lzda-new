@@ -450,7 +450,7 @@
 								<w:sz w:val="24"/>
 								<w:szCs w:val="24"/>
 							</w:rPr>
-							<w:t>反映主要问题反映主要问撒旦发射点发生的发生的方法是题反映主要问题反映主要问题</w:t>
+							<w:t><#if (selfSummary.summary)??>${selfSummary.summary}<#else>无相关数据</#if></w:t>
 						</w:r>
 					</w:p>
 					<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
@@ -476,6 +476,31 @@
 							<w:t>2、被信访投诉情况</w:t>
 						</w:r>
 					</w:p>
+					<#-------------------------------------------- 信访开始---------------------------------------------------->
+					<#if reports?size == 0 >
+						<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
+							<w:pPr>
+								<w:autoSpaceDE w:val="0"/>
+								<w:spacing w:line="360" w:lineRule="auto"/>
+								<w:ind w:firstLine="420"/>
+								<w:rPr>
+									<w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:hint="eastAsia"/>
+									<w:sz w:val="24"/>
+									<w:szCs w:val="24"/>
+								</w:rPr>
+							</w:pPr>
+							<w:r>
+								<w:rPr>
+									<w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:hint="eastAsia"/>
+									<w:sz w:val="24"/>
+									<w:szCs w:val="24"/>
+								</w:rPr>
+								<w:t>无相关记录</w:t>
+							</w:r>
+						</w:p>
+
+					</#if>
+					<#list reports as report>
 					<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
 						<w:pPr>
 							<w:autoSpaceDE w:val="0"/>
@@ -494,7 +519,7 @@
 								<w:szCs w:val="24"/>
 							</w:rPr>
 							<w:lastRenderedPageBreak/>
-							<w:t>◆ 举报时间：2019-05-14，举报方式：的发射点，核实结果：XX。</w:t>
+							<w:t>◆ 举报形式：${report.type}，举报时间：${report.time}，核实结果：${report.result}。</w:t>
 						</w:r>
 					</w:p>
 					<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
@@ -514,7 +539,7 @@
 								<w:sz w:val="24"/>
 								<w:szCs w:val="24"/>
 							</w:rPr>
-							<w:t>反映主要问题：XX反映主要问题士大夫士大夫士大夫士大夫士大夫士大夫时代发生的发生的发</w:t>
+							<w:t>反映主要问题：${report.problem}</w:t>
 						</w:r>
 
 					</w:p>
@@ -535,10 +560,13 @@
 								<w:sz w:val="24"/>
 								<w:szCs w:val="24"/>
 							</w:rPr>
-							<w:t>处理结果：处理结果处理结果处理结果处理结果处理结果处理结果</w:t>
+							<w:t>处理结果：${report.hanldeResult}</w:t>
 						</w:r>
 
 					</w:p>
+					</#list>
+					<#-------------------------------------------- 信访结束---------------------------------------------------->
+
 					<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
 						<w:pPr>
 							<w:autoSpaceDE w:val="0"/>
