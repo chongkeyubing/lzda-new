@@ -1018,6 +1018,30 @@
 						<w:bookmarkStart w:id="0" w:name="_GoBack"/>
 						<w:bookmarkEnd w:id="0"/>
 					</w:p>
+					<#----------------------------------收受礼品开始----------------------------------------->
+					<#if arcGifts?size == 0 >
+						<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
+							<w:pPr>
+								<w:autoSpaceDE w:val="0"/>
+								<w:spacing w:line="360" w:lineRule="auto"/>
+								<w:ind w:firstLine="420"/>
+								<w:rPr>
+									<w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:hint="eastAsia"/>
+									<w:sz w:val="24"/>
+									<w:szCs w:val="24"/>
+								</w:rPr>
+							</w:pPr>
+							<w:r>
+								<w:rPr>
+									<w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:hint="eastAsia"/>
+									<w:sz w:val="24"/>
+									<w:szCs w:val="24"/>
+								</w:rPr>
+								<w:t>无相关记录</w:t>
+							</w:r>
+						</w:p>
+					</#if>
+					<#list arcGifts as gift>
 					<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
 						<w:pPr>
 							<w:autoSpaceDE w:val="0"/>
@@ -1035,7 +1059,7 @@
 								<w:sz w:val="24"/>
 								<w:szCs w:val="24"/>
 							</w:rPr>
-							<w:t>◆ 礼品名称：水晶球，礼品折价：53元，礼金合计：53元。送礼时间：2019-05-14。</w:t>
+							<w:t>◆ 礼品名称：${gift.giftName}，礼品折价：${gift.giftPrice}元，礼金，${gift.giftMoney}元，合计：${gift.giftTotal}元，送礼时间：${gift.giftTime}。</w:t>
 						</w:r>
 
 					</w:p>
@@ -1056,7 +1080,7 @@
 								<w:sz w:val="24"/>
 								<w:szCs w:val="24"/>
 							</w:rPr>
-							<w:t>送礼事由：哈哈哈哈哈哈哈哈哈哈</w:t>
+							<w:t>送礼事由：${gift.giftReason}</w:t>
 						</w:r>
 					</w:p>
 					<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
@@ -1076,9 +1100,12 @@
 								<w:sz w:val="24"/>
 								<w:szCs w:val="24"/>
 							</w:rPr>
-							<w:t>处理情况：涉警内容涉警内容涉警内容涉警内容涉警内容涉警内容涉警内容。</w:t>
+							<w:t>处理情况：${gift.giftHandle}</w:t>
 						</w:r>
 					</w:p>
+					</#list>
+					<#-----------------------------------收受礼品结束--------------------------------------------->
+
 					<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
 						<w:pPr>
 							<w:autoSpaceDE w:val="0"/>
@@ -1100,6 +1127,31 @@
 							<w:t>8、借贷（担保）情况</w:t>
 						</w:r>
 					</w:p>
+
+					<#----------------------------------借出开始----------------------------------------->
+					<#if loans?size == 0 >
+						<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
+							<w:pPr>
+								<w:autoSpaceDE w:val="0"/>
+								<w:spacing w:line="360" w:lineRule="auto"/>
+								<w:ind w:firstLine="420"/>
+								<w:rPr>
+									<w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:hint="eastAsia"/>
+									<w:sz w:val="24"/>
+									<w:szCs w:val="24"/>
+								</w:rPr>
+							</w:pPr>
+							<w:r>
+								<w:rPr>
+									<w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:hint="eastAsia"/>
+									<w:sz w:val="24"/>
+									<w:szCs w:val="24"/>
+								</w:rPr>
+								<w:t>◆ 借出：无相关记录</w:t>
+							</w:r>
+						</w:p>
+					</#if>
+					<#list loans as loan>
 					<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
 						<w:pPr>
 							<w:autoSpaceDE w:val="0"/>
@@ -1117,14 +1169,84 @@
 								<w:sz w:val="24"/>
 								<w:szCs w:val="24"/>
 							</w:rPr>
-							<w:t>◆ 借出：金额5000元，约定到2019年9月14日，年利率0.1%。纠正整改情况：胜多负少的发射点发撒旦发射点</w:t>
+							<w:t>◆ 借出：金额${loan.amount}元，约定期限至${loan.timeLimit}，年利率${loan.interest}%，资金来源：${loan.fundSource}</w:t>
+						</w:r>
+
+					</w:p>
+						<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
+							<w:pPr>
+								<w:autoSpaceDE w:val="0"/>
+								<w:spacing w:line="360" w:lineRule="auto"/>
+								<w:ind w:left="420" w:firstLine="420"/>
+								<w:rPr>
+									<w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:hint="eastAsia"/>
+									<w:sz w:val="24"/>
+									<w:szCs w:val="24"/>
+								</w:rPr>
+							</w:pPr>
+							<w:r>
+								<w:rPr>
+									<w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:hint="eastAsia"/>
+									<w:sz w:val="24"/>
+									<w:szCs w:val="24"/>
+								</w:rPr>
+								<w:t>整改纠正情况：${loan.rectifyInfo}</w:t>
+							</w:r>
+						</w:p>
+
+					</#list>
+					<#----------------------------------借出结束----------------------------------------->
+
+
+					<#----------------------------------借入开始----------------------------------------->
+					<#if borrows?size == 0 >
+						<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
+							<w:pPr>
+								<w:autoSpaceDE w:val="0"/>
+								<w:spacing w:line="360" w:lineRule="auto"/>
+								<w:ind w:firstLine="420"/>
+								<w:rPr>
+									<w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:hint="eastAsia"/>
+									<w:sz w:val="24"/>
+									<w:szCs w:val="24"/>
+								</w:rPr>
+							</w:pPr>
+							<w:r>
+								<w:rPr>
+									<w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:hint="eastAsia"/>
+									<w:sz w:val="24"/>
+									<w:szCs w:val="24"/>
+								</w:rPr>
+								<w:t>◆ 借入：无相关记录</w:t>
+							</w:r>
+						</w:p>
+					</#if>
+					<#list borrows as borrow>
+					<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
+						<w:pPr>
+							<w:autoSpaceDE w:val="0"/>
+							<w:spacing w:line="360" w:lineRule="auto"/>
+							<w:ind w:firstLine="420"/>
+							<w:rPr>
+								<w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:hint="eastAsia"/>
+								<w:sz w:val="24"/>
+								<w:szCs w:val="24"/>
+							</w:rPr>
+						</w:pPr>
+						<w:r>
+							<w:rPr>
+								<w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:hint="eastAsia"/>
+								<w:sz w:val="24"/>
+								<w:szCs w:val="24"/>
+							</w:rPr>
+							<w:t>◆ 借入：金额${borrow.amount}元，约定期限至${borrow.timeLimit}，年利率${borrow.interest}%</w:t>
 						</w:r>
 					</w:p>
 					<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
 						<w:pPr>
 							<w:autoSpaceDE w:val="0"/>
 							<w:spacing w:line="360" w:lineRule="auto"/>
-							<w:ind w:firstLine="420"/>
+							<w:ind w:left="420" w:firstLine="420"/>
 							<w:rPr>
 								<w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:hint="eastAsia"/>
 								<w:sz w:val="24"/>
@@ -1137,9 +1259,36 @@
 								<w:sz w:val="24"/>
 								<w:szCs w:val="24"/>
 							</w:rPr>
-							<w:t>◆ 借入：没有相关记录。纠正整改情况：胜多负少的发射点发撒旦发射点士大夫时代发生的</w:t>
+							<w:t>整改纠正情况：${borrow.rectifyInfo}</w:t>
 						</w:r>
 					</w:p>
+					</#list>
+					<#----------------------------------借入结束----------------------------------------->
+
+					<#----------------------------------担保开始----------------------------------------->
+					<#if assures?size == 0 >
+						<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
+							<w:pPr>
+								<w:autoSpaceDE w:val="0"/>
+								<w:spacing w:line="360" w:lineRule="auto"/>
+								<w:ind w:firstLine="420"/>
+								<w:rPr>
+									<w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:hint="eastAsia"/>
+									<w:sz w:val="24"/>
+									<w:szCs w:val="24"/>
+								</w:rPr>
+							</w:pPr>
+							<w:r>
+								<w:rPr>
+									<w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:hint="eastAsia"/>
+									<w:sz w:val="24"/>
+									<w:szCs w:val="24"/>
+								</w:rPr>
+								<w:t>◆ 担保：无相关记录</w:t>
+							</w:r>
+						</w:p>
+					</#if>
+					<#list assures as assure>
 					<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
 						<w:pPr>
 							<w:autoSpaceDE w:val="0"/>
@@ -1157,9 +1306,56 @@
 								<w:sz w:val="24"/>
 								<w:szCs w:val="24"/>
 							</w:rPr>
-							<w:t>◆ 担保：金额5000元，约定到2019年9月14日，年利率0.1%。纠正整改情况：胜多负少的发射点发撒旦发射点士大夫时代发生的</w:t>
+							<w:t>◆ 担保：债权人${assure.creditor}债务人，${assure.cbligor}，金额${assure.amount}元，约定期限至${assure.timeLimit}，年利率${assure.interest}%</w:t>
 						</w:r>
 					</w:p>
+					<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
+						<w:pPr>
+							<w:autoSpaceDE w:val="0"/>
+							<w:spacing w:line="360" w:lineRule="auto"/>
+							<w:ind w:left="420" w:firstLine="420"/>
+							<w:rPr>
+								<w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:hint="eastAsia"/>
+								<w:sz w:val="24"/>
+								<w:szCs w:val="24"/>
+							</w:rPr>
+						</w:pPr>
+						<w:r>
+							<w:rPr>
+								<w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:hint="eastAsia"/>
+								<w:sz w:val="24"/>
+								<w:szCs w:val="24"/>
+							</w:rPr>
+							<w:t>整改纠正情况：${assure.rectifyInfo}</w:t>
+						</w:r>
+					</w:p>
+					</#list>
+					<#----------------------------------担保结束----------------------------------------->
+
+					<#----------------------------------经营活动开始----------------------------------------->
+					<#if activitys?size == 0 >
+						<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
+							<w:pPr>
+								<w:autoSpaceDE w:val="0"/>
+								<w:spacing w:line="360" w:lineRule="auto"/>
+								<w:ind w:firstLine="420"/>
+								<w:rPr>
+									<w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:hint="eastAsia"/>
+									<w:sz w:val="24"/>
+									<w:szCs w:val="24"/>
+								</w:rPr>
+							</w:pPr>
+							<w:r>
+								<w:rPr>
+									<w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:hint="eastAsia"/>
+									<w:sz w:val="24"/>
+									<w:szCs w:val="24"/>
+								</w:rPr>
+								<w:t>◆ 经营活动：无相关记录</w:t>
+							</w:r>
+						</w:p>
+					</#if>
+					<#list activitys as activity>
 					<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
 						<w:pPr>
 							<w:autoSpaceDE w:val="0"/>
@@ -1175,7 +1371,7 @@
 								<w:sz w:val="24"/>
 								<w:szCs w:val="24"/>
 							</w:rPr>
-							<w:t>◆ 经营活动：天然食品有限公司，投入金额5000元，营利良好。纠正整改情况：胜多负少的发射点发撒旦发射点士大夫时代发生的</w:t>
+							<w:t>◆ 经营活动：企业名：${activity.enterpriseName}。类型：${activity.enterpriseType}。投入金额：${activity.amount}元。资金来源：${activity.fundSource},盈利情况：${activity.profit}</w:t>
 						</w:r>
 						<w:r>
 							<w:rPr>
@@ -1184,6 +1380,30 @@
 							<w:tab/>
 						</w:r>
 					</w:p>
+					<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
+						<w:pPr>
+							<w:autoSpaceDE w:val="0"/>
+							<w:spacing w:line="360" w:lineRule="auto"/>
+							<w:ind w:left="420" w:firstLine="420"/>
+							<w:rPr>
+								<w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:hint="eastAsia"/>
+								<w:sz w:val="24"/>
+								<w:szCs w:val="24"/>
+							</w:rPr>
+						</w:pPr>
+						<w:r>
+							<w:rPr>
+								<w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:hint="eastAsia"/>
+								<w:sz w:val="24"/>
+								<w:szCs w:val="24"/>
+							</w:rPr>
+							<w:t>整改纠正情况：${activity.rectifyInfo}</w:t>
+						</w:r>
+					</w:p>
+					</#list>
+					<#----------------------------------经营活动结束----------------------------------------->
+
+
 					<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
 						<w:pPr>
 							<w:autoSpaceDE w:val="0"/>
