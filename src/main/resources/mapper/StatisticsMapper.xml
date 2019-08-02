@@ -5,7 +5,7 @@
     <!--涉警报备统计-->
     <select id="statisticPoliceInvolve" parameterType="com.mwkj.lzda.dto.ArchiveStatisticParamDTO"
             resultType="com.mwkj.lzda.dto.ArchiveStatisticResultDTO">
-        select a.count, a.organization_id, o.name as organization_name
+        select a.count, o.id as organization_id, o.name as organization_name
         from organization o
         left join (
         SELECT organization_id, count(*) as count
@@ -14,16 +14,17 @@
             where time BETWEEN #{beginTime} and #{endTime}
         </if>
         group by organization_id
-        <if test="organizationId!=null and organizationId!=''">
-            having organization_id = #{organizationId}
-        </if>
         ) a on o.id = a.organization_id
+        <if test="organizationId!=null and organizationId!=''">
+            where o.id = #{organizationId}
+        </if>
+
     </select>
 
     <!--收受礼品统计-->
     <select id="statisticAcceptGifts" parameterType="com.mwkj.lzda.dto.ArchiveStatisticParamDTO"
             resultType="com.mwkj.lzda.dto.ArchiveStatisticResultDTO">
-        select a.count, a.organization_id, o.name as organization_name
+        select a.count, o.id as organization_id, o.name as organization_name
         from organization o
         left join (
         SELECT organization_id, count(*) as count
@@ -32,16 +33,16 @@
             where gift_time BETWEEN #{beginTime} and #{endTime}
         </if>
         group by organization_id
-        <if test="organizationId!=null and organizationId!=''">
-            having organization_id = #{organizationId}
-        </if>
         ) a on o.id = a.organization_id
+        <if test="organizationId!=null and organizationId!=''">
+            where o.id = #{organizationId}
+        </if>
     </select>
 
     <!--操办宴席统计-->
     <select id="statisticBanquetApply" parameterType="com.mwkj.lzda.dto.ArchiveStatisticParamDTO"
             resultType="com.mwkj.lzda.dto.ArchiveStatisticResultDTO">
-        select a.count, a.organization_id, o.name as organization_name
+        select a.count, o.id as organization_id, o.name as organization_name
         from organization o
         left join (
         SELECT organization_id, count(*) as count
@@ -50,17 +51,17 @@
             where activity_time BETWEEN #{beginTime} and #{endTime}
         </if>
         group by organization_id
-        <if test="organizationId!=null and organizationId!=''">
-            having organization_id = #{organizationId}
-        </if>
         ) a on o.id = a.organization_id
+        <if test="organizationId!=null and organizationId!=''">
+            where o.id = #{organizationId}
+        </if>
     </select>
 
 
     <!--家人被追究刑事责任统计-->
     <select id="statisticFamilyCriminal" parameterType="com.mwkj.lzda.dto.ArchiveStatisticParamDTO"
             resultType="com.mwkj.lzda.dto.ArchiveStatisticResultDTO">
-        select a.count, a.organization_id, o.name as organization_name
+        select a.count, o.id as organization_id, o.name as organization_name
         from organization o
         left join (
         SELECT organization_id, count(*) as count
@@ -69,16 +70,17 @@
             where time BETWEEN #{beginTime} and #{endTime}
         </if>
         group by organization_id
-        <if test="organizationId!=null and organizationId!=''">
-            having organization_id = #{organizationId}
-        </if>
         ) a on o.id = a.organization_id
+        <if test="organizationId!=null and organizationId!=''">
+            where o.id = #{organizationId}
+        </if>
+
     </select>
 
     <!--影响公正执行职务报备统计-->
     <select id="statisticAffectBusiness" parameterType="com.mwkj.lzda.dto.ArchiveStatisticParamDTO"
             resultType="com.mwkj.lzda.dto.ArchiveStatisticResultDTO">
-        select a.count, a.organization_id, o.name as organization_name
+        select a.count, o.id as organization_id, o.name as organization_name
         from organization o
         left join (
         SELECT organization_id, count(*) as count
@@ -87,16 +89,16 @@
             where time BETWEEN #{beginTime} and #{endTime}
         </if>
         group by organization_id
-        <if test="organizationId!=null and organizationId!=''">
-            having organization_id = #{organizationId}
-        </if>
         ) a on o.id = a.organization_id
+        <if test="organizationId!=null and organizationId!=''">
+            where o.id = #{organizationId}
+        </if>
     </select>
 
     <!--一般干部被群众信访举报情况登记统计-->
     <select id="statisticPunReport" parameterType="com.mwkj.lzda.dto.ArchiveStatisticParamDTO"
             resultType="com.mwkj.lzda.dto.ArchiveStatisticResultDTO">
-        select a.count, a.organization_id, o.name as organization_name
+        select a.count, o.id as organization_id, o.name as organization_name
         from organization o
         left join (
         SELECT organization_id, count(*) as count
@@ -105,10 +107,10 @@
             where time BETWEEN #{beginTime} and #{endTime}
         </if>
         group by organization_id
-        <if test="organizationId!=null and organizationId!=''">
-            having organization_id = #{organizationId}
-        </if>
         ) a on o.id = a.organization_id
+        <if test="organizationId!=null and organizationId!=''">
+            where o.id = #{organizationId}
+        </if>
     </select>
 
     <!-- 表彰统计 -->
@@ -128,4 +130,29 @@
         </if>
         ) a on o.id = a.organization_id
     </select>
+
+    <!-- 主体责任 -->
+    <select id="statisticResponsibility" parameterType="com.mwkj.lzda.dto.RptResponsibilityReportDTO"
+            resultType="com.mwkj.lzda.dto.ArchiveStatisticResultDTO">
+        select a.count, o.id as organization_id, o.name as organization_name
+        from organization o
+        left join (
+        SELECT organization_id, count(*) as count
+        from rpt_responsibility_report
+        <where>
+            <if test="year!=null and year!=''">
+                and year = #{year}
+            </if>
+            <if test="quarter!=null and quarter!=''">
+                and quarter = #{quarter}
+            </if>
+        </where>
+        group by organization_id
+        ) a on o.id = a.organization_id
+        <if test="organizationId!=null and organizationId!=''">
+            where o.id = #{organizationId}
+        </if>
+    </select>
+
+
 </mapper>

@@ -1,9 +1,6 @@
 package com.mwkj.lzda.dao;
 
-import com.mwkj.lzda.dto.ArchiveStatisticParamDTO;
-import com.mwkj.lzda.dto.ArchiveStatisticResultDTO;
-import com.mwkj.lzda.dto.RewardStatisticParamDTO;
-import com.mwkj.lzda.dto.RewardStatisticResultDTO;
+import com.mwkj.lzda.dto.*;
 
 import java.util.List;
 import java.util.Map;
@@ -35,4 +32,7 @@ public interface StatisticsMapper {
 
     //表彰统计
     List<RewardStatisticResultDTO> statisticReward(RewardStatisticParamDTO rewardStatisticParamDTO);
+
+    //主体责任统计
+    List<ArchiveStatisticResultDTO> statisticResponsibility(RptResponsibilityReportDTO rptResponsibilityReportDTO);
 }
