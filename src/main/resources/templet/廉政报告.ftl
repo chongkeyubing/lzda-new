@@ -590,6 +590,32 @@
 							<w:t>3、婚姻变化情况</w:t>
 						</w:r>
 					</w:p>
+
+					<#-------------------------------------------- 婚姻开始---------------------------------------------------->
+					<#if marriages?size == 0 >
+						<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
+							<w:pPr>
+								<w:autoSpaceDE w:val="0"/>
+								<w:spacing w:line="360" w:lineRule="auto"/>
+								<w:ind w:firstLine="420"/>
+								<w:rPr>
+									<w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:hint="eastAsia"/>
+									<w:sz w:val="24"/>
+									<w:szCs w:val="24"/>
+								</w:rPr>
+							</w:pPr>
+							<w:r>
+								<w:rPr>
+									<w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:hint="eastAsia"/>
+									<w:sz w:val="24"/>
+									<w:szCs w:val="24"/>
+								</w:rPr>
+								<w:t>无相关记录</w:t>
+							</w:r>
+						</w:p>
+					</#if>
+
+					<#list marriages as marriage>
 					<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
 						<w:pPr>
 							<w:autoSpaceDE w:val="0"/>
@@ -607,7 +633,7 @@
 								<w:sz w:val="24"/>
 								<w:szCs w:val="24"/>
 							</w:rPr>
-							<w:t>◆ 婚姻现状：结婚，婚姻变化情况：有变化 离婚，变化时间：2019-05-14。</w:t>
+							<w:t>◆ 婚姻现状：${marriage.marriageStatus}，婚姻变化情况：${marriage.changeSituation}，${marriage.changeStatus}，变化时间：${marriage.changeDate}</w:t>
 						</w:r>
 					</w:p>
 					<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
@@ -627,19 +653,12 @@
 								<w:sz w:val="24"/>
 								<w:szCs w:val="24"/>
 							</w:rPr>
-							<w:t>变化原因：</w:t>
+							<w:t>变化原因：${marriage.changeReason}</w:t>
 						</w:r>
-						<w:proofErr w:type="gramStart"/>
-						<w:r>
-							<w:rPr>
-								<w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:hint="eastAsia"/>
-								<w:sz w:val="24"/>
-								<w:szCs w:val="24"/>
-							</w:rPr>
-							<w:t>性第三方时代士大夫时代方式格不合性格不合性格不合性格不合性格不合性格不合</w:t>
-						</w:r>
-						<w:proofErr w:type="gramEnd"/>
 					</w:p>
+					</#list>
+					<#-------------------------------------------- 婚姻结束---------------------------------------------------->
+
 					<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
 						<w:pPr>
 							<w:autoSpaceDE w:val="0"/>
@@ -663,6 +682,31 @@
 							<w:t>4、操办宴席情况</w:t>
 						</w:r>
 					</w:p>
+
+					<#-------------------------------------------- 宴席开始---------------------------------------------------->
+					<#if banquets?size == 0 >
+						<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
+							<w:pPr>
+								<w:autoSpaceDE w:val="0"/>
+								<w:spacing w:line="360" w:lineRule="auto"/>
+								<w:ind w:firstLine="420"/>
+								<w:rPr>
+									<w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:hint="eastAsia"/>
+									<w:sz w:val="24"/>
+									<w:szCs w:val="24"/>
+								</w:rPr>
+							</w:pPr>
+							<w:r>
+								<w:rPr>
+									<w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:hint="eastAsia"/>
+									<w:sz w:val="24"/>
+									<w:szCs w:val="24"/>
+								</w:rPr>
+								<w:t>无相关记录</w:t>
+							</w:r>
+						</w:p>
+					</#if>
+					<#list banquets as banquet>
 					<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
 						<w:pPr>
 							<w:autoSpaceDE w:val="0"/>
@@ -680,7 +724,7 @@
 								<w:sz w:val="24"/>
 								<w:szCs w:val="24"/>
 							</w:rPr>
-							<w:t>◆ 宴请规模：亲属1人，好友2人，其他3人。活动时间：2019-05-14。</w:t>
+							<w:t>◆ 宴请规模：亲属${banquet.relativesNumber}人，好友${banquet.friendNumber}人，其他${banquet.otherNumber}人。活动时间：${banquet.activityTime}</w:t>
 						</w:r>
 					</w:p>
 					<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
@@ -700,7 +744,7 @@
 								<w:sz w:val="24"/>
 								<w:szCs w:val="24"/>
 							</w:rPr>
-							<w:t>宴请标准：宴席标准100元/桌，酒水标准200元/桌，香烟和礼品标准300元/桌。</w:t>
+							<w:t>宴请标准：宴席标准${banquet.totalLevel}元/桌，酒水标准${banquet.wineLevel}元/桌，香烟和礼品标准${banquet.cigaretteGiftLevel}元/桌。</w:t>
 						</w:r>
 					</w:p>
 					<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
@@ -720,9 +764,13 @@
 								<w:sz w:val="24"/>
 								<w:szCs w:val="24"/>
 							</w:rPr>
-							<w:t>用车情况：江苏淮安 苏H**Z**</w:t>
+							<w:t>用车来源：${banquet.vehicleSource}，车辆号码：${banquet.vehicleNumber}</w:t>
 						</w:r>
 					</w:p>
+					</#list>
+					<#-------------------------------------------- 宴席结束---------------------------------------------------->
+
+
 					<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
 						<w:pPr>
 							<w:autoSpaceDE w:val="0"/>
@@ -746,6 +794,31 @@
 							<w:t>5、可能影响公正执行职务情况</w:t>
 						</w:r>
 					</w:p>
+
+					<#-------------------------------------------- 可能影响公正执行职务开始---------------------------------------------------->
+					<#if businessAffects?size == 0 >
+						<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
+							<w:pPr>
+								<w:autoSpaceDE w:val="0"/>
+								<w:spacing w:line="360" w:lineRule="auto"/>
+								<w:ind w:firstLine="420"/>
+								<w:rPr>
+									<w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:hint="eastAsia"/>
+									<w:sz w:val="24"/>
+									<w:szCs w:val="24"/>
+								</w:rPr>
+							</w:pPr>
+							<w:r>
+								<w:rPr>
+									<w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:hint="eastAsia"/>
+									<w:sz w:val="24"/>
+									<w:szCs w:val="24"/>
+								</w:rPr>
+								<w:t>无相关记录</w:t>
+							</w:r>
+						</w:p>
+					</#if>
+					<#list businessAffects as business>
 					<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
 						<w:pPr>
 							<w:autoSpaceDE w:val="0"/>
@@ -763,7 +836,7 @@
 								<w:sz w:val="24"/>
 								<w:szCs w:val="24"/>
 							</w:rPr>
-							<w:t>◆ 时间：2019-05-14。</w:t>
+							<w:t>◆ 时间：${business.time}，影响人姓名：${business.affectName}，与民警关系：${business.relationship}，影响人单位：${business.affectOrganization}</w:t>
 						</w:r>
 					</w:p>
 					<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
@@ -783,7 +856,7 @@
 								<w:sz w:val="24"/>
 								<w:szCs w:val="24"/>
 							</w:rPr>
-							<w:t>影响人姓名：黄豆，与民警关系：朋友，影响人单位：美文软件公司影响人单位：美文软件公司</w:t>
+							<w:t>可能影响公正执行职务内容：${business.content}</w:t>
 						</w:r>
 					</w:p>
 					<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
@@ -803,30 +876,13 @@
 								<w:sz w:val="24"/>
 								<w:szCs w:val="24"/>
 							</w:rPr>
-							<w:t>可能影响公正执行职务内容：XX。</w:t>
+							<w:t>处理情况：${business.handleInfo}</w:t>
 						</w:r>
 					</w:p>
-					<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
-						<w:pPr>
-							<w:autoSpaceDE w:val="0"/>
-							<w:spacing w:line="360" w:lineRule="auto"/>
-							<w:ind w:left="420" w:firstLine="420"/>
-							<w:rPr>
-								<w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:hint="eastAsia"/>
-								<w:sz w:val="24"/>
-								<w:szCs w:val="24"/>
-							</w:rPr>
-						</w:pPr>
-						<w:r>
-							<w:rPr>
-								<w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:hint="eastAsia"/>
-								<w:sz w:val="24"/>
-								<w:szCs w:val="24"/>
-							</w:rPr>
-							<w:t>处理情况：XX</w:t>
-						</w:r>
+					<#--------------------------------------可能影响公正执行职务结束---------------------------------------------------->
+					</#list>
 
-					</w:p>
+
 					<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
 						<w:pPr>
 							<w:autoSpaceDE w:val="0"/>
@@ -850,6 +906,30 @@
 							<w:t>6、涉警报备情况</w:t>
 						</w:r>
 					</w:p>
+					<#-------------------------------------------- 涉警报备情况开始---------------------------------------------------->
+					<#if policeInvolves?size == 0 >
+						<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
+							<w:pPr>
+								<w:autoSpaceDE w:val="0"/>
+								<w:spacing w:line="360" w:lineRule="auto"/>
+								<w:ind w:firstLine="420"/>
+								<w:rPr>
+									<w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:hint="eastAsia"/>
+									<w:sz w:val="24"/>
+									<w:szCs w:val="24"/>
+								</w:rPr>
+							</w:pPr>
+							<w:r>
+								<w:rPr>
+									<w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:hint="eastAsia"/>
+									<w:sz w:val="24"/>
+									<w:szCs w:val="24"/>
+								</w:rPr>
+								<w:t>无相关记录</w:t>
+							</w:r>
+						</w:p>
+					</#if>
+					<#list policeInvolves as policeInvolve>
 					<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
 						<w:pPr>
 							<w:autoSpaceDE w:val="0"/>
@@ -867,60 +947,52 @@
 								<w:sz w:val="24"/>
 								<w:szCs w:val="24"/>
 							</w:rPr>
-							<w:t>◆ 时间：2019-05-14。</w:t>
+							<w:t>◆ 时间：${policeInvolve.time}，涉警人姓名：${policeInvolve.involvedName}，与民警关系：${policeInvolve.relationship}，涉警人单位：${policeInvolve.involvedOrganization}</w:t>
 						</w:r>
-						<w:proofErr w:type="gramStart"/>
+					</w:p>
+					<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
+						<w:pPr>
+							<w:autoSpaceDE w:val="0"/>
+							<w:spacing w:line="360" w:lineRule="auto"/>
+							<w:ind w:left="420" w:firstLine="420"/>
+							<w:rPr>
+								<w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:hint="eastAsia"/>
+								<w:sz w:val="24"/>
+								<w:szCs w:val="24"/>
+							</w:rPr>
+						</w:pPr>
 						<w:r>
 							<w:rPr>
 								<w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:hint="eastAsia"/>
 								<w:sz w:val="24"/>
 								<w:szCs w:val="24"/>
 							</w:rPr>
-							<w:t>涉警人姓名：李四，与民警关系：朋友，涉警人单位：美文软件公司</w:t>
+							<w:t>涉警内容：${policeInvolve.content}</w:t>
 						</w:r>
-						<w:proofErr w:type="gramEnd"/>
+					</w:p>
+					<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
+						<w:pPr>
+							<w:autoSpaceDE w:val="0"/>
+							<w:spacing w:line="360" w:lineRule="auto"/>
+							<w:ind w:left="420" w:firstLine="420"/>
+							<w:rPr>
+								<w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:hint="eastAsia"/>
+								<w:sz w:val="24"/>
+								<w:szCs w:val="24"/>
+							</w:rPr>
+						</w:pPr>
+						<w:r>
+							<w:rPr>
+								<w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:hint="eastAsia"/>
+								<w:sz w:val="24"/>
+								<w:szCs w:val="24"/>
+							</w:rPr>
+							<w:t>处理情况：${policeInvolve.result}</w:t>
+						</w:r>
+					</w:p>
+					</#list>
+					<#-------------------------------------------- 涉警报备情况结束---------------------------------------------------->
 
-					</w:p>
-					<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
-						<w:pPr>
-							<w:autoSpaceDE w:val="0"/>
-							<w:spacing w:line="360" w:lineRule="auto"/>
-							<w:ind w:left="420" w:firstLine="420"/>
-							<w:rPr>
-								<w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:hint="eastAsia"/>
-								<w:sz w:val="24"/>
-								<w:szCs w:val="24"/>
-							</w:rPr>
-						</w:pPr>
-						<w:r>
-							<w:rPr>
-								<w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:hint="eastAsia"/>
-								<w:sz w:val="24"/>
-								<w:szCs w:val="24"/>
-							</w:rPr>
-							<w:t>涉警内容：XX涉警内容涉警内容涉警内容涉警内容涉警内容涉警内容涉警内容涉警内。</w:t>
-						</w:r>
-					</w:p>
-					<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
-						<w:pPr>
-							<w:autoSpaceDE w:val="0"/>
-							<w:spacing w:line="360" w:lineRule="auto"/>
-							<w:ind w:left="420" w:firstLine="420"/>
-							<w:rPr>
-								<w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:hint="eastAsia"/>
-								<w:sz w:val="24"/>
-								<w:szCs w:val="24"/>
-							</w:rPr>
-						</w:pPr>
-						<w:r>
-							<w:rPr>
-								<w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:hint="eastAsia"/>
-								<w:sz w:val="24"/>
-								<w:szCs w:val="24"/>
-							</w:rPr>
-							<w:t>处理情况：XX。</w:t>
-						</w:r>
-					</w:p>
 					<w:p w:rsidR="00C90008" w:rsidRDefault="00C90008" w:rsidP="00C90008">
 						<w:pPr>
 							<w:autoSpaceDE w:val="0"/>
