@@ -1,10 +1,7 @@
 package com.mwkj.lzda.service.impl;
 
 import com.mwkj.lzda.dao.StatisticsMapper;
-import com.mwkj.lzda.dto.ArchiveStatisticParamDTO;
-import com.mwkj.lzda.dto.ArchiveStatisticResultDTO;
-import com.mwkj.lzda.dto.RewardStatisticParamDTO;
-import com.mwkj.lzda.dto.RewardStatisticResultDTO;
+import com.mwkj.lzda.dto.*;
 import com.mwkj.lzda.model.Organization;
 import com.mwkj.lzda.service.OrganizationService;
 import com.mwkj.lzda.service.StatisticService;
@@ -31,7 +28,7 @@ public class StatisticServiceImpl implements StatisticService {
     private OrganizationService organizationService;
 
     /**
-     * @return java.util.Map<java.lang.String, java.lang.String>
+     * @return java.util.Map<java.lang.String ,   java.lang.String>
      * @Author libaogang
      * @Date 2019-07-26 17:30
      * @Param [archiveStatisticParamDTO]
@@ -162,5 +159,10 @@ public class StatisticServiceImpl implements StatisticService {
             rewardStatisticVOs.add(rewardStatisticVO);
         }
         return rewardStatisticVOs;
+    }
+
+    @Override
+    public List<ArchiveStatisticResultDTO> statisticResponsibility(ResponsibilityStatisticParamDTO responsibilityStatisticParamDTO) {
+        return statisticsMapper.statisticResponsibility(responsibilityStatisticParamDTO);
     }
 }

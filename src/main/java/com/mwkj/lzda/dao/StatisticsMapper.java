@@ -34,5 +34,5 @@ public interface StatisticsMapper {
     List<RewardStatisticResultDTO> statisticReward(RewardStatisticParamDTO rewardStatisticParamDTO);
 
     //主体责任统计
-    List<ArchiveStatisticResultDTO> statisticResponsibility(RptResponsibilityReportDTO rptResponsibilityReportDTO);
+    List<ArchiveStatisticResultDTO> statisticResponsibility(ResponsibilityStatisticParamDTO responsibilityStatisticParamDTO);
 }

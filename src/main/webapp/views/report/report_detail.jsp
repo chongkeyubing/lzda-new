@@ -23,5 +23,5 @@
     </div>
 </div>
 <script src="static/js/jquery.min.js"></script>
-<%@ include file = "../common/back.jsp" %>
+<%@ include file = "../common/backone.jsp" %>
 

@@ -104,47 +104,47 @@
                         </dd>
                     </shiro:hasPermission>
 
-                    <%--<shiro:hasPermission name="统计">--%>
-                    <%--<dd>--%>
-                    <%--<h2 class="menu menu05">统计</h2>--%>
-                    <%--<ul class="menuSideBar">--%>
-                    <%--<li>--%>
-                    <%--<a href="punViolationStatistic/toList">违纪统计</a>--%>
-                    <%--</li>--%>
-                    <%--<li>--%>
-                    <%--<a href="rewardstatistic/toList">表彰统计</a>--%>
-                    <%--</li>--%>
-                    <%--<li>--%>
-                    <%--<a href="punReport/toList">信访统计</a>--%>
-                    <%--</li>--%>
-                    <%--<li>--%>
-                    <%--<a href="arcpoliceinvolvestatistic/toList">涉警报备统计</a>--%>
-                    <%--</li>--%>
-                    <%--<li>--%>
-                    <%--<a href="arcEffectGiftatistic/toList">收受礼品登记统计</a>--%>
-                    <%--</li>--%>
-                    <%--<li>--%>
-                    <%--<a href="arcBanquet/toList">操办宴席申请统计</a>--%>
-                    <%--</li>--%>
-                    <%--<li>--%>
-                    <%--<a href="arcFamilyCriminaltistic/toList">家人被追究刑事责任统计</a>--%>
-                    <%--</li>--%>
-                    <%--<li>--%>
-                    <%--<a href="arcAffect/toList">影响公正执行职务报备统计</a>--%>
-                    <%--</li>--%>
-                    <%--<li>--%>
-                    <%--<a href="">主体责任统计</a>--%>
-                    <%--</li>--%>
-                    <%--<li>--%>
-                    <%--<a href="">队伍思想状况统计</a>--%>
-                    <%--</li>--%>
-                    <%--<li>--%>
-                    <%--<a href="">履责纪实统计</a>--%>
-                    <%--</li>--%>
-                    <%--</ul>--%>
+                    <shiro:hasPermission name="统计">
+                        <dd>
+                            <h2 class="menu menu05">统计</h2>
+                            <ul class="menuSideBar">
+                                <li>
+                                    <a href="punViolationStatistic/toList">违纪统计</a>
+                                </li>
+                                <li>
+                                    <a href="rewardstatistic/toList">表彰统计</a>
+                                </li>
+                                <li>
+                                    <a href="punReport/toList">信访统计</a>
+                                </li>
+                                <li>
+                                    <a href="arcpoliceinvolvestatistic/toList">涉警报备统计</a>
+                                </li>
+                                <li>
+                                    <a href="arcEffectGiftatistic/toList">收受礼品登记统计</a>
+                                </li>
+                                <li>
+                                    <a href="arcBanquet/toList">操办宴席申请统计</a>
+                                </li>
+                                <li>
+                                    <a href="arcFamilyCriminaltistic/toList">家人被追究刑事责任统计</a>
+                                </li>
+                                <li>
+                                    <a href="arcAffect/toList">影响公正执行职务报备统计</a>
+                                </li>
+                                <li>
+                                    <a href="rptresponsibilityreportstatistic/toList">主体责任统计</a>
+                                </li>
+                                <li>
+                                    <a href="">队伍思想状况统计</a>
+                                </li>
+                                <li>
+                                    <a href="">履责纪实统计</a>
+                                </li>
+                            </ul>
 
-                    <%--</dd>--%>
-                    <%--</shiro:hasPermission>--%>
+                        </dd>
+                    </shiro:hasPermission>
 
                     <shiro:hasPermission name="日志">
                         <dd>

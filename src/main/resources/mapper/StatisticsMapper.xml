@@ -132,7 +132,7 @@
     </select>
 
     <!-- 主体责任 -->
-    <select id="statisticResponsibility" parameterType="com.mwkj.lzda.dto.RptResponsibilityReportDTO"
+    <select id="statisticResponsibility" parameterType="com.mwkj.lzda.dto.ResponsibilityStatisticParamDTO"
             resultType="com.mwkj.lzda.dto.ArchiveStatisticResultDTO">
         select a.count, o.id as organization_id, o.name as organization_name
         from organization o
