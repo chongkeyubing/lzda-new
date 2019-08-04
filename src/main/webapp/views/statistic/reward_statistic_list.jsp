@@ -137,7 +137,7 @@
                     $.post("rewardstatistic/toDetail", param, function (html) {
                         layer.open({
                             type: 1,
-                            title: rewardType + '详情',
+                            title: '表彰统计-'+ rewardType + '详情',
                             area: ['100%', '100%'],
                             content: html
                         });

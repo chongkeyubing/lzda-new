@@ -4,7 +4,7 @@
 <div class="wrapper">
     <div class="contentBox">
         <div class="tableHonor">
-            <table contenteditable="true">
+            <table>
                 <tr>
                     <th>廉 政 信 息</th>
                 </tr>
@@ -22,6 +22,5 @@
         </div>
     </div>
 </div>
-<script src="static/js/jquery.min.js"></script>
 <%@ include file = "../common/backone.jsp" %>
 
