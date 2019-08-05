@@ -29,8 +29,10 @@
             </button>
             <button class="layui-btn layui-btn-warm" type="reset">清空</button>
 
-            <button type="button" lay-submit="" class="layui-btn layui-btn-warm" id="exportStatistic" lay-filter="exportStatistic">
-                <i class="layui-icon"></i>导出Excel</button>
+            <%--<button type="button" lay-submit="" class="layui-btn layui-btn-warm" id="exportStatistic" lay-filter="exportStatistic">
+                <i class="layui-icon"></i>导出Excel</button>--%>
+            <button class="layui-btn layui-btn-normal" lay-submit id="exportStatistic" lay-filter="exportStatistic">导出
+            </button>
         </div>
 
     </div>
