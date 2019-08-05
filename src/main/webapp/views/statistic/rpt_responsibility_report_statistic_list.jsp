@@ -76,7 +76,7 @@
         var tableData;
 
         var tableIns = table.render({
-            title:'主体责任统计',  //导出时的文件名
+            title: '主体责任统计',  //导出时的文件名
             elem: '#statisticTable',
             url: 'rptresponsibilityreportstatistic/list',
             // page: true, //开启分页
@@ -87,7 +87,7 @@
                 {field: 'count', title: '填报数量'},
                 {field: 'operate', align: 'center', title: '操作', toolbar: '#statisticBar'}
             ]],
-            done:function(res){
+            done: function (res) {
                 tableData = res;
             }
         });
