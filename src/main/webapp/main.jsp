@@ -136,10 +136,10 @@
                                     <a href="rptresponsibilityreportstatistic/toList">主体责任统计</a>
                                 </li>
                                 <li>
-                                    <a href="">队伍思想状况统计</a>
+                                    <a href="teamThink/toList">队伍思想状况统计</a>
                                 </li>
                                 <li>
-                                    <a href="">履责纪实统计</a>
+                                    <a href="responsibility/toList">履责纪实统计</a>
                                 </li>
                             </ul>
 

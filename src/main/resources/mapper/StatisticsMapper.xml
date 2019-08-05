@@ -74,7 +74,6 @@
         <if test="organizationId!=null and organizationId!=''">
             where o.id = #{organizationId}
         </if>
-
     </select>
 
     <!--影响公正执行职务报备统计-->
@@ -154,5 +153,45 @@
         </if>
     </select>
 
+
+    <!--队伍思想状况统计-->
+    <select id="statisticTeamThinking" parameterType="com.mwkj.lzda.dto.ArchiveStatisticParamDTO"
+            resultType="com.mwkj.lzda.dto.ArchiveStatisticResultDTO">
+        SELECT o.id as organization_id,o.name as organization_name,r.count as count,r.time as time FROM  `organization` o
+        left join (SELECT COUNT(*) AS COUNT,time,organization_id FROM `rpt_team_thinking`
+        <if test="beginTime ==null || beginTime ==''">
+            where time=(SELECT DATE_FORMAT(NOW(),'%Y-%m'))
+        </if>
+        <if test="beginTime!=null and beginTime!=''">
+            WHERE time = #{beginTime}
+        </if>
+        GROUP BY time
+        <!--<if test="organizationId!=null and organizationId!=''">
+        HAVING organization_id =#{organizationId}
+        </if>-->
+        ) r ON
+        o.id=r.organization_id
+        <if test="organizationId!=null and organizationId!=''">
+            where  o.id=#{organizationId}
+        </if>
+    </select>
+
+    <!--履责纪实统计-->
+    <select id="statisticResponsibilityPerform" parameterType="com.mwkj.lzda.dto.ArchiveStatisticParamDTO"
+            resultType="com.mwkj.lzda.dto.ArchiveStatisticResultDTO">
+        select a.count,o.id AS organization_id, o.name as organization_name
+        from organization o
+        left join (
+        SELECT organization_id, count(*) as count
+        from rpt_responsibility_perform
+        <if test="beginTime!=null and beginTime!='' and endTime!=null and endTime!=''">
+            where time BETWEEN #{beginTime} and #{endTime}
+        </if>
+        group by organization_id
+        ) a on o.id = a.organization_id
+        <if test="organizationId!=null and organizationId!=''">
+            where  o.id=#{organizationId}
+        </if>
+    </select>
 
 </mapper>

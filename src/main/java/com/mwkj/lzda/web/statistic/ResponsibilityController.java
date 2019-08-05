@@ -6,11 +6,12 @@ import com.mwkj.lzda.core.Result;
 import com.mwkj.lzda.core.layui.LayuiTableResultUtil;
 import com.mwkj.lzda.dto.ArchiveStatisticParamDTO;
 import com.mwkj.lzda.dto.ArchiveStatisticResultDTO;
-import com.mwkj.lzda.enu.LogOperateTypeEnum;
 import com.mwkj.lzda.model.ArcBanquetApply;
-import com.mwkj.lzda.service.ArcBanquetApplyService;
-import com.mwkj.lzda.service.OperateLogService;
+import com.mwkj.lzda.model.RptResponsibilityPerform;
+import com.mwkj.lzda.model.RptTeamThinking;
 import com.mwkj.lzda.service.OrganizationService;
+import com.mwkj.lzda.service.RptResponsibilityPerformService;
+import com.mwkj.lzda.service.RptTeamThinkingService;
 import com.mwkj.lzda.service.StatisticService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
@@ -18,21 +19,16 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.annotation.Resource;
-import java.util.List;
 import tk.mybatis.mapper.entity.Condition;
 import tk.mybatis.mapper.entity.Example;
 
-/**
-* 方法实现说明
-* @author      zzy
-* @Description:(操办婚宴统计)
-* @date        2019/8/2/002 14:00
-*/
+import javax.annotation.Resource;
+import java.util.List;
+
+
 @Controller
-@RequestMapping("/arcBanquet")
-public class ArcBanquetController {
+@RequestMapping("/responsibility")
+public class ResponsibilityController {
     @Resource
     private StatisticService statisticService;
 
@@ -40,11 +36,7 @@ public class ArcBanquetController {
     private OrganizationService organizationService;
 
     @Resource
-    private ArcBanquetApplyService arcBanquetApplyService;
-
-    @Resource
-    private OperateLogService operateLogService;
-
+    private RptResponsibilityPerformService rptResponsibilityPerformService;
 
     /**
     * 方法实现说明
@@ -55,9 +47,7 @@ public class ArcBanquetController {
     @RequestMapping("/toList")
     public String toList(ModelMap map) {
         map.put("organizations", organizationService.findAll());
-        //插入日志信息
-        operateLogService.save("操办宴席申请统计", LogOperateTypeEnum.查看.toString(), null);
-        return "views/statistic/arc_banquet_apply_statistic_list";
+        return "views/statistic/rpt_responsibility_perform_statistic_list";
     }
 
     /**
@@ -70,7 +60,7 @@ public class ArcBanquetController {
     public String toDetail(int organizationId, String time, ModelMap map) {
         map.put("organizationId", organizationId);
         map.put("time", time);
-        return "views/statistic/arc_banquet_apply_statistic_detail";
+        return "views/statistic/rpt_responsibility_perform_statistic_detail";
     }
 
     /**
@@ -94,7 +84,8 @@ public class ArcBanquetController {
 
         PageHelper.startPage(page, limit);
 
-        List<ArchiveStatisticResultDTO> list = statisticService.statisticBanquetApply(archiveStatisticParamDTO);
+        List<ArchiveStatisticResultDTO> list = statisticService.statisticResponsibilityPerform(archiveStatisticParamDTO);
+
 
         PageInfo<ArchiveStatisticResultDTO> pageInfo = new PageInfo<>(list);
 
@@ -112,24 +103,25 @@ public class ArcBanquetController {
     @ResponseBody
     public Result lists(@RequestParam(defaultValue = "0") Integer page,
                         @RequestParam(defaultValue = "0") Integer limit,
-                        ArcBanquetApply arcBanquetApply,
+                        RptResponsibilityPerform rptResponsibilityPerform,
                         String time) {
         PageHelper.startPage(page, limit);
 
-        Condition condition = new Condition(ArcBanquetApply.class);
+        Condition condition = new Condition(RptResponsibilityPerform.class);
         Example.Criteria criteria = condition.createCriteria();
 
         //设置单位id
-        criteria.andEqualTo("organizationId", arcBanquetApply.getOrganizationId());
+        criteria.andEqualTo("organizationId", rptResponsibilityPerform.getOrganizationId());
 
         if (StringUtils.isNotBlank(time)) {
             //设置时间段
-            criteria.andBetween("activityTime", time.substring(0, 10), time.substring(13, 23));
+            criteria.andBetween("time", time.substring(0, 10), time.substring(13, 23));
         }
 
-        condition.setOrderByClause("activity_time desc");
-        List<ArcBanquetApply> list = arcBanquetApplyService.findByCondition(condition);
-        PageInfo<ArcBanquetApply> pageInfo = new PageInfo<>(list);
+        condition.setOrderByClause("time desc");
+
+        List<RptResponsibilityPerform> list = rptResponsibilityPerformService.findByCondition(condition);
+        PageInfo<RptResponsibilityPerform> pageInfo = new PageInfo<>(list);
         return LayuiTableResultUtil.success(list, pageInfo.getTotal());
     }
 

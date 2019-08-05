@@ -36,7 +36,7 @@
         </div>
 
             <div class="layui-inline" style="margin-left: 74.3%;">
-                <button class="layui-btn layui-btn-normal" lay-submit lay-filter="queryReport" id="queryReport">提交
+                <button class="layui-btn layui-btn-normal" lay-submit lay-filter="queryReport" id="queryReport">修改
                 </button>
             </div>
 
@@ -46,6 +46,10 @@
 
 <script>
     $('#queryReport').click(function(){
+        var summary = $('#summary').val();
+        if(summary == "" || summary == null){
+            alert("请您填写内容在提交！！！");
+        }else{
         $("#incorroptForm").ajaxSubmit({
         success: function (data) {
             if (data.success) {
@@ -57,6 +61,7 @@
             }
         }
     })
+        }
         return false;
     });
 

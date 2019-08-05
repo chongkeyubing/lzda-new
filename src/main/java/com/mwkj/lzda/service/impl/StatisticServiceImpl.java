@@ -1,7 +1,10 @@
 package com.mwkj.lzda.service.impl;
 
 import com.mwkj.lzda.dao.StatisticsMapper;
-import com.mwkj.lzda.dto.*;
+import com.mwkj.lzda.dto.ArchiveStatisticParamDTO;
+import com.mwkj.lzda.dto.ArchiveStatisticResultDTO;
+import com.mwkj.lzda.dto.RewardStatisticParamDTO;
+import com.mwkj.lzda.dto.RewardStatisticResultDTO;
 import com.mwkj.lzda.model.Organization;
 import com.mwkj.lzda.service.OrganizationService;
 import com.mwkj.lzda.service.StatisticService;
@@ -28,7 +31,7 @@ public class StatisticServiceImpl implements StatisticService {
     private OrganizationService organizationService;
 
     /**
-     * @return java.util.Map<java.lang.String ,   java.lang.String>
+     * @return java.util.Map<java.lang.String, java.lang.String>
      * @Author libaogang
      * @Date 2019-07-26 17:30
      * @Param [archiveStatisticParamDTO]
@@ -97,6 +100,51 @@ public class StatisticServiceImpl implements StatisticService {
     @Override
     public List<ArchiveStatisticResultDTO> statisticPunReport(ArchiveStatisticParamDTO archiveStatisticParamDTO) {
         return statisticsMapper.statisticPunReport(archiveStatisticParamDTO);
+    }
+
+    /**
+    * 方法实现说明
+    * @author      zzy
+    * @Description:(队伍思想状况统计)
+    * @date        2019/7/31/031 16:53
+    */
+    @Override
+    public List<ArchiveStatisticResultDTO> statisticTeamThinking(ArchiveStatisticParamDTO archiveStatisticParamDTO) {
+        return statisticsMapper.statisticTeamThinking(archiveStatisticParamDTO);
+    }
+
+
+    /**
+    * 方法实现说明
+    * @author      zzy
+    * @Description:(履责纪实统计)
+    * @date        2019/7/31/031 16:54
+    */
+    @Override
+    public List<ArchiveStatisticResultDTO> statisticResponsibilityPerform(ArchiveStatisticParamDTO archiveStatisticParamDTO) {
+        return statisticsMapper.statisticResponsibilityPerform(archiveStatisticParamDTO);
+       /* List<ArchiveStatisticResultDTO> archiveStatisticResultDTOS = statisticsMapper.statisticResponsibilityPerform(archiveStatisticParamDTO);
+        List<ArchiveStatisticResultDTO> archiveStatisticResults = new ArrayList<>(64);
+
+        Organization organizationParam = new Organization();
+        organizationParam.setId(archiveStatisticParamDTO.getOrganizationId());
+        List<Organization> organizations = organizationService.find(organizationParam);
+
+        for (Organization organization : organizations) {
+            for(ArchiveStatisticResultDTO archiveStatisticResultDTO1:archiveStatisticResultDTOS){
+                ArchiveStatisticResultDTO archiveStatisticResultDTO2 = new ArchiveStatisticResultDTO();
+                archiveStatisticResultDTO2.setOrganizationId(organization.getId());
+                archiveStatisticResultDTO2.setOrganizationName(organization.getName());
+
+                if(organization.getId().equals(archiveStatisticResultDTO1.getOrganizationId())){
+                    archiveStatisticResultDTO2.setCount(archiveStatisticResultDTO1.getCount());
+                }
+                archiveStatisticResults.add(archiveStatisticResultDTO2);
+            }
+
+        }
+        return archiveStatisticResults;*/
+
     }
 
     /**
