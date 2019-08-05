@@ -63,7 +63,6 @@ public class SpringFileUploader {
                         }
                     }
                 }
-
             }
         }
         return fileUrls;

@@ -41,6 +41,8 @@
             <button class="layui-btn layui-btn-normal" lay-submit lay-filter="queryStatistic" id="queryStatistic">查询
             </button>
             <button class="layui-btn layui-btn-warm" type="reset">清空</button>
+            <button class="layui-btn layui-btn-normal" lay-submit id="exportStatistic" lay-filter="exportStatistic">导出
+            </button>
         </div>
 
     </div>
@@ -71,7 +73,10 @@
             }
         });
 
+        var tableData;
+
         var tableIns = table.render({
+            title:'主体责任统计',  //导出时的文件名
             elem: '#statisticTable',
             url: 'rptresponsibilityreportstatistic/list',
             // page: true, //开启分页
@@ -81,7 +86,10 @@
                 {field: 'organizationName', title: '单位'},
                 {field: 'count', title: '填报数量'},
                 {field: 'operate', align: 'center', title: '操作', toolbar: '#statisticBar'}
-            ]]
+            ]],
+            done:function(res){
+                tableData = res;
+            }
         });
 
         //明细按钮监听
@@ -119,5 +127,12 @@
                 where: param //设定异步数据接口的额外参数，任意设
             });
         }
+
+        //导出
+        form.on('submit(exportStatistic)', function (data) {
+            debugger;
+            table.exportFile(tableIns.config.id, tableData.data, 'xlsx');
+            return false; //阻止表单跳转
+        });
     });
 </script>
