@@ -47,8 +47,6 @@ public class AttachmentServiceImpl extends AbstractService<Attachment> implement
 
         String attachmentId = IDGenerator.getUUID();
         if (!CollectionUtils.isEmpty(urls)) {
-
-
             //保存图片路径至附件表
             List<Attachment> attachments = new ArrayList<>();
             for (String url : urls) {

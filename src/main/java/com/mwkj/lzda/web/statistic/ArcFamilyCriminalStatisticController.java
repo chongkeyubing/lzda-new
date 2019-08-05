@@ -6,8 +6,10 @@ import com.mwkj.lzda.core.Result;
 import com.mwkj.lzda.core.layui.LayuiTableResultUtil;
 import com.mwkj.lzda.dto.ArchiveStatisticParamDTO;
 import com.mwkj.lzda.dto.ArchiveStatisticResultDTO;
+import com.mwkj.lzda.enu.LogOperateTypeEnum;
 import com.mwkj.lzda.model.ArcFamilyCriminal;
 import com.mwkj.lzda.service.ArcFamilyCriminalService;
+import com.mwkj.lzda.service.OperateLogService;
 import com.mwkj.lzda.service.OrganizationService;
 import com.mwkj.lzda.service.StatisticService;
 import org.apache.commons.lang3.StringUtils;
@@ -39,6 +41,9 @@ public class ArcFamilyCriminalStatisticController {
     @Resource
     private ArcFamilyCriminalService arcFamilyCriminalService;
 
+    @Resource
+    private OperateLogService operateLogService;
+
     /**
      * @return java.lang.String
      * @Author libaogang
@@ -49,6 +54,8 @@ public class ArcFamilyCriminalStatisticController {
     @RequestMapping("/toList")
     public String toStatisticFamiayCriminal(ModelMap map) {
         map.put("organizations", organizationService.findAll());
+        //插入日志信息
+        operateLogService.save("家人被追究刑事责任统计", LogOperateTypeEnum.查看.toString(), null);
         return "views/statistic/arc_family_criminal_statistic_list";
     }
 

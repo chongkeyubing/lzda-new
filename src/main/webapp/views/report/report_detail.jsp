@@ -1,16 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<%--<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>后台</title>
-		<link rel="stylesheet" type="text/css" href="css/tableCss.css" />
-	</head>
-	<body>--%>
+
 <div class="wrapper">
     <div class="contentBox">
         <div class="tableHonor">
-            <table contenteditable="true">
+            <table>
                 <tr>
                     <th>廉 政 信 息</th>
                 </tr>
@@ -28,10 +22,5 @@
         </div>
     </div>
 </div>
-<script src="static/js/jquery.min.js"></script>
-<%@ include file = "../common/back.jsp" %>
+<%@ include file = "../common/backone.jsp" %>
 
-<%--
-	</body>
-
-</html>--%>

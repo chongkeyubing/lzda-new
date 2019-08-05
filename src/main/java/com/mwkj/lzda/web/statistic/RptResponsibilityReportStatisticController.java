@@ -3,9 +3,14 @@ package com.mwkj.lzda.web.statistic;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.mwkj.lzda.core.Result;
+import com.mwkj.lzda.core.layui.LayuiDurationResolver;
 import com.mwkj.lzda.core.layui.LayuiTableResultUtil;
 import com.mwkj.lzda.dto.ArchiveStatisticParamDTO;
 import com.mwkj.lzda.dto.ArchiveStatisticResultDTO;
+import com.mwkj.lzda.dto.ResponsibilityStatisticParamDTO;
+import com.mwkj.lzda.dto.RptResponsibilityReportDTO;
+import com.mwkj.lzda.enu.LogOperateTypeEnum;
+import com.mwkj.lzda.service.OperateLogService;
 import com.mwkj.lzda.service.OrganizationService;
 import com.mwkj.lzda.service.StatisticService;
 import org.apache.commons.lang3.StringUtils;
@@ -21,11 +26,11 @@ import java.util.List;
 /**
  * @Author: libaogang
  * @Date: 2019-07-26 17:31
- * @Description 涉警报备统计控制器
+ * @Description 主体责任统计控制器
  */
 @Controller
-@RequestMapping("/arcpoliceinvolvestatistic")
-public class ArcPoliceInvolveStatisticController {
+@RequestMapping("/rptresponsibilityreportstatistic")
+public class RptResponsibilityReportStatisticController {
 
     @Resource
     private StatisticService statisticService;
@@ -36,55 +41,52 @@ public class ArcPoliceInvolveStatisticController {
     @Resource
     private OperateLogService operateLogService;
 
-
     /**
      * @return java.lang.String
      * @Author libaogang
-     * @Date 2019-07-26 19:30
+     * @Date 2019-08-01 17:09
      * @Param [map]
-     * @Description 跳转到统计页
+     * @Description 跳转到列表页
      */
     @RequestMapping("/toList")
     public String toList(ModelMap map) {
         map.put("organizations", organizationService.findAll());
         //插入日志信息
-        operateLogService.save("涉警报备统计", LogOperateTypeEnum.查看.toString(), null);
-        return "views/statistic/arc_police_involve_statistic_list";
+        operateLogService.save("主体责任统计", LogOperateTypeEnum.查看.toString(), null);
+        return "views/statistic/rpt_responsibility_report_statistic_list";
     }
 
     /**
      * @return java.lang.String
      * @Author libaogang
-     * @Date 2019-07-26 19:21
-     * @Param [archiveStatisticParamDTO, time, map]
+     * @Date 2019-08-01 17:09
+     * @Param [organizationId, time, map]
      * @Description 跳转到明细页
      */
     @RequestMapping("/toDetail")
-    public String toDetail(int organizationId, String time, ModelMap map) {
-        map.put("organizationId", organizationId);
-        map.put("time", time);
-        return "views/statistic/arc_police_involve_statistic_detail";
+    public String toDetail(ResponsibilityStatisticParamDTO responsibilityStatisticParamDTO, ModelMap map) {
+        map.put("organizationId", responsibilityStatisticParamDTO.getOrganizationId());
+        map.put("year", responsibilityStatisticParamDTO.getYear());
+        map.put("quarter", responsibilityStatisticParamDTO.getQuarter());
+        return "views/statistic/rpt_responsibility_report_statistic_detail";
     }
 
+    /**
+     * @return com.mwkj.lzda.core.Result
+     * @Author libaogang
+     * @Date 2019-08-01 17:09
+     * @Param [page, limit, archiveStatisticParamDTO, time]
+     * @Description 列表页数据
+     */
     @RequestMapping("/list")
     @ResponseBody
     public Result list(@RequestParam(defaultValue = "0") Integer page,
                        @RequestParam(defaultValue = "0") Integer limit,
-                       ArchiveStatisticParamDTO archiveStatisticParamDTO,
-                       String time) {
-
-        //解析时间
-        if (StringUtils.isNotBlank(time)) {
-            archiveStatisticParamDTO.setBeginTime(time.substring(0, 10));
-            archiveStatisticParamDTO.setEndTime(time.substring(13, 23));
-        }
+                       ResponsibilityStatisticParamDTO responsibilityStatisticParamDTO) {
 
         PageHelper.startPage(page, limit);
-
-        List<ArchiveStatisticResultDTO> list = statisticService.statisticPoliceInvolve(archiveStatisticParamDTO);
-
+        List<ArchiveStatisticResultDTO> list = statisticService.statisticResponsibility(responsibilityStatisticParamDTO);
         PageInfo<ArchiveStatisticResultDTO> pageInfo = new PageInfo<>(list);
-
         return LayuiTableResultUtil.success(list, pageInfo.getTotal());
     }
 

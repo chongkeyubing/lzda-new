@@ -31,10 +31,10 @@ public class StatisticServiceImpl implements StatisticService {
     private OrganizationService organizationService;
 
     /**
+     * @return java.util.Map<java.lang.String, java.lang.String>
      * @Author libaogang
      * @Date 2019-07-26 17:30
      * @Param [archiveStatisticParamDTO]
-     * @return java.util.Map<java.lang.String,java.lang.String>
      * @Description 涉警报备统计
      */
     @Override
@@ -43,55 +43,60 @@ public class StatisticServiceImpl implements StatisticService {
     }
 
     /**
-    * 方法实现说明
-    * @author      zzy
-    * @Description:(收受礼品统计)
-    * @date        2019/7/29/029 15:19
-    */
+     * 方法实现说明
+     *
+     * @author zzy
+     * @Description:(收受礼品统计)
+     * @date 2019/7/29/029 15:19
+     */
     @Override
     public List<ArchiveStatisticResultDTO> statisticAcceptGifts(ArchiveStatisticParamDTO archiveStatisticParamDTO) {
         return statisticsMapper.statisticAcceptGifts(archiveStatisticParamDTO);
     }
 
     /**
-    * 方法实现说明
-    * @author      zzy
-    * @Description:(操办宴席)
-    * @date        2019/7/30/030 9:15
-    */
+     * 方法实现说明
+     *
+     * @author zzy
+     * @Description:(操办宴席)
+     * @date 2019/7/30/030 9:15
+     */
     @Override
     public List<ArchiveStatisticResultDTO> statisticBanquetApply(ArchiveStatisticParamDTO archiveStatisticParamDTO) {
         return statisticsMapper.statisticBanquetApply(archiveStatisticParamDTO);
     }
 
     /**
-    * 方法实现说明
-    * @author      zzy
-    * @Description:(家人被追究刑事责任统计)
-    * @date        2019/7/30/030 11:16
-    */
+     * 方法实现说明
+     *
+     * @author zzy
+     * @Description:(家人被追究刑事责任统计)
+     * @date 2019/7/30/030 11:16
+     */
     @Override
     public List<ArchiveStatisticResultDTO> statisticFamilyCriminal(ArchiveStatisticParamDTO archiveStatisticParamDTO) {
         return statisticsMapper.statisticFamilyCriminal(archiveStatisticParamDTO);
     }
 
     /**
-    * 方法实现说明
-    * @author      zzy
-    * @Description:(可能影响公务执行职务统计)
-    * @date        2019/7/30/030 14:11
-    */
+     * 方法实现说明
+     *
+     * @author zzy
+     * @Description:(可能影响公务执行职务统计)
+     * @date 2019/7/30/030 14:11
+     */
     @Override
     public List<ArchiveStatisticResultDTO> statisticAffectBusiness(ArchiveStatisticParamDTO archiveStatisticParamDTO) {
         return statisticsMapper.statisticAffectBusiness(archiveStatisticParamDTO);
     }
 
     /**
-    * 方法实现说明
-    * @author      zzy
-    * @Description:(信访统计)
-    * @date        2019/7/31/031 9:14
-    */
+     * 方法实现说明
+     *
+     * @author zzy
+     * @Description:(信访统计)
+     * @date 2019/7/31/031 9:14
+     */
     @Override
     public List<ArchiveStatisticResultDTO> statisticPunReport(ArchiveStatisticParamDTO archiveStatisticParamDTO) {
         return statisticsMapper.statisticPunReport(archiveStatisticParamDTO);
@@ -202,5 +207,10 @@ public class StatisticServiceImpl implements StatisticService {
             rewardStatisticVOs.add(rewardStatisticVO);
         }
         return rewardStatisticVOs;
+    }
+
+    @Override
+    public List<ArchiveStatisticResultDTO> statisticResponsibility(ResponsibilityStatisticParamDTO responsibilityStatisticParamDTO) {
+        return statisticsMapper.statisticResponsibility(responsibilityStatisticParamDTO);
     }
 }

@@ -6,8 +6,10 @@ import com.mwkj.lzda.core.Result;
 import com.mwkj.lzda.core.layui.LayuiTableResultUtil;
 import com.mwkj.lzda.dto.ArchiveStatisticParamDTO;
 import com.mwkj.lzda.dto.ArchiveStatisticResultDTO;
+import com.mwkj.lzda.enu.LogOperateTypeEnum;
 import com.mwkj.lzda.model.ArcBanquetApply;
 import com.mwkj.lzda.service.ArcBanquetApplyService;
+import com.mwkj.lzda.service.OperateLogService;
 import com.mwkj.lzda.service.OrganizationService;
 import com.mwkj.lzda.service.StatisticService;
 import org.apache.commons.lang3.StringUtils;
@@ -40,6 +42,10 @@ public class ArcBanquetController {
     @Resource
     private ArcBanquetApplyService arcBanquetApplyService;
 
+    @Resource
+    private OperateLogService operateLogService;
+
+
     /**
     * 方法实现说明
     * @author      zzy
@@ -49,6 +55,8 @@ public class ArcBanquetController {
     @RequestMapping("/toList")
     public String toList(ModelMap map) {
         map.put("organizations", organizationService.findAll());
+        //插入日志信息
+        operateLogService.save("操办宴席申请统计", LogOperateTypeEnum.查看.toString(), null);
         return "views/statistic/arc_banquet_apply_statistic_list";
     }
 

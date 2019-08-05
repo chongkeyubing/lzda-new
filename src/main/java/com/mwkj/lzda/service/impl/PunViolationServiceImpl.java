@@ -253,7 +253,7 @@ public class PunViolationServiceImpl extends AbstractService<PunViolation> imple
         }
         ;
         //插入日志信息
-        operateLogService.save("违纪统计", LogOperateTypeEnum.查看统计数据.toString(), user.getId());
+        operateLogService.save("违纪统计", LogOperateTypeEnum.查看.toString(), null);
         return punViolationStatisticsVoList;
     }
 

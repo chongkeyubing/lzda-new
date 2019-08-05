@@ -41,7 +41,7 @@ public class CodeGenerator {
     private static final String DATE = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(new Date());//@date
 
     public static void main(String[] args) {
-        genCode("role_auth");
+        genCode("rpt_responsibility_report_task");
         //genCodeByCustomModelName("user","User");
     }
 

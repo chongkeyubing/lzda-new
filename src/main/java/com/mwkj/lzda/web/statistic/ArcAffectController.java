@@ -6,12 +6,10 @@ import com.mwkj.lzda.core.Result;
 import com.mwkj.lzda.core.layui.LayuiTableResultUtil;
 import com.mwkj.lzda.dto.ArchiveStatisticParamDTO;
 import com.mwkj.lzda.dto.ArchiveStatisticResultDTO;
+import com.mwkj.lzda.enu.LogOperateTypeEnum;
 import com.mwkj.lzda.model.ArcAffectBusiness;
 import com.mwkj.lzda.model.ArcBanquetApply;
-import com.mwkj.lzda.service.ArcAffectBusinessService;
-import com.mwkj.lzda.service.ArcBanquetApplyService;
-import com.mwkj.lzda.service.OrganizationService;
-import com.mwkj.lzda.service.StatisticService;
+import com.mwkj.lzda.service.*;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -42,6 +40,9 @@ public class ArcAffectController {
     @Resource
     private ArcAffectBusinessService arcAffectBusinessService;
 
+    @Resource
+    private OperateLogService operateLogService;
+
     /**
     * 方法实现说明
     * @author      zzy
@@ -51,6 +52,8 @@ public class ArcAffectController {
     @RequestMapping("/toList")
     public String toList(ModelMap map) {
         map.put("organizations", organizationService.findAll());
+        //插入日志信息
+        operateLogService.save("影响公正执行职务报备统计", LogOperateTypeEnum.查看.toString(), null);
         return "views/statistic/arc_affect_business_statistic_list";
     }
 

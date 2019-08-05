@@ -7,15 +7,15 @@
 <div class="wrapper">
     <div class="contentBox">
         <div class="tableHonor">
-            <table>
+            <table contenteditable="true">
                 <tr>单位：${report.organizationName}</tr>
                 <tr>
-                    <th colspan="4">履责纪 </th>
+                    <th colspan="4">履 责 纪 实</th>
                 </tr>
                 <tr>
-                    <td>时间</td>
+                    <td>时 间</td>
                     <td>${report.time}</td>
-                    <td>地点</td>
+                    <td>地 点</td>
                     <td>${report.address}</td>
                 </tr>
                 <tr>
@@ -23,11 +23,11 @@
                     <td colspan="3">${report.participants}</td>
                 </tr>
                 <tr>
-                    <td>主题</td>
+                    <td>主 题</td>
                     <td colspan="3">${report.title}</td>
                 </tr>
                 <tr>
-                    <td>内容</td>
+                    <td>内 容</td>
                     <td colspan="3">${report.content}</td>
                 </tr>
 
@@ -47,9 +47,9 @@
                         </td>
                     </tr>
                 </c:if>
-
             </table>
         </div>
     </div>
 </div>
+
 <%@ include file="../common/backone.jsp" %>

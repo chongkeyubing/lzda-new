@@ -42,12 +42,6 @@
                             <li>
                                 <a href="incorruptselfsummary/toList?userid=${currentUser.id}">廉政自律小结</a>
                             </li>
-
-                            <%--<shiro:hasPermission name="档案审核">--%>
-                            <%--<li>--%>
-                            <%--<a href="views/approve/approve_list.jsp">档案审核</a>--%>
-                            <%--</li>--%>
-                            <%--</shiro:hasPermission>--%>
                         </ul>
                     </dd>
 
@@ -83,8 +77,6 @@
                                 <li>
                                     <a href="rptresponsibilityperform/toList">履责纪实上报</a>
                                 </li>
-
-
                             </ul>
                         </dd>
                     </shiro:hasPermission>
@@ -141,7 +133,7 @@
                                     <a href="arcAffect/toList">影响公正执行职务报备统计</a>
                                 </li>
                                 <li>
-                                    <a href="">主体责任统计</a>
+                                    <a href="rptresponsibilityreportstatistic/toList">主体责任统计</a>
                                 </li>
                                 <li>
                                     <a href="teamThink/toList">队伍思想状况统计</a>

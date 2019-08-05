@@ -1,8 +1,6 @@
 package com.mwkj.lzda.service;
 
-import com.mwkj.lzda.dto.ArchiveStatisticParamDTO;
-import com.mwkj.lzda.dto.ArchiveStatisticResultDTO;
-import com.mwkj.lzda.dto.RewardStatisticParamDTO;
+import com.mwkj.lzda.dto.*;
 import com.mwkj.lzda.vo.RewardStatisticVO;
 
 import java.util.List;
@@ -41,4 +39,7 @@ public interface StatisticService {
 
     //表彰统计
     List<RewardStatisticVO> statisticReward(RewardStatisticParamDTO rewardStatisticParamDTO);
+
+    //主体责任统计
+    List<ArchiveStatisticResultDTO> statisticResponsibility(ResponsibilityStatisticParamDTO responsibilityStatisticParamDTO);
 }

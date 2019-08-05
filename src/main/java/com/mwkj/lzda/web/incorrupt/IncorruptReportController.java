@@ -73,11 +73,11 @@ public class IncorruptReportController {
         cfg.setClassForTemplateLoading(this.getClass(), SystemConstant.TEMPLET_PATH);
         cfg.setDefaultEncoding("UTF-8");
         cfg.setTemplateExceptionHandler(TemplateExceptionHandler.IGNORE_HANDLER);
-        Template template = cfg.getTemplate("廉政报告模板.ftl");
+        Template template = cfg.getTemplate("廉政报告.ftl");
 
         //报告本地存放路径
         time = time.replace(" - ", "至");
-        String fileName = String.format("关于%s同志廉情报告%s.docx", ((User) paramMap.get("user")).getRealname(), time);
+        String fileName = String.format("关于%s同志廉情报告%s.doc", ((User) paramMap.get("user")).getRealname(), time);
         String tempPath = this.getClass().getResource("/").getPath() + SystemConstant.TEMPLET_PATH;
         File file = new File(tempPath + "/" + fileName);
 
