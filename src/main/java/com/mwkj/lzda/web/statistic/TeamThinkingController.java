@@ -121,23 +121,24 @@ public class TeamThinkingController {
             //设置时间段
             //criteria.andBetween("time", time.substring(0, 10), time.substring(13, 23));
             criteria.andEqualTo("time",time);
-        }else{
-            Date d=new Date();
-            DateFormat format1 = new SimpleDateFormat("yyyy-MM");
-
-            String s = format1.format(d);
-
-            //System.out.println(s+"+++++++++");
-
-           /* Calendar cal=Calendar.getInstance();//使用日历类
-
-            int month=cal.get(Calendar.MONTH)+1;//得到月，因为从0开始的，所以要加1
-            int year =cal.get(Calendar.YEAR);
-
-            String times=year+"-"+ '0'+month;
-            System.out.println(times);*/
-            criteria.andEqualTo("time",s);
         }
+//        else{
+//            Date d=new Date();
+//            DateFormat format1 = new SimpleDateFormat("yyyy-MM");
+//
+//            String s = format1.format(d);
+//
+//            //System.out.println(s+"+++++++++");
+//
+//           /* Calendar cal=Calendar.getInstance();//使用日历类
+//
+//            int month=cal.get(Calendar.MONTH)+1;//得到月，因为从0开始的，所以要加1
+//            int year =cal.get(Calendar.YEAR);
+//
+//            String times=year+"-"+ '0'+month;
+//            System.out.println(times);*/
+//            criteria.andEqualTo("time",s);
+//        }
 
         List<RptTeamThinking> list = rptTeamThinkingService.findByCondition(condition);
         PageInfo<RptTeamThinking> pageInfo = new PageInfo<>(list);

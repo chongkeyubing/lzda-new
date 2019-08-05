@@ -28,7 +28,7 @@ public class StatisticServiceImpl implements StatisticService {
     private OrganizationService organizationService;
 
     /**
-     * @return java.util.Map<java.lang.String, java.lang.String>
+     * @return java.util.Map<java.lang.String ,   java.lang.String>
      * @Author libaogang
      * @Date 2019-07-26 17:30
      * @Param [archiveStatisticParamDTO]
@@ -100,11 +100,12 @@ public class StatisticServiceImpl implements StatisticService {
     }
 
     /**
-    * 方法实现说明
-    * @author      zzy
-    * @Description:(队伍思想状况统计)
-    * @date        2019/7/31/031 16:53
-    */
+     * 方法实现说明
+     *
+     * @author zzy
+     * @Description:(队伍思想状况统计)
+     * @date 2019/7/31/031 16:53
+     */
     @Override
     public List<ArchiveStatisticResultDTO> statisticTeamThinking(ArchiveStatisticParamDTO archiveStatisticParamDTO) {
         return statisticsMapper.statisticTeamThinking(archiveStatisticParamDTO);
@@ -112,36 +113,15 @@ public class StatisticServiceImpl implements StatisticService {
 
 
     /**
-    * 方法实现说明
-    * @author      zzy
-    * @Description:(履责纪实统计)
-    * @date        2019/7/31/031 16:54
-    */
+     * 方法实现说明
+     *
+     * @author zzy
+     * @Description:(履责纪实统计)
+     * @date 2019/7/31/031 16:54
+     */
     @Override
     public List<ArchiveStatisticResultDTO> statisticResponsibilityPerform(ArchiveStatisticParamDTO archiveStatisticParamDTO) {
         return statisticsMapper.statisticResponsibilityPerform(archiveStatisticParamDTO);
-       /* List<ArchiveStatisticResultDTO> archiveStatisticResultDTOS = statisticsMapper.statisticResponsibilityPerform(archiveStatisticParamDTO);
-        List<ArchiveStatisticResultDTO> archiveStatisticResults = new ArrayList<>(64);
-
-        Organization organizationParam = new Organization();
-        organizationParam.setId(archiveStatisticParamDTO.getOrganizationId());
-        List<Organization> organizations = organizationService.find(organizationParam);
-
-        for (Organization organization : organizations) {
-            for(ArchiveStatisticResultDTO archiveStatisticResultDTO1:archiveStatisticResultDTOS){
-                ArchiveStatisticResultDTO archiveStatisticResultDTO2 = new ArchiveStatisticResultDTO();
-                archiveStatisticResultDTO2.setOrganizationId(organization.getId());
-                archiveStatisticResultDTO2.setOrganizationName(organization.getName());
-
-                if(organization.getId().equals(archiveStatisticResultDTO1.getOrganizationId())){
-                    archiveStatisticResultDTO2.setCount(archiveStatisticResultDTO1.getCount());
-                }
-                archiveStatisticResults.add(archiveStatisticResultDTO2);
-            }
-
-        }
-        return archiveStatisticResults;*/
-
     }
 
     /**
@@ -206,6 +186,13 @@ public class StatisticServiceImpl implements StatisticService {
         return rewardStatisticVOs;
     }
 
+    /**
+     * @return java.util.List<com.mwkj.lzda.dto.ArchiveStatisticResultDTO>
+     * @Author libaogang
+     * @Date 2019-08-05 9:54
+     * @Param [responsibilityStatisticParamDTO]
+     * @Description 主体责任统计
+     */
     @Override
     public List<ArchiveStatisticResultDTO> statisticResponsibility(ResponsibilityStatisticParamDTO responsibilityStatisticParamDTO) {
         return statisticsMapper.statisticResponsibility(responsibilityStatisticParamDTO);
