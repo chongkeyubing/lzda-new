@@ -28,6 +28,8 @@
             <button class="layui-btn layui-btn-normal" lay-submit lay-filter="queryStatistic" id="queryStatistic">查询
             </button>
             <button class="layui-btn layui-btn-warm" type="reset">清空</button>
+            <button class="layui-btn layui-btn-normal" lay-submit id="exportStatistic" lay-filter="exportStatistic">导出
+            </button>
         </div>
 
     </div>
@@ -57,17 +59,25 @@
             }
         });
 
+        //用于存放导出的数据
+        var tableData;
+
         var tableIns = table.render({
+            title:'影响公正执行职务报备统计',
             elem: '#statisticTable',
             url: 'arcAffect/list',
-            page: true, //开启分页
+            page: false, //开启分页
             limit: 9999,
             method: 'post',
             cols: [[ //表头
                 {field: 'organizationName', title: '单位'},
                 {field: 'count', title: '填报数量'},
                 {field: 'operate', align: 'center', title: '操作', toolbar: '#statisticBar'}
-            ]]
+            ]],
+
+            done: function (res) {
+                tableData = res;
+            }
         });
 
         //明细按钮监听
@@ -92,6 +102,13 @@
             debugger;
             time = $("#time").val();
             reloadTable(data.field);//当前容器的全部表单字段，名值对形式：{name: value}
+            return false; //阻止表单跳转
+        });
+
+        //导出
+        form.on('submit(exportStatistic)', function (data) {
+            debugger;
+            table.exportFile(tableIns.config.id, tableData.data, 'xlsx');
             return false; //阻止表单跳转
         });
 

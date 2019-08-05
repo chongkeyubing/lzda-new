@@ -22,21 +22,20 @@
         //查询该单位该时间段
         var param = '?organizationId=${organizationId}&time=${time}';
 
-
         var tableIns = table.render({
             elem: '#arcListTable',
-            url: 'arcEffectGiftatistic/lists' + param ,
+            url: 'responsibility/lists' + param ,
             page: true, //开启分页
             limit: 10,
             method: 'post',
             cols: [[ //表头
-                {field: 'userName', title: '姓名'},
+                {field: 'committerName', title: '姓名'},
                 // {field: 'policeCode', title: '警号'},
-                {field: 'organization', title: '单位'},
+                {field: 'organizationName', title: '单位'},
                 {
-                    field: 'giftTime',
-                    title: '送礼时间',
-                   // templet: "<div>{{layui.util.toDateString(d.createTime, 'yyyy-MM-dd')}}</div>"  //时间戳格式化
+                    field: 'time',
+                    title: '时间',
+                    //templet: "<div>{{layui.util.toDateString(d.createTime, 'yyyy-MM-dd HH:mm:ss')}}</div>"  //时间戳格式化
                 },
                 {field: 'operate', align: 'center', title: '操作', toolbar: '#arcListBar'}
             ]]
@@ -47,16 +46,16 @@
             debugger;
             var data = obj.data;
             if (obj.event === 'detail') {
-                $.post('archive/toArchive', {
-                    archiveId: data.id,
-                    archiveType: data.archiveType,
+                $.post('rptresponsibilityperform/toDetail', {
+                    id: data.id,
+                    //archiveType: data.archiveType,
                     approveRecord: true,
-                    userId: data.userId,
+                    committerId: data.userId,
                     userName: data.userName
                 }, function (html) {
                     layer.open({
                         type: 1,
-                        title:  "收受礼品-" + data.userName,
+                        title:  "履责纪实-" + data.committerName,
                         area: ['100%', '100%'],
                         content: html
                     });

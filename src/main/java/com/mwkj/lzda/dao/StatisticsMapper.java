@@ -33,6 +33,12 @@ public interface StatisticsMapper {
     //一般干部被群众信访举报情况登记
     List<ArchiveStatisticResultDTO> statisticPunReport(ArchiveStatisticParamDTO archiveStatisticParamDTO);
 
+    //队伍思想状况报告统计
+    List<ArchiveStatisticResultDTO> statisticTeamThinking(ArchiveStatisticParamDTO archiveStatisticParamDTO);
+
+    //履责纪实统计
+    List<ArchiveStatisticResultDTO> statisticResponsibilityPerform(ArchiveStatisticParamDTO archiveStatisticParamDTO);
+
     //表彰统计
     List<RewardStatisticResultDTO> statisticReward(RewardStatisticParamDTO rewardStatisticParamDTO);
 }

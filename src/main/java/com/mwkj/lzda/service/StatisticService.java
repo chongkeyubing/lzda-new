@@ -3,7 +3,6 @@ package com.mwkj.lzda.service;
 import com.mwkj.lzda.dto.ArchiveStatisticParamDTO;
 import com.mwkj.lzda.dto.ArchiveStatisticResultDTO;
 import com.mwkj.lzda.dto.RewardStatisticParamDTO;
-import com.mwkj.lzda.dto.RewardStatisticResultDTO;
 import com.mwkj.lzda.vo.RewardStatisticVO;
 
 import java.util.List;
@@ -33,6 +32,12 @@ public interface StatisticService {
 
     //一般干部被群众信访举报情况登记
     List<ArchiveStatisticResultDTO> statisticPunReport(ArchiveStatisticParamDTO archiveStatisticParamDTO);
+
+    //队伍思想状况报告统计
+    List<ArchiveStatisticResultDTO> statisticTeamThinking(ArchiveStatisticParamDTO archiveStatisticParamDTO);
+
+    //履责纪实统计
+    List<ArchiveStatisticResultDTO> statisticResponsibilityPerform(ArchiveStatisticParamDTO archiveStatisticParamDTO);
 
     //表彰统计
     List<RewardStatisticVO> statisticReward(RewardStatisticParamDTO rewardStatisticParamDTO);

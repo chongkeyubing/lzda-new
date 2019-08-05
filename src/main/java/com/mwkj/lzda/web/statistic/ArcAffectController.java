@@ -24,7 +24,12 @@ import tk.mybatis.mapper.entity.Example;
 import javax.annotation.Resource;
 import java.util.List;
 
-
+/**
+* 方法实现说明
+* @author      zzy
+* @Description:(可能影响公务执行职务统计)
+* @date        2019/8/2/002 11:19
+*/
 @Controller
 @RequestMapping("/arcAffect")
 public class ArcAffectController {
@@ -105,7 +110,7 @@ public class ArcAffectController {
                         String time) {
         PageHelper.startPage(page, limit);
 
-        Condition condition = new Condition(ArcBanquetApply.class);
+        Condition condition = new Condition(ArcAffectBusiness.class);
         Example.Criteria criteria = condition.createCriteria();
 
         //设置单位id
@@ -115,6 +120,8 @@ public class ArcAffectController {
             //设置时间段
             criteria.andBetween("time", time.substring(0, 10), time.substring(13, 23));
         }
+
+        condition.setOrderByClause("time desc");
 
         List<ArcAffectBusiness> list = arcAffectBusinessService.findByCondition(condition);
         PageInfo<ArcAffectBusiness> pageInfo = new PageInfo<>(list);

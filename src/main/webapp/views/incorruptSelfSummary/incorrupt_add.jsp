@@ -20,12 +20,12 @@
                     <input type="text" id="realname" name="realname" value="${currentUser.realname}">
                 </div>
             </div>--%>
-
         <input type="hidden" name="userid" value="${currentUser.id}">
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">廉政小结</label>
             <div class="layui-input-inline" style="width:90%;">
-                    <textarea style="width:80%;height: 30%;" placeholder="请输入内容" lay-filter="queryReport" lay-verify="required" name="summary" id="summary"
+                    <textarea style="width:80%;height: 30%;" placeholder="请输入内容" lay-filter="queryReport"
+                              lay-verify="required" name="summary" id="summary"
                      class="layui-textarea txtArea"></textarea>
             </div>
         </div>
@@ -41,17 +41,22 @@
 
 <script>
     $('#queryReport').click(function(){
-        $("#incorroptForm").ajaxSubmit({
-        success: function (data) {
-            if (data.success) {
-                //关闭当前弹窗
-                layer.closeAll();
-                layer.msg("提交成功");
-            } else {
-                layer.msg("提交失败，请重新尝试或联系管理员");
-            }
-        }
-    })
+       var summary = $('#summary').val();
+       if(summary == "" || summary == null){
+           alert("请您填写内容在提交！！！");
+       }else{
+           $("#incorroptForm").ajaxSubmit({
+               success: function (data) {
+                   if (data.success) {
+                       //关闭当前弹窗
+                       layer.closeAll();
+                       layer.msg("提交成功");
+                   } else {
+                       layer.msg("提交失败，请重新尝试或联系管理员");
+                   }
+               }
+           })
+       }
         return false;
     });
 

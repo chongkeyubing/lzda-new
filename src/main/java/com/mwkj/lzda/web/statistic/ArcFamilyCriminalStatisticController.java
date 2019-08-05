@@ -113,6 +113,8 @@ public class ArcFamilyCriminalStatisticController {
             criteria.andBetween("time", time.substring(0, 10), time.substring(13, 23));
         }
 
+        condition.setOrderByClause("time desc");
+
         List<ArcFamilyCriminal> list = arcFamilyCriminalService.findByCondition(condition);
         PageInfo<ArcFamilyCriminal> pageInfo = new PageInfo<>(list);
         return LayuiTableResultUtil.success(list, pageInfo.getTotal());

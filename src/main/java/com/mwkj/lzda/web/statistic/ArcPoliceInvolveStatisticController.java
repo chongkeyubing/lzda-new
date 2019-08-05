@@ -29,9 +29,9 @@ public class ArcPoliceInvolveStatisticController {
 
     @Resource
     private StatisticService statisticService;
-
     @Resource
     private OrganizationService organizationService;
+
 
     /**
      * @return java.lang.String
@@ -66,7 +66,6 @@ public class ArcPoliceInvolveStatisticController {
                                          @RequestParam(defaultValue = "0") Integer limit,
                                          ArchiveStatisticParamDTO archiveStatisticParamDTO,
                                          String time) {
-
         //解析时间
         if (StringUtils.isNotBlank(time)) {
             archiveStatisticParamDTO.setBeginTime(time.substring(0, 10));

@@ -8,7 +8,7 @@ package com.mwkj.lzda.dto;
 public class ArchiveStatisticParamDTO {
     private String beginTime; //开始时间
     private String endTime; //结束时间
-    private String organizationId;//单位id
+    private Integer organizationId;//单位id
 
     public String getBeginTime() {
         return beginTime;
@@ -26,11 +26,11 @@ public class ArchiveStatisticParamDTO {
         this.endTime = endTime;
     }
 
-    public String getOrganizationId() {
+    public Integer getOrganizationId() {
         return organizationId;
     }
 
-    public void setOrganizationId(String organizationId) {
+    public void setOrganizationId(Integer organizationId) {
         this.organizationId = organizationId;
     }
 }

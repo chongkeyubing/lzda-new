@@ -81,13 +81,13 @@ public class PunReportStatisticController {
             archiveStatisticParamDTO.setEndTime(time.substring(13, 23));
         }
 
-        PageHelper.startPage(page, limit);
+        //PageHelper.startPage(page, limit);
 
         List<ArchiveStatisticResultDTO> list = statisticService.statisticPunReport(archiveStatisticParamDTO);
 
-        PageInfo<ArchiveStatisticResultDTO> pageInfo = new PageInfo<>(list);
+        //PageInfo<ArchiveStatisticResultDTO> pageInfo = new PageInfo<>(list);
 
-        return LayuiTableResultUtil.success(list, pageInfo.getTotal());
+        return LayuiTableResultUtil.success(list);
     }
 
 
@@ -115,6 +115,8 @@ public class PunReportStatisticController {
             //设置时间段
             criteria.andBetween("time", time.substring(0, 10), time.substring(13, 23));
         }
+
+        condition.setOrderByClause("time desc");
 
         List<PunReport> list = punReportService.findByCondition(condition);
         PageInfo<PunReport> pageInfo = new PageInfo<>(list);
