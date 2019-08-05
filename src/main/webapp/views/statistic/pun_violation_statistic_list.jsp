@@ -61,7 +61,7 @@
 
         var tableIns = table.render({
             elem: '#statisticTable',
-            url: '/punViolationStatistic/list',
+            url: 'punViolationStatistic/list',
             page: false, //开启分页
             limit: 10,
             method: 'post',
@@ -186,7 +186,7 @@
                 param.violationType = violationType
             }
 
-            $.post("/punViolationStatistic/toDetail", param, function (html) {
+            $.post("punViolationStatistic/toDetail", param, function (html) {
                 layer.open({
                     type: 1,
                     title: (violationLevel==undefined?'':violationLevel) + (violationType==undefined?'':violationType) + '详情',
@@ -205,7 +205,7 @@
         });
 
         form.on('submit(exportStatistic)', function (data) {
-            window.location.href = "/punViolationStatistic/list/export?orgId="+$("#orgId").val()+"&time=" + $("#time").val();
+            window.location.href = "punViolationStatistic/list/export?orgId="+$("#orgId").val()+"&time=" + $("#time").val();
             return false; //阻止表单跳转
         });
 
