@@ -54,10 +54,7 @@
         //日期
         laydate.render({
             elem: '#time',
-            range: true,
-            done: function (value, date, endDate) {
-                time = value;
-            }
+            range: true
         });
 
         //用于存放导出的数据
@@ -65,7 +62,7 @@
 
         //渲染表格
         var tableIns = table.render({
-            title:'表彰统计',  //导出时的文件名
+            title: '表彰统计',  //导出时的文件名
             elem: '#statisticTable',
             url: 'rewardstatistic/list',
             page: true, //开启分页
@@ -137,7 +134,7 @@
                     $.post("rewardstatistic/toDetail", param, function (html) {
                         layer.open({
                             type: 1,
-                            title: '表彰统计-'+ rewardType + '详情',
+                            title: '表彰统计-' + rewardType + '详情',
                             area: ['100%', '100%'],
                             content: html
                         });
@@ -149,7 +146,7 @@
         //查询按钮监听
         form.on('submit(queryStatistic)', function (data) {
             debugger;
-            time = $("#time").val();
+            time = data.field.time;
             reloadTable(data.field);//当前容器的全部表单字段，名值对形式：{name: value}
             return false; //阻止表单跳转
         });

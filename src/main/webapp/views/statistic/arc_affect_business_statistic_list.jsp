@@ -53,17 +53,14 @@
         //日期
         laydate.render({
             elem: '#time',
-            range: true,
-            done: function (value, date, endDate) {
-                time = value;
-            }
+            range: true
         });
 
         //用于存放导出的数据
         var tableData;
 
         var tableIns = table.render({
-            title:'影响公正执行职务报备统计',
+            title: '影响公正执行职务报备统计',
             elem: '#statisticTable',
             url: 'arcAffect/list',
             page: false, //开启分页

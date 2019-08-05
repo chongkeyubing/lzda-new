@@ -67,10 +67,6 @@
         laydate.render({
             elem: '#time',
             type:'month'
-           /* range: true,
-            done: function (value, date, endDate) {
-                time = value;
-            }*/
         });
         //用于存放导出的数据
         var tableData;

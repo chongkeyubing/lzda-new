@@ -53,10 +53,7 @@
         //日期
         laydate.render({
             elem: '#time',
-            range: true,
-            done: function (value, date, endDate) {
-                time = value;
-            }
+            range: true
         });
 
 

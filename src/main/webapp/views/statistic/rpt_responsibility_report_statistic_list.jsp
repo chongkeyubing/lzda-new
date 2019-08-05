@@ -27,7 +27,7 @@
         <div class="layui-inline">
             <label class="layui-form-label">季度</label>
             <div class="layui-input-inline">
-                <select name="quarter" id="quarter">
+                <select name="quarter" id="quarter" lay-filter="quarter">
                     <option value="">请选择</option>
                     <option value="第一季度">第一季度</option>
                     <option value="第二季度">第二季度</option>
@@ -63,14 +63,12 @@
         form.render();
 
         var year = '';
+        var quarter = '';
 
         //日期
         laydate.render({
             elem: '#year',
-            type: 'year',
-            done: function (value, date, endDate) {
-                year = value;
-            }
+            type: 'year'
         });
 
         var tableData;
@@ -99,7 +97,7 @@
             var param = {
                 organizationId: data.organizationId,
                 year: year,
-                quarter: $("#quarter").val()
+                quarter: quarter
             };
             if (obj.event === 'detail') {
                 $.post('rptresponsibilityreportstatistic/toDetail', param, function (html) {
@@ -116,7 +114,8 @@
         //查询按钮监听
         form.on('submit(queryStatistic)', function (data) {
             debugger;
-            year = $("#time").val();
+            year = data.field.year;
+            quarter = data.field.quarter;
             reloadTable(data.field);//当前容器的全部表单字段，名值对形式：{name: value}
             return false; //阻止表单跳转
         });
