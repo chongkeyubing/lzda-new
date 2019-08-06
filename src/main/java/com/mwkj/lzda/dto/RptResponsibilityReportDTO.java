@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * @Author: libaogang
  * @Date: 2019-08-01 10:37
- * @Description 主体责任上报入参
+ * @Description 添加主体责任上报入参
  */
 public class RptResponsibilityReportDTO {
     private RptResponsibilityReport report;

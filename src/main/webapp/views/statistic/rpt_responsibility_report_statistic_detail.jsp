@@ -19,24 +19,28 @@
 
         form.render();
 
-        //查询该单位该时间段
-        var param = '?organizationId=${organizationId}&time=${time}';
-
+        var param = {
+            organizationId:'${organizationId}',
+            year:'${year}',
+            quarter: '${quarter}'
+        };
 
         var tableIns = table.render({
             elem: '#arcListTable',
-            url: 'arcEffectGiftatistic/lists' + param ,
+            url: 'rptresponsibilityreport/list' ,
+            where: param,  //查询参数
             page: true, //开启分页
             limit: 10,
             method: 'post',
             cols: [[ //表头
-                {field: 'userName', title: '姓名'},
-                // {field: 'policeCode', title: '警号'},
-                {field: 'organization', title: '单位'},
+                {field: 'committerName', title: '提交人姓名'},
+                {field: 'organizationName', title: '单位'},
+                {field: 'year', title: '年份'},
+                {field: 'quarter', title: '季度'},
                 {
-                    field: 'giftTime',
-                    title: '送礼时间',
-                   // templet: "<div>{{layui.util.toDateString(d.createTime, 'yyyy-MM-dd')}}</div>"  //时间戳格式化
+                    field: 'createTime',
+                    title: '填表时间',
+                    templet: "<div>{{layui.util.toDateString(d.createTime, 'yyyy-MM-dd HH:mm:ss')}}</div>"  //时间戳格式化
                 },
                 {field: 'operate', align: 'center', title: '操作', toolbar: '#arcListBar'}
             ]]
@@ -47,35 +51,16 @@
             debugger;
             var data = obj.data;
             if (obj.event === 'detail') {
-                $.post('archive/toArchive', {
-                    archiveId: data.id,
-                    archiveType: data.archiveType,
-                    approveRecord: true,
-                    userId: data.userId,
-                    userName: data.userName
-                }, function (html) {
+                $.get('rptresponsibilityreport/toDetail?id=' + data.id, function (html) {
                     layer.open({
                         type: 1,
-                        title:  "收受礼品-" + data.userName,
+                        title: '主体责任详情',
                         area: ['100%', '100%'],
                         content: html
                     });
                 });
             }
         });
-        //
-        // //查询按钮监听
-        // form.on('submit(queryStatistic)', function (data) {
-        //     debugger;
-        //     reloadTable(data.field);//当前容器的全部表单字段，名值对形式：{name: value}
-        //     return false; //阻止表单跳转
-        // });
-        //
-        // //表格重载
-        // function reloadTable(param) {
-        //     tableIns.reload({
-        //         where: param //设定异步数据接口的额外参数，任意设
-        //     });
-        // }
+
     });
 </script>

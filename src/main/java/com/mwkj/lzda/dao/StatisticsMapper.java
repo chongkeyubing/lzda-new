@@ -1,9 +1,6 @@
 package com.mwkj.lzda.dao;
 
-import com.mwkj.lzda.dto.ArchiveStatisticParamDTO;
-import com.mwkj.lzda.dto.ArchiveStatisticResultDTO;
-import com.mwkj.lzda.dto.RewardStatisticParamDTO;
-import com.mwkj.lzda.dto.RewardStatisticResultDTO;
+import com.mwkj.lzda.dto.*;
 
 import java.util.List;
 import java.util.Map;
@@ -33,6 +30,15 @@ public interface StatisticsMapper {
     //一般干部被群众信访举报情况登记
     List<ArchiveStatisticResultDTO> statisticPunReport(ArchiveStatisticParamDTO archiveStatisticParamDTO);
 
+    //队伍思想状况报告统计
+    List<ArchiveStatisticResultDTO> statisticTeamThinking(ArchiveStatisticParamDTO archiveStatisticParamDTO);
+
+    //履责纪实统计
+    List<ArchiveStatisticResultDTO> statisticResponsibilityPerform(ArchiveStatisticParamDTO archiveStatisticParamDTO);
+
     //表彰统计
     List<RewardStatisticResultDTO> statisticReward(RewardStatisticParamDTO rewardStatisticParamDTO);
+
+    //主体责任统计
+    List<ArchiveStatisticResultDTO> statisticResponsibility(ResponsibilityStatisticParamDTO responsibilityStatisticParamDTO);
 }

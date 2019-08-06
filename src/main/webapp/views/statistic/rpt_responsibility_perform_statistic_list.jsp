@@ -28,6 +28,9 @@
             <button class="layui-btn layui-btn-normal" lay-submit lay-filter="queryStatistic" id="queryStatistic">查询
             </button>
             <button class="layui-btn layui-btn-warm" type="reset">清空</button>
+
+            <%--<button type="button" lay-submit="" class="layui-btn layui-btn-warm" id="exportStatistic" lay-filter="exportStatistic">
+                <i class="layui-icon"></i>导出Excel</button>--%>
             <button class="layui-btn layui-btn-normal" lay-submit id="exportStatistic" lay-filter="exportStatistic">导出
             </button>
         </div>
@@ -36,6 +39,16 @@
 </form>
 
 <table id="statisticTable" lay-filter="statisticTable"></table>
+
+
+<script type="text/html" id="toolbarDemo">
+   <%-- <div class="layui-btn-container">--%>
+        <%--<button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
+        <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
+        <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>--%>
+    <%--</div>--%>
+</script>
+
 <script type="text/html" id="statisticBar">
     <a class="layui-btn layui-btn-sm layui-btn-normal" lay-event="detail">明细</a>
 </script>
@@ -56,15 +69,15 @@
             range: true
         });
 
-
         //用于存放导出的数据
         var tableData;
 
         var tableIns = table.render({
-            title:'家人被追究刑事责任统计',
+            title:'履责纪实统计',
             elem: '#statisticTable',
-            url: 'arcFamilyCriminaltistic/list',
-            //page: true, //开启分页
+            url: 'responsibility/list',
+           // page: true, //开启分页
+            //toolbar:'#toolbarDemo',
             limit: 9999,
             method: 'post',
             cols: [[ //表头
@@ -72,6 +85,7 @@
                 {field: 'count', title: '填报数量'},
                 {field: 'operate', align: 'center', title: '操作', toolbar: '#statisticBar'}
             ]],
+
             done: function (res) {
                 tableData = res;
             }
@@ -90,10 +104,10 @@
             var data = obj.data;
             var param = '?organizationId=' + data.organizationId + '&time=' + time;
             if (obj.event === 'detail') {
-                $.get('arcFamilyCriminaltistic/toDetail' + param, function (html) {
+                $.get('responsibility/toDetail' + param, function (html) {
                     layer.open({
                         type: 1,
-                        title: data.organizationName + '-家人被追究刑事责任统计详情',
+                        title: data.organizationName + '-履责纪实统计详情',
                         area: ['100%', '100%'],
                         content: html
                     });

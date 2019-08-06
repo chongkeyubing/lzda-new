@@ -25,6 +25,12 @@ import java.util.List;
 import tk.mybatis.mapper.entity.Condition;
 import tk.mybatis.mapper.entity.Example;
 
+/**
+* 方法实现说明
+* @author      zzy
+* @Description:(收受礼品)
+* @date        2019/8/2/002 11:08
+*/
 @Controller
 @RequestMapping("/arcEffectGiftatistic")
 public class ArcEffectGiftStatisticController {
@@ -119,8 +125,10 @@ public class ArcEffectGiftStatisticController {
 
         if (StringUtils.isNotBlank(time)) {
             //设置时间段
-            criteria.andBetween("time", time.substring(0, 10), time.substring(13, 23));
+            criteria.andBetween("giftTime", time.substring(0, 10), time.substring(13, 23));
         }
+
+        condition.setOrderByClause("gift_time desc");
 
         List<ArcGiftInfo> list = arcGiftInfoService.findByCondition(condition);
         PageInfo<ArcGiftInfo> pageInfo = new PageInfo<>(list);

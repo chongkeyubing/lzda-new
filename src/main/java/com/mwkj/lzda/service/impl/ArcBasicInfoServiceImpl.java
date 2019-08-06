@@ -11,6 +11,7 @@ import com.mwkj.lzda.service.ArcBasicInfoService;
 import com.mwkj.lzda.core.AbstractService;
 import com.mwkj.lzda.service.ArcFamilySocietyRelaService;
 import com.mwkj.lzda.dto.BasicInfoDTO;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -39,23 +40,26 @@ public class ArcBasicInfoServiceImpl extends AbstractService<ArcBasicInfo> imple
     @Override
     public void add(BasicInfoDTO basicInfoDTO, Approve approve, HttpServletRequest request) throws AppException {
         //上传图片
-        String url = null;
+        List<String> urls = null;
         try {
-            url = SpringFileUploader.uploadImg(request);
+            urls = SpringFileUploader.uploadImgs(request);
         } catch (IOException e) {
             throw new AppException(e.getMessage());
         }
 
         //保存个人基本情况报备
         ArcBasicInfo arcBasicInfo = basicInfoDTO.getArcBasicInfo();
-        arcBasicInfo.setAvatarUrl(url);
+        if (!CollectionUtils.isEmpty(urls)) {
+            arcBasicInfo.setAvatarUrl(urls.get(0));
+        }
+
         this.save(arcBasicInfo);
 
         int arcBasicInfoId = arcBasicInfo.getId();
 
         //保存重要关系
         List<ArcFamilySocietyRela> arcs = basicInfoDTO.getArcs();
-        if(null != arcs){
+        if (null != arcs) {
             for (ArcFamilySocietyRela arc : arcs) {
                 arc.setBasicInfoId(arcBasicInfoId);
             }

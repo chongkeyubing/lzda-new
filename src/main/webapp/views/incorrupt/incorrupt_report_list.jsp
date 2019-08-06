@@ -25,13 +25,13 @@
                 </button>
                 <button class="layui-btn layui-btn-warm" type="reset" id="resetQueryUser">清空</button>
             </div>
-            <div style="float: right;margin-right: 50px">
-            <div class="layui-inline">
-                <label class="layui-form-label">报告时间段</label>
-                <div class="layui-input-inline">
-                    <input type="text" name="time" id="time" autocomplete="off" class="layui-input">
+            <div style="float: right;">
+                <div class="layui-inline">
+                    <label class="layui-form-label">报告时间段</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="time" id="time" autocomplete="off" class="layui-input">
+                    </div>
                 </div>
-            </div>
             </div>
         </div>
     </form>
@@ -67,7 +67,7 @@
                 // {field: 'role', title: '角色', minWidth: 120},
                 {field: 'organizationName', title: '单位', minWidth: 340},
                 {field: 'jobPosition', title: '职务', minWidth: 200},
-                {field: 'operate', align: 'center', title: '操作', toolbar: '#userTableBar', minWidth: 200}
+                {field: 'operate', align: 'center', title: '操作', toolbar: '#userTableBar', width: 220}
             ]]
         });
 
@@ -77,9 +77,10 @@
             var data = obj.data;
             var param = '?id=' + data.id + '&time=' + $("#time").val();
             if (obj.event === 'detail') {
+                layer.msg("正在生成报告");
                 var a = document.createElement('a');
                 a.setAttribute('href', 'incorruptReport/export' + param);
-                a.setAttribute('download','');
+                a.setAttribute('download', '');
                 a.style.display = 'none';
                 document.body.appendChild(a);
                 a.click();

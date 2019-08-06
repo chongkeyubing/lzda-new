@@ -1,10 +1,7 @@
 package com.mwkj.lzda.service.impl;
 
 import com.mwkj.lzda.dao.StatisticsMapper;
-import com.mwkj.lzda.dto.ArchiveStatisticParamDTO;
-import com.mwkj.lzda.dto.ArchiveStatisticResultDTO;
-import com.mwkj.lzda.dto.RewardStatisticParamDTO;
-import com.mwkj.lzda.dto.RewardStatisticResultDTO;
+import com.mwkj.lzda.dto.*;
 import com.mwkj.lzda.model.Organization;
 import com.mwkj.lzda.service.OrganizationService;
 import com.mwkj.lzda.service.StatisticService;
@@ -31,7 +28,7 @@ public class StatisticServiceImpl implements StatisticService {
     private OrganizationService organizationService;
 
     /**
-     * @return java.util.Map<java.lang.String, java.lang.String>
+     * @return java.util.Map<java.lang.String ,   java.lang.String>
      * @Author libaogang
      * @Date 2019-07-26 17:30
      * @Param [archiveStatisticParamDTO]
@@ -103,6 +100,31 @@ public class StatisticServiceImpl implements StatisticService {
     }
 
     /**
+     * 方法实现说明
+     *
+     * @author zzy
+     * @Description:(队伍思想状况统计)
+     * @date 2019/7/31/031 16:53
+     */
+    @Override
+    public List<ArchiveStatisticResultDTO> statisticTeamThinking(ArchiveStatisticParamDTO archiveStatisticParamDTO) {
+        return statisticsMapper.statisticTeamThinking(archiveStatisticParamDTO);
+    }
+
+
+    /**
+     * 方法实现说明
+     *
+     * @author zzy
+     * @Description:(履责纪实统计)
+     * @date 2019/7/31/031 16:54
+     */
+    @Override
+    public List<ArchiveStatisticResultDTO> statisticResponsibilityPerform(ArchiveStatisticParamDTO archiveStatisticParamDTO) {
+        return statisticsMapper.statisticResponsibilityPerform(archiveStatisticParamDTO);
+    }
+
+    /**
      * @return java.util.List<com.mwkj.lzda.dto.RewardStatisticResultDTO>
      * @Author libaogang
      * @Date 2019-07-31 11:08
@@ -162,5 +184,17 @@ public class StatisticServiceImpl implements StatisticService {
             rewardStatisticVOs.add(rewardStatisticVO);
         }
         return rewardStatisticVOs;
+    }
+
+    /**
+     * @return java.util.List<com.mwkj.lzda.dto.ArchiveStatisticResultDTO>
+     * @Author libaogang
+     * @Date 2019-08-05 9:54
+     * @Param [responsibilityStatisticParamDTO]
+     * @Description 主体责任统计
+     */
+    @Override
+    public List<ArchiveStatisticResultDTO> statisticResponsibility(ResponsibilityStatisticParamDTO responsibilityStatisticParamDTO) {
+        return statisticsMapper.statisticResponsibility(responsibilityStatisticParamDTO);
     }
 }

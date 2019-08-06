@@ -33,9 +33,9 @@
                 // {field: 'policeCode', title: '警号'},
                 {field: 'organization', title: '单位'},
                 {
-                    field: 'createTime',
-                    title: '填表时间',
-                    templet: "<div>{{layui.util.toDateString(d.createTime, 'yyyy-MM-dd HH:mm:ss')}}</div>"  //时间戳格式化
+                    field: 'activityTime',
+                    title: '活动时间',
+                    //templet: "<div>{{layui.util.toDateString(d.createTime, 'yyyy-MM-dd')}}</div>"  //时间戳格式化
                 },
                 {field: 'operate', align: 'center', title: '操作', toolbar: '#arcListBar'}
             ]]
@@ -55,7 +55,7 @@
                 }, function (html) {
                     layer.open({
                         type: 1,
-                        title:  "收受礼品-" + data.userName,
+                        title:  "操办宴席-" + data.userName,
                         area: ['100%', '100%'],
                         content: html
                     });

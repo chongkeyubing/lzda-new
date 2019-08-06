@@ -18,9 +18,22 @@
         </div>
 
         <div class="layui-inline">
-            <label class="layui-form-label">时间</label>
+            <label class="layui-form-label">年份</label>
             <div class="layui-input-inline">
-                <input type="text" name="time" id="time" autocomplete="off" class="layui-input">
+                <input type="text" name="year" id="year" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-inline">
+            <label class="layui-form-label">季度</label>
+            <div class="layui-input-inline">
+                <select name="quarter" id="quarter" lay-filter="quarter">
+                    <option value="">请选择</option>
+                    <option value="第一季度">第一季度</option>
+                    <option value="第二季度">第二季度</option>
+                    <option value="第三季度">第三季度</option>
+                    <option value="第四季度">第四季度</option>
+                </select>
             </div>
         </div>
 
@@ -49,22 +62,22 @@
 
         form.render();
 
-        var time = '';
+        var year = '';
+        var quarter = '';
+
         //日期
         laydate.render({
-            elem: '#time',
-            range: true
+            elem: '#year',
+            type: 'year'
         });
 
-
-        //用于存放导出的数据
         var tableData;
 
         var tableIns = table.render({
-            title:'家人被追究刑事责任统计',
+            title: '主体责任统计',  //导出时的文件名
             elem: '#statisticTable',
-            url: 'arcFamilyCriminaltistic/list',
-            //page: true, //开启分页
+            url: 'rptresponsibilityreportstatistic/list',
+            // page: true, //开启分页
             limit: 9999,
             method: 'post',
             cols: [[ //表头
@@ -77,23 +90,20 @@
             }
         });
 
-        //导出
-        form.on('submit(exportStatistic)', function (data) {
-            debugger;
-            table.exportFile(tableIns.config.id, tableData.data, 'xlsx');
-            return false; //阻止表单跳转
-        });
-
         //明细按钮监听
         table.on('tool(statisticTable)', function (obj) {
             debugger;
             var data = obj.data;
-            var param = '?organizationId=' + data.organizationId + '&time=' + time;
+            var param = {
+                organizationId: data.organizationId,
+                year: year,
+                quarter: quarter
+            };
             if (obj.event === 'detail') {
-                $.get('arcFamilyCriminaltistic/toDetail' + param, function (html) {
+                $.post('rptresponsibilityreportstatistic/toDetail', param, function (html) {
                     layer.open({
                         type: 1,
-                        title: data.organizationName + '-家人被追究刑事责任统计详情',
+                        title: data.organizationName + '-主体责任统计详情',
                         area: ['100%', '100%'],
                         content: html
                     });
@@ -104,7 +114,8 @@
         //查询按钮监听
         form.on('submit(queryStatistic)', function (data) {
             debugger;
-            time = $("#time").val();
+            year = data.field.year;
+            quarter = data.field.quarter;
             reloadTable(data.field);//当前容器的全部表单字段，名值对形式：{name: value}
             return false; //阻止表单跳转
         });
@@ -115,5 +126,12 @@
                 where: param //设定异步数据接口的额外参数，任意设
             });
         }
+
+        //导出
+        form.on('submit(exportStatistic)', function (data) {
+            debugger;
+            table.exportFile(tableIns.config.id, tableData.data, 'xlsx');
+            return false; //阻止表单跳转
+        });
     });
 </script>

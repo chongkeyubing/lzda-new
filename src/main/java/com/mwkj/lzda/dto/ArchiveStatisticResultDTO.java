@@ -6,15 +6,15 @@ package com.mwkj.lzda.dto;
  * @Description 档案类统计返回结果
  */
 public class ArchiveStatisticResultDTO {
-    private String organizationId;
+    private Integer organizationId;
     private String organizationName;
     private long count;
 
-    public String getOrganizationId() {
+    public Integer getOrganizationId() {
         return organizationId;
     }
 
-    public void setOrganizationId(String organizationId) {
+    public void setOrganizationId(Integer organizationId) {
         this.organizationId = organizationId;
     }
 

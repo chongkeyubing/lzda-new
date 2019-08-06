@@ -3,7 +3,7 @@
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div style="padding: 20px">
-<table id="punViolationListTable" lay-filter="punViolationListTable"></table>
+    <table id="punViolationListTable" lay-filter="punViolationListTable"></table>
 </div>
 <script type="text/html" id="arcListBar">
     <a class="layui-btn layui-btn-sm layui-btn-normal" lay-event="detail">明细</a>
@@ -21,15 +21,15 @@
         //查询该单位该时间段
         var tableIns = table.render({
             elem: '#punViolationListTable',
-            url: '/punviolation/list' ,
+            url: 'punviolation/list',
             page: true, //开启分页
             limit: 10,
             method: 'post',
             where: {
-                organizationId:'${orgId}',
-                time:'${time}',
-                violationLevel:'${violationLevel}',
-                violationType:'${violationType}'
+                organizationId: '${orgId}',
+                time: '${time}',
+                violationLevel: '${violationLevel}',
+                violationType: '${violationType}'
             },
             cols: [[ //表头
                 {field: 'userName', title: '姓名'},
