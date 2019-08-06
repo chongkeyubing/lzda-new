@@ -43,7 +43,7 @@
     $('#queryReport').click(function(){
        var summary = $('#summary').val();
        if(summary == "" || summary == null){
-           alert("请您填写内容在提交！！！");
+           alert("请您填写内容再提交！！！");
        }else{
            $("#incorroptForm").ajaxSubmit({
                success: function (data) {

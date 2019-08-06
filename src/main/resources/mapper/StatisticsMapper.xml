@@ -83,7 +83,7 @@
         from organization o
         left join (
         SELECT organization_id, count(*) as count
-        from arc_family_criminal
+        from arc_affect_business
         <if test="beginTime!=null and beginTime!='' and endTime!=null and endTime!=''">
             where time BETWEEN #{beginTime} and #{endTime}
         </if>
