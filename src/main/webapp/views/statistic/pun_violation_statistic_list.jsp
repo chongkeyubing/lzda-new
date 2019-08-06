@@ -165,7 +165,7 @@
         // 点击数字展示具体数据
         $(".detail").click(function () {
             if ($(this).text() === '0') {
-            return;
+                return;
             }
 
             var violationType = $(this).data("violationtype");
