@@ -24,13 +24,13 @@
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">廉政小结</label>
             <div class="layui-input-inline" style="width:90%;">
-                    <textarea style="width:80%;height: 30%;" placeholder="请输入内容" lay-filter="queryReport"
+                    <textarea style="width:100%;height: 30%;" placeholder="请输入内容" lay-filter="queryReport"
                               lay-verify="required" name="summary" id="summary"
                      class="layui-textarea txtArea"></textarea>
             </div>
         </div>
 
-            <div class="layui-inline" style="margin-left: 74.3%;">
+            <div class="layui-inline" style="width: 90%;text-align: center">
                 <button class="layui-btn layui-btn-normal" lay-submit lay-filter="queryReport" id="queryReport">提交
                 </button>
             </div>
