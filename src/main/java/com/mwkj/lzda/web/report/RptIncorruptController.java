@@ -85,6 +85,12 @@ public class RptIncorruptController {
         return ResultUtil.success();
     }
 
+    /**
+    * 方法实现说明
+    * @author      zzy
+    * @Description:(修改)
+    * @date        2019/8/9/009 16:43
+    */
     @RequestMapping("/update")
     @ResponseBody
     public Result update(RptIncorrupt rptIncorrupt) {
